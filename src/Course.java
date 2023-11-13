@@ -23,5 +23,8 @@ public class Course {
         return "";
     }
 
+    public Prerequisite getPrerequisiteInformation() {
+        return prerequisiteInformation;
+    }
 
 }
