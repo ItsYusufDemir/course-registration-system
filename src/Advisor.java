@@ -4,31 +4,33 @@ public class Advisor extends User {
 
     private List<Student> advisedStudent;
 
+
     public Advisor(String userID, String userName , String password, String firstName, String lastName, boolean status) {
         super(userID, userName, password, firstName, lastName, status);
+    }
+
+    public void getMyPage() {
         CLIAdviser cliAdviser = new CLIAdviser(this);
         cliAdviser.menuPage();
     }
+    public void acceptCourse(Student student, SelectedCourse selectedCourse) {
 
-    public void acceptCourse(Student student, Course course) {
+        selectedCourse.setStatus(CourseStatus.Approved);
 
-        for (SelectedCourse selectedCourse: student.selectedCourses) {
-            if(course.courseName.equals(selectedCourse.course.courseName)) {
-                selectedCourse.setStatus(CourseStatus.Approved);
-            }
-        }
+        student.getTranscript().completedCourses.add(selectedCourse);
+        student.getSelectedCourses().remove(selectedCourse);
 
-        student.getTakenCourses.add(course);
-        student.selectedCourses.remove(course);
-
-    }
-
-    public void rejectCourse(Student student, Course course) {
-        for (SelectedCourse selectedCourse: student.selectedCourses) {
-            if(course.courseName.equals(selectedCourse.course.courseName)) {
-                selectedCourse.setStatus(CourseStatus.Approved);
-            }
+        if(student.getSelectCourse().length == 0) {
+            student.setAprovalStatus(ApprovalStatus.Done);
         }
     }
 
+    public void rejectCourse(Student student, SelectedCourse selectedCourse) {
+        selectedCourse.setStatus(CourseStatus.Denied);
+        student.selectedCourses.remove(selectedCourse);
+
+        if(student.getSelectCourse().length == 0) {
+            student.setAprovalStatus(ApprovalStatus.Done);
+        }
+    }
 }

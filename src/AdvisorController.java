@@ -16,45 +16,49 @@ public class AdvisorController {
         this.currentAdvisor = currentAdvisor;
     }
 
-    public List<Student> getStudentList() {
+    private void setStudentList() {
         DatabaseManager databaseManager = new DatabaseManager();
-        studentList = databaseManager.getByID("Student", currentAdvisor.getID());
-        return studentList;
+        this.studentList = databaseManager.getByID("Student", currentAdvisor.getID());
     }
 
 
-    public void approveCourse(Student student, Course course) {
-        currentAdvisor.acceptCourse(student, course);
+    public void approveCourse(Student student, SelectedCourse selectedCourse) {
+        currentAdvisor.acceptCourse(student, selectedCourse);
     }
 
-    public void denyCourse(Student student, Course course) {
-        currentAdvisor.rejectCourse(student, course);
+    public void denyCourse(Student student, SelectedCourse selectedCourse) {
+        currentAdvisor.rejectCourse(student, selectedCourse);
     }
 
 
-    private List<Student> findStudentList(boolean approvalStatus) {
-        List<Student> approvedStudent = new List<Student>;
+   public List<Student> getStudentListOrderByStatus() {
+        setStudentList();
+
+        List<Student> studentListOrder = new List<Student>;
         for (Student student :studentList) {
-            if(student.approvalStatus = ApprovalStatus.Pending) {
-                approvedStudent.add(student);
+            if(student.getApprovalStatus() = ApprovalStatus.Pending) {
+                studentListOrder.add(student);
             }
         }
+
+       for (Student student :studentList) {
+           if(student.getApprovalStatus() = ApprovalStatus.Done) {
+               studentListOrder.add(student);
+           }
+       }
+        return studentListOrder;
     }
 
-    private List<Student> sortStudentListForName(List<Student> studentList) {
+    /*private List<Student> sortStudentListForName(List<Student> studentList) {
         return Collections.sort(studentList, Comparator.comparing(Student::getFirstName).thenComparing(Student::getLastName));
-    }
-
-    public void finishApprovalOfCurrentStudent() {
-        currentStudent.approvalStatus = ApprovalStatus.Done;
-        currentStudent = null;
-    }
+    }*/
 
 
 
 
 
 
+    // GETTER AND SETTER
     public Advisor getCurrentAdvisor() {
         return currentAdvisor;
     }
