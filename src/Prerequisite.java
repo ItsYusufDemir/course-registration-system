@@ -16,12 +16,11 @@ public class Prerequisite {
         int lengthPrereguisiteCourses = course.getPrerequisiteInformation().prerequisiteOfCourses.size();
 
         for(int i = 0; i < lengthPrereguisiteCourses; i++){
-            isPrerequisiteCoursesPasses =   student.transcript.completedCourses.contains(prerequisiteOfCourses.get(i));
+            isPrerequisiteCoursesPasses = student.transcript.passedCourses.contains(prerequisiteOfCourses.get(i));
             if(!isPrerequisiteCoursesPasses){
                 break;
             }
         }
-
         return isPrerequisiteCoursesPasses;
     }
 

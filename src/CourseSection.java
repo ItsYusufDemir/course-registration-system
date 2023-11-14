@@ -22,7 +22,7 @@ public class CourseSection {
     }
 
     public boolean checkAvailibilty(){
-        if(studentCapacity <= studentCountInsideCourseSection){
+        if(studentCapacity >= studentCountInsideCourseSection){
             return true;
         }
         else{
@@ -40,16 +40,4 @@ public class CourseSection {
         return studentCountInsideCourseSection;
     }
 
-    public String courseInfo(){
-        return "";
-    }
-
-}
-
-class Student{
- Transcript transcript;
-}
-
-class Transcript{
-    List<Course> completedCourses;
 }
