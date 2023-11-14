@@ -9,7 +9,7 @@ public class CourseSection {
     private String sectionDate;
     private String classroom;
     private String sectionCode;
-    private List<Student> students;
+    private int studentCountInsideCourseSection;
 
     public CourseSection(int studentCapacity, String lecturerName, String sectionTime, String sectionDate, String classroom, String sectionCode) {
         this.studentCapacity = studentCapacity;
@@ -18,11 +18,11 @@ public class CourseSection {
         this.sectionDate = sectionDate;
         this.classroom = classroom;
         this.sectionCode = sectionCode;
-        this.students = new ArrayList<>();
+        this.studentCountInsideCourseSection = 0;
     }
 
     public boolean checkAvailibilty(){
-        if(studentCapacity <= students.size()){
+        if(studentCapacity <= studentCountInsideCourseSection){
             return true;
         }
         else{
@@ -30,14 +30,14 @@ public class CourseSection {
         }
     }
 
-    public Student addStudent(Student student){
-        students.add(student);
-        return student;
+    public int incrementStudentCount(){
+        studentCountInsideCourseSection++;
+        return studentCountInsideCourseSection;
     }
 
-    public Student deleteStudent(Student student){
-        students.remove(student);
-        return student;
+    public int decrementStudentCount(){
+        studentCountInsideCourseSection--;
+        return studentCountInsideCourseSection;
     }
 
     public String courseInfo(){
