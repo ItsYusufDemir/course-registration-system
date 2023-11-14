@@ -9,7 +9,6 @@ public class CourseRegistrationSystem {
             CLILogin login = new CLILogin();
             user = login.loginPage();
             
-            
             //Create commond line interface for first menu page and start it
             user.getMyPage(); 
 
