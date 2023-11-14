@@ -1,5 +1,5 @@
 import java.util.*;
-
+//TODO: add the course section check so that you cant take 2 sections from the same course
 
 public class CLIStudent {
 
@@ -70,8 +70,15 @@ public class CLIStudent {
         if(str.equals("1")){
             addCoursePage(courses);
         }
-        else if(str.equals("2")){
-            deleteCoursePage(courses);
+        else if(str.startsWith("2")){
+            if(deleteCourse(str, courses)){
+                System.out.println("Course deleted successfully");
+            }
+            else{
+                System.out.println("Invalid input");
+                System.out.println("\n\n\n");
+            }
+            myCoursesPage(courses);
         }
         else if(str.equals("3")){
             studentController.sendSelectedCoursesToApproval();
@@ -107,11 +114,14 @@ public class CLIStudent {
         String courseCode = str.replaceAll(" ", "");
         char[] courseCodeArray = courseCode.toCharArray();
 
-        if(checkCourseSelectionInput(courseCodeArray)){
+        if(checkCourseSelectionInput(courseCodeArray) && (!str.startsWith(" "))){
             ArrayList<Integer> courseCodeIntArray = convertCourseSelectionInputToInt(str);
-            for(int i : courseCodeIntArray){
-                studentController.addSelectedCourse(courses[i-1]);
+            int coursesLength = courses.length;
+            for(int i = 1; i<=coursesLength; i++){
+                if(courseCodeIntArray.contains(i))
+                    studentController.addSelectedCourse(courses[i-1]);
             }
+            addCoursePage(courses);
         }
         else if(str.equals("b")){
             myCoursesPage(courses);
@@ -126,8 +136,24 @@ public class CLIStudent {
         }
     }
 
-    public void deleteCoursePage(Course[] courses){
-        //TODO burda ne yapcam emin degilim, yani ekstra ekrana gerek var mi? aslinda iyi olur gibi ama diagrami yok
+    public boolean deleteCourse(String str, Course[] courses){
+        
+        String courseCode = str.replaceAll(" ", "");
+        char[] courseCodeArray = courseCode.toCharArray();
+
+        if(checkCourseSelectionInput(courseCodeArray)){
+            ArrayList<Integer> courseCodeIntArray = convertCourseSelectionInputToInt(str);
+            int coursesLength = courses.length;
+            for(int i = 1; i<=coursesLength; i++){
+                if(courseCodeIntArray.contains(i))
+                    studentController.removeSelectedCourse(currentStudent.selectedCourses.get(i-1));
+            }
+            return true;
+        }
+        else{
+            return false;
+        }
+        
     } 
 
     private boolean checkCourseSelectionInput(char[] courseCodeArray){
@@ -141,6 +167,7 @@ public class CLIStudent {
     }
 
     private ArrayList<Integer> convertCourseSelectionInputToInt(String string){
+        string = string.substring(1);
         int strLength = string.length();
         String tempString = "";
         ArrayList<Integer> courseCodeIntArray = new ArrayList<Integer>();
