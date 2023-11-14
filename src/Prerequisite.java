@@ -16,6 +16,7 @@ public class Prerequisite {
         int lengthPrereguisiteCourses = course.getPrerequisiteInformation().prerequisiteOfCourses.size();
 
         for(int i = 0; i < lengthPrereguisiteCourses; i++){
+            // passed courses'ı kedim hesaplamalıyım
             isPrerequisiteCoursesPasses = student.transcript.passedCourses.contains(prerequisiteOfCourses.get(i));
             if(!isPrerequisiteCoursesPasses){
                 break;

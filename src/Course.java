@@ -23,15 +23,14 @@ public class Course {
         return prerequisiteInformation.checkPrequisiteCoursePassed(student, this);
     }
 
-    public List<CourseSection> getAvailableCourseSections() {
+    public List<CourseSection> getAvailableSections() {
         List<CourseSection> availableCourseSections = new ArrayList<>();
-        int length = courseSections.size();
-        for(int i = 0; i < length; i++){
-            if(courseSections.get(i).checkAvailibilty()){
-                availableCourseSections.add(courseSections.get(i));
+        for (CourseSection courseSection: courseSections) {
+            if(courseSection.checkAvailibilty()){
+                availableCourseSections.add(courseSection);
             }
         }
-        return courseSections;
+        return availableCourseSections;
     }
 
     public Prerequisite getPrerequisiteInformation() {

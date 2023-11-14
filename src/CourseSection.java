@@ -9,6 +9,7 @@ public class CourseSection {
     private String sectionDate;
     private String classroom;
     private String sectionCode;
+    private Course course;
     private int studentCountInsideCourseSection;
 
     public CourseSection(int studentCapacity, String lecturerName, String sectionTime, String sectionDate, String classroom, String sectionCode) {
@@ -40,4 +41,12 @@ public class CourseSection {
         return studentCountInsideCourseSection;
     }
 
+}
+
+class Student{
+ Transcript transcript;
+}
+
+class Transcript{
+    List<Course> passedCourses;
 }
