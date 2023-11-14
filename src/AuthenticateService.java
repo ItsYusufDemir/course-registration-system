@@ -1,25 +1,30 @@
+import java.util.List;
+
 public class AuthenticateService {
     
     public User authenticateUser(String username, String password){
         
         DatabaseManager database = DatabaseManager.getInstance();
-        User user = null;
-        if(database.get(username) == null){
+        List <User> users = null; 
+        users = database.getUsers();
 
+        if(users == null){
             return null;
         }
         else{
-            database.get(username);
-            user = (User)(database.get(username));
-            
-            if(user.getPassword().equals(password)){
-                return user;
-            }
-            else{
-                return null;
 
+            for(User user : users){
+                
+                if(user.getPassword().equals(password) && user.getUsername().equals(username)){
+                    return user;
+                }
+                else{
+                    return null;
+
+                }
             }
         }
+        return null;
 
         
     }

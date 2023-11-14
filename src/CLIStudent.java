@@ -4,7 +4,6 @@ import java.util.*;
 public class CLIStudent {
 
     
-    
     Stack<Integer> pageNumeber;
     private Scanner scanner;
     private StudentController studentController;
@@ -32,7 +31,7 @@ public class CLIStudent {
         }
         else if(str.equals("1")){
             
-            myCoursesPage(studentController.getAvaliableCourses());
+            myCoursesPage(currentStudent.listAvaliableCourseSections());
         }
         else if(str.equals("2")){
             return;
@@ -47,7 +46,7 @@ public class CLIStudent {
     }
 
 
-    public void myCoursesPage(Course[] courses){
+    public void myCoursesPage(List<Course> courses){
 
         scanner = new Scanner(System.in);
 
@@ -98,7 +97,7 @@ public class CLIStudent {
             
     }
 
-    public void addCoursePage(Course[] courses){
+    public void addCoursePage(List<Course> courses){
         scanner = new Scanner(System.in);
 
         System.out.println(
@@ -106,7 +105,7 @@ public class CLIStudent {
             "**************\n" +
             "  Code\t Name\t Section\t Instructor\t Credit\n" +
             "  ____\t ____\t _______\t __________\t ______");
-        listAvaliableCourses(courses);
+        listAvaliableCourseSections(courses);
         System.out.println("press b to go back");
         System.out.println("press q to quit");
 
@@ -116,10 +115,10 @@ public class CLIStudent {
 
         if(checkCourseSelectionInput(courseCodeArray) && (!str.startsWith(" "))){
             ArrayList<Integer> courseCodeIntArray = convertCourseSelectionInputToInt(str);
-            int coursesLength = courses.length;
+            int coursesLength = courses.size();
             for(int i = 1; i<=coursesLength; i++){
                 if(courseCodeIntArray.contains(i))
-                    studentController.addSelectedCourse(courses[i-1]);
+                    studentController.addSelectedCourse(courses.get(i-1));
             }
             addCoursePage(courses);
         }
@@ -136,14 +135,14 @@ public class CLIStudent {
         }
     }
 
-    public boolean deleteCourse(String str, Course[] courses){
+    public boolean deleteCourse(String str, List<Course> courses){
         
         String courseCode = str.replaceAll(" ", "");
         char[] courseCodeArray = courseCode.toCharArray();
 
         if(checkCourseSelectionInput(courseCodeArray)){
             ArrayList<Integer> courseCodeIntArray = convertCourseSelectionInputToInt(str);
-            int coursesLength = courses.length;
+            int coursesLength = courses.size();
             for(int i = 1; i<=coursesLength; i++){
                 if(courseCodeIntArray.contains(i))
                     studentController.removeSelectedCourse(currentStudent.selectedCourses.get(i-1));
@@ -182,20 +181,23 @@ public class CLIStudent {
         return courseCodeIntArray;
     }
 
-    private void listAvaliableCourses(Course[] courses){
+    private void listAvaliableCourseSections(List<Course> courses){ 
         int i = 0;
+        int sectionLength = 0;
         for(Course course : courses){
             i++;
-            System.out.println(i + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t" + course.getCourseSection() + "\t" + course.getCourseInstructor() + "\t" + course.getCourseCredit());
+            sectionLength = course.getAvaliableCourseSections().size();
+            for(int j = 0; j< sectionLength; j++)
+            System.out.println(i + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t" + course.getAvaliableCourseSections().get(j) + "\t" + course.getCourseInstructor() + "\t" + course.getCourseCredit());
         }
     }
 
 
-    private void listSelectedCourses(Student student){
+    private void listSelectedCourses(Student student){ 
         int i = 0;
         for(SelectedCourse course : student.selectedCourses){
             i++;
-            System.out.println(i + ". " + course.getCourse().getCourseCode() + "\t" + course.getCourse().getCourseName() + "\t" + course.getCourse().getCourseSection() + "\t" + student.approvalStatus);
+            System.out.println(i + ". " + course.getCourse().getCourseCode() + "\t" + course.getCourse().getCourseName() + "\t" + course.getCourseSection() + "\t" + course.getStatus());
         }
     }
 }

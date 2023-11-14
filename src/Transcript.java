@@ -3,11 +3,14 @@ import java.util.*;
 public class Transcript{
 
 
-
+    // course olmicak ama course with grade gibi bir class olacak
     List <Course> completedCourses;
+    List <Course> failedCourses;
+    Student student;
 
-    public Transcript(){
+    public Transcript(Student student){
         completedCourses = new ArrayList<Course>();
+        this.student = student;
     
     }
 
