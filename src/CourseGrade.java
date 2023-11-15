@@ -1,4 +1,4 @@
-public class CourseGrade {
+gitpublic class CourseGrade {
     private Course course;
     private String letterGrade;
     private CourseResult courseResult;
