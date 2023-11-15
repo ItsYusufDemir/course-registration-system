@@ -5,13 +5,19 @@ import interfaces.Saveable;
 
 public abstract class User implements Showable, Saveable {
     private String userId;
+    private String password;
     private String firstName;
     private String lastName;
     private boolean status;
 
+    public User() {
+
+    }
+
     public User(String userId, String password, String firstName, String lastName, boolean status) {
         this.userId = userId;
         this.firstName = firstName;
+        this.password = password;
         this.lastName = lastName;
         this.status = status;
     }
@@ -52,4 +58,6 @@ public abstract class User implements Showable, Saveable {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    public String getPassword() { return password; }
 }

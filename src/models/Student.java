@@ -1,6 +1,8 @@
 package models;
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import CommandLineInterface.CLIStudent;
 import enums.ApprovalStatus;
 import utils.DatabaseManager;
@@ -15,7 +17,12 @@ public class Student extends User {
     private ApprovalStatus approvalStatus;
     private Transcript transcript;
 
+   public Student() {
+    
+   }
+
     // not sure about constructor access identifier
+    
     public Student(String userID, String password, String firstName, String lastName, boolean status, String email, int schoolNumber, String identityNumber, List<SelectedCourse> selectedCourses, Advisor advisorOfStudent, ApprovalStatus approvalStatus, Transcript transcript) {
         super(userID, password, firstName, lastName, status);
         this.email = email;
@@ -46,6 +53,7 @@ public class Student extends User {
         }
         return availableCourses;
     }
+    
     /*
         public List<CourseSection> listAvailableCourseSections(){
         List<Course> allCourses = database;

@@ -5,6 +5,10 @@ public class CourseGrade {
     private Course course;
     private String letterGrade;
     private CourseResult courseResult;
+
+    public CourseGrade() {
+    }
+
     public CourseGrade(Course course, String letterGrade, CourseResult courseResult) {
         this.course = course;
         this.letterGrade = letterGrade;

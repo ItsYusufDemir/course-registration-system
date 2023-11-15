@@ -22,7 +22,7 @@ public class AdvisorController {
 
     public AdvisorController(Advisor currentAdvisor) {
         this.currentAdvisor = currentAdvisor;
-        this.studentList = currentAdvisor.getAdvisedStudent();
+        this.studentList = currentAdvisor.fetchAdvisedStudents();
     }
 
     /* gerek var mı

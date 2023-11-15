@@ -10,6 +10,9 @@ public class Course {
     private List<CourseSection> courseSections;
     private boolean isCompulsory;
 
+    public Course() {
+    }
+
     public Course(int courseCredit, int courseECTS, String courseName, String courseCode, Prerequisite prerequisiteInformation, List<CourseSection> courseSections, boolean isCompulsory) {
         this.courseCredit = courseCredit;
         this.courseECTS = courseECTS;
@@ -24,7 +27,7 @@ public class Course {
         return prerequisiteInformation.checkPrequisiteCoursePassed(student, this);
     }
 
-    public List<CourseSection> getAvailableSections() {
+    public List<CourseSection> gitAvailableSections() {
         List<CourseSection> availableCourseSections = new ArrayList<>();
         for (CourseSection courseSection: courseSections) {
             if(courseSection.checkAvailibilty()){
@@ -79,7 +82,7 @@ public class Course {
     }
 
 
-    public boolean isCompulsory() {
+    public boolean getIsCompulsory() {
         return isCompulsory;
     }
 

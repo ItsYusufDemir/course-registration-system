@@ -6,6 +6,8 @@ public class Prerequisite {
     private List<Course> prerequisiteOfCourses; // elimizdeki dersin prerequisite derslerini tutuyor
     private List<Course> prerequisiteForCourses; // bu ders hangi derlerin prerequisite dersi ona bakıyor
 
+    public Prerequisite() {
+    }
 
     public Prerequisite(List<Course> prerequisiteOfCourses, List<Course> prerequisiteForCourses) {
         this.prerequisiteOfCourses = prerequisiteOfCourses;
@@ -25,6 +27,24 @@ public class Prerequisite {
         }
         return isPrerequisiteCoursesPasses;
     }
+
+    public List<Course> getPrerequisiteOfCourses() {
+        return prerequisiteOfCourses;
+    }
+
+    public void setPrerequisiteOfCourses(List<Course> prerequisiteOfCourses) {
+        this.prerequisiteOfCourses = prerequisiteOfCourses;
+    }
+
+    public List<Course> getPrerequisiteForCourses() {
+        return prerequisiteForCourses;
+    }
+
+    public void setPrerequisiteForCourses(List<Course> prerequisiteForCourses) {
+        this.prerequisiteForCourses = prerequisiteForCourses;
+    }
+
+    
 
 }
 

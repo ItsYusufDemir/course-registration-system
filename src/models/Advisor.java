@@ -5,12 +5,14 @@ import CommandLineInterface.CLIAdvisor;
 import enums.ApprovalStatus;
 import enums.CourseStatus;
 import models.User;
-import models.User;
+import utils.DatabaseManager;
 
 public class Advisor extends User {
 
-    private List<Student> advisedStudent;
 
+    public Advisor() {
+        
+    }
 
 
     public Advisor(String userID, String userName , String password, String firstName, String lastName, boolean status) {
@@ -25,7 +27,7 @@ public class Advisor extends User {
 
         selectedCourse.setStatus(CourseStatus.APPROVED);
 
-        student.getTranscript().getPassedCourses().add(selectedCourse);
+        student.getTranscript().getPassedCourses().add(selectedCourse.getCourse());
         student.getSelectedCourses().remove(selectedCourse);
 
         if(student.getSelectedCourses().size() == 0) {
@@ -42,12 +44,9 @@ public class Advisor extends User {
         }
     }
 
-    public List<Student> getAdvisedStudent() {
-        return advisedStudent;
+    public List<Student> fetchAdvisedStudents() {
+        return DatabaseManager.getInstance().fetchAdvisedStudents(this);
     }
 
-    public void setAdvisedStudent(List<Student> advisedStudent) {
-        this.advisedStudent = advisedStudent;
-    }
 }
 
