@@ -15,15 +15,6 @@ public abstract class User implements Showable {
         this.status = status;
     }
 
-    public User(String username, String password) {
-        AuthenticateService authenticateService = new AuthenticateService();
-        User user = authenticateService.authenticateUser(username, password);
-        this.userId = user.getUserId();
-        this.firstName = user.getFirstName();
-        this.lastName = user.getLastName();
-        this.status = user.isStatus();
-    }
-
     public void logout() {
         System.out.println("User logged out");
         return;
