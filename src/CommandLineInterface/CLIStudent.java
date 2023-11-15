@@ -41,7 +41,7 @@ public class CLIStudent {
         }
         else if(str.equals("1")){
             
-            myCoursesPage(currentStudent.listAvaliableCourseSections());
+            myCoursesPage(currentStudent.listAvailableCourses());
         }
         else if(str.equals("2")){
             return;
@@ -148,7 +148,7 @@ public class CLIStudent {
     public boolean checkIfAlreadyAdded(SelectedCourse selectedCourse){
         
         for(CourseSection currentCourse : selectedCourseSections){   
-            if(selectedCourse.getCourse().getCourseName() == currentCourse.getCourse().getCourseName())
+            if(selectedCourse.getCourse().getCourseName().equals( currentCourse.getCourse().getCourseName()) )
                 return false;
         }
         return true;
