@@ -1,33 +1,22 @@
 package utils;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
-import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.type.TypeReference;
-
-import interfaces.Saveable;
 import models.Advisor;
 import models.Course;
 import models.Student;
 import models.User;
-import java.lang.reflect.Type;
-
 
 public class DatabaseManager  {
-
 
     private ObjectMapper objectMapper = null;
     private static DatabaseManager instance = null;
@@ -36,11 +25,11 @@ public class DatabaseManager  {
     private List<Student> studentList;
     private List<Advisor> advisorList;
 
-
     //Singleton pattern
     public static DatabaseManager getInstance() {
         if (instance == null) {
             instance = new DatabaseManager();
+            
         }
         return instance;
     }
@@ -48,61 +37,41 @@ public class DatabaseManager  {
 
     private DatabaseManager() {
 
-        /* 
         //Read all files and store them in the memory
-        userList = jsonToList(readFile("data/users.json"), User.class);
         courseList = jsonToList(readFile("data/courses.json"), Course.class);
         studentList = jsonToList(readFile("data/students.json"), Student.class);
         advisorList = jsonToList(readFile("data/advisors.json"), Advisor.class);
-        */
 
-        
-
+        //Create an object mapper for converting objects to JSON and vice versa
         objectMapper = new ObjectMapper();
-        objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
-
-        //studentList = readJsonFile("data/students.json", Student.class);
-    
-        
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
     }
 
-    public void test(List<Student> student) {
-        objectMapper = new ObjectMapper();
-        //objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
 
+    //TODO: This function is for testing, it can be deleted later
+    public void test(List<Student> student) {
 
         try {
 
-        //String json = objectMapper.writeValueAsString(student);
-            String json = readFile("data/students.json");
-        //String json = getJsonString(student);
+             String json = objectMapper.writeValueAsString(student);
+            //String json = readFile("data/advisors.json");
+            //String json = getJsonString(student);
 
 
-            //System.out.println(json);
-            System.out.println();
-            List<Student> list = objectMapper.readValue(json, new TypeReference<List<Student>>(){});
-            System.out.println("tamamlandı"+ list.get(0).getFirstName());
+            System.out.println(json);
+            
+            //List<Student> list = objectMapper.readValue(json, new TypeReference<List<Student>>(){});
+            System.out.println("tamamlandı ");
 
 
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("HATA" +e);
             // TODO: handle exception
         }
 
     }
 
-
-    private <T> List<T> readJsonFile(String absolutePath, Class<T> valueType) {
-        try {
-            byte[] jsonData = Files.readAllBytes(Paths.get(absolutePath));
-            return objectMapper.readValue(jsonData, objectMapper.getTypeFactory().constructCollectionType(List.class, valueType));
-        } catch (IOException e) {
-            System.out.println("Error reading JSON file: " + e);
-            return List.of(); // or handle the exception as needed
-        }
-    }
-
-    
     public String readFile(String relativePath) {
 
         String filePath = relativePath;
@@ -113,28 +82,38 @@ public class DatabaseManager  {
             return jsonContent;
         } catch (Exception e) {
             //TODO: handle exception   
-            System.out.println("File not found");
+            System.out.println("File not found!");
             return "";
         }
 
     }
     
 
+    public <T> List<T> jsonToList(String jsonString, Class<T> elementType) {
 
-    public <T> List<T> jsonToList(String jsonString, Class<T> typeClass) {
-
-        //Define the type of the object
-        Type type = TypeToken.getParameterized(List.class, typeClass).getType();
-
-        //Convert the JSON String to a list of objects
-        return new Gson().fromJson(jsonString, type);
+        objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+        
+        try {
+            return objectMapper.readValue(jsonString, new TypeReference<List<T>>() {});
+        } catch (IOException e) {
+            System.out.println("Error while converting JSON String to List of objects!");
+            e.printStackTrace();
+            return Collections.emptyList(); // or throw an exception if needed
+        }        
     }
 
+    //Convert the list of objects to JSON String
+    public <T> String getJsonString(List<T> testObjects) {
 
-    public String getJsonString(List<Student> testObjects) {
-
-        //Convert the list of objects to JSON String
-        String jsonString = new Gson().toJson(testObjects);
+        String jsonString = "[]";
+        try {
+            jsonString = objectMapper.writeValueAsString(testObjects);
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.out.println("Error while converting object to JSON String!");
+            System.out.println(e);
+        }
 
         return jsonString;
     }
@@ -151,21 +130,17 @@ public class DatabaseManager  {
         }
     }
 
-    /* 
+    
     //Save all instances to the database
     public void saveToDatabase() {
-        writeFile("data/users.json", getJsonString(userList));
         writeFile("data/courses.json", getJsonString(courseList));
         writeFile("data/students.json", getJsonString(studentList));
         writeFile("data/advisors.json", getJsonString(advisorList));
+    }    
+
+    public List<Student> fetchAdvisedStudents(Advisor advisor) {
+        return studentList.stream().filter(student -> student.getAdvisorOfStudent().getUserId().equals(advisor.getUserId())).collect(Collectors.toList());
     }
-
-    public List<Student> getStudentsOfAdvisor(String advisorID) {
-
-
-
-    }
-    */
 
     //Getters
     public List<Course> getCourses() {
@@ -176,11 +151,11 @@ public class DatabaseManager  {
         return studentList;
     }
 
-    public List<Advisor> getAdvisors(String fileName) {
+    public List<Advisor> getAdvisors() {
         return advisorList;
     }
 
-     public List<User> getUsers(String fileName) {
+     public List<User> getUsers() {
         return userList;
     }
 

@@ -28,6 +28,24 @@ public class Prerequisite {
         return isPrerequisiteCoursesPasses;
     }
 
+    public List<Course> getPrerequisiteOfCourses() {
+        return prerequisiteOfCourses;
+    }
+
+    public void setPrerequisiteOfCourses(List<Course> prerequisiteOfCourses) {
+        this.prerequisiteOfCourses = prerequisiteOfCourses;
+    }
+
+    public List<Course> getPrerequisiteForCourses() {
+        return prerequisiteForCourses;
+    }
+
+    public void setPrerequisiteForCourses(List<Course> prerequisiteForCourses) {
+        this.prerequisiteForCourses = prerequisiteForCourses;
+    }
+
+    
+
 }
 
 

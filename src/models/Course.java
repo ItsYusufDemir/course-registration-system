@@ -27,7 +27,7 @@ public class Course {
         return prerequisiteInformation.checkPrequisiteCoursePassed(student, this);
     }
 
-    public List<CourseSection> getAvailableSections() {
+    public List<CourseSection> gitAvailableSections() {
         List<CourseSection> availableCourseSections = new ArrayList<>();
         for (CourseSection courseSection: courseSections) {
             if(courseSection.checkAvailibilty()){
@@ -82,7 +82,7 @@ public class Course {
     }
 
 
-    public boolean isCompulsory() {
+    public boolean getIsCompulsory() {
         return isCompulsory;
     }
 

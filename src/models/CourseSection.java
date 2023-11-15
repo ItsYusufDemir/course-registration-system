@@ -12,6 +12,9 @@ public class CourseSection {
     private String sectionCode;
     private int studentCountInsideCourseSection;
 
+    public CourseSection() {
+    }
+
     public CourseSection(int studentCapacity, String lecturerName, String sectionTime, String sectionDate, String classroom, String sectionCode) {
         this.studentCapacity = studentCapacity;
         this.lecturerName = lecturerName;
@@ -65,9 +68,6 @@ public class CourseSection {
         return sectionCode;
     }
 
-    public Course getCourse() {
-        return course;
-    }
 
     public int getStudentCountInsideCourseSection() {
         return studentCountInsideCourseSection;

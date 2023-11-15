@@ -7,6 +7,8 @@ import java.util.*;
 public class Transcript{
 
 
+    public Transcript() {
+    }
     
     private List <CourseGrade> takenCourses;
     DatabaseManager databasemanager = DatabaseManager.getInstance();
@@ -32,7 +34,6 @@ public class Transcript{
         return passedCourses;
     }
     
-
     public double calculateCompletedCredits(){
         double total = 0.0;
         for(CourseGrade course : takenCourses){
@@ -42,43 +43,33 @@ public class Transcript{
         return total;
     }
 
-    /*private double convertLetterGradeToScore(String grade){
-        double score = 0.0;
-        switch (grade) {
-            case "AA":
-                score = 4.0;    
-                break;
-            case "BA":
-                score = 3.5;    
-                break;
-            case "BB":
-                score = 3.0;    
-                break;
-            case "CB":
-                score = 2.5;;    
-                break;            
-            case "CC":
-                score = 2.0;    
-                break;
-            case "DC":
-                score = 1.5;    
-                break;
-            case "DD":
-                score = 1.0;    
-                break;
-            case "FD":
-                score = 0.5;    
-                break;
-            case "FF":
-                score = 0.0;    
-                break;
-
-            default:
-                score = 0.0;
-                break;
+    public double calculateGPA(){
+        double totalPoint = 0.0;
+        double totalCredit = 0.0;
+        for(CourseGrade course : takenCourses){
+            totalPoint += course.getCourse().getCourseCredit()*course.convertLetterGradeToScore();
+            totalCredit += course.getCourse().getCourseCredit();
         }
 
         return totalPoint/totalCredit;
     }
-    */
+
+    public List<CourseGrade> getTakenCourses() {
+        return takenCourses;
+    }
+
+    public void setTakenCourses(List<CourseGrade> takenCourses) {
+        this.takenCourses = takenCourses;
+    }
+
+    public DatabaseManager getDatabasemanager() {
+        return databasemanager;
+    }
+
+    public void setDatabasemanager(DatabaseManager databasemanager) {
+        this.databasemanager = databasemanager;
+    }
+
+    
+    
 }
