@@ -78,17 +78,11 @@ public class Course {
         return courseSections;
     }
 
-    public void setCourseSections(List<CourseSection> courseSections) {
-        this.courseSections = courseSections;
-    }
 
     public boolean isCompulsory() {
         return isCompulsory;
     }
 
-    public void setCompulsory(boolean isCompulsory) {
-        this.isCompulsory = isCompulsory;
-    }
 
     
 

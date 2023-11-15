@@ -25,6 +25,9 @@ import models.Student;
 import models.User;
 
 import java.lang.reflect.Type;
+import model.User;
+import models.Course;
+import models.User;
 
 
 public class DatabaseManager  {
@@ -73,7 +76,7 @@ public class DatabaseManager  {
         }
     }
 
-    /* 
+    /*
     public String readFile(String relativePath) {
 
         String filePath = relativePath;

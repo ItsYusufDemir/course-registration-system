@@ -4,10 +4,13 @@ import java.util.List;
 import CommandLineInterface.CLIAdvisor;
 import enums.ApprovalStatus;
 import enums.CourseStatus;
+import models.User;
+import models.User;
 
 public class Advisor extends User {
 
     private List<Student> advisedStudent;
+
 
 
     public Advisor(String userID, String userName , String password, String firstName, String lastName, boolean status) {
@@ -25,17 +28,17 @@ public class Advisor extends User {
         student.getTranscript().completedCourses.add(selectedCourse);
         student.getSelectedCourses().remove(selectedCourse);
 
-        if(student.getSelectCourse().length == 0) {
-            student.setAprovalStatus(ApprovalStatus.DONE);
+        if(student.getSelectedCourses().size() == 0) {
+            student.setApprovalStatus(ApprovalStatus.DONE);
         }
     }
 
     public void rejectCourse(Student student, SelectedCourse selectedCourse) {
-        selectedCourse.setStatus(CourseStatus.Denied);
-        student.getSelectedCourses.remove(selectedCourse);
+        selectedCourse.setStatus(CourseStatus.DENIED);
+        student.getSelectedCourses().remove(selectedCourse);
 
-        if(student.getSelectCourse().length == 0) {
-            student.setAprovalStatus(ApprovalStatus.Done);
+        if(student.getSelectedCourses().size() == 0) {
+            student.setApprovalStatus(ApprovalStatus.DONE);
         }
     }
 

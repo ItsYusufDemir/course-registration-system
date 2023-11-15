@@ -65,7 +65,9 @@ public class AdvisorController {
     }*/
 
 
-
+    public void logOut(){
+        currentAdvisor.logout();
+    }
 
 
 

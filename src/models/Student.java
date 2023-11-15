@@ -1,6 +1,7 @@
 package models;
 import java.util.*;
 
+import CommandLineInterface.CLIStudent;
 import enums.ApprovalStatus;
 import utils.DatabaseManager;
 
@@ -15,7 +16,7 @@ public class Student extends User {
     private Transcript transcript;
 
     // not sure about constructor access identifier
-    public Student(String email, int schoolNumber, String identityNumber, List<SelectedCourse> selectedCourses, Advisor advisorOfStudent, ApprovalStatus approvalStatus, Transcript transcript) {
+    public Student(String userID, String password, String firstName, String lastName, boolean status, String email, int schoolNumber, String identityNumber, List<SelectedCourse> selectedCourses, Advisor advisorOfStudent, ApprovalStatus approvalStatus, Transcript transcript) {
         super(userID, password, firstName, lastName, status);
         this.email = email;
         this.schoolNumber = schoolNumber;
@@ -119,4 +120,9 @@ public class Student extends User {
 
     
 
+    @Override
+    public void getMyPage() {
+        CLIStudent cliStudent = new CLIStudent(this);
+        cliStudent.menuPage();
+    }
 }

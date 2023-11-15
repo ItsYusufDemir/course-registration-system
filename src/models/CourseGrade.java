@@ -1,6 +1,8 @@
 package models;
 import enums.CourseResult;
 
+package models;
+
 public class CourseGrade {
     private Course course;
     private String letterGrade;
