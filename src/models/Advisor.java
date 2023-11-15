@@ -25,7 +25,7 @@ public class Advisor extends User {
 
         selectedCourse.setStatus(CourseStatus.APPROVED);
 
-        student.getTranscript().completedCourses.add(selectedCourse);
+        student.getTranscript().getPassedCourses().add(selectedCourse);
         student.getSelectedCourses().remove(selectedCourse);
 
         if(student.getSelectedCourses().size() == 0) {
