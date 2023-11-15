@@ -1,5 +1,5 @@
 package enums;
-enum CourseResult {
+public enum CourseResult {
     PASSED,
     FAILED,
     ACTIVE
