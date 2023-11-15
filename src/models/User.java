@@ -1,19 +1,16 @@
 package models;
 
 import interfaces.Showable;
-import utils.AuthenticateService;
 import interfaces.Saveable;
 
 public abstract class User implements Showable, Saveable {
     private String userId;
-    private String password;
     private String firstName;
     private String lastName;
     private boolean status;
 
     public User(String userId, String password, String firstName, String lastName, boolean status) {
         this.userId = userId;
-        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.status = status;

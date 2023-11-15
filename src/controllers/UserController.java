@@ -1,4 +1,6 @@
-package model;
+package models;
+
+import utils.AuthenticateService;
 
 public class UserController {
 
