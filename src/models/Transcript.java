@@ -1,3 +1,4 @@
+package models;
 import java.util.*;
 
 public class Transcript{
@@ -28,7 +29,7 @@ public class Transcript{
         double total = 0.0;
         for(Course course : completedCourses){
             
-            total += course.courseCredit;
+            total += course.getCourseCredit();
         }
         return total;
     }

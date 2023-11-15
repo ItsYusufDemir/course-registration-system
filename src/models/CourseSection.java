@@ -1,3 +1,4 @@
+package models;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -41,12 +42,4 @@ public class CourseSection {
         return studentCountInsideCourseSection;
     }
 
-}
-
-class Student{
- Transcript transcript;
-}
-
-class Transcript{
-    List<Course> passedCourses;
 }

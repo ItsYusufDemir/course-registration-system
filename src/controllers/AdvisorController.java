@@ -1,7 +1,15 @@
+package controllers;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+import enums.ApprovalStatus;
+import models.Advisor;
+import models.SelectedCourse;
+import models.Student;
+import utils.DatabaseManager;
 
 public class AdvisorController {
 
@@ -14,12 +22,15 @@ public class AdvisorController {
 
     public AdvisorController(Advisor currentAdvisor) {
         this.currentAdvisor = currentAdvisor;
+        this.studentList = currentAdvisor.getAdvisedStudent();
     }
 
+    /* gerek var mı
     private void setStudentList() {
-        DatabaseManager databaseManager = new DatabaseManager();
-        this.studentList = databaseManager.getByID("Student", currentAdvisor.getID());
+        DatabaseManager databaseManager = DatabaseManager.getInstance();
+        this.studentList = databaseManager.getStudentsOfAdvisor(currentAdvisor.getUserId());
     }
+    */
 
 
     public void approveCourse(Student student, SelectedCourse selectedCourse) {
@@ -32,17 +43,17 @@ public class AdvisorController {
 
 
    public List<Student> getStudentListOrderByStatus() {
-        setStudentList();
 
-        List<Student> studentListOrder = new List<Student>;
+        List<Student> studentListOrder = new ArrayList<Student>();
+        
         for (Student student :studentList) {
-            if(student.getApprovalStatus() = ApprovalStatus.Pending) {
+            if(student.getApprovalStatus() == ApprovalStatus.PENDING) {
                 studentListOrder.add(student);
             }
         }
 
        for (Student student :studentList) {
-           if(student.getApprovalStatus() = ApprovalStatus.Done) {
+           if(student.getApprovalStatus() == ApprovalStatus.DONE) {
                studentListOrder.add(student);
            }
        }
@@ -54,7 +65,9 @@ public class AdvisorController {
     }*/
 
 
-
+    public void logOut(){
+        currentAdvisor.logout();
+    }
 
 
 

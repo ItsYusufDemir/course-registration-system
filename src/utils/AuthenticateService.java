@@ -1,4 +1,7 @@
+package utils;
 import java.util.List;
+
+import models.User;
 
 public class AuthenticateService {
     
