@@ -30,27 +30,28 @@ public class CLIAdvisor {
         String choice = input.nextLine();
 
         while(true) {
-            if (choice == "1") {
-                List<Student> students = advisorController.getStudentListOrderByStatus();
+            if (choice.equals ("1")) {
+                Student[] students = advisorController.getStudentListOrderByStatus();
                 shouldQuit = showStudentPage(students);
 
                 if(shouldQuit) {
                     break;
                 }
             }
-            else if (choice == "2") {
-                advisorController.logOut();
+            else if (choice.equals( "2")) {
+                advisorController.logout();
                 break;
             }
             else {
                 System.out.println("Invalid choice");
             }
         }
+        input.close();
 
     }
 
     //boolean a dönüştür
-    public boolean showStudentPage(List<Student> students) {
+    public boolean showStudentPage(Student[] students) {
 
         Scanner input = new Scanner(System.in);
         System.out.println(" Student List");
@@ -78,10 +79,10 @@ public class CLIAdvisor {
                     System.out.println("Invalid choice.Try again");
                 }
             } catch (NumberFormatException e) {
-                if (choice == "b") {
+                if (choice.equals("b")) {
                     return false;
-                } else if (choice == "q") {
-                    advisorController.logOut();
+                } else if (choice.equals("q")) {
+                    advisorController.logout();
                     return true;
                 } else {
                     System.out.println("Invalid choice.Try again");
@@ -117,18 +118,18 @@ public class CLIAdvisor {
                if (choiceInt > 0 && choiceInt <= courses.size()) {
                    String choice2 = input.nextLine();
 
-                   if (choice2 == "a") {
+                   if (choice2.equals("a")) {
                        advisorController.approveCourse(student,courses[choiceInt-1]);
                        System.out.println();
                    }
-                   else if (choice2 == "d") {
+                   else if (choice2.equals("d")) {
                        advisorController.denyCourse(student,courses[choiceInt-1]);
                    }
-                   else if (choice == "b") {
+                   else if (choice.equals("b")) {
                        return false;
                    }
-                   else if (choice == "q") {
-                       advisorController.logOut();
+                   else if (choice.equals("q")) {
+                       advisorController.logout();
                        return true;
                    }
                    else {
@@ -137,10 +138,10 @@ public class CLIAdvisor {
                }
            }
            catch(NumberFormatException e){
-               if (choice == "b") {
+               if (choice.equals("b")) {
                    return false;
-               } else if (choice == "q") {
-                   advisorController.logOut();
+               } else if (choice.equals("q")) {
+                   advisorController.logout();
                    return true;
                } else {
                    System.out.println("Invalid choice.Try again");
@@ -148,6 +149,7 @@ public class CLIAdvisor {
            }
 
        }
+       input.close();
        return false;
 
    }
