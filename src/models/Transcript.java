@@ -7,12 +7,10 @@ public class Transcript{
     // course olmicak ama course with grade gibi bir class olacak
     List <Course> completedCourses;
     List <Course> failedCourses;
-    Student student;
 
-    public Transcript(Student student){
+
+    public Transcript(){
         completedCourses = new ArrayList<Course>();
-        this.student = student;
-    
     }
 
     public void addCourse(Course course){
@@ -32,6 +30,10 @@ public class Transcript{
             total += course.getCourseCredit();
         }
         return total;
+    }
+
+    public List<Course> getPassed() {
+        return completedCourses; //burası hatalı öylesine yazdım
     }
 
     /*private double convertLetterGradeToScore(String grade){

@@ -16,18 +16,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
+import com.fasterxml.jackson.core.type.TypeReference;
 
 import interfaces.Saveable;
 import models.Advisor;
 import models.Course;
 import models.Student;
 import models.User;
-
 import java.lang.reflect.Type;
-import model.User;
-import models.Course;
-import models.User;
 
 
 public class DatabaseManager  {
@@ -51,18 +47,48 @@ public class DatabaseManager  {
 
 
     private DatabaseManager() {
+
+        /* 
         //Read all files and store them in the memory
         userList = jsonToList(readFile("data/users.json"), User.class);
         courseList = jsonToList(readFile("data/courses.json"), Course.class);
         studentList = jsonToList(readFile("data/students.json"), Student.class);
         advisorList = jsonToList(readFile("data/advisors.json"), Advisor.class);
+        */
+
+        
 
         objectMapper = new ObjectMapper();
-        PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator.builder()
-        .allowIfSubType("User")
-        .build();
+        objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
 
-        objectMapper.activateDefaultTyping(ptv,ObjectMapper.DefaultTyping.NON_FINAL);
+        //studentList = readJsonFile("data/students.json", Student.class);
+    
+        
+    }
+
+    public void test(List<Student> student) {
+        objectMapper = new ObjectMapper();
+        //objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
+
+
+        try {
+
+        //String json = objectMapper.writeValueAsString(student);
+            String json = readFile("data/students.json");
+        //String json = getJsonString(student);
+
+
+            //System.out.println(json);
+            System.out.println();
+            List<Student> list = objectMapper.readValue(json, new TypeReference<List<Student>>(){});
+            System.out.println("tamamlandı"+ list.get(0).getFirstName());
+
+
+        } catch (Exception e) {
+            System.out.println("HATA" +e);
+            // TODO: handle exception
+        }
+
     }
 
 
@@ -71,12 +97,12 @@ public class DatabaseManager  {
             byte[] jsonData = Files.readAllBytes(Paths.get(absolutePath));
             return objectMapper.readValue(jsonData, objectMapper.getTypeFactory().constructCollectionType(List.class, valueType));
         } catch (IOException e) {
-            System.out.println("Error reading JSON file: " + filePath);
+            System.out.println("Error reading JSON file: " + e);
             return List.of(); // or handle the exception as needed
         }
     }
 
-    /*
+    
     public String readFile(String relativePath) {
 
         String filePath = relativePath;
@@ -90,10 +116,12 @@ public class DatabaseManager  {
             System.out.println("File not found");
             return "";
         }
-    */
+
+    }
+    
 
 
-    private <T> List<T> jsonToList(String jsonString, Class<T> typeClass) {
+    public <T> List<T> jsonToList(String jsonString, Class<T> typeClass) {
 
         //Define the type of the object
         Type type = TypeToken.getParameterized(List.class, typeClass).getType();
@@ -103,7 +131,7 @@ public class DatabaseManager  {
     }
 
 
-    public String getJsonString(List<Saveable> testObjects) {
+    public String getJsonString(List<Student> testObjects) {
 
         //Convert the list of objects to JSON String
         String jsonString = new Gson().toJson(testObjects);
@@ -123,6 +151,7 @@ public class DatabaseManager  {
         }
     }
 
+    /* 
     //Save all instances to the database
     public void saveToDatabase() {
         writeFile("data/users.json", getJsonString(userList));
@@ -136,6 +165,7 @@ public class DatabaseManager  {
 
 
     }
+    */
 
     //Getters
     public List<Course> getCourses() {

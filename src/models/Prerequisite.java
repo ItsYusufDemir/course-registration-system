@@ -8,6 +8,8 @@ public class Prerequisite {
     private List<Course> prerequisiteOfCourses; // elimizdeki dersin prerequisite derslerini tutuyor
     private List<Course> prerequisiteForCourses; // bu ders hangi derlerin prerequisite dersi ona bakıyor
 
+    public Prerequisite() {
+    }
 
     public Prerequisite(List<Course> prerequisiteOfCourses, List<Course> prerequisiteForCourses) {
         this.prerequisiteOfCourses = prerequisiteOfCourses;
@@ -20,7 +22,7 @@ public class Prerequisite {
 
         for(int i = 0; i < lengthPrereguisiteCourses; i++){
             // passed courses'ı kedim hesaplamalıyım
-            isPrerequisiteCoursesPasses = student.transcript.passedCourses.contains(prerequisiteOfCourses.get(i));
+            isPrerequisiteCoursesPasses = student.getTranscript.passedCourses.contains(prerequisiteOfCourses.get(i));
             if(!isPrerequisiteCoursesPasses){
                 break;
             }

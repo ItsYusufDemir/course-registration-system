@@ -2,12 +2,13 @@ package models;
 import enums.CourseStatus;
 
 public class SelectedCourse {
-    private Student student;
     private Course course;
     private CourseStatus status;
 
-    public SelectedCourse(Student student, Course course) {
-        this.student = student;
+    public SelectedCourse() {
+    }
+
+    public SelectedCourse(Course course) {
         this.course = course;
         this.status = CourseStatus.DRAFT;
     }
@@ -24,4 +25,19 @@ public class SelectedCourse {
             return false;
         }
     }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public CourseStatus getStatus() {
+        return status;
+    }
+
+
+    
 }

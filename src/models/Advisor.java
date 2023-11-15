@@ -11,6 +11,9 @@ public class Advisor extends User {
 
     private List<Student> advisedStudent;
 
+    public Advisor() {
+        
+    }
 
 
     public Advisor(String userID, String userName , String password, String firstName, String lastName, boolean status) {
@@ -25,7 +28,7 @@ public class Advisor extends User {
 
         selectedCourse.setStatus(CourseStatus.APPROVED);
 
-        student.getTranscript().completedCourses.add(selectedCourse);
+        student.getTranscript().completedCourses.add(selectedCourse.getCourse());
         student.getSelectedCourses().remove(selectedCourse);
 
         if(student.getSelectedCourses().size() == 0) {

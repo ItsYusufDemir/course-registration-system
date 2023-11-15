@@ -11,6 +11,10 @@ public abstract class User implements Showable, Saveable {
     private String lastName;
     private boolean status;
 
+    public User() {
+
+    }
+
     public User(String userId, String password, String firstName, String lastName, boolean status) {
         this.userId = userId;
         this.password = password;
@@ -23,6 +27,7 @@ public abstract class User implements Showable, Saveable {
         AuthenticateService authenticateService = new AuthenticateService();
         User user = authenticateService.authenticateUser(username, password);
         this.userId = user.getUserId();
+        this.password = user.getPassword();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.status = user.isStatus();
@@ -64,4 +69,6 @@ public abstract class User implements Showable, Saveable {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    public String getPassword() { return password; }
 }
