@@ -1,3 +1,4 @@
+package models;
 import java.util.*;
 
 public class Transcript{
@@ -40,7 +41,11 @@ public class Transcript{
         double total = 0.0;
         for(CourseGrade course : takenCourses){
             
+<<<<<<< HEAD:src/Transcript.java
             total += course.getCourse().getCourseCredit();
+=======
+            total += course.getCourseCredit();
+>>>>>>> 4ef78a913fd61957d40b50f332921acba6e97381:src/models/Transcript.java
         }
         return total;
     }

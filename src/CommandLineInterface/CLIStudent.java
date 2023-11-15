@@ -1,5 +1,12 @@
+package CommandLineInterface;
+package CommandLineInterface;
+
 import java.util.*;
 //TODO: add the course section check so that you cant take 2 sections from the same course
+
+import models.Course;
+import models.SelectedCourse;
+import models.Student;
 
 public class CLIStudent {
 

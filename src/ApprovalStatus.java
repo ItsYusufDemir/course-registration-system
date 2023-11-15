@@ -1,4 +1,0 @@
-enum ApprovalStatus {
-    DONE,
-    PENDING
-}

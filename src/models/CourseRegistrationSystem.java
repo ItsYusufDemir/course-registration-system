@@ -1,6 +1,8 @@
+package models;
+import CommandLineInterface.CLILogin;
 public class CourseRegistrationSystem {
     
-    void start() {
+    public void start() {
         User user;
 
         while(true) {

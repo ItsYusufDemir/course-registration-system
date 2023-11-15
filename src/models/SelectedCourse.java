@@ -1,3 +1,6 @@
+package models;
+import enums.CourseStatus;
+
 public class SelectedCourse {
     private Student student;
     private Course course;
@@ -6,7 +9,7 @@ public class SelectedCourse {
     public SelectedCourse(Student student, Course course) {
         this.student = student;
         this.course = course;
-        this.status = CourseStatus.Draft;
+        this.status = CourseStatus.DRAFT;
     }
 
     public void setStatus(CourseStatus status) {
@@ -14,7 +17,7 @@ public class SelectedCourse {
     }
 
     public boolean isApproved() {
-        if (status == CourseStatus.Approved) {
+        if (status == CourseStatus.APPROVED) {
             return true;
         } 
         else {

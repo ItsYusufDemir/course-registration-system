@@ -1,5 +1,8 @@
+package CommandLineInterface;
 import java.util.Scanner;
 import java.util.Stack;
+import models.User;
+//import controllers.UserController;
 
 public class CLILogin {
     public User loginPage(){
@@ -15,8 +18,8 @@ public class CLILogin {
             System.out.print("Password:");
             String password = input.nextLine();
 
-            UserController userController = new UserController();
-            User user = userController.authenticateUser(username, password);
+            //UserController userController = new UserController();
+            User user = new User(username, password);
 
             if(user == null){
                 System.out.println("Invalid username or password.");
