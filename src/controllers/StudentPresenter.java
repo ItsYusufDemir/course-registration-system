@@ -1,6 +1,10 @@
+package controllers;
 import java.util.ArrayList;
 import java.util.List;
+
 import enums.CourseStatus;
+import models.SelectedCourse;
+import models.Student;
 import enums.ApprovalStatus;
 
 public class StudentPresenter{

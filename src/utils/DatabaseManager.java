@@ -1,3 +1,5 @@
+package utils;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,15 +12,25 @@ import java.util.stream.Collectors;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
+import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+
 import interfaces.Saveable;
+import models.Advisor;
+import models.Course;
+import models.Student;
+import models.User;
 
 import java.lang.reflect.Type;
-import model.User;
 
 
 public class DatabaseManager  {
 
 
+    private ObjectMapper objectMapper = null;
     private static DatabaseManager instance = null;
     private List<User> userList;
     private List<Course> courseList;
@@ -41,9 +53,27 @@ public class DatabaseManager  {
         courseList = jsonToList(readFile("data/courses.json"), Course.class);
         studentList = jsonToList(readFile("data/students.json"), Student.class);
         advisorList = jsonToList(readFile("data/advisors.json"), Advisor.class);
+
+        objectMapper = new ObjectMapper();
+        PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator.builder()
+        .allowIfSubType("User")
+        .build();
+
+        objectMapper.activateDefaultTyping(ptv,ObjectMapper.DefaultTyping.NON_FINAL);
     }
 
-    
+
+    private <T> List<T> readJsonFile(String absolutePath, Class<T> valueType) {
+        try {
+            byte[] jsonData = Files.readAllBytes(Paths.get(absolutePath));
+            return objectMapper.readValue(jsonData, objectMapper.getTypeFactory().constructCollectionType(List.class, valueType));
+        } catch (IOException e) {
+            System.out.println("Error reading JSON file: " + filePath);
+            return List.of(); // or handle the exception as needed
+        }
+    }
+
+    /* 
     public String readFile(String relativePath) {
 
         String filePath = relativePath;
@@ -57,7 +87,7 @@ public class DatabaseManager  {
             System.out.println("File not found");
             return "";
         }
-    }
+    */
 
 
     private <T> List<T> jsonToList(String jsonString, Class<T> typeClass) {
@@ -96,6 +126,12 @@ public class DatabaseManager  {
         writeFile("data/courses.json", getJsonString(courseList));
         writeFile("data/students.json", getJsonString(studentList));
         writeFile("data/advisors.json", getJsonString(advisorList));
+    }
+
+    public List<Student> getStudentsOfAdvisor(String advisorID) {
+
+
+
     }
 
     //Getters

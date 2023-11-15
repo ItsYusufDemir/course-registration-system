@@ -1,9 +1,11 @@
+package models;
 import java.util.*;
 
 import enums.ApprovalStatus;
+import utils.DatabaseManager;
 
 // not sure about access identifier
-public class Student {
+public class Student extends User {
     private String email;
     private int schoolNumber;
     private String identityNumber;
@@ -14,6 +16,7 @@ public class Student {
 
     // not sure about constructor access identifier
     public Student(String email, int schoolNumber, String identityNumber, List<SelectedCourse> selectedCourses, Advisor advisorOfStudent, ApprovalStatus approvalStatus, Transcript transcript) {
+        super(userID, password, firstName, lastName, status);
         this.email = email;
         this.schoolNumber = schoolNumber;
         this.identityNumber = identityNumber;

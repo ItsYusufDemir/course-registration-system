@@ -1,5 +1,12 @@
+package CommandLineInterface;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
+
+import controllers.AdvisorController;
+import models.Advisor;
+import models.Course;
+import models.Student;
 
 public class CLIAdvisor {
 
@@ -22,7 +29,7 @@ public class CLIAdvisor {
 
         while(true) {
             if (choice == "1") {
-                Student[] students = advisorController.getStudentListOrderByStatus();
+                List<Student> students = advisorController.getStudentListOrderByStatus();
                 shouldQuit = showStudentPage(students);
 
                 if(shouldQuit) {
@@ -41,7 +48,7 @@ public class CLIAdvisor {
     }
 
     //boolean a dönüştür
-    public boolean showStudentPage(Student[] students) {
+    public boolean showStudentPage(List<Student> students) {
 
         Scanner input = new Scanner(System.in);
         System.out.println(" Student List");
@@ -50,7 +57,7 @@ public class CLIAdvisor {
         System.out.println("   ------      -----");
 
         for (int i = 0; i < students.length; i++) {
-            System.out.println((i + 1) + ". " + students[i].getSchoolNumber() + "    " + students[i].getFirstName() + " " + students[i].getLastName());
+            System.out.println((i + 1) + ". " + students.get(i).getSchoolNumber() + "    " + students.get(i).getFirstName() + " " + students[i].getLastName());
         }
 
         System.out.println("Select Student:");

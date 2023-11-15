@@ -1,7 +1,9 @@
+package models;
 import java.util.List;
+
+import CommandLineInterface.CLIAdvisor;
 import enums.ApprovalStatus;
 import enums.CourseStatus;
-import model.User;
 
 public class Advisor extends User {
 
@@ -9,7 +11,7 @@ public class Advisor extends User {
 
 
     public Advisor(String userID, String userName , String password, String firstName, String lastName, boolean status) {
-        super(userID, userName, password, firstName, lastName, status);
+        super(userID, password, firstName, lastName, status);
     }
 
     public void getMyPage() {
