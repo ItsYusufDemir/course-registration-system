@@ -41,7 +41,7 @@ public class CLIStudent {
         }
         else if(str.equals("1")){
             
-            myCoursesPage(currentStudent.listAvaliableCourseSections());
+            myCoursesPage(currentStudent.listAvailableCourses());
         }
         else if(str.equals("2")){
             return;
