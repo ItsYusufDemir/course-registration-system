@@ -1,8 +1,6 @@
 package models;
 import enums.CourseResult;
 
-package models;
-
 public class CourseGrade {
     private Course course;
     private String letterGrade;
@@ -48,5 +46,18 @@ public class CourseGrade {
                 break;
         }
         return score;
+    }
+
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public String getLetterGrade() {
+        return letterGrade;
+    }
+
+    public CourseResult getCourseResult() {
+        return courseResult;
     }
 }

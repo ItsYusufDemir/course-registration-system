@@ -1,9 +1,9 @@
 package CommandLineInterface;
-package CommandLineInterface;
 
 import java.util.*;
 //TODO: add the course section check so that you cant take 2 sections from the same course
 
+import controllers.StudentController;
 import models.Course;
 import models.SelectedCourse;
 import models.Student;
@@ -13,7 +13,7 @@ public class CLIStudent {
     
     Stack<Integer> pageNumeber;
     private Scanner scanner;
-    private StudentController StudentController;
+    private controllers.StudentController StudentController;
     private Student currentStudent;
 
     public CLIStudent(Student student){
@@ -193,18 +193,18 @@ public class CLIStudent {
         int sectionLength = 0;
         for(Course course : courses){
             i++;
-            sectionLength = course.getAvaliableCourseSections().size();
+            sectionLength = course.getAvailableSections().size();
             for(int j = 0; j< sectionLength; j++)
-            System.out.println(i + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t" + course.getAvaliableCourseSections().get(j) + "\t" + course.getCourseInstructor() + "\t" + course.getCourseCredit());
+            System.out.println(i + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t" + course.getAvailableSections().get(j) + "\t" + course.getCourseSections().get(j).getLecturerName() + "\t" + course.getCourseCredit());
         }
     }
 
 
     private void listSelectedCourses(Student student){ 
         int i = 0;
-        for(SelectedCourse course : student.selectedCourses){
+        for(SelectedCourse course : student.getSelectedCourses()){
             i++;
-            System.out.println(i + ". " + course.getCourse().getCourseCode() + "\t" + course.getCourse().getCourseName() + "\t" + course.getCourseSection() + "\t" + course.getStatus());
+            System.out.println(i + ". " + course.getCourseSection().getSectionCode() + "\t" + course.getCourse().getCourseName() + "\t" + course.getCourseSection() + "\t" + course.getStatus());
         }
     }
 }

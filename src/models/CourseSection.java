@@ -42,4 +42,35 @@ public class CourseSection {
         return studentCountInsideCourseSection;
     }
 
+    public int getStudentCapacity() {
+        return studentCapacity;
+    }
+
+    public String getLecturerName() {
+        return lecturerName;
+    }
+
+    public String getSectionTime() {
+        return sectionTime;
+    }
+
+    public String getSectionDate() {
+        return sectionDate;
+    }
+
+    public String getClassroom() {
+        return classroom;
+    }
+
+    public String getSectionCode() {
+        return sectionCode;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public int getStudentCountInsideCourseSection() {
+        return studentCountInsideCourseSection;
+    }
 }

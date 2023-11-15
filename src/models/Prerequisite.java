@@ -1,6 +1,4 @@
 package models;
-package models;
-
 import java.util.List;
 
 public class Prerequisite {
@@ -20,7 +18,7 @@ public class Prerequisite {
 
         for(int i = 0; i < lengthPrereguisiteCourses; i++){
             // passed courses'ı kedim hesaplamalıyım
-            isPrerequisiteCoursesPasses = student.transcript.passedCourses.contains(prerequisiteOfCourses.get(i));
+            isPrerequisiteCoursesPasses = student.getTranscript().getPassedCourses().contains(prerequisiteOfCourses.get(i));
             if(!isPrerequisiteCoursesPasses){
                 break;
             }
