@@ -1,5 +1,7 @@
+package CommandLineInterface;
 import java.util.Scanner;
 import java.util.Stack;
+import models.User;
 
 public class CLILogin {
     public User loginPage(){

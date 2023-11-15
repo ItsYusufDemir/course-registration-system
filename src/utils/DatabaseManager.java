@@ -9,7 +9,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import interfaces.Saveable;
+
 import java.lang.reflect.Type;
+import model.User;
 
 
 public class DatabaseManager  {
@@ -66,21 +70,12 @@ public class DatabaseManager  {
     }
 
 
-    public String getJsonString(List<TestObject> testObjects) {
+    public String getJsonString(List<Saveable> testObjects) {
 
         //Convert the list of objects to JSON String
         String jsonString = new Gson().toJson(testObjects);
 
         return jsonString;
-    }
-
-    public List<TestObject> getTestObjects() {
-        
-        String jsonString = readFile("test");
-
-        List<TestObject> courseList = jsonToList(jsonString, TestObject.class);
-
-        return courseList;
     }
 
     public static void writeFile(String relativePath, String jsonString) {

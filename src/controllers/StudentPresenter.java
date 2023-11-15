@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import enums.CourseStatus;
+import enums.ApprovalStatus;
 
 public class StudentPresenter{
     private Student currentStudent;
@@ -19,7 +21,7 @@ public class StudentPresenter{
         currentStudent.setApprovalStatus(ApprovalStatus.PENDING);
         List<SelectedCourse> selectedCourses =  currentStudent.getSelectedCourses();
         for (SelectedCourse selectedCourse : selectedCourses) {
-            selectedCourse.setStatus(CourseStatus.Pending);
+            selectedCourse.setStatus(CourseStatus.PENDING);
         }
         currentStudent.setSelectedCourses(selectedCourses);
     }

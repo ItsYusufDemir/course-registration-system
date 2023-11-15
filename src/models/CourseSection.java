@@ -42,11 +42,3 @@ public class CourseSection {
     }
 
 }
-
-class Student{
- Transcript transcript;
-}
-
-class Transcript{
-    List<Course> passedCourses;
-}

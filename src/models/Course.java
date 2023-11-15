@@ -1,3 +1,4 @@
+package models;
 import java.util.*;
 
 public class Course {
@@ -36,5 +37,59 @@ public class Course {
     public Prerequisite getPrerequisiteInformation() {
         return prerequisiteInformation;
     }
+
+    public int getCourseCredit() {
+        return courseCredit;
+    }
+
+    public void setCourseCredit(int courseCredit) {
+        this.courseCredit = courseCredit;
+    }
+
+    public int getCourseECTS() {
+        return courseECTS;
+    }
+
+    public void setCourseECTS(int courseECTS) {
+        this.courseECTS = courseECTS;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
+
+    public void setPrerequisiteInformation(Prerequisite prerequisiteInformation) {
+        this.prerequisiteInformation = prerequisiteInformation;
+    }
+
+    public List<CourseSection> getCourseSections() {
+        return courseSections;
+    }
+
+    public void setCourseSections(List<CourseSection> courseSections) {
+        this.courseSections = courseSections;
+    }
+
+    public boolean isCompulsory() {
+        return isCompulsory;
+    }
+
+    public void setCompulsory(boolean isCompulsory) {
+        this.isCompulsory = isCompulsory;
+    }
+
+    
 
 }

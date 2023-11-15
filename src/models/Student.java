@@ -1,5 +1,7 @@
 import java.util.*;
 
+import enums.ApprovalStatus;
+
 // not sure about access identifier
 public class Student {
     private String email;
@@ -30,7 +32,7 @@ public class Student {
     }
 
     public List<Course> listAvailableCourses(){
-        List<Course> allCourses = database;
+        List<Course> allCourses = DatabaseManager.getInstance().getCourses();
         List<Course> passedCourses = transcript.getPassed(); // muho
         List<Course> availableCourses = new ArrayList<Course>();
         for (Course currentCourse : allCourses) {
@@ -67,4 +69,51 @@ public class Student {
     public void deleteCourse(SelectedCourse selectedCourse){
         selectedCourses.remove(selectedCourse);
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getSchoolNumber() {
+        return schoolNumber;
+    }
+
+    public void setSchoolNumber(int schoolNumber) {
+        this.schoolNumber = schoolNumber;
+    }
+
+    public String getIdentityNumber() {
+        return identityNumber;
+    }
+
+    public void setIdentityNumber(String identityNumber) {
+        this.identityNumber = identityNumber;
+    }
+
+    public Advisor getAdvisorOfStudent() {
+        return advisorOfStudent;
+    }
+
+    public void setAdvisorOfStudent(Advisor advisorOfStudent) {
+        this.advisorOfStudent = advisorOfStudent;
+    }
+
+    public ApprovalStatus getApprovalStatus() {
+        return approvalStatus;
+    }
+
+    public Transcript getTranscript() {
+        return transcript;
+    }
+
+    public void setTranscript(Transcript transcript) {
+        this.transcript = transcript;
+    }
+
+    
+
 }
