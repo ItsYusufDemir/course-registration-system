@@ -13,12 +13,12 @@ public class CLIStudent {
     
     Stack<Integer> pageNumeber;
     private Scanner scanner;
-    private StudentPresenter StudentPresenter;
+    private StudentController StudentController;
     private Student currentStudent;
 
     public CLIStudent(Student student){
         currentStudent = student;
-        StudentPresenter = new StudentPresenter(currentStudent);
+        StudentController = new StudentController(currentStudent);
     }
 
     public void menuPage(){
@@ -87,7 +87,7 @@ public class CLIStudent {
             myCoursesPage(courses);
         }
         else if(str.equals("3")){
-            StudentPresenter.sendSelectedCoursesToApproval();
+            StudentController.sendSelectedCoursesToApproval();
         }
         else if(str.equals("b")){
             menuPage();
@@ -125,7 +125,7 @@ public class CLIStudent {
             int coursesLength = courses.size();
             for(int i = 1; i<=coursesLength; i++){
                 if(courseCodeIntArray.contains(i))
-                    StudentPresenter.addSelectedCourse(courses.get(i-1));
+                    StudentController.addSelectedCourse(courses.get(i-1));
             }
             addCoursePage(courses);
         }
@@ -152,7 +152,7 @@ public class CLIStudent {
             int coursesLength = courses.size();
             for(int i = 1; i<=coursesLength; i++){
                 if(courseCodeIntArray.contains(i))
-                    StudentPresenter.removeSelectedCourse(currentStudent.selectedCourses.get(i-1));
+                    StudentController.removeSelectedCourse(currentStudent.selectedCourses.get(i-1));
             }
             return true;
         }
