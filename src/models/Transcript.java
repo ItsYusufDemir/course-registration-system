@@ -4,72 +4,64 @@ import java.util.*;
 public class Transcript{
 
 
-    // course olmicak ama course with grade gibi bir class olacak
-    List <Course> completedCourses;
-    List <Course> failedCourses;
-    Student student;
+    
+    private List <CourseGrade> takenCourses;
+    
 
-    public Transcript(Student student){
-        completedCourses = new ArrayList<Course>();
-        this.student = student;
+    
+    
+    DatabaseManager databasemanager = DatabaseManager.getInstance();
+
+    public Transcript(List <CourseGrade> takendCourses){
+        this.takenCourses = takenCourses;
+        
     
     }
 
     public void addCourse(Course course){
-        completedCourses.add(course);
+        takenCourses.add(new CourseGrade(course, null));
+
     }
 
-    public void removeCourse(Course course){
-        completedCourses.remove(course);
+    
+    public List<Course> getPassedCourse() {
+        List<Course> passedCourses = new ArrayList<Course>();
+        for (CourseGrade course : takenCourses) {
+            if (course.getCourseResult() == CourseResult.PASSED) {
+                passedCourses.add(course.getCourse());
+            }
+        }
+        
+        
+        return passedCourses;
     }
-
     
 
     public double calculateCompletedCredits(){
         double total = 0.0;
-        for(Course course : completedCourses){
+        for(CourseGrade course : takenCourses){
             
+<<<<<<< HEAD:src/Transcript.java
+            total += course.getCourse().getCourseCredit();
+=======
             total += course.getCourseCredit();
+>>>>>>> 4ef78a913fd61957d40b50f332921acba6e97381:src/models/Transcript.java
         }
         return total;
     }
 
-    /*private double convertLetterGradeToScore(String grade){
-        double score = 0.0;
-        switch (grade) {
-            case "AA":
-                score = 4.0;    
-                break;
-            case "BA":
-                score = 3.5;    
-                break;
-            case "BB":
-                score = 3.0;    
-                break;
-            case "CB":
-                score = 2.5;;    
-                break;            
-            case "CC":
-                score = 2.0;    
-                break;
-            case "DC":
-                score = 1.5;    
-                break;
-            case "DD":
-                score = 1.0;    
-                break;
-            case "FD":
-                score = 0.5;    
-                break;
-            case "FF":
-                score = 0.0;    
-                break;
 
-            default:
-                score = 0.0;
-                break;
+   
+    public double calculateGPA(){
+        double totalPoint = 0.0;
+        double totalCredit = 0.0;
+        for(CourseGrade course : takenCourses){
+            totalPoint += course.getCourse().getCourseCredit()*course.convertLetterGradeToScore();
+            totalCredit += course.getCourse().getCourseCredit();
         }
-        return score;
+
+        return totalPoint/totalCredit;
     }
-    */
+
+
 }
