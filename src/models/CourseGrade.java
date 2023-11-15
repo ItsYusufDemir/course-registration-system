@@ -1,4 +1,7 @@
-gitpublic class CourseGrade {
+package models;
+import enums.CourseResult;
+
+public class CourseGrade {
     private Course course;
     private String letterGrade;
     private CourseResult courseResult;
@@ -43,5 +46,18 @@ gitpublic class CourseGrade {
                 break;
         }
         return score;
+    }
+
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public String getLetterGrade() {
+        return letterGrade;
+    }
+
+    public CourseResult getCourseResult() {
+        return courseResult;
     }
 }

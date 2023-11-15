@@ -1,10 +1,17 @@
+package controllers;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentPresenter{
+import enums.CourseStatus;
+import models.SelectedCourse;
+import models.Student;
+import enums.ApprovalStatus;
+
+public class StudentController{
     private Student currentStudent;
 
-    public StudentPresenter(Student currentStudent) {
+    public StudentController(Student currentStudent) {
         // we may create student here
         this.currentStudent = currentStudent;
     }
@@ -19,7 +26,7 @@ public class StudentPresenter{
         currentStudent.setApprovalStatus(ApprovalStatus.PENDING);
         List<SelectedCourse> selectedCourses =  currentStudent.getSelectedCourses();
         for (SelectedCourse selectedCourse : selectedCourses) {
-            selectedCourse.setStatus(CourseStatus.Pending);
+            selectedCourse.setStatus(CourseStatus.PENDING);
         }
         currentStudent.setSelectedCourses(selectedCourses);
     }

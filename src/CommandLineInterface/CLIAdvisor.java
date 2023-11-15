@@ -1,11 +1,20 @@
+package CommandLineInterface;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
 
+import controllers.AdvisorController;
+import models.Advisor;
+import models.Course;
+import models.Student;
+
 public class CLIAdvisor {
 
-    Advisor advisor;
+    private Advisor advisor;
+    private AdvisorController advisorController;
     public CLIAdvisor(Advisor advisor){
         this.advisor = advisor;
+        advisorController = new AdvisorController(advisor);
     }
 
 
@@ -50,8 +59,8 @@ public class CLIAdvisor {
         System.out.println("   Number      Name");
         System.out.println("   ------      -----");
 
-        for (int i = 0; i < students.length; i++) {
-            System.out.println((i + 1) + ". " + students[i].getSchoolNumber() + "    " + students[i].getFirstName() + " " + students[i].getLastName());
+        for (int i = 0; i < students.size(); i++) {
+            System.out.println((i + 1) + ". " + students.get(i).getSchoolNumber() + "    " + students.get(i).getFirstName() + " " + students.get(i).getLastName());
         }
 
         System.out.println("Select Student:");
@@ -63,8 +72,8 @@ public class CLIAdvisor {
             String choice = input.nextLine();
             try {
                 int choice2 = Integer.parseInt(choice);
-                if (choice2 > 0 && choice2 <= students.length) {
-                    coursesOfStudentPage(students[choice2 - 1], courses);
+                if (choice2 > 0 && choice2 <= students.size()) {
+                    coursesOfStudentPage(students.get(choice2 - 1), courses);
                 }
                 else {
                     System.out.println("Invalid choice.Try again");
@@ -80,11 +89,11 @@ public class CLIAdvisor {
                 }
             }
         }
-          input.close();
+
     }
 
 
-   public boolean  CoursesOfStudentPage(Student student, Course[] courses){
+   public boolean  coursesOfStudentPage(Student student, List <Course> courses){
 
         Scanner input = new Scanner(System.in);
 
@@ -93,8 +102,8 @@ public class CLIAdvisor {
        System.out.println("   Code         Number        Section       Status ");
        System.out.println("  ------        ------         ------       ------ ");
 
-       for(int i = 0; i < courses.length ; i++) {
-           System.out.println((i+1) + ". " + courses[i].getCourseCode() + "    " + courses[i].getName() + "    " + courses[i].getSection() + "    " + courses[i].getStatus);
+       for(int i = 0; i < courses.size() ; i++) {
+           System.out.println((i+1) + ". " + courses.get(i).getCourseCode() + "    " + courses.get(i).getCourseName() + "    " + courses.get(i).getCourseSections() + "    " + courses.get(i).getStatus);
        }
 
        System.out.println("Select Course: " + "\n");
@@ -106,7 +115,7 @@ public class CLIAdvisor {
            String choice = input.nextLine();
            try {
                int choiceInt = Integer.parseInt(choice);
-               if (choiceInt > 0 && choiceInt <= courses.length) {
+               if (choiceInt > 0 && choiceInt <= courses.size()) {
                    String choice2 = input.nextLine();
 
                    if (choice2.equals("a")) {
@@ -141,6 +150,7 @@ public class CLIAdvisor {
 
        }
        input.close();
+       return false;
 
    }
 
