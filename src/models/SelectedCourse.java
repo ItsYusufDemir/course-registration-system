@@ -4,13 +4,13 @@ import enums.CourseStatus;
 public class SelectedCourse {
     private Course course;
     private CourseStatus status;
+    private CourseSection courseSection;
 
-    public SelectedCourse() {
-    }
-
-    public SelectedCourse(Course course) {
+    public SelectedCourse(Student student, Course course, CourseSection courseSection) {
+        this.student = student;
         this.course = course;
         this.status = CourseStatus.DRAFT;
+        this.courseSection = courseSection;
     }
 
     public void setStatus(CourseStatus status) {
@@ -26,18 +26,19 @@ public class SelectedCourse {
         }
     }
 
-    public Course getCourse() {
-        return course;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public Course getCourse() {
+        return course;
     }
 
     public CourseStatus getStatus() {
         return status;
     }
 
-
-    
+    public CourseSection getCourseSection() {
+        return courseSection;
+    }
 }

@@ -8,10 +8,10 @@ import models.SelectedCourse;
 import models.Student;
 import enums.ApprovalStatus;
 
-public class StudentPresenter{
+public class StudentController{
     private Student currentStudent;
 
-    public StudentPresenter(Student currentStudent) {
+    public StudentController(Student currentStudent) {
         // we may create student here
         this.currentStudent = currentStudent;
     }

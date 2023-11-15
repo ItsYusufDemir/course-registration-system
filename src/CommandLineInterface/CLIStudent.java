@@ -1,24 +1,27 @@
 package CommandLineInterface;
-package CommandLineInterface;
 
 import java.util.*;
 //TODO: add the course section check so that you cant take 2 sections from the same course
 
+import controllers.StudentController;
 import models.Course;
 import models.SelectedCourse;
 import models.Student;
+import models.CourseSection;
 
 public class CLIStudent {
 
     
     Stack<Integer> pageNumeber;
     private Scanner scanner;
-    private StudentController studentController;
+    private controllers.StudentController StudentController;
     private Student currentStudent;
+    private List<SelectedCourse> avaliableCourseSections;
+    private List<CourseSection> selectedCourseSections;
 
     public CLIStudent(Student student){
         currentStudent = student;
-        studentController = new StudentController(currentStudent);
+        StudentController = new StudentController(currentStudent);
     }
 
     public void menuPage(){
@@ -38,7 +41,7 @@ public class CLIStudent {
         }
         else if(str.equals("1")){
             
-            myCoursesPage(currentStudent.listAvaliableCourseSections());
+            myCoursesPage(currentStudent.listAvailableCourses());
         }
         else if(str.equals("2")){
             return;
@@ -87,7 +90,7 @@ public class CLIStudent {
             myCoursesPage(courses);
         }
         else if(str.equals("3")){
-            studentController.sendSelectedCoursesToApproval();
+            StudentController.sendSelectedCoursesToApproval();
         }
         else if(str.equals("b")){
             menuPage();
@@ -122,10 +125,10 @@ public class CLIStudent {
 
         if(checkCourseSelectionInput(courseCodeArray) && (!str.startsWith(" "))){
             ArrayList<Integer> courseCodeIntArray = convertCourseSelectionInputToInt(str);
-            int coursesLength = courses.size();
+            int coursesLength = avaliableCourseSections.size();
             for(int i = 1; i<=coursesLength; i++){
-                if(courseCodeIntArray.contains(i))
-                    studentController.addSelectedCourse(courses.get(i-1));
+                if(courseCodeIntArray.contains(i) && checkIfAlreadyAdded(avaliableCourseSections.get(i-1)))
+                    StudentController.addSelectedCourse(avaliableCourseSections.get(i-1));
             }
             addCoursePage(courses);
         }
@@ -142,6 +145,15 @@ public class CLIStudent {
         }
     }
 
+    public boolean checkIfAlreadyAdded(SelectedCourse selectedCourse){
+        
+        for(CourseSection currentCourse : selectedCourseSections){   
+            if(selectedCourse.getCourse().getCourseName().equals( currentCourse.getCourse().getCourseName()) )
+                return false;
+        }
+        return true;
+    }
+
     public boolean deleteCourse(String str, List<Course> courses){
         
         String courseCode = str.replaceAll(" ", "");
@@ -152,7 +164,7 @@ public class CLIStudent {
             int coursesLength = courses.size();
             for(int i = 1; i<=coursesLength; i++){
                 if(courseCodeIntArray.contains(i))
-                    studentController.removeSelectedCourse(currentStudent.selectedCourses.get(i-1));
+                    StudentController.removeSelectedCourse(currentStudent.getSelectedCourses().get(i-1));
             }
             return true;
         }
@@ -191,20 +203,26 @@ public class CLIStudent {
     private void listAvaliableCourseSections(List<Course> courses){ 
         int i = 0;
         int sectionLength = 0;
+        avaliableCourseSections = new ArrayList<SelectedCourse>();
         for(Course course : courses){
             i++;
-            sectionLength = course.getAvaliableCourseSections().size();
-            for(int j = 0; j< sectionLength; j++)
-            System.out.println(i + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t" + course.getAvaliableCourseSections().get(j) + "\t" + course.getCourseInstructor() + "\t" + course.getCourseCredit());
+            sectionLength = course.getAvailableSections().size();
+            for(int j = 0; j< sectionLength; j++){
+                System.out.println(i + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t" + course.getAvailableSections().get(j) + "\t" + course.getCourseSections().get(j).getLecturerName() + "\t" + course.getCourseCredit());
+                i++;
+                avaliableCourseSections.add(new SelectedCourse(currentStudent, course, course.getAvailableSections().get(j)));
+            }
         }
     }
 
 
     private void listSelectedCourses(Student student){ 
         int i = 0;
-        for(SelectedCourse course : student.selectedCourses){
+        selectedCourseSections = new ArrayList<CourseSection>();
+        for(SelectedCourse course : student.getSelectedCourses()){
             i++;
-            System.out.println(i + ". " + course.getCourse().getCourseCode() + "\t" + course.getCourse().getCourseName() + "\t" + course.getCourseSection() + "\t" + course.getStatus());
+            System.out.println(i + ". " + course.getCourseSection().getSectionCode() + "\t" + course.getCourse().getCourseName() + "\t" + course.getCourseSection() + "\t" + course.getStatus());
+            selectedCourseSections.add(course.getCourseSection());
         }
     }
 }

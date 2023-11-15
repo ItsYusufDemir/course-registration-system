@@ -44,7 +44,7 @@ public class Student extends User {
 
     public List<Course> listAvailableCourses(){
         List<Course> allCourses = DatabaseManager.getInstance().getCourses();
-        List<Course> passedCourses = transcript.getPassed(); // muho
+        List<Course> passedCourses = transcript.getPassedCourses(); // muho
         List<Course> availableCourses = new ArrayList<Course>();
         for (Course currentCourse : allCourses) {
             if (!(passedCourses.contains(currentCourse)) && currentCourse.checkPrerequisite(this)) {

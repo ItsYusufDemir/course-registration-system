@@ -51,4 +51,17 @@ public class CourseGrade {
         }
         return score;
     }
+
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public String getLetterGrade() {
+        return letterGrade;
+    }
+
+    public CourseResult getCourseResult() {
+        return courseResult;
+    }
 }

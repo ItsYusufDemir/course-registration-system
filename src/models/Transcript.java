@@ -1,39 +1,45 @@
 package models;
+import enums.CourseResult;
+import utils.DatabaseManager;
+
 import java.util.*;
 
 public class Transcript{
 
 
-    // course olmicak ama course with grade gibi bir class olacak
-    List <Course> completedCourses;
-    List <Course> failedCourses;
+    
+    private List <CourseGrade> takenCourses;
+    DatabaseManager databasemanager = DatabaseManager.getInstance();
 
-
-    public Transcript(){
-        completedCourses = new ArrayList<Course>();
+    public Transcript(List <CourseGrade> takendCourses){
+        this.takenCourses = takenCourses;
     }
 
     public void addCourse(Course course){
-        completedCourses.add(course);
+        takenCourses.add(new CourseGrade(course, null, CourseResult.ACTIVE));
     }
 
-    public void removeCourse(Course course){
-        completedCourses.remove(course);
+    
+    public List<Course> getPassedCourses() {
+        List<Course> passedCourses = new ArrayList<Course>();
+        for (CourseGrade course : takenCourses) {
+            if (course.getCourseResult() == CourseResult.PASSED) {
+                passedCourses.add(course.getCourse());
+            }
+        }
+        
+        
+        return passedCourses;
     }
-
     
 
     public double calculateCompletedCredits(){
         double total = 0.0;
-        for(Course course : completedCourses){
+        for(CourseGrade course : takenCourses){
             
-            total += course.getCourseCredit();
+            total += course.getCourse().getCourseCredit();
         }
         return total;
-    }
-
-    public List<Course> getPassed() {
-        return completedCourses; //burası hatalı öylesine yazdım
     }
 
     /*private double convertLetterGradeToScore(String grade){
@@ -71,7 +77,8 @@ public class Transcript{
                 score = 0.0;
                 break;
         }
-        return score;
+
+        return totalPoint/totalCredit;
     }
     */
 }

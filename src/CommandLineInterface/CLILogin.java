@@ -30,6 +30,6 @@ public class CLILogin {
 
         return user;
         }
-
+        input.close();
     }
 
