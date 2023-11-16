@@ -145,7 +145,7 @@ public class CLIStudent {
 
     public boolean addCourse(char c, List<Course> courses) {
         int index = Integer.parseInt(c + "");
-        if (index <= courses.size()) {
+        if (index <= courses.size() && checkIfAlreadyAdded(avaliableCourseSections.get(index - 1))) {
             StudentController.addSelectedCourse(avaliableCourseSections.get(index - 1));
             return true;
         } else {
