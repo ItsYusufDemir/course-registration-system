@@ -34,11 +34,12 @@ public class CLIStudent {
             " Menu\n" +
             "********\n" +
             "  1. My Courses\n" +
-            "  2. Log out\n" +
+            "  2. Log out\n\n" +
             "Press q to quit");
 
         String str = scanner.nextLine();
         if(str.equals("q")){
+            DatabaseManager.getInstance().saveToDatabase();
             System.exit(0); 
         }
         else if(str.equals("1")){
@@ -46,6 +47,7 @@ public class CLIStudent {
             myCoursesPage(currentStudent.listAvailableCourses());
         }
         else if(str.equals("2")){
+            DatabaseManager.getInstance().saveToDatabase();
             return;
         }
         else{
@@ -69,7 +71,7 @@ public class CLIStudent {
             "  ____\t ____\t _______\t ______");
         listSelectedCourses(currentStudent);
         System.out.println(
-            "1. Add Course\n" +
+            "\n\n1. Add Course\n" +
             "2. Delete Course\n" +
             "3. Send To Approval");
 
@@ -79,25 +81,30 @@ public class CLIStudent {
         String str = scanner.nextLine();
 
         if(str.equals("1")){
-            addCoursePage(courses);
+            addCoursePage(currentStudent.listAvailableCourses());
         }
         else if(str.startsWith("2")){
-            if(deleteCourse(str, courses)){
+            System.out.println("Enter the course code(s) you want to delete (seperated by space) : ");
+            str = scanner.nextLine();
+            if(deleteCourse(str, currentStudent.getSelectedCourses())){
                 System.out.println("Course deleted successfully");
             }
             else{
                 System.out.println("Invalid input");
                 System.out.println("\n\n\n");
             }
-            myCoursesPage(courses);
+            myCoursesPage(currentStudent.listAvailableCourses());
         }
         else if(str.equals("3")){
             StudentController.sendSelectedCoursesToApproval();
+            myCoursesPage(currentStudent.listAvailableCourses());
         }
         else if(str.equals("b")){
+            DatabaseManager.getInstance().saveToDatabase();
             menuPage();
         }
         else if(str.equals("q")){
+            DatabaseManager.getInstance().saveToDatabase();
             System.exit(0); 
         }
         else{
@@ -118,33 +125,36 @@ public class CLIStudent {
             "  Code\t Name\t Section\t Instructor\t Credit\n" +
             "  ____\t ____\t _______\t __________\t ______");
         listAvaliableCourseSections(courses);
-        System.out.println("press b to go back");
+        System.out.println("\n\npress b to go back");
         System.out.println("press q to quit");
+        System.out.println("Enter the course code(s) you want to add (seperated by space) : ");
 
         String str = scanner.nextLine();
         String courseCode = str.replaceAll(" ", "");
         char[] courseCodeArray = courseCode.toCharArray();
 
-        if(checkCourseSelectionInput(courseCodeArray) && (!str.startsWith(" "))){
-            ArrayList<Integer> courseCodeIntArray = convertCourseSelectionInputToInt(str);
+        
+        if(str.equals("b")){
+            myCoursesPage(currentStudent.listAvailableCourses());
+            DatabaseManager.getInstance().saveToDatabase();
+        }
+        else if(str.equals("q")){
+            DatabaseManager.getInstance().saveToDatabase();
+            System.exit(0); 
+        }
+        else if(checkCourseSelectionInput(courseCodeArray) && (!str.startsWith(" ")) && (str.charAt(0)<58 && str.charAt(0)>47)){
+            ArrayList<Integer> courseCodeIntArray = convertCourseSelectionInputToInt(str, 0);
             int coursesLength = avaliableCourseSections.size();
             for(int i = 1; i<=coursesLength; i++){
                 if(courseCodeIntArray.contains(i) && checkIfAlreadyAdded(avaliableCourseSections.get(i-1)))
                     StudentController.addSelectedCourse(avaliableCourseSections.get(i-1));
             }
-            addCoursePage(courses);
-        }
-        else if(str.equals("b")){
-            myCoursesPage(courses);
-            DatabaseManager.getInstance().saveToDatabase();
-        }
-        else if(str.equals("q")){
-            System.exit(0); 
+            addCoursePage(currentStudent.listAvailableCourses());
         }
         else{
             System.out.println("Invalid input");
             System.out.println("\n\n\n");
-            addCoursePage(courses);
+            addCoursePage(currentStudent.listAvailableCourses());
         }
     }
 
@@ -157,13 +167,13 @@ public class CLIStudent {
         return true;
     }
 
-    public boolean deleteCourse(String str, List<Course> courses){
+    public boolean deleteCourse(String str, List<SelectedCourse> courses){
         
         String courseCode = str.replaceAll(" ", "");
         char[] courseCodeArray = courseCode.toCharArray();
 
         if(checkCourseSelectionInput(courseCodeArray)){
-            ArrayList<Integer> courseCodeIntArray = convertCourseSelectionInputToInt(str);
+            ArrayList<Integer> courseCodeIntArray = convertCourseSelectionInputToInt(str, 0);
             int coursesLength = courses.size();
             for(int i = 1; i<=coursesLength; i++){
                 if(courseCodeIntArray.contains(i))
@@ -187,8 +197,8 @@ public class CLIStudent {
         return true;
     }
 
-    private ArrayList<Integer> convertCourseSelectionInputToInt(String string){
-        string = string.substring(2);
+    private ArrayList<Integer> convertCourseSelectionInputToInt(String string, int startingPoint){
+        string = string.substring(startingPoint);
         int strLength = string.length();
         String tempString = "";
         ArrayList<Integer> courseCodeIntArray = new ArrayList<Integer>();
@@ -196,12 +206,17 @@ public class CLIStudent {
         for(int i = 0; i < strLength; i++){
             if(string.charAt(i) == ' '){
                 courseCodeIntArray.add(Integer.parseInt(tempString));
+                tempString = "";
+                
             }
             else{
                 tempString += string.charAt(i);
             }
         }
+        System.out.println(Integer.parseInt(tempString));
         courseCodeIntArray.add(Integer.parseInt(tempString));
+        tempString = "";
+        
         return courseCodeIntArray;
     }
 
