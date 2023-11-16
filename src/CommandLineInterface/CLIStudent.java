@@ -148,7 +148,7 @@ public class CLIStudent {
     public boolean checkIfAlreadyAdded(SelectedCourse selectedCourse) {
         
         for(CourseSection currentCourse : selectedCourseSections) {   
-            if(selectedCourse.getCourse().getCourseName().equals( currentCourse.getCourse().getCourseName()) )
+            if( currentCourse.getSectionCode().contains(selectedCourse.getCourse().getCourseName()) )
                 return false;
         }
         return true;
