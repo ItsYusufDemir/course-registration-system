@@ -1,11 +1,14 @@
 package CommandLineInterface;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
 
 import controllers.AdvisorController;
+import enums.CourseStatus;
 import models.Advisor;
 import models.Course;
+import models.SelectedCourse;
 import models.Student;
 
 public class CLIAdvisor {
@@ -31,7 +34,7 @@ public class CLIAdvisor {
 
         while(true) {
             if (choice.equals ("1")) {
-                Student[] students = advisorController.getStudentListOrderByStatus();
+                List<Student> students = advisorController.getStudentListOrderByStatus();
                 shouldQuit = showStudentPage(students);
 
                 if(shouldQuit) {
@@ -39,7 +42,7 @@ public class CLIAdvisor {
                 }
             }
             else if (choice.equals( "2")) {
-                advisorController.logout();
+                advisorController.logOut();
                 break;
             }
             else {
@@ -51,7 +54,7 @@ public class CLIAdvisor {
     }
 
     //boolean a dönüştür
-    public boolean showStudentPage(Student[] students) {
+    public boolean showStudentPage(List<Student> students) {
 
         Scanner input = new Scanner(System.in);
         System.out.println(" Student List");
@@ -67,13 +70,18 @@ public class CLIAdvisor {
         System.out.println("Press b to back");
         System.out.println("Press q to quit");
 
-
+        List<SelectedCourse> selectedCoursesThatStatusIsPending = new ArrayList<SelectedCourse>();
         while (true) {
             String choice = input.nextLine();
             try {
                 int choice2 = Integer.parseInt(choice);
                 if (choice2 > 0 && choice2 <= students.size()) {
-                    coursesOfStudentPage(students.get(choice2 - 1), courses);
+                    for(int i=0; i<students.get(choice2).getSelectedCourses().size();i++) {
+                        if (students.get(choice2).getSelectedCourses().get(i).getStatus() == CourseStatus.PENDING) {
+                            selectedCoursesThatStatusIsPending.add(students.get(choice2).getSelectedCourses().get(i));
+                        }
+                    }
+                    coursesOfStudentPage(students.get(choice2 - 1), selectedCoursesThatStatusIsPending);
                 }
                 else {
                     System.out.println("Invalid choice.Try again");
@@ -82,7 +90,7 @@ public class CLIAdvisor {
                 if (choice.equals("b")) {
                     return false;
                 } else if (choice.equals("q")) {
-                    advisorController.logout();
+                    advisorController.logOut();
                     return true;
                 } else {
                     System.out.println("Invalid choice.Try again");
@@ -93,7 +101,7 @@ public class CLIAdvisor {
     }
 
 
-   public boolean  coursesOfStudentPage(Student student, List <Course> courses){
+   public boolean  coursesOfStudentPage(Student student, List <SelectedCourse> courses){
 
         Scanner input = new Scanner(System.in);
 
@@ -103,7 +111,7 @@ public class CLIAdvisor {
        System.out.println("  ------        ------         ------       ------ ");
 
        for(int i = 0; i < courses.size() ; i++) {
-           System.out.println((i+1) + ". " + courses.get(i).getCourseCode() + "    " + courses.get(i).getCourseName() + "    " + courses.get(i).getCourseSections() + "    " + courses.get(i).getStatus);
+           System.out.println((i+1) + ". " + courses.get(i).getCourse().getCourseCode()  + "    " + courses.get(i).getCourse().getCourseName() + "    " + courses.get(i).getCourseSection() + "    " + courses.get(i).getStatus());
        }
 
        System.out.println("Select Course: " + "\n");
@@ -119,17 +127,17 @@ public class CLIAdvisor {
                    String choice2 = input.nextLine();
 
                    if (choice2.equals("a")) {
-                       advisorController.approveCourse(student,courses[choiceInt-1]);
+                       advisorController.approveCourse(student,courses.get(choiceInt - 1));
                        System.out.println();
                    }
                    else if (choice2.equals("d")) {
-                       advisorController.denyCourse(student,courses[choiceInt-1]);
+                       advisorController.denyCourse(student,courses.get(choiceInt - 1));
                    }
                    else if (choice.equals("b")) {
                        return false;
                    }
                    else if (choice.equals("q")) {
-                       advisorController.logout();
+                       advisorController.logOut();
                        return true;
                    }
                    else {
@@ -141,7 +149,7 @@ public class CLIAdvisor {
                if (choice.equals("b")) {
                    return false;
                } else if (choice.equals("q")) {
-                   advisorController.logout();
+                   advisorController.logOut();
                    return true;
                } else {
                    System.out.println("Invalid choice.Try again");
@@ -149,8 +157,7 @@ public class CLIAdvisor {
            }
 
        }
-       input.close();
-       return false;
+
 
    }
 
