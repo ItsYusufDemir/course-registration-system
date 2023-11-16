@@ -2,15 +2,18 @@ package CommandLineInterface;
 import java.util.Scanner;
 import java.util.Stack;
 import models.User;
+import models.UserController;
 //import controllers.UserController;
 
 public class CLILogin {
+
+    private User user;
     public User loginPage(){
 
+        Scanner input = new Scanner(System.in);
         do {
             System.out.println(" Login ");
             System.out.println(" ******** ");
-            Scanner input = new Scanner(System.in);
 
             System.out.print("Username:");
             String username = input.nextLine();
@@ -19,7 +22,9 @@ public class CLILogin {
             String password = input.nextLine();
 
             //UserController userController = new UserController();
-            User user = new User(username, password);
+            UserController userController = new UserController();
+            user = userController.loginUser(username,password);
+
 
             if(user == null){
                 System.out.println("Invalid username or password.");
@@ -28,8 +33,9 @@ public class CLILogin {
       //recursive yapma, do while a dönüştür
         while(user == null );
 
+        input.close();
         return user;
         }
-        input.close();
+
     }
 
