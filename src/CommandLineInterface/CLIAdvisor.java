@@ -21,15 +21,22 @@ public class CLIAdvisor {
     }
 
     public void menuPage() {
+        boolean isInvalid = false;
+        Scanner input = new Scanner(System.in);
         AdvisorController advisorController = new AdvisorController(advisor);
-        while(true) {
+        while (true) {
+            if(!isInvalid){
+                isInvalid = false;
+      //  while(true) {
             System.out.println(" Menu ");
             System.out.println("********");
             System.out.println("    1. Student List");
             System.out.println("    2. Log out");
-
+            }
+            else{
+                isInvalid = false;
+            }
             boolean shouldQuit = false;
-            Scanner input = new Scanner(System.in);
             String choice = input.nextLine();
 
                 if (choice.equals("1")) {
@@ -46,6 +53,7 @@ public class CLIAdvisor {
                     break;
                 } else {
                     System.out.println("Invalid choice");
+                    isInvalid = true;
                 }
             }
     }
@@ -112,13 +120,18 @@ public class CLIAdvisor {
 
    public boolean  coursesOfStudentPage(Student student){
 
+       boolean isInvalid = false;
         Scanner input = new Scanner(System.in);
-       while(true) {
+       List<SelectedCourse> courses = student.getSelectedCourses();
+       while (true) {
+           if(!isInvalid){
+               isInvalid = false;
+
        System.out.println(" Courses Of The Student ");
        System.out.println("***************************");
        System.out.println("   Code         Number        Section       Status ");
        System.out.println("  ------        ------         ------       ------ ");
-       List<SelectedCourse> courses = student.getSelectedCourses();
+
        for(int i = 0; i < courses.size() ; i++) {
            System.out.println((i+1) + ". " + courses.get(i).getCourse().getCourseCode()  + "    " + courses.get(i).getCourse().getCourseName() + "    " + courses.get(i).getCourseSection() + "    " + courses.get(i).getStatus());
        }
@@ -126,6 +139,10 @@ public class CLIAdvisor {
            System.out.println("Press b to back");
            System.out.println("Press q to quit");
            System.out.println("Select Course: ");
+       }
+            else{
+                   isInvalid = false;
+               }
            String choice = input.nextLine();
            try {
                int choiceInt = Integer.parseInt(choice);
@@ -151,6 +168,7 @@ public class CLIAdvisor {
                    }
                    else {
                        System.out.println("Invalid choice. Try again.");
+                       isInvalid = true;
                    }
                }
            }
@@ -162,6 +180,7 @@ public class CLIAdvisor {
                    return true;
                } else {
                    System.out.println("Invalid choice. Try again");
+                   isInvalid = true;
                }
            }
 
