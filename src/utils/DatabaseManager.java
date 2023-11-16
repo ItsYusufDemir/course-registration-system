@@ -29,39 +29,31 @@ public class DatabaseManager  {
     public static DatabaseManager getInstance() {
         if (instance == null) {
             instance = new DatabaseManager();
-            
+            instance.initialize();
         }
         return instance;
     }
 
+    private void initialize() {
 
-    private DatabaseManager() {
-
-        //Read all files and store them in the memory
-        courseList = jsonToList(readFile("data/courses.json"), Course.class);
-        studentList = jsonToList(readFile("data/students.json"), Student.class);
-        advisorList = jsonToList(readFile("data/advisors.json"), Advisor.class);
-
-        //Create an object mapper for converting objects to JSON and vice versa
         objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
+        courseList = jsonToCOurseList(readFile("data/courses.json"));
+        advisorList = jsonToAdvisorList(readFile("data/advisors.json"));
+        studentList = jsonToStudentList(readFile("data/students.json"));
+
+        
     }
 
 
+
     //TODO: This function is for testing, it can be deleted later
-    public void test(List<Student> student) {
+    public void test() {
 
         try {
 
-             String json = objectMapper.writeValueAsString(student);
-            //String json = readFile("data/advisors.json");
-            //String json = getJsonString(student);
-
-
-            System.out.println(json);
-            
-            //List<Student> list = objectMapper.readValue(json, new TypeReference<List<Student>>(){});
-            System.out.println("tamamlandı ");
+            getJsonString(studentList);
 
 
         } catch (Exception e) {
@@ -89,13 +81,31 @@ public class DatabaseManager  {
     }
     
 
-    public <T> List<T> jsonToList(String jsonString, Class<T> elementType) {
-
-        objectMapper = new ObjectMapper();
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+    private List<Student> jsonToStudentList(String jsonString) {
         
         try {
-            return objectMapper.readValue(jsonString, new TypeReference<List<T>>() {});
+            return objectMapper.readValue(jsonString, new TypeReference<List<Student>>() {});
+        } catch (IOException e) {
+            System.out.println("Error while converting JSON String to List of objects!" + jsonString);
+            e.printStackTrace();
+            return Collections.emptyList(); // or throw an exception if needed
+        }        
+    }
+
+    private List<Advisor> jsonToAdvisorList(String jsonString) {
+        
+        try {
+            return objectMapper.readValue(jsonString, new TypeReference<List<Advisor>>() {});
+        } catch (IOException e) {
+            System.out.println("Error while converting JSON String to List of objects!");
+            e.printStackTrace();
+            return Collections.emptyList(); // or throw an exception if needed
+        }        
+    }
+    private List<Course> jsonToCOurseList(String jsonString) {
+        
+        try {
+            return objectMapper.readValue(jsonString, new TypeReference<List<Course>>() {});
         } catch (IOException e) {
             System.out.println("Error while converting JSON String to List of objects!");
             e.printStackTrace();
