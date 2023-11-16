@@ -20,7 +20,6 @@ public class CLIAdvisor {
         advisorController = new AdvisorController(advisor);
     }
 
-
     public void menuPage() {
         AdvisorController advisorController = new AdvisorController(advisor);
         while(true) {
@@ -32,7 +31,6 @@ public class CLIAdvisor {
             boolean shouldQuit = false;
             Scanner input = new Scanner(System.in);
             String choice = input.nextLine();
-
 
                 if (choice.equals("1")) {
                     List<Student> students = advisorController.getStudentListOrderByStatus();
@@ -50,11 +48,9 @@ public class CLIAdvisor {
                     System.out.println("Invalid choice");
                 }
             }
-            //input.close();
-
     }
 
-    //boolean a dönüştür
+
     public boolean showStudentPage(List<Student> students) {
         boolean isInvalid = false;
         Scanner input = new Scanner(System.in);
@@ -96,7 +92,7 @@ public class CLIAdvisor {
                     }
                 }
                 else {
-                    System.out.println("Invalid choice.Try again");
+                    System.out.println("Invalid choice. Try again");
                     isInvalid = true;
                 }
             } catch (NumberFormatException e) {
@@ -106,7 +102,7 @@ public class CLIAdvisor {
                     advisorController.logOut();
                     return true;
                 } else {
-                    System.out.println("Invalid choice.Try again");
+                    System.out.println("Invalid choice. Try again");
                     isInvalid = true;
                 }
             }
@@ -127,9 +123,9 @@ public class CLIAdvisor {
            System.out.println((i+1) + ". " + courses.get(i).getCourse().getCourseCode()  + "    " + courses.get(i).getCourse().getCourseName() + "    " + courses.get(i).getCourseSection() + "    " + courses.get(i).getStatus());
        }
 
-       System.out.println("Select Course: " + "\n");
            System.out.println("Press b to back");
            System.out.println("Press q to quit");
+           System.out.println("Select Course: ");
            String choice = input.nextLine();
            try {
                int choiceInt = Integer.parseInt(choice);
@@ -154,7 +150,7 @@ public class CLIAdvisor {
                        return true;
                    }
                    else {
-                       System.out.println("Invalid choice.Try again.");
+                       System.out.println("Invalid choice. Try again.");
                    }
                }
            }
@@ -165,7 +161,7 @@ public class CLIAdvisor {
                    advisorController.logOut();
                    return true;
                } else {
-                   System.out.println("Invalid choice.Try again");
+                   System.out.println("Invalid choice. Try again");
                }
            }
 
@@ -173,14 +169,4 @@ public class CLIAdvisor {
 
 
    }
-
-
-
-
-
-
-
-
-
-
 }
