@@ -1,7 +1,7 @@
 package CommandLineInterface;
 
 import java.util.*;
-//TODO: add the course section check so that you cant take 2 sections from the same course
+
 
 import controllers.StudentController;
 import models.Course;
@@ -148,7 +148,7 @@ public class CLIStudent {
     public boolean checkIfAlreadyAdded(SelectedCourse selectedCourse) {
         
         for(CourseSection currentCourse : selectedCourseSections) {   
-            if(selectedCourse.getCourse().getCourseName().equals( currentCourse.getCourse().getCourseName()) )
+            if( currentCourse.getSectionCode().contains(selectedCourse.getCourse().getCourseName()) )
                 return false;
         }
         return true;

@@ -13,7 +13,7 @@ public class Transcript{
     private List <CourseGrade> takenCourses;
     DatabaseManager databasemanager = DatabaseManager.getInstance();
 
-    public Transcript(List <CourseGrade> takendCourses){
+    public Transcript(List <CourseGrade> takenCourses){
         this.takenCourses = takenCourses;
     }
 
