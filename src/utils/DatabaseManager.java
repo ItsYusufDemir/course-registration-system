@@ -10,12 +10,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import javax.sql.rowset.spi.TransactionalWriter;
+
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import models.Advisor;
 import models.Course;
 import models.Student;
+import models.Transcript;
 import models.User;
 
 public class DatabaseManager  {
@@ -150,7 +154,20 @@ public class DatabaseManager  {
         writeFile("data/courses.json", getJsonString(courseList));
         writeFile("data/students.json", getJsonString(studentList));
         writeFile("data/advisors.json", getJsonString(advisorList));
+
+        saveTranscriptsToDatabase();
+
+
     }    
+
+    private void saveTranscriptsToDatabase() {
+        for(int i = 0; i < studentList.size(); i++){
+            List<Transcript> transcript = new ArrayList<Transcript>();
+            transcript.add(studentList.get(i).getTranscript());
+            
+            writeFile("data/transcripts/" + studentList.get(i).getUserId() + ".json", getJsonString(transcript));
+        }
+    }
 
     public List<Student> fetchAdvisedStudents(Advisor advisor) {
         List<Student> studentsOfAdvisor = new ArrayList<Student>();
@@ -181,18 +198,10 @@ public class DatabaseManager  {
     }
 
 
-    /*
-    TODO:Do we need this? should we read transcripts from files?
+   
 
-    public Transcript getTranskript(String studentNumber) {
-        
-        String jsonString = readFile("data/transcripts/" + studentNumber + ".json");
-
-        List<Transcript> transcriptList = jsonToList(jsonString, User.class);
-
-        return transcriptList.get(0);
-    }
-    */
+   
+    
 
 
     
