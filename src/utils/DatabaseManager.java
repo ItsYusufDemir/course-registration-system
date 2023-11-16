@@ -53,7 +53,7 @@ public class DatabaseManager  {
 
         try {
 
-            getJsonString(studentList);
+            
 
 
         } catch (Exception e) {
@@ -63,6 +63,8 @@ public class DatabaseManager  {
         }
 
     }
+
+
 
     public String readFile(String relativePath) {
 

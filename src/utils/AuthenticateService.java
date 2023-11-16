@@ -1,42 +1,29 @@
 package utils;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import models.User;
 
 public class AuthenticateService {
-    
-    public User authenticateUser(String userID, String password){
-        
+
+    public User authenticateUser(String userID, String password) {
+
         DatabaseManager database = DatabaseManager.getInstance();
-        List <User> users = null; 
-        users = database.getUsers();
+        List<User> users = new ArrayList<>();
 
-        if(users == null){
-            return null;
-        }
-        else{
+        users.addAll(database.getStudents());
+        users.addAll(database.getAdvisors());
 
-            for(User user : users){
-                
-                if(user.getPassword().equals(password) && user.getUserId().equals(userID)){
-                    return user;
-                }
-                else{
-                    return null;
-
-                }
+        for (User user : users) {
+            if (user.checkCredentials(userID, password)) {
+                return user;
             }
+
         }
+
         return null;
 
-        
     }
-
-
-
-
-
-
-
 
 }

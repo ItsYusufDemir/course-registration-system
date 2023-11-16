@@ -39,6 +39,7 @@ public class AdvisorController {
 
     public void denyCourse(Student student, SelectedCourse selectedCourse) {
         currentAdvisor.rejectCourse(student, selectedCourse);
+        selectedCourse.getCourseSection().decrementStudentCount();
     }
 
 

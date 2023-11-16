@@ -6,12 +6,11 @@ import java.util.*;
 
 public class Transcript{
 
-
     public Transcript() {
     }
     
     private List <CourseGrade> takenCourses;
-    DatabaseManager databasemanager = DatabaseManager.getInstance();
+    
 
     public Transcript(List <CourseGrade> takenCourses){
         this.takenCourses = takenCourses;
@@ -62,13 +61,7 @@ public class Transcript{
         this.takenCourses = takenCourses;
     }
 
-    public DatabaseManager getDatabasemanager() {
-        return databasemanager;
-    }
-
-    public void setDatabasemanager(DatabaseManager databasemanager) {
-        this.databasemanager = databasemanager;
-    }
+    
 
     
     
