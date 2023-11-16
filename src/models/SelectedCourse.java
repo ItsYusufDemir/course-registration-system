@@ -19,7 +19,8 @@ public class SelectedCourse {
         this.status = status;
     }
 
-    public boolean isApproved() {
+    /* 
+    public boolean mayitbeApproved() {
         if (status == CourseStatus.APPROVED) {
             return true;
         } 
@@ -27,6 +28,7 @@ public class SelectedCourse {
             return false;
         }
     }
+    */
 
     public Course getCourse() {
         return course;

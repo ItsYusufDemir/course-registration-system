@@ -7,6 +7,7 @@ import controllers.StudentController;
 import models.Course;
 import models.SelectedCourse;
 import models.Student;
+import utils.DatabaseManager;
 import models.CourseSection;
 
 public class CLIStudent {
@@ -22,11 +23,12 @@ public class CLIStudent {
     public CLIStudent(Student student){
         currentStudent = student;
         StudentController = new StudentController(currentStudent);
+        scanner = new Scanner(System.in);
     }
 
     public void menuPage(){
 
-        scanner = new Scanner(System.in);
+        //scanner = new Scanner(System.in);
 
         System.out.println(
             " Menu\n" +
@@ -134,6 +136,7 @@ public class CLIStudent {
         }
         else if(str.equals("b")){
             myCoursesPage(courses);
+            DatabaseManager.getInstance().saveToDatabase();
         }
         else if(str.equals("q")){
             System.exit(0); 
@@ -185,10 +188,11 @@ public class CLIStudent {
     }
 
     private ArrayList<Integer> convertCourseSelectionInputToInt(String string){
-        string = string.substring(1);
+        string = string.substring(2);
         int strLength = string.length();
         String tempString = "";
         ArrayList<Integer> courseCodeIntArray = new ArrayList<Integer>();
+
         for(int i = 0; i < strLength; i++){
             if(string.charAt(i) == ' '){
                 courseCodeIntArray.add(Integer.parseInt(tempString));
@@ -197,6 +201,7 @@ public class CLIStudent {
                 tempString += string.charAt(i);
             }
         }
+        courseCodeIntArray.add(Integer.parseInt(tempString));
         return courseCodeIntArray;
     }
 
@@ -221,8 +226,10 @@ public class CLIStudent {
         selectedCourseSections = new ArrayList<CourseSection>();
         for(SelectedCourse course : student.getSelectedCourses()){
             i++;
-            System.out.println(i + ". " + course.getCourseSection().getSectionCode() + "\t" + course.getCourse().getCourseName() + "\t" + course.getCourseSection() + "\t" + course.getStatus());
-            selectedCourseSections.add(course.getCourseSection());
+            if(course.getCourseSection() != null) {
+                System.out.println(i + ". " + course.getCourseSection().getSectionCode() + "\t" + course.getCourse().getCourseName() + "\t" + course.getCourseSection() + "\t" + course.getStatus());
+                selectedCourseSections.add(course.getCourseSection());
+            }
         }
     }
 }

@@ -27,6 +27,7 @@ public class StudentController{
         List<SelectedCourse> selectedCourses =  currentStudent.getSelectedCourses();
         for (SelectedCourse selectedCourse : selectedCourses) {
             selectedCourse.setStatus(CourseStatus.PENDING);
+            selectedCourse.getCourseSection().incrementStudentCount();
         }
         currentStudent.setSelectedCourses(selectedCourses);
     }

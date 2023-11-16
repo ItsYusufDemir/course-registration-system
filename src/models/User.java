@@ -31,8 +31,12 @@ public abstract class User implements Showable, Saveable {
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public boolean checkCredentials(String userId, String password) {
+        if (this.userId.equals(userId) && this.password.equals(password)) 
+            return true;
+        
+        
+        return false;
     }
 
     public String getFirstName() {
@@ -59,5 +63,17 @@ public abstract class User implements Showable, Saveable {
         this.status = status;
     }
 
-    public String getPassword() { return password; }
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    
 }
