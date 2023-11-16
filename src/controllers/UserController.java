@@ -1,5 +1,6 @@
-package models;
+package controllers;
 
+import models.User;
 import utils.AuthenticateService;
 
 public class UserController {
