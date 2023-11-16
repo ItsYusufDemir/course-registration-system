@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -149,7 +151,14 @@ public class DatabaseManager  {
     }    
 
     public List<Student> fetchAdvisedStudents(Advisor advisor) {
-        return studentList.stream().filter(student -> student.getAdvisorOfStudent().getUserId().equals(advisor.getUserId())).collect(Collectors.toList());
+        List<Student> studentsOfAdvisor = new ArrayList<Student>();
+         for (int i = 0; i < studentList.size(); i++) {
+            if(Objects.equals(studentList.get(i).getAdvisorOfStudent().getUserId(), advisor.getUserId())){
+                studentsOfAdvisor.add(studentList.get(i));
+            }
+        }
+        return studentsOfAdvisor;
+        //return studentList.stream().filter(student -> student.getAdvisorOfStudent().getUserId().equals(advisor.getUserId())).collect(Collectors.toList());
     }
 
     //Getters

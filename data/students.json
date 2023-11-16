@@ -1,1 +1,341 @@
-[{"userId":"john.doe","password":"password123","firstName":"Yusuf","lastName":"Demir","status":true,"email":"john.doe@example.com","schoolNumber":123456,"identityNumber":"ABC123","selectedCourses":[{"course":{"courseCredit":3,"courseECTS":6,"courseName":"Introduction to Computer Science","courseCode":"CSCI101","prerequisiteInformation":{"prerequisiteOfCourses":[{"courseCredit":3,"courseECTS":6,"courseName":"Mathematics I","courseCode":"MATH101","prerequisiteInformation":null,"courseSections":[],"isCompulsory":true},{"courseCredit":3,"courseECTS":6,"courseName":"Physics I","courseCode":"PHYS101","prerequisiteInformation":null,"courseSections":[],"isCompulsory":true}],"prerequisiteForCourses":[{"courseCredit":3,"courseECTS":6,"courseName":"Introduction to Computer Science","courseCode":"CSCI101","prerequisiteInformation":null,"courseSections":[],"isCompulsory":true}]},"courseSections":[{"studentCapacity":30,"lecturerName":"Dr. Smith","sectionTime":"10:00 AM - 12:00 PM","sectionDate":"Monday","classroom":"Room 101","sectionCode":"CS101-01","studentCountInsideCourseSection":15}],"isCompulsory":true},"status":"DRAFT"}],"advisorOfStudent":{"userId":"john.doe","password":"password123","firstName":"Tombiş","lastName":"Ağaoğlu","status":true},"approvalStatus":"DONE","transcript":{"takenCourses":[{"course":{"courseCredit":3,"courseECTS":6,"courseName":"Introduction to Computer Science","courseCode":"CSCI101","prerequisiteInformation":{"prerequisiteOfCourses":[{"courseCredit":3,"courseECTS":6,"courseName":"Mathematics I","courseCode":"MATH101","prerequisiteInformation":null,"courseSections":[],"isCompulsory":true},{"courseCredit":3,"courseECTS":6,"courseName":"Physics I","courseCode":"PHYS101","prerequisiteInformation":null,"courseSections":[],"isCompulsory":true}],"prerequisiteForCourses":[{"courseCredit":3,"courseECTS":6,"courseName":"Introduction to Computer Science","courseCode":"CSCI101","prerequisiteInformation":null,"courseSections":[],"isCompulsory":true}]},"courseSections":[{"studentCapacity":30,"lecturerName":"Dr. Smith","sectionTime":"10:00 AM - 12:00 PM","sectionDate":"Monday","classroom":"Room 101","sectionCode":"CS101-01","studentCountInsideCourseSection":15}],"isCompulsory":true},"letterGrade":"A","courseResult":"PASSED"}]}},{"userId":"john.doe","password":"password123","firstName":"John","lastName":"Doe","status":true,"email":"john.doe@example.com","schoolNumber":123456,"identityNumber":"ABC123","selectedCourses":[{"course":{"courseCredit":3,"courseECTS":6,"courseName":"Introduction to Computer Science","courseCode":"CSCI101","prerequisiteInformation":{"prerequisiteOfCourses":[{"courseCredit":3,"courseECTS":6,"courseName":"Mathematics I","courseCode":"MATH101","prerequisiteInformation":null,"courseSections":[],"isCompulsory":true},{"courseCredit":3,"courseECTS":6,"courseName":"Physics I","courseCode":"PHYS101","prerequisiteInformation":null,"courseSections":[],"isCompulsory":true}],"prerequisiteForCourses":[{"courseCredit":3,"courseECTS":6,"courseName":"Introduction to Computer Science","courseCode":"CSCI101","prerequisiteInformation":null,"courseSections":[],"isCompulsory":true}]},"courseSections":[{"studentCapacity":30,"lecturerName":"Dr. Smith","sectionTime":"10:00 AM - 12:00 PM","sectionDate":"Monday","classroom":"Room 101","sectionCode":"CS101-01","studentCountInsideCourseSection":15}],"isCompulsory":true},"status":"DRAFT"}],"advisorOfStudent":null,"approvalStatus":"DONE","transcript":{"takenCourses":[{"course":{"courseCredit":3,"courseECTS":6,"courseName":"Introduction to Computer Science","courseCode":"CSCI101","prerequisiteInformation":{"prerequisiteOfCourses":[{"courseCredit":3,"courseECTS":6,"courseName":"Mathematics I","courseCode":"MATH101","prerequisiteInformation":null,"courseSections":[],"isCompulsory":true},{"courseCredit":3,"courseECTS":6,"courseName":"Physics I","courseCode":"PHYS101","prerequisiteInformation":null,"courseSections":[],"isCompulsory":true}],"prerequisiteForCourses":[{"courseCredit":3,"courseECTS":6,"courseName":"Introduction to Computer Science","courseCode":"CSCI101","prerequisiteInformation":null,"courseSections":[],"isCompulsory":true}]},"courseSections":[{"studentCapacity":30,"lecturerName":"Dr. Smith","sectionTime":"10:00 AM - 12:00 PM","sectionDate":"Monday","classroom":"Room 101","sectionCode":"CS101-01","studentCountInsideCourseSection":15}],"isCompulsory":true},"letterGrade":"A","courseResult":"PASSED"}]}}]
+[
+  {
+    "userId": "admin",
+    "password": "admin",
+    "firstName": "Muhammed",
+    "lastName": "Demir",
+    "status": true,
+    "email": "john.doe@example.com",
+    "schoolNumber": 123456,
+    "identityNumber": "ABC123",
+    "selectedCourses": [{
+      "course": {
+        "courseCode": "CS101",
+        "courseName": "Introduction to Computer Science",
+        "courseCredit": 3
+      },
+      "status": "DRAFT",
+      "courseSection": {
+        "studentCapacity": 30,
+        "lecturerName": "Dr. Smith",
+        "sectionTime": "10:00 AM - 12:00 PM",
+        "sectionDate": "Monday",
+        "classroom": "Room 101",
+        "sectionCode": "CS101",
+        "studentCountInsideCourseSection": 15
+      }
+    },
+      {
+        "course": {
+          "courseCode": "MATH101",
+          "courseName": "Mathematics I",
+          "courseCredit": 3
+        },
+        "status": "DRAFT",
+        "courseSection": {
+          "studentCapacity": 30,
+          "lecturerName": "Dr. Smith",
+          "sectionTime": "10:00 AM - 12:00 PM",
+          "sectionDate": "Monday",
+          "classroom": "Room 101",
+          "sectionCode": "CS101",
+          "studentCountInsideCourseSection": 15
+        }
+      }],
+    "advisorOfStudent": {"userId":"admin2","password":"admin2","firstName":"Tombiş","lastName":"Ağaoğlu","status":true},
+    "approvalStatus": "DONE",
+    "transcript": {
+      "takenCourses": [
+        {
+          "course": {
+            "courseCredit": 3,
+            "courseECTS": 6,
+            "courseName": "Introduction to Computer Science",
+            "courseCode": "CSCI101",
+            "prerequisiteInformation": {
+              "prerequisiteOfCourses": [
+                {
+                  "courseCredit": 3,
+                  "courseECTS": 6,
+                  "courseName": "Mathematics I",
+                  "courseCode": "MATH101",
+                  "prerequisiteInformation": null,
+                  "courseSections": [],
+                  "isCompulsory": true
+                },
+                {
+                  "courseCredit": 3,
+                  "courseECTS": 6,
+                  "courseName": "Physics I",
+                  "courseCode": "PHYS101",
+                  "prerequisiteInformation": null,
+                  "courseSections": [],
+                  "isCompulsory": true
+                }
+              ],
+              "prerequisiteForCourses": [
+                {
+                  "courseCredit": 3,
+                  "courseECTS": 6,
+                  "courseName": "Introduction to Computer Science",
+                  "courseCode": "CSCI101",
+                  "prerequisiteInformation": null,
+                  "courseSections": [],
+                  "isCompulsory": true
+                }
+              ]
+            },
+            "courseSections": [
+              {
+                "studentCapacity": 30,
+                "lecturerName": "Dr. Smith",
+                "sectionTime": "10:00 AM - 12:00 PM",
+                "sectionDate": "Monday",
+                "classroom": "Room 101",
+                "sectionCode": "CS101-01",
+                "studentCountInsideCourseSection": 15
+              }
+            ],
+            "isCompulsory": true
+          },
+          "letterGrade": "A",
+          "courseResult": "PASSED"
+        }
+      ],
+      "passedCourses": [
+        {
+          "courseCredit": 3,
+          "courseECTS": 6,
+          "courseName": "Introduction to Computer Science",
+          "courseCode": "CSCI101",
+          "prerequisiteInformation": {
+            "prerequisiteOfCourses": [
+              {
+                "courseCredit": 3,
+                "courseECTS": 6,
+                "courseName": "Mathematics I",
+                "courseCode": "MATH101",
+                "prerequisiteInformation": null,
+                "courseSections": [],
+                "isCompulsory": true
+              },
+              {
+                "courseCredit": 3,
+                "courseECTS": 6,
+                "courseName": "Physics I",
+                "courseCode": "PHYS101",
+                "prerequisiteInformation": null,
+                "courseSections": [],
+                "isCompulsory": true
+              }
+            ],
+            "prerequisiteForCourses": [
+              {
+                "courseCredit": 3,
+                "courseECTS": 6,
+                "courseName": "Introduction to Computer Science",
+                "courseCode": "CSCI101",
+                "prerequisiteInformation": null,
+                "courseSections": [],
+                "isCompulsory": true
+              }
+            ]
+          },
+          "courseSections": [
+            {
+              "studentCapacity": 30,
+              "lecturerName": "Dr. Smith",
+              "sectionTime": "10:00 AM - 12:00 PM",
+              "sectionDate": "Monday",
+              "classroom": "Room 101",
+              "sectionCode": "CS101-01",
+              "studentCountInsideCourseSection": 15
+            }
+          ],
+          "isCompulsory": true
+        }
+      ]
+    }
+  },
+  {
+    "userId": "john.doe",
+    "password": "password123",
+    "firstName": "John",
+    "lastName": "Doe",
+    "status": true,
+    "email": "john.doe@example.com",
+    "schoolNumber": 123456,
+    "identityNumber": "ABC123",
+    "selectedCourses": [
+      {
+        "course": {
+          "courseCredit": 3,
+          "courseECTS": 6,
+          "courseName": "Introduction to Computer Science",
+          "courseCode": "CSCI101",
+          "prerequisiteInformation": {
+            "prerequisiteOfCourses": [
+              {
+                "courseCredit": 3,
+                "courseECTS": 6,
+                "courseName": "Mathematics I",
+                "courseCode": "MATH101",
+                "prerequisiteInformation": null,
+                "courseSections": [],
+                "isCompulsory": true
+              },
+              {
+                "courseCredit": 3,
+                "courseECTS": 6,
+                "courseName": "Physics I",
+                "courseCode": "PHYS101",
+                "prerequisiteInformation": null,
+                "courseSections": [],
+                "isCompulsory": true
+              }
+            ],
+            "prerequisiteForCourses": [
+              {
+                "courseCredit": 3,
+                "courseECTS": 6,
+                "courseName": "Introduction to Computer Science",
+                "courseCode": "CSCI101",
+                "prerequisiteInformation": null,
+                "courseSections": [],
+                "isCompulsory": true
+              }
+            ]
+          },
+          "courseSections": [
+            {
+              "studentCapacity": 30,
+              "lecturerName": "Dr. Smith",
+              "sectionTime": "10:00 AM - 12:00 PM",
+              "sectionDate": "Monday",
+              "classroom": "Room 101",
+              "sectionCode": "CS101-01",
+              "studentCountInsideCourseSection": 15
+            }
+          ],
+          "isCompulsory": true
+        },
+        "status": "DRAFT",
+        "courseSection": null
+      }
+    ],
+    "advisorOfStudent": {"userId":"admin2","password":"admin2","firstName":"Tombiş","lastName":"Ağaoğlu","status":true},
+    "approvalStatus": "DONE",
+    "transcript": {
+      "takenCourses": [
+        {
+          "course": {
+            "courseCredit": 3,
+            "courseECTS": 6,
+            "courseName": "Introduction to Computer Science",
+            "courseCode": "CSCI101",
+            "prerequisiteInformation": {
+              "prerequisiteOfCourses": [
+                {
+                  "courseCredit": 3,
+                  "courseECTS": 6,
+                  "courseName": "Mathematics I",
+                  "courseCode": "MATH101",
+                  "prerequisiteInformation": null,
+                  "courseSections": [],
+                  "isCompulsory": true
+                },
+                {
+                  "courseCredit": 3,
+                  "courseECTS": 6,
+                  "courseName": "Physics I",
+                  "courseCode": "PHYS101",
+                  "prerequisiteInformation": null,
+                  "courseSections": [],
+                  "isCompulsory": true
+                }
+              ],
+              "prerequisiteForCourses": [
+                {
+                  "courseCredit": 3,
+                  "courseECTS": 6,
+                  "courseName": "Introduction to Computer Science",
+                  "courseCode": "CSCI101",
+                  "prerequisiteInformation": null,
+                  "courseSections": [],
+                  "isCompulsory": true
+                }
+              ]
+            },
+            "courseSections": [
+              {
+                "studentCapacity": 30,
+                "lecturerName": "Dr. Smith",
+                "sectionTime": "10:00 AM - 12:00 PM",
+                "sectionDate": "Monday",
+                "classroom": "Room 101",
+                "sectionCode": "CS101-01",
+                "studentCountInsideCourseSection": 15
+              }
+            ],
+            "isCompulsory": true
+          },
+          "letterGrade": "A",
+          "courseResult": "PASSED"
+        }
+      ],
+      "passedCourses": [
+        {
+          "courseCredit": 3,
+          "courseECTS": 6,
+          "courseName": "Introduction to Computer Science",
+          "courseCode": "CSCI101",
+          "prerequisiteInformation": {
+            "prerequisiteOfCourses": [
+              {
+                "courseCredit": 3,
+                "courseECTS": 6,
+                "courseName": "Mathematics I",
+                "courseCode": "MATH101",
+                "prerequisiteInformation": null,
+                "courseSections": [],
+                "isCompulsory": true
+              },
+              {
+                "courseCredit": 3,
+                "courseECTS": 6,
+                "courseName": "Physics I",
+                "courseCode": "PHYS101",
+                "prerequisiteInformation": null,
+                "courseSections": [],
+                "isCompulsory": true
+              }
+            ],
+            "prerequisiteForCourses": [
+              {
+                "courseCredit": 3,
+                "courseECTS": 6,
+                "courseName": "Introduction to Computer Science",
+                "courseCode": "CSCI101",
+                "prerequisiteInformation": null,
+                "courseSections": [],
+                "isCompulsory": true
+              }
+            ]
+          },
+          "courseSections": [
+            {
+              "studentCapacity": 30,
+              "lecturerName": "Dr. Smith",
+              "sectionTime": "10:00 AM - 12:00 PM",
+              "sectionDate": "Monday",
+              "classroom": "Room 101",
+              "sectionCode": "CS101-01",
+              "studentCountInsideCourseSection": 15
+            }
+          ],
+          "isCompulsory": true
+        }
+      ]
+    }
+  }
+]
