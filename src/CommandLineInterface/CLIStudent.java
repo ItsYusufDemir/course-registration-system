@@ -145,9 +145,9 @@ public class CLIStudent {
         }
     }
 
-    public boolean checkIfAlreadyAdded(SelectedCourse selectedCourse){
+    public boolean checkIfAlreadyAdded(SelectedCourse selectedCourse) {
         
-        for(CourseSection currentCourse : selectedCourseSections){   
+        for(CourseSection currentCourse : selectedCourseSections) {   
             if(selectedCourse.getCourse().getCourseName().equals( currentCourse.getCourse().getCourseName()) )
                 return false;
         }
@@ -206,11 +206,11 @@ public class CLIStudent {
         avaliableCourseSections = new ArrayList<SelectedCourse>();
         for(Course course : courses){
             i++;
-            sectionLength = course.getAvailableSections().size();
+            sectionLength = course.acquireAvailableSections().size();
             for(int j = 0; j< sectionLength; j++){
-                System.out.println(i + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t" + course.getAvailableSections().get(j) + "\t" + course.getCourseSections().get(j).getLecturerName() + "\t" + course.getCourseCredit());
+                System.out.println(i + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t" + course.acquireAvailableSections().get(j) + "\t" + course.getCourseSections().get(j).getLecturerName() + "\t" + course.getCourseCredit());
                 i++;
-                avaliableCourseSections.add(new SelectedCourse(currentStudent, course, course.getAvailableSections().get(j)));
+                avaliableCourseSections.add(new SelectedCourse(course, course.acquireAvailableSections().get(j)));
             }
         }
     }

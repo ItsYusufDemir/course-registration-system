@@ -27,7 +27,7 @@ public class Course {
         return prerequisiteInformation.checkPrequisiteCoursePassed(student, this);
     }
 
-    public List<CourseSection> gitAvailableSections() {
+    public List<CourseSection> acquireAvailableSections() {
         List<CourseSection> availableCourseSections = new ArrayList<>();
         for (CourseSection courseSection: courseSections) {
             if(courseSection.checkAvailibilty()){

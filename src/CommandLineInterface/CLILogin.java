@@ -1,8 +1,9 @@
 package CommandLineInterface;
 import java.util.Scanner;
 import java.util.Stack;
+
+import controllers.UserController;
 import models.User;
-import models.UserController;
 //import controllers.UserController;
 
 public class CLILogin {
