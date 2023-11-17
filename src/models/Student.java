@@ -45,11 +45,20 @@ public class Student extends User {
     public List<Course> listAvailableCourses(){
 
         List<Course> allCourses = DatabaseManager.getInstance().getCourses();
-        List<Course> passedCourses = transcript.getPassedCourses(); // muho
+        List<Course> passedCourses = transcript.acquirePassedCourses(); // muho
         
         List<Course> availableCourses = new ArrayList<Course>();
+
         for (Course currentCourse : allCourses) {
-            if (!(passedCourses.contains(currentCourse)) && currentCourse.checkPrerequisite(this)) {
+
+            boolean doesContain = false;
+            for(int i = 0; i < passedCourses.size(); i++){
+                if(passedCourses.get(i).getCourseCode().equals(currentCourse.getCourseCode())){
+                    doesContain = true;
+                }
+            }
+
+            if (!(doesContain) && currentCourse.checkPrerequisite(this)) {
                 availableCourses.add(currentCourse);
             }
         }

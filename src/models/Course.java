@@ -26,6 +26,9 @@ public class Course {
     public boolean checkPrerequisite(Student student){
         if(prerequisiteInformation == null)
             return true;
+        else if (prerequisiteInformation.getPrerequisiteOfCourses().isEmpty())
+            return true;
+        else
         return prerequisiteInformation.checkPrequisiteCoursePassed(student, this);
     }
 

@@ -1,6 +1,8 @@
 package models;
 import java.util.List;
 
+import enums.CourseResult;
+
 public class Prerequisite {
 
     private List<Course> prerequisiteOfCourses; // elimizdeki dersin prerequisite derslerini tutuyor
@@ -15,22 +17,22 @@ public class Prerequisite {
     }
 
     public boolean checkPrequisiteCoursePassed(Student student, Course course){
-        boolean isPrerequisiteCoursesPasses = true;
+        boolean isPrerequisiteCoursesPasses = false;
         int lengthPrerequisiteCourses = course.getPrerequisiteInformation().prerequisiteOfCourses.size();
-
-        List<Course> passedCourses = student.getTranscript().getPassedCourses();
+        
+        List<Course> passedCourses = student.getTranscript().acquirePassedCourses();
         int lengthPassedCourses = passedCourses.size();
+       
 
         for(int i = 0; i < lengthPrerequisiteCourses; i++){
-            isPrerequisiteCoursesPasses = student.getTranscript().getPassedCourses().contains(prerequisiteOfCourses.get(i));
             for(int j = 0; j < lengthPassedCourses; j++){
                 isPrerequisiteCoursesPasses = prerequisiteOfCourses.get(i).getCourseCode().equals(passedCourses.get(j).getCourseCode());
-                if(!isPrerequisiteCoursesPasses){
-                    break;
+                if(isPrerequisiteCoursesPasses){
+                    return true;
                 }
             }
         }
-        return isPrerequisiteCoursesPasses;
+        return false;
     }
 
     public List<Course> getPrerequisiteOfCourses() {

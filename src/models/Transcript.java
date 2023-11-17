@@ -21,7 +21,7 @@ public class Transcript{
     }
 
     
-    public List<Course> getPassedCourses() {
+    public List<Course> acquirePassedCourses() {
         List<Course> passedCourses = new ArrayList<Course>();
         for (CourseGrade course : takenCourses) {
             if (course.getCourseResult() == CourseResult.PASSED) {
