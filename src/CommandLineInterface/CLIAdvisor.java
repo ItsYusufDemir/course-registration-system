@@ -7,6 +7,7 @@ import enums.CourseStatus;
 import models.Advisor;
 import models.SelectedCourse;
 import models.Student;
+import utils.DatabaseManager;
 
 public class CLIAdvisor {
 
@@ -151,10 +152,12 @@ public class CLIAdvisor {
 
                    if (choice2.equals("a")) {
                        advisorController.approveCourse(student,courses.get(choiceInt - 1));
+                       DatabaseManager.getInstance().saveToDatabase();
                        System.out.println();
                    }
                    else if (choice2.equals("d")) {
                        advisorController.denyCourse(student,courses.get(choiceInt - 1));
+                       DatabaseManager.getInstance().saveToDatabase();
                    }
                    else if (choice.equals("b")) {
                        return false;
