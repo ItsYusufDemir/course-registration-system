@@ -2,12 +2,7 @@ package models;
 
 import utils.DatabaseManager;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.*;
-
-public class TranscriptTest {
+public class TranscriptTest_GPA {
 
     @org.junit.Test
     public void calculateGPA() {
