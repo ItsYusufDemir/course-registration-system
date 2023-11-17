@@ -74,7 +74,7 @@ public class CLIAdvisor {
         System.out.println("   ------      -----");
 
         for (int i = 0; i < students.size(); i++) {
-            System.out.println((i + 1) + ". " + students.get(i).getSchoolNumber() + "    " + students.get(i).getFirstName() + " " + students.get(i).getLastName());
+            System.out.println((i + 1) + ". " + students.get(i).getUserId() + "    " + students.get(i).getFirstName() + " " + students.get(i).getLastName());
         }
 
         System.out.println("Select Student:");

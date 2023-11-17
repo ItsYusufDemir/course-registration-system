@@ -13,7 +13,6 @@ import models.CourseSection;
 
 public class CLIStudent {
 
-    Stack<Integer> pageNumeber;
     private Scanner scanner;
     private controllers.StudentController StudentController;
     private Student currentStudent;

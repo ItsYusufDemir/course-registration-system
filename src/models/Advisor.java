@@ -10,11 +10,9 @@ import utils.DatabaseManager;
 
 public class Advisor extends User {
 
-
     public Advisor() {
         
     }
-
 
     public Advisor(String userID, String userName , String password, String firstName, String lastName, boolean status) {
         super(userID, password, firstName, lastName, status);
@@ -24,7 +22,6 @@ public class Advisor extends User {
         CLIAdvisor cliAdviser = new CLIAdvisor(this);
         cliAdviser.menuPage();
     }
-
 
     public void acceptCourse(Student student, SelectedCourse selectedCourse) {
 
@@ -57,6 +54,5 @@ public class Advisor extends User {
     public List<Student> fetchAdvisedStudents() {
         return DatabaseManager.getInstance().fetchAdvisedStudents(this);
     }
-
 }
 
