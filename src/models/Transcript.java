@@ -6,11 +6,10 @@ import java.util.*;
 
 public class Transcript{
 
+    private List <CourseGrade> takenCourses;
+
     public Transcript() {
     }
-    
-    private List <CourseGrade> takenCourses;
-    
 
     public Transcript(List <CourseGrade> takenCourses){
         this.takenCourses = takenCourses;
@@ -20,7 +19,6 @@ public class Transcript{
         takenCourses.add(new CourseGrade(course, null, CourseResult.ACTIVE));
     }
 
-    
     public List<Course> getPassedCourses() {
         List<Course> passedCourses = new ArrayList<Course>();
         for (CourseGrade course : takenCourses) {
