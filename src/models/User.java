@@ -1,9 +1,8 @@
 package models;
 
 import interfaces.Showable;
-import interfaces.Saveable;
 
-public abstract class User implements Showable, Saveable {
+public abstract class User implements Showable {
     private String userId;
     private String password;
     private String firstName;
@@ -27,16 +26,16 @@ public abstract class User implements Showable, Saveable {
         return;
     }
 
-    public String getUserId() {
-        return userId;
+    public boolean checkCredentials(String userId, String password) {
+        if (this.userId.equals(userId) && this.password.equals(password))
+            return true;
+
+
+        return false;
     }
 
-    public boolean checkCredentials(String userId, String password) {
-        if (this.userId.equals(userId) && this.password.equals(password)) 
-            return true;
-        
-        
-        return false;
+    public String getUserId() {
+        return userId;
     }
 
     public String getFirstName() {

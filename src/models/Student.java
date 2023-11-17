@@ -10,7 +10,6 @@ import utils.DatabaseManager;
 // not sure about access identifier
 public class Student extends User {
     private String email;
-    private int schoolNumber;
     private String identityNumber;
     private List<SelectedCourse> selectedCourses;
     private Advisor advisorOfStudent;
@@ -23,10 +22,9 @@ public class Student extends User {
 
     // not sure about constructor access identifier
     
-    public Student(String userID, String password, String firstName, String lastName, boolean status, String email, int schoolNumber, String identityNumber, List<SelectedCourse> selectedCourses, Advisor advisorOfStudent, ApprovalStatus approvalStatus, Transcript transcript) {
+    public Student(String userID, String password, String firstName, String lastName, boolean status, String email, String identityNumber, List<SelectedCourse> selectedCourses, Advisor advisorOfStudent, ApprovalStatus approvalStatus, Transcript transcript) {
         super(userID, password, firstName, lastName, status);
         this.email = email;
-        this.schoolNumber = schoolNumber;
         this.identityNumber = identityNumber;
         this.selectedCourses = selectedCourses; // BUNU BEN MI OLUSTURUCAM
         this.advisorOfStudent = advisorOfStudent;
@@ -70,10 +68,6 @@ public class Student extends User {
     }
      */
 
-    public void setApprovalStatus(ApprovalStatus approvalStatus) {
-        this.approvalStatus = approvalStatus;
-    }
-
     public void addNewCourse(SelectedCourse selectedCourse){
         selectedCourses.add(selectedCourse);
     }
@@ -82,20 +76,23 @@ public class Student extends User {
         selectedCourses.remove(selectedCourse);
     }
 
+    @Override
+    public void getMyPage() {
+        CLIStudent cliStudent = new CLIStudent(this);
+        cliStudent.menuPage();
+    }
+
+
+    public void setApprovalStatus(ApprovalStatus approvalStatus) {
+        this.approvalStatus = approvalStatus;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getSchoolNumber() {
-        return schoolNumber;
-    }
-
-    public void setSchoolNumber(int schoolNumber) {
-        this.schoolNumber = schoolNumber;
     }
 
     public String getIdentityNumber() {
@@ -124,13 +121,5 @@ public class Student extends User {
 
     public void setTranscript(Transcript transcript) {
         this.transcript = transcript;
-    }
-
-    
-
-    @Override
-    public void getMyPage() {
-        CLIStudent cliStudent = new CLIStudent(this);
-        cliStudent.menuPage();
     }
 }
