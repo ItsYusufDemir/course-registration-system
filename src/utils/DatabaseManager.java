@@ -43,7 +43,7 @@ public class DatabaseManager  {
         //Read the JSON files and convert them to list of objects
         courseList = jsonToCourseList(readFile("data/courses.json"));
         advisorList = jsonToAdvisorList(readFile("data/advisors.json"));
-        studentList = jsonToStudentList(readFile("data/students.json"));
+        studentList = jsonToStudentList(readFile("data/test.json"));
 
     }
 
