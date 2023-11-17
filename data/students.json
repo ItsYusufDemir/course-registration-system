@@ -1,5 +1,5 @@
 [
-    [
+    
         {
             "userId": "150120011",
             "password": "123",
@@ -1114,8 +1114,8 @@
                     }
                 ]
             }
-        }
-    ],
+        },
+
     {
         "userId": "150120032",
         "password": "123",
@@ -1524,7 +1524,7 @@
             ]
         }
     },
-    [
+    
         {
             "userId": "150120031",
             "password": "123",
@@ -2639,321 +2639,424 @@
                     }
                 ]
             }
-        }
-    ],
-    {
-        "userId": "150120068",
-        "password": "abc",
-        "firstName": "Yüksel",
-        "lastName": "Atar",
-        "status": true,
-        "email": "atar.yuksel@marun.edu.tr",
-        
-        "identityNumber": "11111111322",
-        "selectedCourses": [
-            {
-                "course": {
-                    "courseCredit": 5,
-                    "courseECTS": 5,
-                    "courseName": "Introduction to Signals and Systems",
-                    "courseCode": "CSE3048",
-                    "prerequisiteInformation": {
-                        "prerequisiteOfCourses": [
+        },
+        {
+            "userId": "150120184",
+            "password": "123",
+            "firstName": "Gizem",
+            "lastName": "Satan",
+            "status": false,
+            "email": "gizem.satan26@marun.edu.tr",
+            
+            "identityNumber": "33333353337",
+            "selectedCourses": [
+                {
+                    "course": {
+                        "courseCredit": 5,
+                        "courseECTS": 5,
+                        "courseName": "Introduction to Signals and Systems",
+                        "courseCode": "CSE3048",
+                        "prerequisiteInformation": {
+                            "prerequisiteOfCourses": [
+                                {
+                                    "courseCredit": 4,
+                                    "courseECTS": 4,
+                                    "courseName": "Differental Equations",
+                                    "courseCode": "MATH2055",
+                                    "prerequisiteInformation": null,
+                                    "courseSections": [
+                                        {
+                                            "studentCapacity": 100,
+                                            "lecturerName": "Dr. Anderson",
+                                            "sectionTime": "2:00 PM - 4:00 PM",
+                                            "sectionDate": "Tuesday",
+                                            "classroom": "Room 301",
+                                            "sectionCode": "MATH2055.1",
+                                            "studentCountInsideCourseSection": 0
+                                        }
+                                    ],
+                                    "isCompulsory": true
+                                }
+                            ],
+                            "prerequisiteForCourses": null
+                        },
+                        "courseSections": [
                             {
-                                "courseCredit": 4,
-                                "courseECTS": 4,
-                                "courseName": "Differental Equations",
-                                "courseCode": "MATH2055",
-                                "prerequisiteInformation": null,
-                                "courseSections": [
-                                    {
-                                        "studentCapacity": 100,
-                                        "lecturerName": "Dr. Anderson",
-                                        "sectionTime": "2:00 PM - 4:00 PM",
-                                        "sectionDate": "Tuesday",
-                                        "classroom": "Room 301",
-                                        "sectionCode": "MATH2055.1",
-                                        "studentCountInsideCourseSection": 0
-                                    }
-                                ],
-                                "isCompulsory": true
+                                "studentCapacity": 5,
+                                "lecturerName": "Dr. Harris",
+                                "sectionTime": "1:00 PM - 3:00 PM",
+                                "sectionDate": "Wednesday",
+                                "classroom": "Room 401",
+                                "sectionCode": "CSE3048.1",
+                                "studentCountInsideCourseSection": 6
                             }
                         ],
-                        "prerequisiteForCourses": null
+                        "isCompulsory": true
                     },
-                    "courseSections": [
-                        {
-                            "studentCapacity": 5,
-                            "lecturerName": "Dr. Harris",
-                            "sectionTime": "1:00 PM - 3:00 PM",
-                            "sectionDate": "Wednesday",
-                            "classroom": "Room 401",
-                            "sectionCode": "CSE3048.1",
-                            "studentCountInsideCourseSection": 6
-                        }
-                    ],
-                    "isCompulsory": true
+                    "status": "APPROVED",
+                    "courseSection": {
+                        "studentCapacity": 5,
+                        "lecturerName": "Dr. Harris",
+                        "sectionTime": "1:00 PM - 3:00 PM",
+                        "sectionDate": "Wednesday",
+                        "classroom": "Room 401",
+                        "sectionCode": "CSE3048.1",
+                        "studentCountInsideCourseSection": 6
+                    }
                 },
-                "status": "APPROVED",
-                "courseSection": {
-                    "studentCapacity": 5,
-                    "lecturerName": "Dr. Harris",
-                    "sectionTime": "1:00 PM - 3:00 PM",
-                    "sectionDate": "Wednesday",
-                    "classroom": "Room 401",
-                    "sectionCode": "CSE3048.1",
-                    "studentCountInsideCourseSection": 6
+                {
+                    "course": {
+                        "courseCredit": 7,
+                        "courseECTS": 7,
+                        "courseName": "Operating Systems",
+                        "courseCode": "CSE3033",
+                        "prerequisiteInformation": {
+                            "prerequisiteOfCourses": [
+                                {
+                                    "courseCredit": 7,
+                                    "courseECTS": 7,
+                                    "courseName": "Data Structures",
+                                    "courseCode": "CSE2225",
+                                    "prerequisiteInformation": null,
+                                    "courseSections": [
+                                        {
+                                            "studentCapacity": 100,
+                                            "lecturerName": "Borahan Tümer",
+                                            "sectionTime": "2:00 PM - 4:00 PM",
+                                            "sectionDate": "Tuesday",
+                                            "classroom": "Room 301",
+                                            "sectionCode": "CSE2225.1",
+                                            "studentCountInsideCourseSection": 0
+                                        }
+                                    ],
+                                    "isCompulsory": true
+                                }
+                            ],
+                            "prerequisiteForCourses": null
+                        },
+                        "courseSections": [
+                            {
+                                "studentCapacity": 100,
+                                "lecturerName": "Ali Haydar Özer",
+                                "sectionTime": "10:00 AM - 12:00 PM",
+                                "sectionDate": "Monday",
+                                "classroom": "Room 101",
+                                "sectionCode": "CSE3033.1",
+                                "studentCountInsideCourseSection": 8
+                            }
+                        ],
+                        "isCompulsory": true
+                    },
+                    "status": "APPROVED",
+                    "courseSection": {
+                        "studentCapacity": 100,
+                        "lecturerName": "Ali Haydar Özer",
+                        "sectionTime": "10:00 AM - 12:00 PM",
+                        "sectionDate": "Monday",
+                        "classroom": "Room 101",
+                        "sectionCode": "CSE3033.1",
+                        "studentCountInsideCourseSection": 8
+                    }
                 }
+            ],
+            "advisorOfStudent": {
+                "userId": "111111",
+                "password": "advisor",
+                "firstName": "Murat Can",
+                "lastName": "Ganiz",
+                "status": true
             },
-            {
-                "course": {
-                    "courseCredit": 7,
-                    "courseECTS": 7,
-                    "courseName": "Operating Systems",
-                    "courseCode": "CSE3033",
-                    "prerequisiteInformation": {
-                        "prerequisiteOfCourses": [
-                            {
-                                "courseCredit": 7,
-                                "courseECTS": 7,
-                                "courseName": "Data Structures",
-                                "courseCode": "CSE2225",
-                                "prerequisiteInformation": null,
-                                "courseSections": [
+            "approvalStatus": "PENDING",
+            "transcript": {
+                "takenCourses": [
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Data Structures",
+                            "courseCode": "CSE2225",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Borahan Tümer",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE2225.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "AA",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 6,
+                            "courseECTS": 6,
+                            "courseName": "Computer Programming II",
+                            "courseCode": "CSE1242",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 60,
+                                    "lecturerName": "Mustafa Ağaoğlu",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE1242.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "BB",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Systems Programming",
+                            "courseCode": "CSE2138",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Betül Boz",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE2138.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "BA",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 5,
+                            "courseECTS": 5,
+                            "courseName": "Probability and Statistics",
+                            "courseCode": "STAT2253",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Müjdat",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE2225.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "CC",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Differental Equations",
+                            "courseCode": "MATH2055",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Dr. Anderson",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "MATH2055.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "CC",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 6,
+                            "courseECTS": 6,
+                            "courseName": "Dicrete Computational Structures",
+                            "courseCode": "CSE2023",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Mustafa Ağaoğlu",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE2023.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "CC",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Database Systems",
+                            "courseCode": "CSE3055",
+                            "prerequisiteInformation": {
+                                "prerequisiteOfCourses": [
                                     {
-                                        "studentCapacity": 100,
-                                        "lecturerName": "Borahan Tümer",
-                                        "sectionTime": "2:00 PM - 4:00 PM",
-                                        "sectionDate": "Tuesday",
-                                        "classroom": "Room 301",
-                                        "sectionCode": "CSE2225.1",
-                                        "studentCountInsideCourseSection": 0
+                                        "courseCredit": 7,
+                                        "courseECTS": 7,
+                                        "courseName": "Data Structures",
+                                        "courseCode": "CSE2225",
+                                        "prerequisiteInformation": null,
+                                        "courseSections": [
+                                            {
+                                                "studentCapacity": 100,
+                                                "lecturerName": "Borahan Tümer",
+                                                "sectionTime": "2:00 PM - 4:00 PM",
+                                                "sectionDate": "Tuesday",
+                                                "classroom": "Room 301",
+                                                "sectionCode": "CSE2225.1",
+                                                "studentCountInsideCourseSection": 0
+                                            }
+                                        ],
+                                        "isCompulsory": true
                                     }
                                 ],
-                                "isCompulsory": true
-                            }
-                        ],
-                        "prerequisiteForCourses": null
+                                "prerequisiteForCourses": null
+                            },
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Mustafa Ağaoğlu",
+                                    "sectionTime": "10:00 AM - 12:00 PM",
+                                    "sectionDate": "Friday",
+                                    "classroom": "Room 701",
+                                    "sectionCode": "CSE3055.1",
+                                    "studentCountInsideCourseSection": 8
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": null,
+                        "courseResult": "ACTIVE"
                     },
-                    "courseSections": [
-                        {
-                            "studentCapacity": 100,
-                            "lecturerName": "Ali Haydar Özer",
-                            "sectionTime": "10:00 AM - 12:00 PM",
-                            "sectionDate": "Monday",
-                            "classroom": "Room 101",
-                            "sectionCode": "CSE3033.1",
-                            "studentCountInsideCourseSection": 8
-                        }
-                    ],
-                    "isCompulsory": true
-                },
-                "status": "APPROVED",
-                "courseSection": {
-                    "studentCapacity": 100,
-                    "lecturerName": "Ali Haydar Özer",
-                    "sectionTime": "10:00 AM - 12:00 PM",
-                    "sectionDate": "Monday",
-                    "classroom": "Room 101",
-                    "sectionCode": "CSE3033.1",
-                    "studentCountInsideCourseSection": 8
-                }
+                    {
+                        "course": {
+                            "courseCredit": 5,
+                            "courseECTS": 5,
+                            "courseName": "Introduction to Signals and Systems",
+                            "courseCode": "CSE3048",
+                            "prerequisiteInformation": {
+                                "prerequisiteOfCourses": [
+                                    {
+                                        "courseCredit": 4,
+                                        "courseECTS": 4,
+                                        "courseName": "Differental Equations",
+                                        "courseCode": "MATH2055",
+                                        "prerequisiteInformation": null,
+                                        "courseSections": [
+                                            {
+                                                "studentCapacity": 100,
+                                                "lecturerName": "Dr. Anderson",
+                                                "sectionTime": "2:00 PM - 4:00 PM",
+                                                "sectionDate": "Tuesday",
+                                                "classroom": "Room 301",
+                                                "sectionCode": "MATH2055.1",
+                                                "studentCountInsideCourseSection": 0
+                                            }
+                                        ],
+                                        "isCompulsory": true
+                                    }
+                                ],
+                                "prerequisiteForCourses": null
+                            },
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 5,
+                                    "lecturerName": "Dr. Harris",
+                                    "sectionTime": "1:00 PM - 3:00 PM",
+                                    "sectionDate": "Wednesday",
+                                    "classroom": "Room 401",
+                                    "sectionCode": "CSE3048.1",
+                                    "studentCountInsideCourseSection": 6
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": null,
+                        "courseResult": "ACTIVE"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Operating Systems",
+                            "courseCode": "CSE3033",
+                            "prerequisiteInformation": {
+                                "prerequisiteOfCourses": [
+                                    {
+                                        "courseCredit": 7,
+                                        "courseECTS": 7,
+                                        "courseName": "Data Structures",
+                                        "courseCode": "CSE2225",
+                                        "prerequisiteInformation": null,
+                                        "courseSections": [
+                                            {
+                                                "studentCapacity": 100,
+                                                "lecturerName": "Borahan Tümer",
+                                                "sectionTime": "2:00 PM - 4:00 PM",
+                                                "sectionDate": "Tuesday",
+                                                "classroom": "Room 301",
+                                                "sectionCode": "CSE2225.1",
+                                                "studentCountInsideCourseSection": 0
+                                            }
+                                        ],
+                                        "isCompulsory": true
+                                    }
+                                ],
+                                "prerequisiteForCourses": null
+                            },
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Ali Haydar Özer",
+                                    "sectionTime": "10:00 AM - 12:00 PM",
+                                    "sectionDate": "Monday",
+                                    "classroom": "Room 101",
+                                    "sectionCode": "CSE3033.1",
+                                    "studentCountInsideCourseSection": 8
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": null,
+                        "courseResult": "ACTIVE"
+                    }
+                ]
             }
-        ],
-        "advisorOfStudent": {
-            "userId": "111112",
-            "password": "advisor",
-            "firstName": "Betül",
-            "lastName": "Boz",
-            "status": true
-        },
-        "approvalStatus": "PENDING",
-        "transcript": {
-            "takenCourses": [
-                {
-                    "course": {
-                        "courseCredit": 7,
-                        "courseECTS": 7,
-                        "courseName": "Data Structures",
-                        "courseCode": "CSE2225",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Borahan Tümer",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "CSE2225.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "AA",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 6,
-                        "courseECTS": 6,
-                        "courseName": "Computer Programming II",
-                        "courseCode": "CSE1242",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 60,
-                                "lecturerName": "Mustafa Ağaoğlu",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "CSE1242.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "BB",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 7,
-                        "courseECTS": 7,
-                        "courseName": "Systems Programming",
-                        "courseCode": "CSE2138",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Betül Boz",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "CSE2138.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "BA",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 5,
-                        "courseECTS": 5,
-                        "courseName": "Probability and Statistics",
-                        "courseCode": "STAT2253",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Müjdat",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "CSE2225.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "CC",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 7,
-                        "courseECTS": 7,
-                        "courseName": "Differental Equations",
-                        "courseCode": "MATH2055",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Dr. Anderson",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "MATH2055.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "CC",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 6,
-                        "courseECTS": 6,
-                        "courseName": "Dicrete Computational Structures",
-                        "courseCode": "CSE2023",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Mustafa Ağaoğlu",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "CSE2023.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "CC",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 7,
-                        "courseECTS": 7,
-                        "courseName": "Database Systems",
-                        "courseCode": "CSE3055",
-                        "prerequisiteInformation": {
-                            "prerequisiteOfCourses": [
-                                {
-                                    "courseCredit": 7,
-                                    "courseECTS": 7,
-                                    "courseName": "Data Structures",
-                                    "courseCode": "CSE2225",
-                                    "prerequisiteInformation": null,
-                                    "courseSections": [
-                                        {
-                                            "studentCapacity": 100,
-                                            "lecturerName": "Borahan Tümer",
-                                            "sectionTime": "2:00 PM - 4:00 PM",
-                                            "sectionDate": "Tuesday",
-                                            "classroom": "Room 301",
-                                            "sectionCode": "CSE2225.1",
-                                            "studentCountInsideCourseSection": 0
-                                        }
-                                    ],
-                                    "isCompulsory": true
-                                }
-                            ],
-                            "prerequisiteForCourses": null
-                        },
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Mustafa Ağaoğlu",
-                                "sectionTime": "10:00 AM - 12:00 PM",
-                                "sectionDate": "Friday",
-                                "classroom": "Room 701",
-                                "sectionCode": "CSE3055.1",
-                                "studentCountInsideCourseSection": 8
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": null,
-                    "courseResult": "ACTIVE"
-                },
+        },{
+            "userId": "150120072",
+            "password": "123",
+            "firstName": "Veysel",
+            "lastName": "Satan",
+            "status": false,
+            "email": "veysel.satan26@marun.edu.tr",
+            
+            "identityNumber": "35333333337",
+            "selectedCourses": [
                 {
                     "course": {
                         "courseCredit": 5,
@@ -2997,8 +3100,16 @@
                         ],
                         "isCompulsory": true
                     },
-                    "letterGrade": null,
-                    "courseResult": "ACTIVE"
+                    "status": "APPROVED",
+                    "courseSection": {
+                        "studentCapacity": 5,
+                        "lecturerName": "Dr. Harris",
+                        "sectionTime": "1:00 PM - 3:00 PM",
+                        "sectionDate": "Wednesday",
+                        "classroom": "Room 401",
+                        "sectionCode": "CSE3048.1",
+                        "studentCountInsideCourseSection": 6
+                    }
                 },
                 {
                     "course": {
@@ -3043,563 +3154,718 @@
                         ],
                         "isCompulsory": true
                     },
-                    "letterGrade": null,
-                    "courseResult": "ACTIVE"
+                    "status": "APPROVED",
+                    "courseSection": {
+                        "studentCapacity": 100,
+                        "lecturerName": "Ali Haydar Özer",
+                        "sectionTime": "10:00 AM - 12:00 PM",
+                        "sectionDate": "Monday",
+                        "classroom": "Room 101",
+                        "sectionCode": "CSE3033.1",
+                        "studentCountInsideCourseSection": 8
+                    }
                 }
-            ]
+            ],
+            "advisorOfStudent": {
+                "userId": "111111",
+                "password": "advisor",
+                "firstName": "Murat Can",
+                "lastName": "Ganiz",
+                "status": true
+            },
+            "approvalStatus": "PENDING",
+            "transcript": {
+                "takenCourses": [
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Data Structures",
+                            "courseCode": "CSE2225",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Borahan Tümer",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE2225.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "AA",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 6,
+                            "courseECTS": 6,
+                            "courseName": "Computer Programming II",
+                            "courseCode": "CSE1242",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 60,
+                                    "lecturerName": "Mustafa Ağaoğlu",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE1242.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "BB",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Systems Programming",
+                            "courseCode": "CSE2138",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Betül Boz",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE2138.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "BA",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 5,
+                            "courseECTS": 5,
+                            "courseName": "Probability and Statistics",
+                            "courseCode": "STAT2253",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Müjdat",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE2225.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "CC",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Differental Equations",
+                            "courseCode": "MATH2055",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Dr. Anderson",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "MATH2055.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "CC",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 6,
+                            "courseECTS": 6,
+                            "courseName": "Dicrete Computational Structures",
+                            "courseCode": "CSE2023",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Mustafa Ağaoğlu",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE2023.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "CC",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Database Systems",
+                            "courseCode": "CSE3055",
+                            "prerequisiteInformation": {
+                                "prerequisiteOfCourses": [
+                                    {
+                                        "courseCredit": 7,
+                                        "courseECTS": 7,
+                                        "courseName": "Data Structures",
+                                        "courseCode": "CSE2225",
+                                        "prerequisiteInformation": null,
+                                        "courseSections": [
+                                            {
+                                                "studentCapacity": 100,
+                                                "lecturerName": "Borahan Tümer",
+                                                "sectionTime": "2:00 PM - 4:00 PM",
+                                                "sectionDate": "Tuesday",
+                                                "classroom": "Room 301",
+                                                "sectionCode": "CSE2225.1",
+                                                "studentCountInsideCourseSection": 0
+                                            }
+                                        ],
+                                        "isCompulsory": true
+                                    }
+                                ],
+                                "prerequisiteForCourses": null
+                            },
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Mustafa Ağaoğlu",
+                                    "sectionTime": "10:00 AM - 12:00 PM",
+                                    "sectionDate": "Friday",
+                                    "classroom": "Room 701",
+                                    "sectionCode": "CSE3055.1",
+                                    "studentCountInsideCourseSection": 8
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": null,
+                        "courseResult": "ACTIVE"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 5,
+                            "courseECTS": 5,
+                            "courseName": "Introduction to Signals and Systems",
+                            "courseCode": "CSE3048",
+                            "prerequisiteInformation": {
+                                "prerequisiteOfCourses": [
+                                    {
+                                        "courseCredit": 4,
+                                        "courseECTS": 4,
+                                        "courseName": "Differental Equations",
+                                        "courseCode": "MATH2055",
+                                        "prerequisiteInformation": null,
+                                        "courseSections": [
+                                            {
+                                                "studentCapacity": 100,
+                                                "lecturerName": "Dr. Anderson",
+                                                "sectionTime": "2:00 PM - 4:00 PM",
+                                                "sectionDate": "Tuesday",
+                                                "classroom": "Room 301",
+                                                "sectionCode": "MATH2055.1",
+                                                "studentCountInsideCourseSection": 0
+                                            }
+                                        ],
+                                        "isCompulsory": true
+                                    }
+                                ],
+                                "prerequisiteForCourses": null
+                            },
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 5,
+                                    "lecturerName": "Dr. Harris",
+                                    "sectionTime": "1:00 PM - 3:00 PM",
+                                    "sectionDate": "Wednesday",
+                                    "classroom": "Room 401",
+                                    "sectionCode": "CSE3048.1",
+                                    "studentCountInsideCourseSection": 6
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": null,
+                        "courseResult": "ACTIVE"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Operating Systems",
+                            "courseCode": "CSE3033",
+                            "prerequisiteInformation": {
+                                "prerequisiteOfCourses": [
+                                    {
+                                        "courseCredit": 7,
+                                        "courseECTS": 7,
+                                        "courseName": "Data Structures",
+                                        "courseCode": "CSE2225",
+                                        "prerequisiteInformation": null,
+                                        "courseSections": [
+                                            {
+                                                "studentCapacity": 100,
+                                                "lecturerName": "Borahan Tümer",
+                                                "sectionTime": "2:00 PM - 4:00 PM",
+                                                "sectionDate": "Tuesday",
+                                                "classroom": "Room 301",
+                                                "sectionCode": "CSE2225.1",
+                                                "studentCountInsideCourseSection": 0
+                                            }
+                                        ],
+                                        "isCompulsory": true
+                                    }
+                                ],
+                                "prerequisiteForCourses": null
+                            },
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Ali Haydar Özer",
+                                    "sectionTime": "10:00 AM - 12:00 PM",
+                                    "sectionDate": "Monday",
+                                    "classroom": "Room 101",
+                                    "sectionCode": "CSE3033.1",
+                                    "studentCountInsideCourseSection": 8
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": null,
+                        "courseResult": "ACTIVE"
+                    }
+                ]
+            }
+        },
+        {
+            "userId": "150120222",
+            "password": "123",
+            "firstName": "Kazım",
+            "lastName": "Kara",
+            "status": false,
+            "email": "kazım.kara@marun.edu.tr",
+            
+            "identityNumber": "33033303337",
+            "selectedCourses": [
+                {
+                    "course": {
+                        "courseCredit": 5,
+                        "courseECTS": 5,
+                        "courseName": "Introduction to Signals and Systems",
+                        "courseCode": "CSE3048",
+                        "prerequisiteInformation": {
+                            "prerequisiteOfCourses": [
+                                {
+                                    "courseCredit": 4,
+                                    "courseECTS": 4,
+                                    "courseName": "Differental Equations",
+                                    "courseCode": "MATH2055",
+                                    "prerequisiteInformation": null,
+                                    "courseSections": [
+                                        {
+                                            "studentCapacity": 100,
+                                            "lecturerName": "Dr. Anderson",
+                                            "sectionTime": "2:00 PM - 4:00 PM",
+                                            "sectionDate": "Tuesday",
+                                            "classroom": "Room 301",
+                                            "sectionCode": "MATH2055.1",
+                                            "studentCountInsideCourseSection": 0
+                                        }
+                                    ],
+                                    "isCompulsory": true
+                                }
+                            ],
+                            "prerequisiteForCourses": null
+                        },
+                        "courseSections": [
+                            {
+                                "studentCapacity": 5,
+                                "lecturerName": "Dr. Harris",
+                                "sectionTime": "1:00 PM - 3:00 PM",
+                                "sectionDate": "Wednesday",
+                                "classroom": "Room 401",
+                                "sectionCode": "CSE3048.1",
+                                "studentCountInsideCourseSection": 6
+                            }
+                        ],
+                        "isCompulsory": true
+                    },
+                    "status": "APPROVED",
+                    "courseSection": {
+                        "studentCapacity": 5,
+                        "lecturerName": "Dr. Harris",
+                        "sectionTime": "1:00 PM - 3:00 PM",
+                        "sectionDate": "Wednesday",
+                        "classroom": "Room 401",
+                        "sectionCode": "CSE3048.1",
+                        "studentCountInsideCourseSection": 6
+                    }
+                },
+                {
+                    "course": {
+                        "courseCredit": 7,
+                        "courseECTS": 7,
+                        "courseName": "Operating Systems",
+                        "courseCode": "CSE3033",
+                        "prerequisiteInformation": {
+                            "prerequisiteOfCourses": [
+                                {
+                                    "courseCredit": 7,
+                                    "courseECTS": 7,
+                                    "courseName": "Data Structures",
+                                    "courseCode": "CSE2225",
+                                    "prerequisiteInformation": null,
+                                    "courseSections": [
+                                        {
+                                            "studentCapacity": 100,
+                                            "lecturerName": "Borahan Tümer",
+                                            "sectionTime": "2:00 PM - 4:00 PM",
+                                            "sectionDate": "Tuesday",
+                                            "classroom": "Room 301",
+                                            "sectionCode": "CSE2225.1",
+                                            "studentCountInsideCourseSection": 0
+                                        }
+                                    ],
+                                    "isCompulsory": true
+                                }
+                            ],
+                            "prerequisiteForCourses": null
+                        },
+                        "courseSections": [
+                            {
+                                "studentCapacity": 100,
+                                "lecturerName": "Ali Haydar Özer",
+                                "sectionTime": "10:00 AM - 12:00 PM",
+                                "sectionDate": "Monday",
+                                "classroom": "Room 101",
+                                "sectionCode": "CSE3033.1",
+                                "studentCountInsideCourseSection": 8
+                            }
+                        ],
+                        "isCompulsory": true
+                    },
+                    "status": "APPROVED",
+                    "courseSection": {
+                        "studentCapacity": 100,
+                        "lecturerName": "Ali Haydar Özer",
+                        "sectionTime": "10:00 AM - 12:00 PM",
+                        "sectionDate": "Monday",
+                        "classroom": "Room 101",
+                        "sectionCode": "CSE3033.1",
+                        "studentCountInsideCourseSection": 8
+                    }
+                }
+            ],
+            "advisorOfStudent": {
+                "userId": "111112",
+                "password": "advisor",
+                "firstName": "Murat Can",
+                "lastName": "Ganiz",
+                "status": true
+            },
+            "approvalStatus": "PENDING",
+            "transcript": {
+                "takenCourses": [
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Data Structures",
+                            "courseCode": "CSE2225",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Borahan Tümer",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE2225.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "AA",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 6,
+                            "courseECTS": 6,
+                            "courseName": "Computer Programming II",
+                            "courseCode": "CSE1242",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 60,
+                                    "lecturerName": "Mustafa Ağaoğlu",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE1242.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "BB",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Systems Programming",
+                            "courseCode": "CSE2138",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Betül Boz",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE2138.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "BA",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 5,
+                            "courseECTS": 5,
+                            "courseName": "Probability and Statistics",
+                            "courseCode": "STAT2253",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Müjdat",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE2225.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "CC",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Differental Equations",
+                            "courseCode": "MATH2055",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Dr. Anderson",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "MATH2055.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "CC",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 6,
+                            "courseECTS": 6,
+                            "courseName": "Dicrete Computational Structures",
+                            "courseCode": "CSE2023",
+                            "prerequisiteInformation": null,
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Mustafa Ağaoğlu",
+                                    "sectionTime": "2:00 PM - 4:00 PM",
+                                    "sectionDate": "Tuesday",
+                                    "classroom": "Room 301",
+                                    "sectionCode": "CSE2023.1",
+                                    "studentCountInsideCourseSection": 0
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": "CC",
+                        "courseResult": "PASSED"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Database Systems",
+                            "courseCode": "CSE3055",
+                            "prerequisiteInformation": {
+                                "prerequisiteOfCourses": [
+                                    {
+                                        "courseCredit": 7,
+                                        "courseECTS": 7,
+                                        "courseName": "Data Structures",
+                                        "courseCode": "CSE2225",
+                                        "prerequisiteInformation": null,
+                                        "courseSections": [
+                                            {
+                                                "studentCapacity": 100,
+                                                "lecturerName": "Borahan Tümer",
+                                                "sectionTime": "2:00 PM - 4:00 PM",
+                                                "sectionDate": "Tuesday",
+                                                "classroom": "Room 301",
+                                                "sectionCode": "CSE2225.1",
+                                                "studentCountInsideCourseSection": 0
+                                            }
+                                        ],
+                                        "isCompulsory": true
+                                    }
+                                ],
+                                "prerequisiteForCourses": null
+                            },
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Mustafa Ağaoğlu",
+                                    "sectionTime": "10:00 AM - 12:00 PM",
+                                    "sectionDate": "Friday",
+                                    "classroom": "Room 701",
+                                    "sectionCode": "CSE3055.1",
+                                    "studentCountInsideCourseSection": 8
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": null,
+                        "courseResult": "ACTIVE"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 5,
+                            "courseECTS": 5,
+                            "courseName": "Introduction to Signals and Systems",
+                            "courseCode": "CSE3048",
+                            "prerequisiteInformation": {
+                                "prerequisiteOfCourses": [
+                                    {
+                                        "courseCredit": 4,
+                                        "courseECTS": 4,
+                                        "courseName": "Differental Equations",
+                                        "courseCode": "MATH2055",
+                                        "prerequisiteInformation": null,
+                                        "courseSections": [
+                                            {
+                                                "studentCapacity": 100,
+                                                "lecturerName": "Dr. Anderson",
+                                                "sectionTime": "2:00 PM - 4:00 PM",
+                                                "sectionDate": "Tuesday",
+                                                "classroom": "Room 301",
+                                                "sectionCode": "MATH2055.1",
+                                                "studentCountInsideCourseSection": 0
+                                            }
+                                        ],
+                                        "isCompulsory": true
+                                    }
+                                ],
+                                "prerequisiteForCourses": null
+                            },
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 5,
+                                    "lecturerName": "Dr. Harris",
+                                    "sectionTime": "1:00 PM - 3:00 PM",
+                                    "sectionDate": "Wednesday",
+                                    "classroom": "Room 401",
+                                    "sectionCode": "CSE3048.1",
+                                    "studentCountInsideCourseSection": 6
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": null,
+                        "courseResult": "ACTIVE"
+                    },
+                    {
+                        "course": {
+                            "courseCredit": 7,
+                            "courseECTS": 7,
+                            "courseName": "Operating Systems",
+                            "courseCode": "CSE3033",
+                            "prerequisiteInformation": {
+                                "prerequisiteOfCourses": [
+                                    {
+                                        "courseCredit": 7,
+                                        "courseECTS": 7,
+                                        "courseName": "Data Structures",
+                                        "courseCode": "CSE2225",
+                                        "prerequisiteInformation": null,
+                                        "courseSections": [
+                                            {
+                                                "studentCapacity": 100,
+                                                "lecturerName": "Borahan Tümer",
+                                                "sectionTime": "2:00 PM - 4:00 PM",
+                                                "sectionDate": "Tuesday",
+                                                "classroom": "Room 301",
+                                                "sectionCode": "CSE2225.1",
+                                                "studentCountInsideCourseSection": 0
+                                            }
+                                        ],
+                                        "isCompulsory": true
+                                    }
+                                ],
+                                "prerequisiteForCourses": null
+                            },
+                            "courseSections": [
+                                {
+                                    "studentCapacity": 100,
+                                    "lecturerName": "Ali Haydar Özer",
+                                    "sectionTime": "10:00 AM - 12:00 PM",
+                                    "sectionDate": "Monday",
+                                    "classroom": "Room 101",
+                                    "sectionCode": "CSE3033.1",
+                                    "studentCountInsideCourseSection": 8
+                                }
+                            ],
+                            "isCompulsory": true
+                        },
+                        "letterGrade": null,
+                        "courseResult": "ACTIVE"
+                    }
+                ]
+            }
         }
-    }, {
-        "userId": "150120262",
-        "password": "abc",
-        "firstName": "Veysel",
-        "lastName": "Konuk",
-        "status": true,
-        "email": "veysellll@marun.edu.tr",
         
-        "identityNumber": "1111112636",
-        "selectedCourses":[] ,
-        "advisorOfStudent": {
-            "xpşp": "111112",
-            "password": "advisor",
-            "firstName": "Betül",
-            "lastName": "Boz",
-            "status": true
-        },
-        "approvalStatus": "PENDING",
-        "transcript": {
-            "takenCourses": [
-                {
-                    "course": {
-                        "courseCredit": 7,
-                        "courseECTS": 7,
-                        "courseName": "Data Structures",
-                        "courseCode": "CSE2225",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Borahan Tümer",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "CSE2225.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "AA",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 7,
-                        "courseECTS": 7,
-                        "courseName": "Systems Programming",
-                        "courseCode": "CSE2138",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Betül Boz",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "CSE2138.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "BA",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 5,
-                        "courseECTS": 5,
-                        "courseName": "Probability and Statistics",
-                        "courseCode": "STAT2253",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Müjdat",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "CSE2225.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "CC",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 7,
-                        "courseECTS": 7,
-                        "courseName": "Differental Equations",
-                        "courseCode": "MATH2055",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Dr. Anderson",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "MATH2055.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "CC",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 6,
-                        "courseECTS": 6,
-                        "courseName": "Dicrete Computational Structures",
-                        "courseCode": "CSE2023",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Mustafa Ağaoğlu",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "CSE2023.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "CC",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 7,
-                        "courseECTS": 7,
-                        "courseName": "Database Systems",
-                        "courseCode": "CSE3055",
-                        "prerequisiteInformation": {
-                            "prerequisiteOfCourses": [
-                                {
-                                    "courseCredit": 7,
-                                    "courseECTS": 7,
-                                    "courseName": "Data Structures",
-                                    "courseCode": "CSE2225",
-                                    "prerequisiteInformation": null,
-                                    "courseSections": [
-                                        {
-                                            "studentCapacity": 100,
-                                            "lecturerName": "Borahan Tümer",
-                                            "sectionTime": "2:00 PM - 4:00 PM",
-                                            "sectionDate": "Tuesday",
-                                            "classroom": "Room 301",
-                                            "sectionCode": "CSE2225.1",
-                                            "studentCountInsideCourseSection": 0
-                                        }
-                                    ],
-                                    "isCompulsory": true
-                                }
-                            ],
-                            "prerequisiteForCourses": null
-                        },
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Mustafa Ağaoğlu",
-                                "sectionTime": "10:00 AM - 12:00 PM",
-                                "sectionDate": "Friday",
-                                "classroom": "Room 701",
-                                "sectionCode": "CSE3055.1",
-                                "studentCountInsideCourseSection": 8
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": null,
-                    "courseResult": "ACTIVE"
-                },
-                {
-                    "course": {
-                        "courseCredit": 5,
-                        "courseECTS": 5,
-                        "courseName": "Introduction to Signals and Systems",
-                        "courseCode": "CSE3048",
-                        "prerequisiteInformation": {
-                            "prerequisiteOfCourses": [
-                                {
-                                    "courseCredit": 4,
-                                    "courseECTS": 4,
-                                    "courseName": "Differental Equations",
-                                    "courseCode": "MATH2055",
-                                    "prerequisiteInformation": null,
-                                    "courseSections": [
-                                        {
-                                            "studentCapacity": 100,
-                                            "lecturerName": "Dr. Anderson",
-                                            "sectionTime": "2:00 PM - 4:00 PM",
-                                            "sectionDate": "Tuesday",
-                                            "classroom": "Room 301",
-                                            "sectionCode": "MATH2055.1",
-                                            "studentCountInsideCourseSection": 0
-                                        }
-                                    ],
-                                    "isCompulsory": true
-                                }
-                            ],
-                            "prerequisiteForCourses": null
-                        },
-                        "courseSections": [
-                            {
-                                "studentCapacity": 5,
-                                "lecturerName": "Dr. Harris",
-                                "sectionTime": "1:00 PM - 3:00 PM",
-                                "sectionDate": "Wednesday",
-                                "classroom": "Room 401",
-                                "sectionCode": "CSE3048.1",
-                                "studentCountInsideCourseSection": 6
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": null,
-                    "courseResult": "ACTIVE"
-                },
-                {
-                    "course": {
-                        "courseCredit": 7,
-                        "courseECTS": 7,
-                        "courseName": "Operating Systems",
-                        "courseCode": "CSE3033",
-                        "prerequisiteInformation": {
-                            "prerequisiteOfCourses": [
-                                {
-                                    "courseCredit": 7,
-                                    "courseECTS": 7,
-                                    "courseName": "Data Structures",
-                                    "courseCode": "CSE2225",
-                                    "prerequisiteInformation": null,
-                                    "courseSections": [
-                                        {
-                                            "studentCapacity": 100,
-                                            "lecturerName": "Borahan Tümer",
-                                            "sectionTime": "2:00 PM - 4:00 PM",
-                                            "sectionDate": "Tuesday",
-                                            "classroom": "Room 301",
-                                            "sectionCode": "CSE2225.1",
-                                            "studentCountInsideCourseSection": 0
-                                        }
-                                    ],
-                                    "isCompulsory": true
-                                }
-                            ],
-                            "prerequisiteForCourses": null
-                        },
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Ali Haydar Özer",
-                                "sectionTime": "10:00 AM - 12:00 PM",
-                                "sectionDate": "Monday",
-                                "classroom": "Room 101",
-                                "sectionCode": "CSE3033.1",
-                                "studentCountInsideCourseSection": 8
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": null,
-                    "courseResult": "ACTIVE"
-                }
-            ]
-        }
-    }, {
-        "userId": "150120521",
-        "password": "abc",
-        "firstName": "Tunca",
-        "lastName": "kaya",
-        "status": true,
-        "email": "kayatunca@marun.edu.tr",
         
-        "identityNumber": "11111111221",
-        "selectedCourses":[] ,
-        "advisorOfStudent": {
-            "userId": "111112",
-            "password": "advisor",
-            "firstName": "Betül",
-            "lastName": "Boz",
-            "status": true
-        },
-        "approvalStatus": "PENDING",
-        "transcript": {
-            "takenCourses": [
-                
-                {
-                    "course": {
-                        "courseCredit": 6,
-                        "courseECTS": 6,
-                        "courseName": "Computer Programming II",
-                        "courseCode": "CSE1242",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 60,
-                                "lecturerName": "Mustafa Ağaoğlu",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "CSE1242.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "BB",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 7,
-                        "courseECTS": 7,
-                        "courseName": "Systems Programming",
-                        "courseCode": "CSE2138",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Betül Boz",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "CSE2138.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "BA",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 5,
-                        "courseECTS": 5,
-                        "courseName": "Probability and Statistics",
-                        "courseCode": "STAT2253",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Müjdat",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "CSE2225.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "CC",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 7,
-                        "courseECTS": 7,
-                        "courseName": "Differental Equations",
-                        "courseCode": "MATH2055",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Dr. Anderson",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "MATH2055.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "CC",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 6,
-                        "courseECTS": 6,
-                        "courseName": "Dicrete Computational Structures",
-                        "courseCode": "CSE2023",
-                        "prerequisiteInformation": null,
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Mustafa Ağaoğlu",
-                                "sectionTime": "2:00 PM - 4:00 PM",
-                                "sectionDate": "Tuesday",
-                                "classroom": "Room 301",
-                                "sectionCode": "CSE2023.1",
-                                "studentCountInsideCourseSection": 0
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": "CC",
-                    "courseResult": "PASSED"
-                },
-                {
-                    "course": {
-                        "courseCredit": 7,
-                        "courseECTS": 7,
-                        "courseName": "Database Systems",
-                        "courseCode": "CSE3055",
-                        "prerequisiteInformation": {
-                            "prerequisiteOfCourses": [
-                                {
-                                    "courseCredit": 7,
-                                    "courseECTS": 7,
-                                    "courseName": "Data Structures",
-                                    "courseCode": "CSE2225",
-                                    "prerequisiteInformation": null,
-                                    "courseSections": [
-                                        {
-                                            "studentCapacity": 100,
-                                            "lecturerName": "Borahan Tümer",
-                                            "sectionTime": "2:00 PM - 4:00 PM",
-                                            "sectionDate": "Tuesday",
-                                            "classroom": "Room 301",
-                                            "sectionCode": "CSE2225.1",
-                                            "studentCountInsideCourseSection": 0
-                                        }
-                                    ],
-                                    "isCompulsory": true
-                                }
-                            ],
-                            "prerequisiteForCourses": null
-                        },
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Mustafa Ağaoğlu",
-                                "sectionTime": "10:00 AM - 12:00 PM",
-                                "sectionDate": "Friday",
-                                "classroom": "Room 701",
-                                "sectionCode": "CSE3055.1",
-                                "studentCountInsideCourseSection": 8
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": null,
-                    "courseResult": "ACTIVE"
-                },
-                {
-                    "course": {
-                        "courseCredit": 5,
-                        "courseECTS": 5,
-                        "courseName": "Introduction to Signals and Systems",
-                        "courseCode": "CSE3048",
-                        "prerequisiteInformation": {
-                            "prerequisiteOfCourses": [
-                                {
-                                    "courseCredit": 4,
-                                    "courseECTS": 4,
-                                    "courseName": "Differental Equations",
-                                    "courseCode": "MATH2055",
-                                    "prerequisiteInformation": null,
-                                    "courseSections": [
-                                        {
-                                            "studentCapacity": 100,
-                                            "lecturerName": "Dr. Anderson",
-                                            "sectionTime": "2:00 PM - 4:00 PM",
-                                            "sectionDate": "Tuesday",
-                                            "classroom": "Room 301",
-                                            "sectionCode": "MATH2055.1",
-                                            "studentCountInsideCourseSection": 0
-                                        }
-                                    ],
-                                    "isCompulsory": true
-                                }
-                            ],
-                            "prerequisiteForCourses": null
-                        },
-                        "courseSections": [
-                            {
-                                "studentCapacity": 5,
-                                "lecturerName": "Dr. Harris",
-                                "sectionTime": "1:00 PM - 3:00 PM",
-                                "sectionDate": "Wednesday",
-                                "classroom": "Room 401",
-                                "sectionCode": "CSE3048.1",
-                                "studentCountInsideCourseSection": 6
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": null,
-                    "courseResult": "ACTIVE"
-                },
-                {
-                    "course": {
-                        "courseCredit": 7,
-                        "courseECTS": 7,
-                        "courseName": "Operating Systems",
-                        "courseCode": "CSE3033",
-                        "prerequisiteInformation": {
-                            "prerequisiteOfCourses": [
-                                {
-                                    "courseCredit": 7,
-                                    "courseECTS": 7,
-                                    "courseName": "Data Structures",
-                                    "courseCode": "CSE2225",
-                                    "prerequisiteInformation": null,
-                                    "courseSections": [
-                                        {
-                                            "studentCapacity": 100,
-                                            "lecturerName": "Borahan Tümer",
-                                            "sectionTime": "2:00 PM - 4:00 PM",
-                                            "sectionDate": "Tuesday",
-                                            "classroom": "Room 301",
-                                            "sectionCode": "CSE2225.1",
-                                            "studentCountInsideCourseSection": 0
-                                        }
-                                    ],
-                                    "isCompulsory": true
-                                }
-                            ],
-                            "prerequisiteForCourses": null
-                        },
-                        "courseSections": [
-                            {
-                                "studentCapacity": 100,
-                                "lecturerName": "Ali Haydar Özer",
-                                "sectionTime": "10:00 AM - 12:00 PM",
-                                "sectionDate": "Monday",
-                                "classroom": "Room 101",
-                                "sectionCode": "CSE3033.1",
-                                "studentCountInsideCourseSection": 8
-                            }
-                        ],
-                        "isCompulsory": true
-                    },
-                    "letterGrade": null,
-                    "courseResult": "ACTIVE"
-                }
-            ]
-        }
-    }
+    
 
     
 
