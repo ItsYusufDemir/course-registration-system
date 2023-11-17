@@ -285,12 +285,12 @@ public class CLIStudent {
      * }
      */
     private void listAvaliableCourseSections(List<Course> courses) {
-        int i = 0;
+        int i = 1;
         int sectionLength = 0;
         avaliableCourseSections = new ArrayList<SelectedCourse>();
 
         for (Course course : courses) {
-            i++;
+            
             sectionLength = course.acquireAvailableSections().size();
             
             for (int j = 0; j < sectionLength; j++) {

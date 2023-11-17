@@ -43,7 +43,7 @@ public class DatabaseManager  {
         //Read the JSON files and convert them to list of objects
         courseList = jsonToCourseList(readFile("data/courses.json"));
         advisorList = jsonToAdvisorList(readFile("data/advisors.json"));
-        studentList = jsonToStudentList(readFile("data/test.json"));
+        studentList = jsonToStudentList(readFile("data/students.json"));
 
     }
 
@@ -127,7 +127,7 @@ public class DatabaseManager  {
     
     //Save all instances to the database
     public void saveToDatabase() {
-        writeFile("data/courses.json", getJsonString(courseList));
+        //writeFile("data/courses.json", getJsonString(courseList));
         writeFile("data/students.json", getJsonString(studentList));
         writeFile("data/advisors.json", getJsonString(advisorList));
 

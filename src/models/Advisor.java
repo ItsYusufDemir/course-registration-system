@@ -3,6 +3,7 @@ import java.util.List;
 
 import CommandLineInterface.CLIAdvisor;
 import enums.ApprovalStatus;
+import enums.CourseResult;
 import enums.CourseStatus;
 import models.User;
 import utils.DatabaseManager;
@@ -24,10 +25,17 @@ public class Advisor extends User {
 
     public void acceptCourse(Student student, SelectedCourse selectedCourse) {
 
+        if(selectedCourse.getStatus() != CourseStatus.PENDING) {
+            System.out.println("This course is not pending for approval.");
+            return;
+        }
+
         selectedCourse.setStatus(CourseStatus.APPROVED);
 
-        student.getTranscript().getPassedCourses().add(selectedCourse.getCourse());
-        student.getSelectedCourses().remove(selectedCourse);
+        CourseGrade newCourse = new CourseGrade(selectedCourse.getCourse(), null, CourseResult.ACTIVE);
+
+        student.getTranscript().getTakenCourses().add(newCourse);
+        
 
         if(student.getSelectedCourses().size() == 0) {
             student.setApprovalStatus(ApprovalStatus.DONE);
