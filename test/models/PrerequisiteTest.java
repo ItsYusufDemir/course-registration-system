@@ -1,6 +1,5 @@
 package models;
 
-import org.testng.annotations.Test;
 import utils.DatabaseManager;
 
 import static org.junit.Assert.*;
