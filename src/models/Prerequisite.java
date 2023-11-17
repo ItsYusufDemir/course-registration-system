@@ -16,13 +16,18 @@ public class Prerequisite {
 
     public boolean checkPrequisiteCoursePassed(Student student, Course course){
         boolean isPrerequisiteCoursesPasses = true;
-        int lengthPrereguisiteCourses = course.getPrerequisiteInformation().prerequisiteOfCourses.size();
+        int lengthPrerequisiteCourses = course.getPrerequisiteInformation().prerequisiteOfCourses.size();
 
-        for(int i = 0; i < lengthPrereguisiteCourses; i++){
-            // passed courses'ı kedim hesaplamalıyım
+        List<Course> passedCourses = student.getTranscript().getPassedCourses();
+        int lengthPassedCourses = passedCourses.size();
+
+        for(int i = 0; i < lengthPrerequisiteCourses; i++){
             isPrerequisiteCoursesPasses = student.getTranscript().getPassedCourses().contains(prerequisiteOfCourses.get(i));
-            if(!isPrerequisiteCoursesPasses){
-                break;
+            for(int j = 0; j < lengthPassedCourses; j++){
+                isPrerequisiteCoursesPasses = prerequisiteOfCourses.get(i).getCourseCode().equals(passedCourses.get(j).getCourseCode());
+                if(!isPrerequisiteCoursesPasses){
+                    break;
+                }
             }
         }
         return isPrerequisiteCoursesPasses;
@@ -43,9 +48,6 @@ public class Prerequisite {
     public void setPrerequisiteForCourses(List<Course> prerequisiteForCourses) {
         this.prerequisiteForCourses = prerequisiteForCourses;
     }
-
-    
-
 }
 
 
