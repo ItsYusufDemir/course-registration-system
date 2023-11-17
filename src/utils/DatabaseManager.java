@@ -10,9 +10,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
-import javax.sql.rowset.spi.TransactionalWriter;
-
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -20,13 +17,11 @@ import models.Advisor;
 import models.Course;
 import models.Student;
 import models.Transcript;
-import models.User;
 
 public class DatabaseManager  {
 
     private ObjectMapper objectMapper = null;
     private static DatabaseManager instance = null;
-    private List<User> userList;
     private List<Course> courseList;
     private List<Student> studentList;
     private List<Advisor> advisorList;
@@ -45,34 +40,15 @@ public class DatabaseManager  {
         objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
 
-        courseList = jsonToCOurseList(readFile("data/courses.json"));
+        //Read the JSON files and convert them to list of objects
+        courseList = jsonToCourseList(readFile("data/courses.json"));
         advisorList = jsonToAdvisorList(readFile("data/advisors.json"));
         studentList = jsonToStudentList(readFile("data/students.json"));
 
-        
     }
 
 
-
-    //TODO: This function is for testing, it can be deleted later
-    public void test() {
-
-        try {
-
-            
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("HATA" +e);
-            // TODO: handle exception
-        }
-
-    }
-
-
-
-    public String readFile(String relativePath) {
+    private String readFile(String relativePath) {
 
         String filePath = relativePath;
         Path path = Paths.get(filePath);
@@ -110,7 +86,7 @@ public class DatabaseManager  {
             return Collections.emptyList(); // or throw an exception if needed
         }        
     }
-    private List<Course> jsonToCOurseList(String jsonString) {
+    private List<Course> jsonToCourseList(String jsonString) {
         
         try {
             return objectMapper.readValue(jsonString, new TypeReference<List<Course>>() {});
@@ -122,11 +98,11 @@ public class DatabaseManager  {
     }
 
     //Convert the list of objects to JSON String
-    public <T> String getJsonString(List<T> testObjects) {
+    private <T> String getJsonString(List<T> list) {
 
         String jsonString = "[]";
         try {
-            jsonString = objectMapper.writeValueAsString(testObjects);
+            jsonString = objectMapper.writeValueAsString(list);
         } catch (Exception e) {
             // TODO: handle exception
             System.out.println("Error while converting object to JSON String!");
@@ -136,10 +112,10 @@ public class DatabaseManager  {
         return jsonString;
     }
 
-    public static void writeFile(String relativePath, String jsonString) {
+    private static void writeFile(String relativePath, String jsonString) {
         
-        try (FileWriter writer = new FileWriter(relativePath)) {  //relative path can be like: "data/Course.json"
-            // Write the JSON string directly to the file
+        try (FileWriter writer = new FileWriter(relativePath)) {  
+            
             writer.write(jsonString);
 
         } catch (IOException e) {
@@ -155,12 +131,11 @@ public class DatabaseManager  {
         writeFile("data/students.json", getJsonString(studentList));
         writeFile("data/advisors.json", getJsonString(advisorList));
 
-        saveTranscriptsToDatabase();
-
-
+        saveTranscriptsToDatabase(); //Save transcripts to database
     }    
 
     private void saveTranscriptsToDatabase() {
+
         for(int i = 0; i < studentList.size(); i++){
             List<Transcript> transcript = new ArrayList<Transcript>();
             transcript.add(studentList.get(i).getTranscript());
@@ -169,7 +144,9 @@ public class DatabaseManager  {
         }
     }
 
+    //Get students of an advisor
     public List<Student> fetchAdvisedStudents(Advisor advisor) {
+
         List<Student> studentsOfAdvisor = new ArrayList<Student>();
          for (int i = 0; i < studentList.size(); i++) {
             if(Objects.equals(studentList.get(i).getAdvisorOfStudent().getUserId(), advisor.getUserId())){
@@ -177,7 +154,6 @@ public class DatabaseManager  {
             }
         }
         return studentsOfAdvisor;
-        //return studentList.stream().filter(student -> student.getAdvisorOfStudent().getUserId().equals(advisor.getUserId())).collect(Collectors.toList());
     }
 
     //Getters
@@ -193,9 +169,6 @@ public class DatabaseManager  {
         return advisorList;
     }
 
-     public List<User> getUsers() {
-        return userList;
-    }
 
 
    
