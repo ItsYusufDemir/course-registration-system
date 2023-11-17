@@ -133,7 +133,7 @@ public class CLIAdvisor {
        System.out.println("  ------        ------         ------       ------ ");
 
        for(int i = 0; i < courses.size() ; i++) {
-           System.out.println((i+1) + ". " + courses.get(i).getCourse().getCourseCode()  + "    " + courses.get(i).getCourse().getCourseName() + "    " + courses.get(i).getCourseSection() + "    " + courses.get(i).getStatus());
+           System.out.println((i+1) + ". " + courses.get(i).getCourse().getCourseCode()  + "    " + courses.get(i).getCourse().getCourseName() + "    " + courses.get(i).getCourseSection().getSectionCode() + "    " + courses.get(i).getStatus());
        }
 
            System.out.println("Press b to back");
