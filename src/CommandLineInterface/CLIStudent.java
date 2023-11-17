@@ -2,6 +2,8 @@ package CommandLineInterface;
 
 import java.util.*;
 
+import javax.xml.crypto.Data;
+
 import controllers.StudentController;
 import models.Course;
 import models.SelectedCourse;
@@ -17,6 +19,7 @@ public class CLIStudent {
     private Student currentStudent;
     private List<SelectedCourse> avaliableCourseSections;
     private List<CourseSection> selectedCourseSections;
+    private int numberOfAvaliableCourses;
 
     public CLIStudent(Student student) {
         currentStudent = student;
@@ -81,6 +84,7 @@ public class CLIStudent {
             if ((str.charAt(0) < 58 && str.charAt(0) > 47) && str.length() == 1) {
                 if (deleteCourse(str.charAt(0), currentStudent.getSelectedCourses())) {
                     System.out.println("Course deleted successfully");
+                    DatabaseManager.getInstance().saveToDatabase();
                 } else {
                     System.out.println("delete failed");
                 }
@@ -129,8 +133,9 @@ public class CLIStudent {
             DatabaseManager.getInstance().saveToDatabase();
             System.exit(0);
         } else if ((str.charAt(0) < 58 && str.charAt(0) > 47) && str.length() == 1) {
-            if (addCourse(str.charAt(0), currentStudent.listAvailableCourses())) {
+            if (addCourse(str.charAt(0))) {
                 System.out.println("Course added successfully");
+                DatabaseManager.getInstance().saveToDatabase();
             } else {
                 System.out.println("add failed");
             }
@@ -143,15 +148,18 @@ public class CLIStudent {
         }
     }
 
-    public boolean addCourse(char c, List<Course> courses) {
+    public boolean addCourse(char c) {
         int index = Integer.parseInt(c + "");
-        if (index <= courses.size() && checkIfAlreadyAdded(avaliableCourseSections.get(index - 1))) {
+        if (index <= numberOfAvaliableCourses && checkIfAlreadyAdded(avaliableCourseSections.get(index - 1))) {
             StudentController.addSelectedCourse(avaliableCourseSections.get(index - 1));
             return true;
         } else {
             return false;
         }
     }
+
+
+
 
     /*
      * public void addCoursePage(List<Course> courses) {
@@ -199,9 +207,12 @@ public class CLIStudent {
 
     public boolean checkIfAlreadyAdded(SelectedCourse selectedCourse) {
 
-        for (CourseSection currentCourse : selectedCourseSections) {
-            if (currentCourse.getSectionCode().contains(selectedCourse.getCourse().getCourseName()))
+        for (int i = 0; i < currentStudent.getSelectedCourses().size(); i++) {
+
+            if (selectedCourse.getCourse().getCourseCode().equals(currentStudent.getSelectedCourses().get(i).getCourse().getCourseCode())) {
                 return false;
+            }
+            
         }
         return true;
     }
@@ -278,15 +289,18 @@ public class CLIStudent {
         int i = 0;
         int sectionLength = 0;
         avaliableCourseSections = new ArrayList<SelectedCourse>();
+
         for (Course course : courses) {
             i++;
             sectionLength = course.acquireAvailableSections().size();
+            
             for (int j = 0; j < sectionLength; j++) {
                 System.out.println(i + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t"
-                        + course.acquireAvailableSections().get(j) + "\t"
+                        + course.acquireAvailableSections().get(j).getSectionCode() + "\t"
                         + course.getCourseSections().get(j).getLecturerName() + "\t" + course.getCourseCredit());
                 i++;
                 avaliableCourseSections.add(new SelectedCourse(course, course.acquireAvailableSections().get(j)));
+                numberOfAvaliableCourses++;
             }
         }
     }
@@ -297,8 +311,8 @@ public class CLIStudent {
         for (SelectedCourse course : student.getSelectedCourses()) {
             i++;
             if (course.getCourseSection() != null) {
-                System.out.println(i + ". " + course.getCourseSection().getSectionCode() + "\t"
-                        + course.getCourse().getCourseName() + "\t" + course.getCourseSection() + "\t"
+                System.out.println(i + ". " + course.getCourse().getCourseCode() + "\t"
+                        + course.getCourse().getCourseName() + "\t" + course.getCourseSection().getSectionCode() + "\t"
                         + course.getStatus());
                 selectedCourseSections.add(course.getCourseSection());
             }
