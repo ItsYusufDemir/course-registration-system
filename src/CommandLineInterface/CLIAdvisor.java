@@ -2,12 +2,9 @@ package CommandLineInterface;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Stack;
-
 import controllers.AdvisorController;
 import enums.CourseStatus;
 import models.Advisor;
-import models.Course;
 import models.SelectedCourse;
 import models.Student;
 
