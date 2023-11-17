@@ -211,7 +211,7 @@
       },
       {
         "course": {
-          "courseCredit": 3,
+          "courseCredit": 5,
           "courseECTS": 5,
           "courseName": "Formal Languages and Automata Theory",
           "courseCode": "CSE3264",
