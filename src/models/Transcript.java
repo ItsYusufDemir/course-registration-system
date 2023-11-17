@@ -26,8 +26,6 @@ public class Transcript{
                 passedCourses.add(course.getCourse());
             }
         }
-        
-        
         return passedCourses;
     }
     

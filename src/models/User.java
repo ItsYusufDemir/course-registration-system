@@ -29,8 +29,6 @@ public abstract class User implements Showable {
     public boolean checkCredentials(String userId, String password) {
         if (this.userId.equals(userId) && this.password.equals(password))
             return true;
-
-
         return false;
     }
 
