@@ -9,7 +9,6 @@
 /.idea
 /bin
 .vscode
-lib
 Testing.java
 out
 
