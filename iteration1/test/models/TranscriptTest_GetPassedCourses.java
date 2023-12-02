@@ -1,4 +1,4 @@
-package models;
+package iteration1.test.models;
 
 import iteration2.src.models.Course;
 import iteration2.src.models.Transcript;
