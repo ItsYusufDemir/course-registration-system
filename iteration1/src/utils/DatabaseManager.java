@@ -41,9 +41,9 @@ public class DatabaseManager  {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
 
         //Read the JSON files and convert them to list of objects
-        courseList = jsonToCourseList(readFile("iteration-1/data/courses.json"));
-        advisorList = jsonToAdvisorList(readFile("iteration-1/data/advisors.json"));
-        studentList = jsonToStudentList(readFile("iteration-1/data/students.json"));
+        courseList = jsonToCourseList(readFile("iteration1/data/courses.json"));
+        advisorList = jsonToAdvisorList(readFile("iteration1/data/advisors.json"));
+        studentList = jsonToStudentList(readFile("iteration1/data/students.json"));
 
     }
 
@@ -128,8 +128,8 @@ public class DatabaseManager  {
     //Save all instances to the database
     public void saveToDatabase() {
         //writeFile("data/courses.json", getJsonString(courseList));
-        writeFile("iteration-1/data/students.json", getJsonString(studentList));
-        writeFile("iteration-1/data/advisors.json", getJsonString(advisorList));
+        writeFile("iteration1/data/students.json", getJsonString(studentList));
+        writeFile("iteration1/data/advisors.json", getJsonString(advisorList));
 
         saveTranscriptsToDatabase(); //Save transcripts to database
     }    
@@ -140,7 +140,7 @@ public class DatabaseManager  {
             List<Transcript> transcript = new ArrayList<Transcript>();
             transcript.add(studentList.get(i).getTranscript());
             
-            writeFile("data/transcripts/" + studentList.get(i).getUserId() + ".json", getJsonString(transcript));
+            writeFile("iteration1/data/transcripts/" + studentList.get(i).getUserId() + ".json", getJsonString(transcript));
         }
     }
 
