@@ -1,6 +1,9 @@
-package models;
+package iteration1.test.models;
 
-import utils.DatabaseManager;
+import iteration2.src.models.Course;
+import iteration2.src.models.Prerequisite;
+import iteration2.src.models.Student;
+import iteration2.src.utils.DatabaseManager;
 
 import static org.junit.Assert.*;
 
