@@ -1,6 +1,7 @@
-package models;
+package iteration2.test.models;
 
-import utils.DatabaseManager;
+import iteration2.src.models.Transcript;
+import iteration2.src.utils.DatabaseManager;
 
 public class TranscriptTest_GPA {
 

@@ -1,13 +1,14 @@
-package controllers;
+package iteration2.test.controllers;
 
-import models.Advisor;
-import models.Student;
+
+import iteration2.src.controllers.AdvisorController;
+import iteration2.src.models.Advisor;
+import iteration2.src.models.Student;
+import iteration2.src.utils.DatabaseManager;
 import org.junit.Test;
-import utils.DatabaseManager;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 
 public class AdvisorControllerTest {
 
