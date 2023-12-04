@@ -89,7 +89,7 @@ public class CLIStudent {
                 else if(str.equals("2")){
                     System.out.println("Enter the row number of the course you want to delete : ");
                     str = scanner.nextLine();
-                    if( isValidNumber(getRowNumberFromInput(str)) && checkIfValidRowNumber(str, student.getSelectedCourses().toArray() ) ){
+                    if( validateNumber( str, student.getSelectedCourses().toArray() ) ){ //TODO: student dependency, there should be a method at the studentController class
                         if(deleteCourse(str)){
                             System.out.println("Course successfully deleted");
                         }
@@ -97,7 +97,6 @@ public class CLIStudent {
                             System.out.println("Course deletion failed");
                         }
                     }
-                    
                 }
                 else if(str.equals("3")){
                     studentController.sendSelectedCoursesToApproval();
@@ -145,7 +144,7 @@ public class CLIStudent {
                 else if(str.equals("q")){
                     shouldQuit = false;
                 }
-                else if(isValidNumber(getRowNumberFromInput(str)) && checkIfValidRowNumber(str, getAvaliableCourseSections().toArray() )){
+                else if( validateNumber( str, getAvaliableCourseSections().toArray() ) ){
                     if(addCourse(str)){ 
                         System.out.println("Course successfully added");
                     }
@@ -160,6 +159,16 @@ public class CLIStudent {
 
         }
 
+    }
+
+    private boolean validateNumber(String str, Object[] list){
+        if(isValidNumber(str)){
+            if(checkIfValidRowNumber(str, list)){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private boolean addCourse(String str){
