@@ -172,7 +172,7 @@ public class CLIStudent {
     }
 
     private boolean addCourse(String str){
-        int rowNumber = Integer.parseInt(str);
+        int rowNumber = Integer.parseInt(getRowNumberFromInput(str));
         if(true /* check if valid section */){ // TODO: this should be done at the studentController class
             return false;
         }
@@ -183,7 +183,7 @@ public class CLIStudent {
 
 
     private boolean deleteCourse(String str){   // TODO: these checks should be done at the studentController class
-        int rowNumber = Integer.parseInt(str);  // TODO: this method should only call the studentController method
+        int rowNumber = Integer.parseInt(getRowNumberFromInput(str));  // TODO: this method should only call the studentController method
         String selectedCourseStatus = student.getSelectedCourses().get(rowNumber-1).getStatus().toString();
         if(selectedCourseStatus.equalsIgnoreCase("DRAFT")){
             studentController.removeSelectedCourse(student.getSelectedCourses().get(rowNumber-1));
@@ -198,7 +198,7 @@ public class CLIStudent {
     }
 
     private boolean isValidNumber(String str){
-        int strLength = str.length();
+        int strLength = getRowNumberFromInput(str).length();
         for(int i = 0; i<strLength; i++){
             if(str.charAt(i) < 48 || str.charAt(i) > 57){
                 return false;
@@ -208,7 +208,7 @@ public class CLIStudent {
     }
 
     private boolean checkIfValidRowNumber(String rowNumber, Object[] list){
-        int rowNumberInt = Integer.parseInt(rowNumber);
+        int rowNumberInt = Integer.parseInt(getRowNumberFromInput(rowNumber));
         if(rowNumberInt > list.length || rowNumberInt < 1){
             return false;
         }
