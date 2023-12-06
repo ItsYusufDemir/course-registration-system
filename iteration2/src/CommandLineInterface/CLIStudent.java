@@ -21,9 +21,9 @@ public class CLIStudent {
     private Scanner scanner;
     private boolean shouldQuit;
     
-    
-    public CLIStudent(Student student) {
-        this.student = student;     // TODO: this class should not have a student dependency(low coupling)
+    // TODO: this class should not have a student dependency(low coupling)
+    public CLIStudent(Student student) { // here this should have a student controller as a parameter
+        this.student = student;          // this.studentController = studentController;
         studentController = new StudentController(student);
         scanner = new Scanner(System.in);
     }
@@ -194,7 +194,22 @@ public class CLIStudent {
 
 
     private String getRowNumberFromInput(String str){
-        return str.substring(0, str.indexOf(" "));
+        
+        if(str.contains(" ")){
+            return str.substring(0, str.indexOf(" "));
+        }
+        else if(str.contains(",")){
+            return str.substring(0, str.indexOf(","));
+        }
+        else if(str.contains(".")){
+            return str.substring(0, str.indexOf("."));
+        }
+        else{
+
+            return str;
+        }
+        
+        
     }
 
     private boolean isValidNumber(String str){
