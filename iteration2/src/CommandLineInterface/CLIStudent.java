@@ -129,8 +129,8 @@ public class CLIStudent {
                         "  Code\t Name\t Section\t Instructor\t Credit\n" +
                         "  ____\t ____\t _______\t __________\t ______");
             
-            listAvaliableCourses();
-
+            listAvaliableCourseSections();
+            
             System.out.println("\n\npress b to go back");
             System.out.println("press q to quit");
             System.out.println("Enter the row number of the course you want to add : ");
@@ -232,7 +232,7 @@ public class CLIStudent {
     
     
 
-    private void listAvaliableCourses(){
+    private void listAvaliableCourseSections(){
         List<Course> avaliableCourses = student.listAvailableCourses(); // TODO: this class should not have a student dependency(low coupling)
         int rowCount = 1;
         for(Course course : avaliableCourses){ // TODO: reduce this to a single for loop, get the course name so from the student controller
