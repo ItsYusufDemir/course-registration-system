@@ -235,7 +235,7 @@ public class CLIStudent {
     private void listAvaliableCourses(){
         List<Course> avaliableCourses = student.listAvailableCourses(); // TODO: this class should not have a student dependency(low coupling)
         int rowCount = 1;
-        for(Course course : avaliableCourses){
+        for(Course course : avaliableCourses){ // TODO: reduce this to a single for loop, get the course name so from the student controller
             for(CourseSection courseSection : course.getCourseSections()){
                 System.out.println(rowCount + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t"
                         + courseSection.getSectionCode() + "\t"
