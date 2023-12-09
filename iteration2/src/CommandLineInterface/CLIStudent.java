@@ -247,7 +247,7 @@ public class CLIStudent {
 
     private void listSelectedCourses(){
         int rowCount = 1;
-        for(SelectedCourse selectedCourse : student.getSelectedCourses()){
+        for(SelectedCourse selectedCourse : student.getSelectedCourses()){ // TODO: change this to student controller
             System.out.println(rowCount + ". " + selectedCourse.getCourse().getCourseCode() + "\t" + selectedCourse.getCourse().getCourseName() + "\t"
                     + selectedCourse.getCourseSection().getSectionCode() + "\t" + selectedCourse.getStatus());
         }
