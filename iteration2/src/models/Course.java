@@ -29,7 +29,7 @@ public class Course {
         else if (prerequisiteInformation.getPrerequisiteOfCourses().isEmpty())
             return true;
         else
-        return prerequisiteInformation.checkPrequisiteCoursePassed(student, this);
+        return prerequisiteInformation.checkPrerequisiteCoursePassed(student, this);
     }
 
     public List<CourseSection> acquireAvailableSections() {
