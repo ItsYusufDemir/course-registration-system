@@ -87,7 +87,7 @@ public class CLIStudent {
                 }
             } else {
                 System.out.println("Invalid input");
-                System.out.println("\n\n\n");
+                System.out.println("\n\n\n"); 
             }
             myCoursesPage(currentStudent.listAvailableCourses());
         } else if (str.equals("3")) {
