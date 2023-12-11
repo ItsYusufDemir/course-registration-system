@@ -1,4 +1,5 @@
 package iteration2.src.models;
+import java.util.ArrayList;
 import java.util.List;
 
 import iteration2.src.CommandLineInterface.CLIAdvisor;
@@ -10,12 +11,15 @@ import iteration2.src.utils.DatabaseManager;
 
 public class Advisor extends User {
 
+
+
     public Advisor() {
         
     }
 
     public Advisor(String userID, String userName , String password, String firstName, String lastName, boolean status) {
         super(userID, password, firstName, lastName, status);
+        
     }
 
     public void getMyPage() {
@@ -54,5 +58,26 @@ public class Advisor extends User {
     public List<Student> fetchAdvisedStudents() {
         return DatabaseManager.getInstance().fetchAdvisedStudents(this);
     }
+
+      public List<Student> getStudentListOrderByStatus() {
+
+        List<Student> studentList = fetchAdvisedStudents();
+        List<Student> studentListOrder = new ArrayList<Student>();
+        
+        for (Student student :studentList) {
+            if(student.getApprovalStatus() == ApprovalStatus.PENDING) {
+                studentListOrder.add(student);
+            }
+        }
+
+       for (Student student :studentList) {
+           if(student.getApprovalStatus() == ApprovalStatus.DONE) {
+               studentListOrder.add(student);
+           }
+       }
+        return studentListOrder;
+    }
 }
+
+
 

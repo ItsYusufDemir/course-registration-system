@@ -41,7 +41,7 @@ public class CLIAdvisor {
             String choice = input.nextLine();
 
                 if (choice.equals("1")) {
-                    List<Student> students = advisorController.getStudentListOrderByStatus();
+                    List<Student> students = advisorController.getStudentList();
                     shouldQuit = showStudentPage(students);
 
                     if (shouldQuit) {

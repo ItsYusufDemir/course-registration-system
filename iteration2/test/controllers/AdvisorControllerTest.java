@@ -18,7 +18,7 @@ public class AdvisorControllerTest {
         Advisor advisor = databaseManager.getAdvisors().get(0);
         AdvisorController advisorController = new AdvisorController(advisor);
         List<Student> studentList = databaseManager.fetchAdvisedStudents(advisor);
-        List<Student> sortedStudentList = advisorController.getStudentListOrderByStatus();
+        List<Student> sortedStudentList = advisorController.getStudentList();
 
         for (Student student: studentList) {
             System.out.println(student.getFirstName());
