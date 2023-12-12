@@ -8,7 +8,7 @@ import iteration2.src.models.SelectedCourse;
 import iteration2.src.models.Student;
 import iteration2.src.enums.ApprovalStatus;
 
-public class StudentController{
+public class StudentController {
     private Student currentStudent;
 
     public StudentController(Student currentStudent) {
@@ -16,18 +16,23 @@ public class StudentController{
         this.currentStudent = currentStudent;
     }
 
-    public void addSelectedCourse(SelectedCourse selectedCourse){
+    public void addSelectedCourse(SelectedCourse selectedCourse) {
         currentStudent.addNewCourse(selectedCourse);
     }
-    public void removeSelectedCourse(SelectedCourse selectedCourse){
+
+    public void removeSelectedCourse(SelectedCourse selectedCourse) {
         currentStudent.deleteCourse(selectedCourse);
     }
-    public void sendSelectedCoursesToApproval(){ // DRAFT TAN PENDİNG E COURSE STATUS U CEKMEK LAZIM
+
+    public void sendSelectedCoursesToApproval() {
         currentStudent.setApprovalStatus(ApprovalStatus.PENDING);
-        List<SelectedCourse> selectedCourses =  currentStudent.getSelectedCourses();
+        List<SelectedCourse> selectedCourses = currentStudent.getSelectedCourses();
         for (SelectedCourse selectedCourse : selectedCourses) {
-            selectedCourse.setStatus(CourseStatus.PENDING);
-            selectedCourse.getCourseSection().incrementStudentCount();
+            if (selectedCourse.getStatus() == CourseStatus.DRAFT) {
+                selectedCourse.setStatus(CourseStatus.PENDING);
+                selectedCourse.getCourseSection().incrementStudentCount();
+
+            }
         }
         currentStudent.setSelectedCourses(selectedCourses);
     }
