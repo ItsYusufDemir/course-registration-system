@@ -60,8 +60,9 @@ public class StudentController {
         return "";
     }
 
-    public void logout(){
+    public void logout() {
         System.exit(0);
+    }
 
     public void sendSelectedCoursesToApprovalBugFixed() {
         if (checkCompulsoryCourses()) {
