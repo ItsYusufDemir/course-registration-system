@@ -1,4 +1,6 @@
 package iteration2.src.models;
+import iteration2.src.utils.DatabaseManager;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -43,6 +45,17 @@ public class CourseSection {
         studentCountInsideCourseSection--;
         return studentCountInsideCourseSection;
     }
+
+    public Course findCourseOfCourseSection(){
+        List<Course> courses = DatabaseManager.getInstance().getCourses();
+        for (Course course : courses) {
+            if(course.getCourseCode().equals(this.getSectionCode().split(".")[0])){
+                return course;
+            }
+        }
+        return null;
+    }
+
 
     public int getStudentCapacity() {
         return studentCapacity;

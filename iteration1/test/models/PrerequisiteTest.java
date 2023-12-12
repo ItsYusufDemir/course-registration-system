@@ -16,7 +16,7 @@ public class PrerequisiteTest {
         Course course = databaseManager.getCourses().get(0);
 
         Prerequisite prerequisiteTest = course.getPrerequisiteInformation();
-        boolean isPassed = prerequisiteTest.checkPrequisiteCoursePassed(student, course);
+        boolean isPassed = prerequisiteTest.checkPrerequisiteCoursePassed(student, course);
         System.out.println("isPassed -> " + isPassed );
 
         // assert true

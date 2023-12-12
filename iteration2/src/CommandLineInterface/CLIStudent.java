@@ -1,5 +1,9 @@
 package iteration2.src.CommandLineInterface;
 
+import java.util.*;
+
+import javax.xml.crypto.Data;
+
 import iteration2.src.controllers.StudentController;
 import iteration2.src.models.Course;
 import iteration2.src.models.SelectedCourse;
@@ -20,6 +24,7 @@ public class CLIStudent {
     private StudentController studentController;
     private Scanner scanner;
     private boolean shouldQuit;
+
     
     
     public CLIStudent(StudentController studentController) { 
@@ -28,6 +33,7 @@ public class CLIStudent {
     }
     
     
+
     public void menuPage() {
         shouldQuit = true;
         while(shouldQuit){
@@ -44,10 +50,10 @@ public class CLIStudent {
                             "  1. My Courses\n" +
                             "  2. Log out\n\n" +
                             "Press q to quit");
-        
+
             String str = scanner.nextLine();
 
-                
+
            if(str.equals("1")){
                 showMyCoursesPage();
             }
@@ -60,9 +66,9 @@ public class CLIStudent {
             else{
                 System.out.println("Invalid Input: " + str);
             }
-            
-            
-        
+
+
+
         }
 
     }
@@ -75,7 +81,7 @@ public class CLIStudent {
                         "**************\n" +
                         "  Code\t Name\t Section\t Status\n" +
                         "  ____\t ____\t _______\t ______");
-        
+
             listSelectedCourses();
 
             System.out.println(
@@ -86,7 +92,7 @@ public class CLIStudent {
 
             System.out.println("Press b to go back");
             System.out.println("Press q to quit");
-            
+
             String str = scanner.nextLine();
 
             try {
@@ -125,7 +131,7 @@ public class CLIStudent {
                 System.out.println(e);
             }
 
-        }    
+        }
     }
 
 
@@ -138,9 +144,11 @@ public class CLIStudent {
                         "**************\n" +
                         "  Code\t Name\t Section\t Instructor\t Credit\n" +
                         "  ____\t ____\t _______\t __________\t ______");
+
             
             listAvaliableCourseSections();
             
+
             System.out.println("\n\npress b to go back");
             System.out.println("press q to quit");
             System.out.println("Enter the row number of the course you want to add : ");
@@ -155,17 +163,19 @@ public class CLIStudent {
                     shouldQuit = false;
                 }
                 else if( validateNumber( str, getAvaliableCourseSections().toArray() ) ){
-                    if(addCourse(str)){ 
+                    if(addCourse(str)){
                         System.out.println("Course successfully added");
                     }
                     else{
                         System.out.println("Course addition failed");
                     }
                 }
+
                 else{
                     throw new Exception("Invalid input: " + str);
                 }
             
+
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -234,7 +244,7 @@ public class CLIStudent {
 
 
     private String getRowNumberFromInput(String str){
-        
+
         if(str.contains(" ")){
             return str.substring(0, str.indexOf(" "));
         }
@@ -248,8 +258,8 @@ public class CLIStudent {
 
             return str;
         }
-        
-        
+
+
     }
 
     private boolean isValidNumber(String str){
@@ -269,8 +279,8 @@ public class CLIStudent {
         }
         return true;
     }
-    
-    
+
+
 
     private void listAvaliableCourseSections(){
         List<Course> avaliableCourses = studentController.listAvailableCourseSections(); 
@@ -282,8 +292,10 @@ public class CLIStudent {
                         + courseSection.getSectionCode() + "\t"
                         + courseSection.getLecturerName() + "\t" + course.getCourseCredit());
             }
+
         
             
+
     }
 
     private void listSelectedCourses(){
