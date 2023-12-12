@@ -1,4 +1,5 @@
 package iteration2.src.models;
+
 import java.util.*;
 
 public class Course {
@@ -9,41 +10,47 @@ public class Course {
     private String courseCode;
     private Prerequisite prerequisiteInformation;
     private List<CourseSection> courseSections;
-    private boolean isCompulsory;
+    private CourseType courseType;
 
     public Course() {
     }
 
-    public Course(int courseCredit, int courseECTS, int givenSemester, String courseName, String courseCode, Prerequisite prerequisiteInformation, List<CourseSection> courseSections, boolean isCompulsory) {
-        this.courseCredit = courseCredit;
+   public Course(int courseCredit, int courseECTS, int givenSemester, String courseName, String courseCode,
+            Prerequisite prerequisiteInformation, List<CourseSection> courseSections, CourseType courseType) {
+
+      this.courseCredit = courseCredit;
         this.courseECTS = courseECTS;
         this.givenSemester = givenSemester;
         this.courseName = courseName;
         this.courseCode = courseCode;
         this.prerequisiteInformation = prerequisiteInformation;
         this.courseSections = courseSections;
-        this.isCompulsory = isCompulsory;
+        this.courseType = courseType;
     }
 
-    public boolean checkPrerequisite(Student student){
-        if(prerequisiteInformation == null)
+    public boolean checkPrerequisite(Student student) {
+        if (prerequisiteInformation == null)
             return true;
         else if (prerequisiteInformation.getPrerequisiteOfCourses().isEmpty())
             return true;
         else
-        return prerequisiteInformation.checkPrerequisiteCoursePassed(student, this);
+            return prerequisiteInformation.checkPrerequisiteCoursePassed(student, this);
     }
 
     public List<CourseSection> acquireAvailableSections() {
         List<CourseSection> availableCourseSections = new ArrayList<>();
-        for (CourseSection courseSection: courseSections) {
-            if(courseSection.checkAvailibilty()){
+        for (CourseSection courseSection : courseSections) {
+            if (courseSection.checkAvailibilty()) {
                 availableCourseSections.add(courseSection);
             }
         }
         return availableCourseSections;
     }
 
+      public boolean equals(Course course) {
+        return courseCode.equals(course.getCourseCode());
+    }
+  
     public Prerequisite getPrerequisiteInformation() {
         return prerequisiteInformation;
     }
@@ -88,13 +95,14 @@ public class Course {
         return courseSections;
     }
 
-
-    public boolean getIsCompulsory() {
-        return isCompulsory;
+    public CourseType getCourseType() {
+        return courseType;
     }
 
 
     public int getGivenSemester() {
         return givenSemester;
     }
+  
+
 }
