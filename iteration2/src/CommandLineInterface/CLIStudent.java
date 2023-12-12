@@ -16,26 +16,34 @@ import java.util.*;
 
 
 // TODO: change println to printf so it looks better
-// TODO: change student dependencies to student controller(low coupling)
+
 
 public class CLIStudent {
 
-    private Student student;
+    
     private StudentController studentController;
     private Scanner scanner;
     private boolean shouldQuit;
 
-    // TODO: this class should not have a student dependency(low coupling)
-    public CLIStudent(Student student) { // here this should have a student controller as a parameter
-        this.student = student;          // this.studentController = studentController;
-        studentController = new StudentController(student);
+    
+    
+    public CLIStudent(StudentController studentController) { 
+        this.studentController = studentController;          
         scanner = new Scanner(System.in);
     }
+    
+    
 
     public void menuPage() {
         shouldQuit = true;
         while(shouldQuit){
 
+            if(studentController.getNotification().isEmpty()){
+                System.out.println(" Notification\n "+
+                                   "**************");
+                for(String string : StudentController.getNotification())
+                    System.out.println(string);
+            }
             System.out.println(
                     " Menu\n" +
                             "********\n" +
@@ -56,7 +64,7 @@ public class CLIStudent {
                 shouldQuit = false;
             }
             else{
-                System.out.println("Invalid Input");
+                System.out.println("Invalid Input: " + str);
             }
 
 
@@ -79,7 +87,8 @@ public class CLIStudent {
             System.out.println(
                     "\n\n1. Add Course\n" +
                         "2. Delete Course\n" +
-                        "3. Send To Approval");
+                        "3. Show Timetable\n" + 
+                        "4. Send To Approval");
 
             System.out.println("Press b to go back");
             System.out.println("Press q to quit");
@@ -93,7 +102,7 @@ public class CLIStudent {
                 else if(str.equals("2")){
                     System.out.println("Enter the row number of the course you want to delete : ");
                     str = scanner.nextLine();
-                    if( validateNumber( str, student.getSelectedCourses().toArray() ) ){ //TODO: student dependency, there should be a method at the studentController class
+                    if( validateNumber( str, studentController.getSelectedCourses().toArray() ) ){
                         if(deleteCourse(str)){
                             System.out.println("Course successfully deleted");
                         }
@@ -103,6 +112,9 @@ public class CLIStudent {
                     }
                 }
                 else if(str.equals("3")){
+                    showTimetablePage();
+                }
+                else if(str.equals("4")){
                     studentController.sendSelectedCoursesToApproval();
                 }
                 else if(str.equals("b")){
@@ -112,11 +124,11 @@ public class CLIStudent {
                     shouldQuit = false;
                 }
                 else{
-                    System.out.println("Invalid input");
+                    throw new Exception("Invalid input: " + str);
 
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println(e);
             }
 
         }
@@ -133,7 +145,9 @@ public class CLIStudent {
                         "  Code\t Name\t Section\t Instructor\t Credit\n" +
                         "  ____\t ____\t _______\t __________\t ______");
 
-            listAvaliableCourses();
+            
+            listAvaliableCourseSections();
+            
 
             System.out.println("\n\npress b to go back");
             System.out.println("press q to quit");
@@ -157,13 +171,48 @@ public class CLIStudent {
                     }
                 }
 
+                else{
+                    throw new Exception("Invalid input: " + str);
+                }
+            
+
             } catch (Exception e) {
-                System.out.println("Invalid input");
+                System.out.println(e);
             }
 
         }
 
     }
+
+    public void showTimetablePage(){
+        shouldQuit = false;
+        while(shouldQuit){
+
+            System.out.println(" Timetable\n" + 
+                               "***********");
+            System.out.println(studentController.getTimetable());
+
+            String str = scanner.nextLine();
+
+            try {
+                if(str.equals("b")){
+                    break;
+                }
+                else if(str.equals("q")){
+                    shouldQuit = false;
+                }
+                else{
+                    throw new Exception("Invalid input: " + str);
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+    }
+    
+    
+
 
     private boolean validateNumber(String str, Object[] list){
         if(isValidNumber(str)){
@@ -177,20 +226,17 @@ public class CLIStudent {
 
     private boolean addCourse(String str){
         int rowNumber = Integer.parseInt(getRowNumberFromInput(str));
-        if(true /* check if valid section */){ // TODO: this should be done at the studentController class
-            return false;
+        if(studentController.addSelectedCourse(studentController.getAvaliableCourseSections().get(rowNumber-1))){ 
+            return true;
         }
-        return true;
-        // TODO: call method from student controller to add the course with the given course section
+        return false;
     }
 
 
 
-    private boolean deleteCourse(String str){   // TODO: these checks should be done at the studentController class
-        int rowNumber = Integer.parseInt(getRowNumberFromInput(str));  // TODO: this method should only call the studentController method
-        String selectedCourseStatus = student.getSelectedCourses().get(rowNumber-1).getStatus().toString();
-        if(selectedCourseStatus.equalsIgnoreCase("DRAFT")){
-            studentController.removeSelectedCourse(student.getSelectedCourses().get(rowNumber-1));
+    private boolean deleteCourse(String str){   
+        int rowNumber = Integer.parseInt(getRowNumberFromInput(str)); 
+        if(studentController.removeSelectedCourse(studentController.getSelectedCourses().get(rowNumber-1)){
             return true;
         }
         return false;
@@ -236,41 +282,31 @@ public class CLIStudent {
 
 
 
-    private void listAvaliableCourses(){
-        List<Course> avaliableCourses = student.listAvailableCourses(); // TODO: this class should not have a student dependency(low coupling)
+    private void listAvaliableCourseSections(){
+        List<Course> avaliableCourses = studentController.listAvailableCourseSections(); 
         int rowCount = 1;
-        for(Course course : avaliableCourses){
+        Course course; 
             for(CourseSection courseSection : course.getCourseSections()){
+                course = studentController.findCourseOfCourseSection(courseSection);
                 System.out.println(rowCount + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t"
                         + courseSection.getSectionCode() + "\t"
                         + courseSection.getLecturerName() + "\t" + course.getCourseCredit());
             }
-        }
+
+        
+            
 
     }
 
     private void listSelectedCourses(){
         int rowCount = 1;
-        for(SelectedCourse selectedCourse : student.getSelectedCourses()){
+        for(SelectedCourse selectedCourse : studentController.getSelectedCourses()){ 
             System.out.println(rowCount + ". " + selectedCourse.getCourse().getCourseCode() + "\t" + selectedCourse.getCourse().getCourseName() + "\t"
                     + selectedCourse.getCourseSection().getSectionCode() + "\t" + selectedCourse.getStatus());
         }
     }
 
-    private List<CourseSection> getAvaliableCourseSections(){ // TODO: this should be done at the studentController class
-        int courseSize = student.listAvailableCourses().size();
-        int sectionSize = 0;
-        List<Course> temp = student.listAvailableCourses();
-        List<CourseSection> tempCourseSections = new ArrayList<CourseSection>();
-        for(int i = 0; i<courseSize; i++){
-            sectionSize = temp.get(i).getCourseSections().size();
-            for(int j = 0; j<sectionSize ;j++){
-                tempCourseSections.add(temp.get(i).getCourseSections().get(j));
-            }
-        }
-        return tempCourseSections;
-
-    }
+    
 
 
 
