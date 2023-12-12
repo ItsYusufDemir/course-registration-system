@@ -1,5 +1,7 @@
 package iteration2.src.models;
 
+import iteration2.src.enums.CourseType;
+
 import java.util.*;
 
 public class Course {
