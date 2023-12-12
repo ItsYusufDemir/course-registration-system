@@ -174,4 +174,13 @@ public class DatabaseManager {
         return advisorList;
     }
 
+    public Course findCourseByCourseCode(String courseCode) {
+        for (Course course : courseList) {
+            if (course.getCourseCode().equals(courseCode)) {
+                return course;
+            }
+        }
+        return null;
+    }
+
 }

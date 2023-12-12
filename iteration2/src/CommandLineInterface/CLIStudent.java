@@ -5,10 +5,12 @@ import java.util.*;
 import javax.xml.crypto.Data;
 
 import iteration2.src.controllers.StudentController;
+import iteration2.src.enums.Color;
 import iteration2.src.models.Course;
 import iteration2.src.models.SelectedCourse;
 import iteration2.src.models.Student;
 import iteration2.src.utils.DatabaseManager;
+import iteration2.src.utils.Util;
 import iteration2.src.models.CourseSection;
 
 public class CLIStudent {
@@ -28,12 +30,13 @@ public class CLIStudent {
 
     public void menuPage() {
 
-        System.out.println(
+        Util.paintText(
                 " Menu\n" +
                         "********\n" +
                         "  1. My Courses\n" +
                         "  2. Log out\n\n" +
-                        "Press q to quit");
+                        "Press q to quit",
+                Color.GREEN);
 
         String str = scanner.nextLine();
         if (str.equals("q")) {
@@ -87,7 +90,7 @@ public class CLIStudent {
                 }
             } else {
                 System.out.println("Invalid input");
-                System.out.println("\n\n\n"); 
+                System.out.println("\n\n\n");
             }
             myCoursesPage(currentStudent.listAvailableCourses());
         } else if (str.equals("3")) {
@@ -155,24 +158,23 @@ public class CLIStudent {
         }
     }
 
-
     public boolean checkIfAlreadyAdded(SelectedCourse selectedCourse) {
 
         for (int i = 0; i < currentStudent.getSelectedCourses().size(); i++) {
 
-            if (selectedCourse.getCourse().getCourseCode().equals(currentStudent.getSelectedCourses().get(i).getCourse().getCourseCode())) {
+            if (selectedCourse.getCourse().getCourseCode()
+                    .equals(currentStudent.getSelectedCourses().get(i).getCourse().getCourseCode())) {
                 return false;
             }
-            
+
         }
         return true;
     }
 
-
     public boolean deleteCourse(char c, List<SelectedCourse> courses) {
         int index = Integer.parseInt(c + "");
-        String courseWeWantToDelete = currentStudent.getSelectedCourses().get(index-1).getStatus().toString();
-        if (index <= courses.size() && ( courseWeWantToDelete.equalsIgnoreCase("DRAFT"))) {
+        String courseWeWantToDelete = currentStudent.getSelectedCourses().get(index - 1).getStatus().toString();
+        if (index <= courses.size() && (courseWeWantToDelete.equalsIgnoreCase("DRAFT"))) {
             StudentController.removeSelectedCourse(currentStudent.getSelectedCourses().get(index - 1));
             return true;
         } else {
@@ -186,9 +188,9 @@ public class CLIStudent {
         avaliableCourseSections = new ArrayList<SelectedCourse>();
 
         for (Course course : courses) {
-            
+
             sectionLength = course.acquireAvailableSections().size();
-            
+
             for (int j = 0; j < sectionLength; j++) {
                 System.out.println(i + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t"
                         + course.acquireAvailableSections().get(j).getSectionCode() + "\t"
