@@ -42,7 +42,7 @@ public class Student extends User {
            if(courseSection.checkAvailibilty() && course.checkPrerequisite(this) && !this.getTranscript().acquirePassedCourses().contains(course) && !checkIfItExistsInSelectedCourses(course) ){
                availableCourseSections.add(courseSection);
            }
-           availableCourseSections.addAll(findRepeatCourseSectionss());
+           availableCourseSections.addAll(findRepeatCourseSections());
        }
        return availableCourseSections;
     }
@@ -56,7 +56,7 @@ public class Student extends User {
         return false;
     }
 
-    private List<CourseSection> findRepeatCourseSectionss(){
+    private List<CourseSection> findRepeatCourseSections(){
        List<CourseGrade> takenCourses = this.getTranscript().getTakenCourses();
        List<CourseSection> repeatCourses = new ArrayList<>();
        for(CourseGrade course: takenCourses) {
