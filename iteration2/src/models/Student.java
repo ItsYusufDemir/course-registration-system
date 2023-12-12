@@ -39,12 +39,21 @@ public class Student extends User {
        }
        for (CourseSection courseSection: allCourseSections) {
            Course course = courseSection.findCourseOfCourseSection();
-           if(courseSection.checkAvailibilty() && course.checkPrerequisite(this) && !this.getTranscript().acquirePassedCourses().contains(course)){
+           if(courseSection.checkAvailibilty() && course.checkPrerequisite(this) && !this.getTranscript().acquirePassedCourses().contains(course) && !checkIfItExistsInSelectedCourses(course) ){
                availableCourseSections.add(courseSection);
            }
            availableCourseSections.addAll(findRepeatCourseSectionss());
        }
        return availableCourseSections;
+    }
+
+    private boolean checkIfItExistsInSelectedCourses(Course course){
+        for (SelectedCourse selectedCourse: selectedCourses){
+            if(selectedCourse.getCourse().equals(course)){
+                return true;
+            }
+        }
+        return false;
     }
 
     private List<CourseSection> findRepeatCourseSectionss(){
