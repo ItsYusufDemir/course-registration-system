@@ -5,6 +5,7 @@ import java.util.*;
 public class Course {
     private int courseCredit;
     private int courseECTS;
+    private int givenSemester;
     private String courseName;
     private String courseCode;
     private Prerequisite prerequisiteInformation;
@@ -14,10 +15,12 @@ public class Course {
     public Course() {
     }
 
-    public Course(int courseCredit, int courseECTS, String courseName, String courseCode,
+   public Course(int courseCredit, int courseECTS, int givenSemester, String courseName, String courseCode,
             Prerequisite prerequisiteInformation, List<CourseSection> courseSections, CourseType courseType) {
-        this.courseCredit = courseCredit;
+
+      this.courseCredit = courseCredit;
         this.courseECTS = courseECTS;
+        this.givenSemester = givenSemester;
         this.courseName = courseName;
         this.courseCode = courseCode;
         this.prerequisiteInformation = prerequisiteInformation;
@@ -44,6 +47,10 @@ public class Course {
         return availableCourseSections;
     }
 
+      public boolean equals(Course course) {
+        return courseCode.equals(course.getCourseCode());
+    }
+  
     public Prerequisite getPrerequisiteInformation() {
         return prerequisiteInformation;
     }
@@ -92,8 +99,10 @@ public class Course {
         return courseType;
     }
 
-    public boolean equals(Course course) {
-        return courseCode.equals(course.getCourseCode());
+
+    public int getGivenSemester() {
+        return givenSemester;
     }
+  
 
 }

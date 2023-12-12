@@ -31,21 +31,33 @@ public class Student extends User {
     }
 
 
-    public List<CourseSection> listAvailableCourses(){
-       List<CourseSection> allCourseSections = new ArrayList<>();
-       List<Course> courses = DatabaseManager.getInstance().getCourses();
-       List<CourseSection> availableCourseSections = new ArrayList<>();
-       for (Course course : courses) {
-            allCourseSections.addAll(course.getCourseSections());
-       }
-       for (CourseSection courseSection: allCourseSections) {
-           Course course = courseSection.findCourseOfCourseSection();
-           if(courseSection.checkAvailibilty() && course.checkPrerequisite(this) && !this.getTranscript().acquirePassedCourses().contains(course) && !checkIfItExistsInSelectedCourses(course) ){
-               availableCourseSections.add(courseSection);
-           }
-           availableCourseSections.addAll(findRepeatCourseSections());
-       }
-       return availableCourseSections;
+    public List<CourseSection> listAvailableCourses() {
+        List<CourseSection> allSelectableCourseSections = new ArrayList<>();
+        List<Course> courses = DatabaseManager.getInstance().getCourses();
+        List<CourseSection> availableCourseSections = new ArrayList<>();
+        for (int i = 0; i < courses.size(); i++) {
+            if (this.currentSemester < courses.get(i).getGivenSemester() // if course is from upper semester
+                    && this.transcript.calculateGPA() >= 3.0 // if GPA of the student is greater than 3.0
+                    && courses.get(i).checkPrerequisite(this)) { // if prerequisite courses of that course are completed
+                allSelectableCourseSections.addAll(courses.get(i).getCourseSections());
+            } else if (this.currentSemester == courses.get(i).getGivenSemester() // if course is from current semester
+                    && courses.get(i).checkPrerequisite(this)) { // if prerequisite courses of that course are completed
+                allSelectableCourseSections.addAll(courses.get(i).getCourseSections());
+            }
+
+            for (CourseSection courseSection : allSelectableCourseSections) {
+                Course course = courseSection.findCourseOfCourseSection();
+                if (courseSection.checkAvailibilty() && course.checkPrerequisite(this) &&
+                        !this.transcript.acquirePassedCourses().contains(course) &&
+                        !checkIfItExistsInSelectedCourses(course)) {
+                    availableCourseSections.add(courseSection);
+                }
+                availableCourseSections.addAll(findRepeatCourseSections());
+            }
+            return availableCourseSections;
+            // Courselara bakıcam döneminden üst dersse gpa artı prerequisite check
+        }
+        return availableCourseSections;// hata vermesin diye şimdilik yazdım
     }
 
     private boolean checkIfItExistsInSelectedCourses(Course course){
@@ -58,7 +70,7 @@ public class Student extends User {
     }
 
     private List<CourseSection> findRepeatCourseSections(){
-       List<CourseGrade> takenCourses = this.getTranscript().getTakenCourses();
+       List<CourseGrade> takenCourses = this.transcript.getTakenCourses();
        List<CourseSection> repeatCourses = new ArrayList<>();
        for(CourseGrade course: takenCourses) {
            if(course.getLetterGrade() == "DD" || course.getLetterGrade() == "DC"){
@@ -198,12 +210,12 @@ public class Student extends User {
 
     public ApprovalStatus getApprovalStatus() {
         return approvalStatus;
-    }
+    }*/
 
     public Transcript getTranscript() {
         return transcript;
     }
-
+/*
     public void setTranscript(Transcript transcript) {
         this.transcript = transcript;
     }
