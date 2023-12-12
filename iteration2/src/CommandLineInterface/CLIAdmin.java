@@ -1,13 +1,20 @@
 package iteration2.src.CommandLineInterface;
 import java.util.*;
+import java.lang.*;
 
 import javax.xml.crypto.Data;
 
 import com.fasterxml.jackson.databind.jsonschema.SchemaAware;
 
+import iteration2.src.enums.ApprovalStatus;
+import iteration2.src.enums.CourseType;
+import iteration2.src.models.Course;
+import iteration2.src.models.CourseSection;
+import iteration2.src.models.Prerequisite;
 import iteration2.src.utils.DatabaseManager;
 import iteration2.src.models.Admin;
 import iteration2.src.controllers.AdminController;
+
 
 public class CLIAdmin {
 
@@ -73,7 +80,7 @@ public class CLIAdmin {
         String str = scanner.nextLine();
 
         if (str.equals("c")) {
-            createNewStudentPage();
+            createNewCoursePage();
         } else if (str.startsWith("d")) {
             System.out.println("Enter the row number of the course you want to delete : ");
             str = scanner.nextLine();
@@ -153,4 +160,115 @@ public class CLIAdmin {
         }
     }
 
+    public boolean createNewCoursePage(){
+
+        ArrayList prerequisiteCourses = new ArrayList();
+        ArrayList courseSections = new ArrayList();
+        Prerequisite prerequisiteInformation;
+        CourseSection courseSection;
+        CourseType courseType;
+        Course course;
+
+        int courseCredit;
+        int courseECTS;
+        int numberOfPrerequisiteCourses;
+        int courseTypeCode;
+        int numberOfCourseSections;
+        int studentCapacity;
+
+        String courseName;
+        String courseCode;
+        String lecturerName;
+        String sectionTime;
+        String sectionDate;
+        String classroom;
+        String sectionCode;
+
+        System.out.println("********************Create New Course Page********************\n");
+        System.out.println("-> Enter the course information for the fields.");
+
+        System.out.println("1.\tCourse Credit: ");
+        courseCredit = scanner.nextInt();
+
+        System.out.println("2.\tCourse ECTS: ");
+        courseECTS = scanner.nextInt();
+
+        System.out.println("3.\tCourse Name: ");
+        courseName = scanner.nextLine();
+
+        System.out.println("4.\tCourse Code: ");
+        courseCode = scanner.nextLine();
+
+        System.out.println("5.\tCompulsory(1), Non-technical Elective(2), Technical Elective(3), University Elective(4), Faculty Elective(5): ");
+        courseTypeCode = scanner.nextInt(); // TODO: input check yapılacak
+
+        switch (courseTypeCode){
+            case 1: courseType = CourseType.COMPULSORY;
+            break;
+            case 2: courseType = CourseType.NONTECHNICAL_ELECTIVE;
+            break;
+            case 3: courseType = CourseType.TECHNICAL_ELECTIVE;
+            break;
+            case 4: courseType = CourseType.UNIVERSITY_ELECTIVE;
+            break;
+            case 5: courseType = CourseType.FACULTY_ELECTIVE;
+            break;
+            default: courseType = CourseType.COMPULSORY;
+        }
+
+        System.out.println("6.\t Number of Prerequisite Courses: "); // TODO: input check
+        numberOfPrerequisiteCourses = scanner.nextInt();
+
+        System.out.println("Write course codes of prerequisite courses one by one");
+        String prerequisiteCourseCode;
+        Course prerequisiteCourse;
+        for(int i = 1; i <= numberOfPrerequisiteCourses; i++){
+            System.out.print(i + ".\t");
+            prerequisiteCourseCode = scanner.nextLine();
+            prerequisiteCourse = findCourse(prerequisiteCourseCode);
+            if(prerequisiteCourse != null){
+                prerequisiteCourses.add(prerequisiteCourse);
+            }
+        }
+
+        System.out.println("7.\tNumber Of Sections: ");
+        numberOfCourseSections = scanner.nextInt();
+
+        for(int i = 0; i < numberOfCourseSections; i++){
+            System.out.println("Section " + i);
+
+            System.out.println("1.\tStudent Capacity: ");
+            studentCapacity = scanner.nextInt();
+
+            System.out.println("2.\tLecturer Name: ");
+            lecturerName = scanner.nextLine();
+
+            System.out.println("3.\tSection Time: ");
+            sectionTime = scanner.nextLine();
+
+            System.out.println("4.\tSection Date: ");
+            sectionDate = scanner.nextLine();
+
+            System.out.println("5.\tClassroom: ");
+            classroom = scanner.nextLine();
+
+            System.out.println("5.\tSection Code: ");
+            sectionCode = scanner.nextLine();
+
+            courseSections.add(new CourseSection(studentCapacity, lecturerName, sectionTime, sectionDate, classroom, sectionCode));
+        }
+
+        Prerequisite prerequisite = new Prerequisite(prerequisiteCourses);
+
+        course = new Course(courseCredit, courseECTS, courseName, courseCode, prerequisite, courseSections, courseType);
+
+        adminController.createCourse(course);
+
+        System.out.println( courseCode + " is created.");
+        return true;
+    }
+
+    private Course findCourse(String courseCode){
+        return adminController.findCourse(courseCode);
+    }
 }
