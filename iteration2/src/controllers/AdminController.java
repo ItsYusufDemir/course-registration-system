@@ -36,4 +36,8 @@ public class AdminController {
     public boolean deleteCourse(Course course){
         return currentAdmin.deleteCourse(course);
     }
+
+    public Course findCourse(String courseCode){
+        return currentAdmin.findCourse(courseCode);
+    }
 }
