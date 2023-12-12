@@ -1,67 +1,121 @@
 package iteration2.src.models;
 import java.util.*;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-
 import iteration2.src.CommandLineInterface.CLIStudent;
 import iteration2.src.enums.ApprovalStatus;
+import iteration2.src.enums.CourseStatus;
 import iteration2.src.utils.DatabaseManager;
 
-// not sure about access identifier
 public class Student extends User {
     private String email;
     private String identityNumber;
+    private int currentSemester;
     private List<SelectedCourse> selectedCourses;
     private Advisor advisorOfStudent;
     private ApprovalStatus approvalStatus;
     private Transcript transcript;
 
+
    public Student() {
     
    }
 
-    // not sure about constructor access identifier
-    
-    public Student(String userID, String password, String firstName, String lastName, boolean status, String email, String identityNumber, List<SelectedCourse> selectedCourses, Advisor advisorOfStudent, ApprovalStatus approvalStatus, Transcript transcript) {
+    public Student(String userID, String password, String firstName, String lastName, boolean status, String email, String identityNumber, int currentSemester, List<SelectedCourse> selectedCourses, Advisor advisorOfStudent, ApprovalStatus approvalStatus, Transcript transcript) {
         super(userID, password, firstName, lastName, status);
         this.email = email;
         this.identityNumber = identityNumber;
-        this.selectedCourses = selectedCourses; // BUNU BEN MI OLUSTURUCAM
+        this.currentSemester = currentSemester;
+        this.selectedCourses = selectedCourses;
         this.advisorOfStudent = advisorOfStudent;
         this.approvalStatus = ApprovalStatus.DONE;
         this.transcript = transcript;
     }
 
-    public List<SelectedCourse> getSelectedCourses() {
-        return selectedCourses;
+
+    public List<CourseSection> listAvailableCourses(){
+       List<CourseSection> allCourseSections = new ArrayList<>();
+       List<Course> courses = DatabaseManager.getInstance().getCourses();
+       List<CourseSection> availableCourseSections = new ArrayList<>();
+       for (Course course : courses) {
+            allCourseSections.addAll(course.getCourseSections());
+       }
+       for (CourseSection courseSection: allCourseSections) {
+           Course course = courseSection.findCourseOfCourseSection();
+           if(courseSection.checkAvailibilty() && course.checkPrerequisite(this) && !this.getTranscript().acquirePassedCourses().contains(course) && !checkIfItExistsInSelectedCourses(course) ){
+               availableCourseSections.add(courseSection);
+           }
+           availableCourseSections.addAll(findRepeatCourseSections());
+       }
+       return availableCourseSections;
     }
 
-    public void setSelectedCourses(List<SelectedCourse> selectedCourses) {
-        this.selectedCourses = selectedCourses;
-    }
-
-    public List<Course> listAvailableCourses(){
-
-        List<Course> allCourses = DatabaseManager.getInstance().getCourses();
-        List<Course> passedCourses = transcript.acquirePassedCourses(); // muho
-        
-        List<Course> availableCourses = new ArrayList<Course>();
-
-        for (Course currentCourse : allCourses) {
-
-            boolean doesContain = false;
-            for(int i = 0; i < passedCourses.size(); i++){
-                if(passedCourses.get(i).getCourseCode().equals(currentCourse.getCourseCode())){
-                    doesContain = true;
-                }
+    private boolean checkIfItExistsInSelectedCourses(Course course){
+        for (SelectedCourse selectedCourse: selectedCourses){
+            if(selectedCourse.getCourse().equals(course)){
+                return true;
             }
+        }
+        return false;
+    }
 
-            if (!(doesContain) && currentCourse.checkPrerequisite(this)) {
+    private List<CourseSection> findRepeatCourseSections(){
+       List<CourseGrade> takenCourses = this.getTranscript().getTakenCourses();
+       List<CourseSection> repeatCourses = new ArrayList<>();
+       for(CourseGrade course: takenCourses) {
+           if(course.getLetterGrade() == "DD" || course.getLetterGrade() == "DC"){
+               repeatCourses.addAll(course.getCourse().getCourseSections());
+           }
+       }
+       return repeatCourses;
+    }
+
+
+
+            if (!(doesContain) && currentCourse.checkPrerequisite(this) &&  checkCourseType(currentCourse)) { // TODO: add the nte te... checks to here 
                 availableCourses.add(currentCourse);
             }
         }
         return availableCourses;
     }
+
+    private boolean checkCourseType(Course course){
+        int nteCounter = 0;
+        int teCounter = 0;
+        int fteCounter = 0;
+        int ueCounter = 0;
+
+        for(SelectedCourse selectedCourse : selectedCourses){
+            if(selectedCourse.getCourse().getCourseType().toString().equals("NONTECHNICAL_ELECTIVE") ){
+                nteCounter++;
+            }
+            else if(selectedCourse.getCourse().getCourseType().toString().equals("TECHNICAL_ELECTIVE") ){
+                teCounter++;
+            }
+            else if(selectedCourse.getCourse().getCourseType().toString().equals("FACULTY_ELECTIVE" ) ){
+                fteCounter++;
+            }
+            else if(selectedCourse.getCourse().getCourseType().toString().equals("UNIVERSITY_ELECTIVE") ){
+                ueCounter++;
+            }
+        }
+
+
+        if(course.getCourseType().toString().equals("NONTECHNICAL_ELECTIVE") && nteCounter >= 2){
+            return false;
+        }
+        else if(course.getCourseType().toString().equals("TECHNICAL_ELECTIVE") && teCounter >= 4){
+            return false;
+        }
+        else if(course.getCourseType().toString().equals("FACULTY_ELECTIVE") && fteCounter >= 1){
+            return false;
+        }
+        else if(course.getCourseType().toString().equals("UNIVERSITY_ELECTIVE") && teCounter >= 1){
+            return false;
+        }
+        else{
+        return true;
+        }
+    }
+
     
     /*
         public List<CourseSection> listAvailableCourseSections(){
@@ -74,18 +128,21 @@ public class Student extends User {
                 List<CourseSection> currentCourseSections = currentCourse.getAvailableCourseSections();
                 availableCourses.addAll(currentCourseSections);
             }
+
+    public boolean addNewCourse(SelectedCourse selectedCourse){
+       // should we check the capacity here or while listing the available courses?
+        if(!selectedCourses.contains(selectedCourse))
+            return selectedCourses.add(selectedCourse);
+        else{
+            return false;
+
         }
-        return availableCourses;
-    }
-     */
-
-    public void addNewCourse(SelectedCourse selectedCourse){
-        selectedCourses.add(selectedCourse);
     }
 
-    public void deleteCourse(SelectedCourse selectedCourse){
-        selectedCourses.remove(selectedCourse);
+    public boolean deleteCourse(SelectedCourse selectedCourse){
+        return selectedCourses.remove(selectedCourse);
     }
+
 
     @Override
     public void getMyPage() {
@@ -93,6 +150,23 @@ public class Student extends User {
         cliStudent.menuPage();
     }
 
+    public List<CourseSection> checkConflictCourses(){
+       return null;
+    }
+
+    public String getTimeTable(){
+       return "";
+    }
+
+    public void sendSelectedCoursesToApproval(){
+        this.setApprovalStatus(ApprovalStatus.PENDING);
+        for (SelectedCourse selectedCourse: this.getSelectedCourses()){
+            if(selectedCourse.getStatus() == CourseStatus.DRAFT){
+                selectedCourse.setStatus(CourseStatus.PENDING);
+                selectedCourse.getCourseSection().incrementStudentCount();
+            }
+        }
+    }
 
     public void setApprovalStatus(ApprovalStatus approvalStatus) {
         this.approvalStatus = approvalStatus;
@@ -132,5 +206,21 @@ public class Student extends User {
 
     public void setTranscript(Transcript transcript) {
         this.transcript = transcript;
+    }
+
+    public List<SelectedCourse> getSelectedCourses() {
+        return selectedCourses;
+    }
+
+    public void setSelectedCourses(List<SelectedCourse> selectedCourses) {
+        this.selectedCourses = selectedCourses;
+    }
+
+    public int getCurrentSemester() {
+        return currentSemester;
+    }
+
+    public void setCurrentSemester(int currentSemester) {
+        this.currentSemester = currentSemester;
     }
 }

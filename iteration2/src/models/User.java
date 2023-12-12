@@ -1,5 +1,7 @@
 package iteration2.src.models;
 
+import java.util.List;
+
 import iteration2.src.interfaces.Showable;
 
 public abstract class User implements Showable {
@@ -8,6 +10,7 @@ public abstract class User implements Showable {
     private String firstName;
     private String lastName;
     private boolean status;
+    private List<String> notifications;
 
     public User() {
 
@@ -71,6 +74,24 @@ public abstract class User implements Showable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void addNotification(String notification) {
+        notifications.add(notification);
+    }
+
+    public void removeNotification(String notification) {
+        notifications.remove(notification);
+    }
+
+    public List<String> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<String> notifications) {
+        this.notifications = notifications;
+    }
+
+    
 
     
 }
