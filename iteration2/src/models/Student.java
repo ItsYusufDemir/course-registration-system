@@ -42,8 +42,20 @@ public class Student extends User {
            if(courseSection.checkAvailibilty() && course.checkPrerequisite(this) && !this.getTranscript().acquirePassedCourses().contains(course)){
                availableCourseSections.add(courseSection);
            }
+           availableCourseSections.addAll(findRepeatCourseSectionss());
        }
        return availableCourseSections;
+    }
+
+    private List<CourseSection> findRepeatCourseSectionss(){
+       List<CourseGrade> takenCourses = this.getTranscript().getTakenCourses();
+       List<CourseSection> repeatCourses = new ArrayList<>();
+       for(CourseGrade course: takenCourses) {
+           if(course.getLetterGrade() == "DD" || course.getLetterGrade() == "DC"){
+               repeatCourses.addAll(course.getCourse().getCourseSections());
+           }
+       }
+       return repeatCourses;
     }
 
 
