@@ -107,7 +107,7 @@ public class CLIAdmin {
 
     }
 
-    public void constraintPage {
+    public void constraintPage (){
         scanner = new Scanner(System.in);
         Constraint constraint = adminController.getConstraint();
         
@@ -175,6 +175,7 @@ public class CLIAdmin {
         int courseTypeCode;
         int numberOfCourseSections;
         int studentCapacity;
+        int givenSemester;
 
         String courseName;
         String courseCode;
@@ -199,7 +200,10 @@ public class CLIAdmin {
         System.out.println("4.\tCourse Code: ");
         courseCode = scanner.nextLine();
 
-        System.out.println("5.\tCompulsory(1), Non-technical Elective(2), Technical Elective(3), University Elective(4), Faculty Elective(5): ");
+        System.out.println("5.\tCourse Semester: ");
+        givenSemester = scanner.nextInt();
+
+        System.out.println("6.\tCompulsory(1), Non-technical Elective(2), Technical Elective(3), University Elective(4), Faculty Elective(5): ");
         courseTypeCode = scanner.nextInt(); // TODO: input check yapılacak
 
         switch (courseTypeCode){
@@ -216,7 +220,7 @@ public class CLIAdmin {
             default: courseType = CourseType.COMPULSORY;
         }
 
-        System.out.println("6.\t Number of Prerequisite Courses: "); // TODO: input check
+        System.out.println("7.\t Number of Prerequisite Courses: "); // TODO: input check
         numberOfPrerequisiteCourses = scanner.nextInt();
 
         System.out.println("Write course codes of prerequisite courses one by one");
@@ -231,7 +235,7 @@ public class CLIAdmin {
             }
         }
 
-        System.out.println("7.\tNumber Of Sections: ");
+        System.out.println("8.\tNumber Of Sections: ");
         numberOfCourseSections = scanner.nextInt();
 
         for(int i = 0; i < numberOfCourseSections; i++){
@@ -260,7 +264,7 @@ public class CLIAdmin {
 
         Prerequisite prerequisite = new Prerequisite(prerequisiteCourses);
 
-        course = new Course(courseCredit, courseECTS, courseName, courseCode, prerequisite, courseSections, courseType);
+        course = new Course(courseCredit, courseECTS, givenSemester, courseName, courseCode, prerequisite, courseSections, courseType);
 
         adminController.createCourse(course);
 
