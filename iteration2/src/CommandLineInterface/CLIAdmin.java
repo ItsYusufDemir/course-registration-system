@@ -193,7 +193,7 @@ public class CLIAdmin {
         System.out.println("2.\tCourse ECTS: ");
         courseECTS = scanner.nextInt();
 
-        System.out.println("3.\tCourse Name: : ");
+        System.out.println("3.\tCourse Name: ");
         courseName = scanner.nextLine();
 
         System.out.println("4.\tCourse Code: ");
@@ -271,7 +271,4 @@ public class CLIAdmin {
     private Course findCourse(String courseCode){
         return adminController.findCourse(courseCode);
     }
-
-
-
 }
