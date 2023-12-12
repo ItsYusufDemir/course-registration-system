@@ -30,7 +30,7 @@ public class DatabaseManager  {
     public static DatabaseManager getInstance() {
         if (instance == null) {
             instance = new DatabaseManager();
-            instance.initialize();
+            //instance.initialize();
         }
         return instance;
     }
