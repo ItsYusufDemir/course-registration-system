@@ -32,6 +32,12 @@ public class CLIStudent {
         shouldQuit = true;
         while(shouldQuit){
 
+            if(studentController.getNotification().isEmpty()){
+                System.out.println(" Notification\n "+
+                                   "**************");
+                for(String string : StudentController.getNotification())
+                    System.out.println(string);
+            }
             System.out.println(
                     " Menu\n" +
                             "********\n" +
@@ -52,7 +58,7 @@ public class CLIStudent {
                 shouldQuit = false;
             }
             else{
-                System.out.println("Invalid Input");
+                System.out.println("Invalid Input: " + str);
             }
             
             
@@ -75,7 +81,8 @@ public class CLIStudent {
             System.out.println(
                     "\n\n1. Add Course\n" +
                         "2. Delete Course\n" +
-                        "3. Send To Approval");
+                        "3. Show Timetable\n" + 
+                        "4. Send To Approval");
 
             System.out.println("Press b to go back");
             System.out.println("Press q to quit");
@@ -99,6 +106,9 @@ public class CLIStudent {
                     }
                 }
                 else if(str.equals("3")){
+                    showTimetablePage();
+                }
+                else if(str.equals("4")){
                     studentController.sendSelectedCoursesToApproval();
                 }
                 else if(str.equals("b")){
@@ -108,11 +118,11 @@ public class CLIStudent {
                     shouldQuit = false;
                 }
                 else{
-                    System.out.println("Invalid input");
+                    throw new Exception("Invalid input: " + str);
 
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println(e);
             }
 
         }    
@@ -152,14 +162,47 @@ public class CLIStudent {
                         System.out.println("Course addition failed");
                     }
                 }
+                else{
+                    throw new Exception("Invalid input: " + str);
+                }
             
             } catch (Exception e) {
-                System.out.println("Invalid input");
+                System.out.println(e);
             }
 
         }
 
     }
+
+    public void showTimetablePage(){
+        shouldQuit = false;
+        while(shouldQuit){
+
+            System.out.println(" Timetable\n" + 
+                               "***********");
+            System.out.println(studentController.getTimetable());
+
+            String str = scanner.nextLine();
+
+            try {
+                if(str.equals("b")){
+                    break;
+                }
+                else if(str.equals("q")){
+                    shouldQuit = false;
+                }
+                else{
+                    throw new Exception("Invalid input: " + str);
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+    }
+    
+    
+
 
     private boolean validateNumber(String str, Object[] list){
         if(isValidNumber(str)){

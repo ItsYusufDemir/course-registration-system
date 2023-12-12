@@ -16,6 +16,7 @@ public class Student extends User {
     private ApprovalStatus approvalStatus;
     private Transcript transcript;
 
+
    public Student() {
     
    }
@@ -56,12 +57,52 @@ public class Student extends User {
                 }
             }
 
-            if (!(doesContain) && currentCourse.checkPrerequisite(this)) {
+            if (!(doesContain) && currentCourse.checkPrerequisite(this) &&  checkCourseType(currentCourse)) { // TODO: add the nte te... checks to here 
                 availableCourses.add(currentCourse);
             }
         }
         return availableCourses;
     }
+
+    private boolean checkCourseType(Course course){
+        int nteCounter = 0;
+        int teCounter = 0;
+        int fteCounter = 0;
+        int ueCounter = 0;
+
+        for(SelectedCourse selectedCourse : selectedCourses){
+            if(selectedCourse.getCourse().getCourseType().toString().equals("NONTECHNICAL_ELECTIVE") ){
+                nteCounter++;
+            }
+            else if(selectedCourse.getCourse().getCourseType().toString().equals("TECHNICAL_ELECTIVE") ){
+                teCounter++;
+            }
+            else if(selectedCourse.getCourse().getCourseType().toString().equals("FACULTY_ELECTIVE" ) ){
+                fteCounter++;
+            }
+            else if(selectedCourse.getCourse().getCourseType().toString().equals("UNIVERSITY_ELECTIVE") ){
+                ueCounter++;
+            }
+        }
+
+
+        if(course.getCourseType().toString().equals("NONTECHNICAL_ELECTIVE") && nteCounter >= 2){
+            return false;
+        }
+        else if(course.getCourseType().toString().equals("TECHNICAL_ELECTIVE") && teCounter >= 4){
+            return false;
+        }
+        else if(course.getCourseType().toString().equals("FACULTY_ELECTIVE") && fteCounter >= 1){
+            return false;
+        }
+        else if(course.getCourseType().toString().equals("UNIVERSITY_ELECTIVE") && teCounter >= 1){
+            return false;
+        }
+        else{
+        return true;
+        }
+    }
+
     
     /*
         public List<CourseSection> listAvailableCourseSections(){
