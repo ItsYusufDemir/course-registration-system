@@ -1,8 +1,5 @@
 package iteration2.src.controllers;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import iteration2.src.enums.CourseStatus;
 import iteration2.src.models.SelectedCourse;
 import iteration2.src.models.Student;

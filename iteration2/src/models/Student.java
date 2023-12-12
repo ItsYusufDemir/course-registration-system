@@ -1,13 +1,9 @@
 package iteration2.src.models;
 import java.util.*;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-
 import iteration2.src.CommandLineInterface.CLIStudent;
 import iteration2.src.enums.ApprovalStatus;
 import iteration2.src.utils.DatabaseManager;
 
-// not sure about access identifier
 public class Student extends User {
     private String email;
     private String identityNumber;
@@ -32,13 +28,6 @@ public class Student extends User {
         this.transcript = transcript;
     }
 
-    public List<SelectedCourse> getSelectedCourses() {
-        return selectedCourses;
-    }
-
-    public void setSelectedCourses(List<SelectedCourse> selectedCourses) {
-        this.selectedCourses = selectedCourses;
-    }
 
     public List<Course> listAvailableCourses(){
 
@@ -133,4 +122,13 @@ public class Student extends User {
     public void setTranscript(Transcript transcript) {
         this.transcript = transcript;
     }
+
+    public List<SelectedCourse> getSelectedCourses() {
+        return selectedCourses;
+    }
+
+    public void setSelectedCourses(List<SelectedCourse> selectedCourses) {
+        this.selectedCourses = selectedCourses;
+    }
+
 }
