@@ -5,43 +5,37 @@ import java.util.*;
 import javax.xml.crypto.Data;
 
 import iteration2.src.controllers.StudentController;
+import iteration2.src.enums.Color;
 import iteration2.src.models.Course;
 import iteration2.src.models.SelectedCourse;
 import iteration2.src.models.Student;
 import iteration2.src.utils.DatabaseManager;
+import iteration2.src.utils.Util;
 import iteration2.src.models.CourseSection;
 
 import java.util.*;
 
-
-
 // TODO: change println to printf so it looks better
-
 
 public class CLIStudent {
 
-    
     private StudentController studentController;
     private Scanner scanner;
     private boolean shouldQuit;
 
-    
-    
-    public CLIStudent(StudentController studentController) { 
-        this.studentController = studentController;          
+    public CLIStudent(StudentController studentController) {
+        this.studentController = studentController;
         scanner = new Scanner(System.in);
     }
-    
-    
 
     public void menuPage() {
         shouldQuit = true;
-        while(shouldQuit){
+        while (shouldQuit) {
 
-            if(studentController.getNotification().isEmpty()){
-                System.out.println(" Notification\n "+
-                                   "**************");
-                for(String string : StudentController.getNotification())
+            if (studentController.getNotification().isEmpty()) {
+                System.out.println(" Notification\n " +
+                        "**************");
+                for (String string : StudentController.getNotification())
                     System.out.println(string);
             }
             System.out.println(
@@ -53,21 +47,15 @@ public class CLIStudent {
 
             String str = scanner.nextLine();
 
-
-           if(str.equals("1")){
+            if (str.equals("1")) {
                 showMyCoursesPage();
-            }
-            else if(str.equals("2")){
+            } else if (str.equals("2")) {
                 break;
-            }
-            else if(str.equals("q")){
+            } else if (str.equals("q")) {
                 shouldQuit = false;
-            }
-            else{
+            } else {
                 System.out.println("Invalid Input: " + str);
             }
-
-
 
         }
 
@@ -77,18 +65,18 @@ public class CLIStudent {
         shouldQuit = false;
         while (shouldQuit) {
             System.out.println(
-                " My Courses\n" +
-                        "**************\n" +
-                        "  Code\t Name\t Section\t Status\n" +
-                        "  ____\t ____\t _______\t ______");
+                    " My Courses\n" +
+                            "**************\n" +
+                            "  Code\t Name\t Section\t Status\n" +
+                            "  ____\t ____\t _______\t ______");
 
             listSelectedCourses();
 
             System.out.println(
                     "\n\n1. Add Course\n" +
-                        "2. Delete Course\n" +
-                        "3. Show Timetable\n" + 
-                        "4. Send To Approval");
+                            "2. Delete Course\n" +
+                            "3. Show Timetable\n" +
+                            "4. Send To Approval");
 
             System.out.println("Press b to go back");
             System.out.println("Press q to quit");
@@ -96,34 +84,27 @@ public class CLIStudent {
             String str = scanner.nextLine();
 
             try {
-                if(str.equals("1")){
+                if (str.equals("1")) {
                     showAddCoursePage();
-                }
-                else if(str.equals("2")){
+                } else if (str.equals("2")) {
                     System.out.println("Enter the row number of the course you want to delete : ");
                     str = scanner.nextLine();
-                    if( validateNumber( str, studentController.getSelectedCourses().toArray() ) ){
-                        if(deleteCourse(str)){
+                    if (validateNumber(str, studentController.getSelectedCourses().toArray())) {
+                        if (deleteCourse(str)) {
                             System.out.println("Course successfully deleted");
-                        }
-                        else{
+                        } else {
                             System.out.println("Course deletion failed");
                         }
                     }
-                }
-                else if(str.equals("3")){
+                } else if (str.equals("3")) {
                     showTimetablePage();
-                }
-                else if(str.equals("4")){
+                } else if (str.equals("4")) {
                     studentController.sendSelectedCoursesToApproval();
-                }
-                else if(str.equals("b")){
+                } else if (str.equals("b")) {
                     break;
-                }
-                else if(str.equals("q")){
+                } else if (str.equals("q")) {
                     shouldQuit = false;
-                }
-                else{
+                } else {
                     throw new Exception("Invalid input: " + str);
 
                 }
@@ -134,20 +115,17 @@ public class CLIStudent {
         }
     }
 
-
-    public void showAddCoursePage(){
+    public void showAddCoursePage() {
         shouldQuit = false;
-        while(shouldQuit){
+        while (shouldQuit) {
 
             System.out.println(
-                " Avaliable Courses(To Add)\n" +
-                        "**************\n" +
-                        "  Code\t Name\t Section\t Instructor\t Credit\n" +
-                        "  ____\t ____\t _______\t __________\t ______");
+                    " Avaliable Courses(To Add)\n" +
+                            "**************\n" +
+                            "  Code\t Name\t Section\t Instructor\t Credit\n" +
+                            "  ____\t ____\t _______\t __________\t ______");
 
-            
             listAvaliableCourseSections();
-            
 
             System.out.println("\n\npress b to go back");
             System.out.println("press q to quit");
@@ -156,25 +134,21 @@ public class CLIStudent {
             String str = scanner.nextLine();
 
             try {
-                if(str.equals("b")){
+                if (str.equals("b")) {
                     break;
-                }
-                else if(str.equals("q")){
+                } else if (str.equals("q")) {
                     shouldQuit = false;
-                }
-                else if( validateNumber( str, getAvaliableCourseSections().toArray() ) ){
-                    if(addCourse(str)){
+                } else if (validateNumber(str, getAvaliableCourseSections().toArray())) {
+                    if (addCourse(str)) {
                         System.out.println("Course successfully added");
-                    }
-                    else{
+                    } else {
                         System.out.println("Course addition failed");
                     }
                 }
 
-                else{
+                else {
                     throw new Exception("Invalid input: " + str);
                 }
-            
 
             } catch (Exception e) {
                 System.out.println(e);
@@ -184,24 +158,22 @@ public class CLIStudent {
 
     }
 
-    public void showTimetablePage(){
+    public void showTimetablePage() {
         shouldQuit = false;
-        while(shouldQuit){
+        while (shouldQuit) {
 
-            System.out.println(" Timetable\n" + 
-                               "***********");
+            System.out.println(" Timetable\n" +
+                    "***********");
             System.out.println(studentController.getTimetable());
 
             String str = scanner.nextLine();
 
             try {
-                if(str.equals("b")){
+                if (str.equals("b")) {
                     break;
-                }
-                else if(str.equals("q")){
+                } else if (str.equals("q")) {
                     shouldQuit = false;
-                }
-                else{
+                } else {
                     throw new Exception("Invalid input: " + str);
                 }
 
@@ -210,13 +182,10 @@ public class CLIStudent {
             }
         }
     }
-    
-    
 
-
-    private boolean validateNumber(String str, Object[] list){
-        if(isValidNumber(str)){
-            if(checkIfValidRowNumber(str, list)){
+    private boolean validateNumber(String str, Object[] list) {
+        if (isValidNumber(str)) {
+            if (checkIfValidRowNumber(str, list)) {
                 return true;
             }
         }
@@ -224,15 +193,13 @@ public class CLIStudent {
         return false;
     }
 
-    private boolean addCourse(String str){
+    private boolean addCourse(String str) {
         int rowNumber = Integer.parseInt(getRowNumberFromInput(str));
-        if(studentController.addSelectedCourse(studentController.getAvaliableCourseSections().get(rowNumber-1))){ 
+        if (studentController.addSelectedCourse(studentController.getAvaliableCourseSections().get(rowNumber - 1))) {
             return true;
         }
         return false;
     }
-
-
 
     private boolean deleteCourse(String str){   
         int rowNumber = Integer.parseInt(getRowNumberFromInput(str)); 
@@ -242,72 +209,59 @@ public class CLIStudent {
         return false;
     }
 
+    private String getRowNumberFromInput(String str) {
 
-    private String getRowNumberFromInput(String str){
-
-        if(str.contains(" ")){
+        if (str.contains(" ")) {
             return str.substring(0, str.indexOf(" "));
-        }
-        else if(str.contains(",")){
+        } else if (str.contains(",")) {
             return str.substring(0, str.indexOf(","));
-        }
-        else if(str.contains(".")){
+        } else if (str.contains(".")) {
             return str.substring(0, str.indexOf("."));
-        }
-        else{
+        } else {
 
             return str;
         }
 
-
     }
 
-    private boolean isValidNumber(String str){
+    private boolean isValidNumber(String str) {
         int strLength = getRowNumberFromInput(str).length();
-        for(int i = 0; i<strLength; i++){
-            if(str.charAt(i) < 48 || str.charAt(i) > 57){
+        for (int i = 0; i < strLength; i++) {
+            if (str.charAt(i) < 48 || str.charAt(i) > 57) {
                 return false;
             }
         }
         return true;
     }
 
-    private boolean checkIfValidRowNumber(String rowNumber, Object[] list){
+    private boolean checkIfValidRowNumber(String rowNumber, Object[] list) {
         int rowNumberInt = Integer.parseInt(getRowNumberFromInput(rowNumber));
-        if(rowNumberInt > list.length || rowNumberInt < 1){
+        if (rowNumberInt > list.length || rowNumberInt < 1) {
             return false;
         }
         return true;
     }
 
-
-
-    private void listAvaliableCourseSections(){
-        List<Course> avaliableCourses = studentController.listAvailableCourseSections(); 
+    private void listAvaliableCourseSections() {
+        List<Course> avaliableCourses = studentController.listAvailableCourseSections();
         int rowCount = 1;
-        Course course; 
-            for(CourseSection courseSection : course.getCourseSections()){
-                course = studentController.findCourseOfCourseSection(courseSection);
-                System.out.println(rowCount + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t"
-                        + courseSection.getSectionCode() + "\t"
-                        + courseSection.getLecturerName() + "\t" + course.getCourseCredit());
-            }
-
-        
-            
+        Course course;
+        for (CourseSection courseSection : course.getCourseSections()) {
+            course = studentController.findCourseOfCourseSection(courseSection);
+            System.out.println(rowCount + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t"
+                    + courseSection.getSectionCode() + "\t"
+                    + courseSection.getLecturerName() + "\t" + course.getCourseCredit());
+        }
 
     }
 
-    private void listSelectedCourses(){
+    private void listSelectedCourses() {
         int rowCount = 1;
-        for(SelectedCourse selectedCourse : studentController.getSelectedCourses()){ 
-            System.out.println(rowCount + ". " + selectedCourse.getCourse().getCourseCode() + "\t" + selectedCourse.getCourse().getCourseName() + "\t"
+        for (SelectedCourse selectedCourse : studentController.getSelectedCourses()) {
+            System.out.println(rowCount + ". " + selectedCourse.getCourse().getCourseCode() + "\t"
+                    + selectedCourse.getCourse().getCourseName() + "\t"
                     + selectedCourse.getCourseSection().getSectionCode() + "\t" + selectedCourse.getStatus());
         }
     }
-
-    
-
-
 
 }
