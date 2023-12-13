@@ -1,33 +1,40 @@
 package iteration2.test.controllers;
 
-
 import iteration2.src.controllers.AdvisorController;
 import iteration2.src.models.Advisor;
 import iteration2.src.models.Student;
 import iteration2.src.utils.DatabaseManager;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 
 public class AdvisorControllerTest {
 
-    @Test
-    public void getStudentListOrderByStatus() {
-        DatabaseManager databaseManager = DatabaseManager.getInstance();
+    private DatabaseManager databaseManager;
+    private AdvisorController advisorController;
+
+    @Before
+    public void setUp() {
+        databaseManager = DatabaseManager.getInstance();
         Advisor advisor = databaseManager.getAdvisors().get(0);
-        AdvisorController advisorController = new AdvisorController(advisor);
-        List<Student> studentList = databaseManager.fetchAdvisedStudents(advisor);
+        advisorController = new AdvisorController(advisor);
+    }
+
+    @org.junit.Test
+    public void shouldReturnStudentListOrderedByStatus() {
+        List<Student> studentList = databaseManager.fetchAdvisedStudents(advisorController.getCurrentAdvisor());
         List<Student> sortedStudentList = advisorController.getStudentListOrderByStatus();
+        assertStudentListOrderedByStatus(studentList, sortedStudentList);
+    }
 
-        for (Student student: studentList) {
-            System.out.println(student.getFirstName());
-        }
-
-        System.out.println("Sorted List");
-
-        for (Student student: sortedStudentList) {
-            System.out.println(student.getFirstName());
+    private void assertStudentListOrderedByStatus(List<Student> originalList, List<Student> sortedList) {:
+        for (int i = 1; i < sortedList.size(); i++) {
+            assertEquals("Student list is not ordered by status", 
+                         originalList.get(i - 1).getApprovalStatus(), 
+                         sortedList.get(i).getApprovalStatus());
         }
     }
 }

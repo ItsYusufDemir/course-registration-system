@@ -19,8 +19,22 @@ public class PrerequisiteTest {
         boolean isPassed = prerequisiteTest.checkPrerequisiteCoursePassed(student, course);
         System.out.println("isPassed -> " + isPassed );
 
-        // assert true
-        // assert false
+        assertTrue(isPassed);        
 
     }
+
+    @org.junit.Test
+    public void checkPrequisiteCourseNotPassed() {
+        DatabaseManager databaseManager = DatabaseManager.getInstance();
+        Student student =  databaseManager.getStudents().get(0);
+        Course course = databaseManager.getCourses().get(1);
+
+        Prerequisite prerequisiteTest = course.getPrerequisiteInformation();
+        boolean isPassed = prerequisiteTest.checkPrerequisiteCoursePassed(student, course);
+        System.out.println("isPassed -> " + isPassed );
+
+        assertFalse(isPassed);        
+
+    }
+
 }
