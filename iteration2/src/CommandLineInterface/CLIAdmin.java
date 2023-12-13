@@ -89,8 +89,9 @@ public class CLIAdmin {
         } else if (str.startsWith("d")) {
             System.out.println("Enter the row number of the course you want to delete : ");
             str = scanner.nextLine();
-            if (isValidNumber(str) && checkIfValidRowNumber(str, courses)) {
-                if (deleteCourse(course)) {
+            if (Util.isValidNumber(str) && Util.checkIfValidRowNumber(str, courses.toArray())) {
+                Course course = courses.get(Integer.parseInt(Util.getRowNumberFromInput(str)) - 1);
+                if (adminController.deleteCourse(course)) {
                     System.out.println("Course deleted successfully");
                 } else {
                     System.out.println("delete failed");
@@ -107,7 +108,7 @@ public class CLIAdmin {
         } else {
             System.out.println("Invalid input");
             System.out.println("\n\n\n");
-            myCoursesPage(courses);
+            courseListPage();
         }
 
     }
@@ -146,7 +147,7 @@ public class CLIAdmin {
         } else if (str.startsWith("2")) {
             System.out.println("Enter the new value for Max Number Of Courses That Can Be Taken: ");
             str = scanner.nextLine();
-            if (isValidNumber(str)) {
+            if (Util.isValidNumber(str)) {
                 constraint.setmaxNumberOfCoursesStudentTake(Integer.parseInt(str));
                 System.out.println("Max Number Of Courses That Can Be Taken changed successfully");
             } else {
