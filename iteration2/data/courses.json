@@ -2,6 +2,7 @@
     {
         "courseCredit": 7,
         "courseECTS": 7,
+        "givenSemester": 5,
         "courseName": "Operating Systems",
         "courseCode": "CSE3033",
         "prerequisiteInformation": {
@@ -16,8 +17,8 @@
                         {
                             "studentCapacity": 100,
                             "lecturerName": "Borahan Tümer",
-                            "sectionTime": "2:00 PM - 4:00 PM",
-                            "sectionDate": "Tuesday",
+                            "sectionTime": ["09:30-10:20", "10:30-11:20"],
+                            "sectionDate": ["Tuesday", "Tuesday"],
                             "classroom": "Room 301",
                             "sectionCode": "CSE2225.1",
                             "studentCountInsideCourseSection": 0
@@ -32,14 +33,14 @@
             {
                 "studentCapacity": 100,
                 "lecturerName": "Ali Haydar Özer",
-                "sectionTime": "10:00 AM - 12:00 PM",
-                "sectionDate": "Monday",
+                "sectionTime": ["08:30-09:20", "09:30-10:20"],
+                "sectionDate": ["Thursday", "Thursday"],
                 "classroom": "Room 101",
                 "sectionCode": "CSE3033.1",
                 "studentCountInsideCourseSection": 7
             }
         ],
-        "isCompulsory": true
+        "courseType": "COMPULSORY"
     },
     {
         "courseCredit": 7,
@@ -58,8 +59,8 @@
                         {
                             "studentCapacity": 100,
                             "lecturerName": "Borahan Tümer",
-                            "sectionTime": "2:00 PM - 4:00 PM",
-                            "sectionDate": "Tuesday",
+                            "sectionTime": ["10:00-11:20", "11:30-12:20"],
+                            "sectionDate": ["Wednesday", "Wednesday"],
                             "classroom": "Room 301",
                             "sectionCode": "CSE2225.1",
                             "studentCountInsideCourseSection": 0
@@ -73,9 +74,8 @@
         "courseSections": [
             {
                 "studentCapacity": 100,
-                "lecturerName": "Mustafa Ağaoğlu",
-                "sectionTime": "10:00 AM - 12:00 PM",
-                "sectionDate": "Friday",
+                "sectionTime": ["09:30-10:20", "10:30-11:50"],
+                "sectionDate": ["Friday", "Friday"],
                 "classroom": "Room 701",
                 "sectionCode": "CSE3055.1",
                 "studentCountInsideCourseSection": 7

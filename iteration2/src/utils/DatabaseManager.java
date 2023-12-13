@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -15,6 +16,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import iteration2.src.models.Advisor;
+import iteration2.src.models.Constraint;
 import iteration2.src.models.Course;
 import iteration2.src.models.Student;
 import iteration2.src.models.Transcript;
@@ -26,8 +28,7 @@ public class DatabaseManager {
     private List<Course> courseList;
     private List<Student> studentList;
     private List<Advisor> advisorList;
-
-    private Constraint constraints;
+    private List<Constraint> constraints;
 
     //Singleton pattern
     public static DatabaseManager getInstance() {
@@ -102,13 +103,13 @@ public class DatabaseManager {
         }        
     }
 
-    private Constraint jsonToConstraints(String jsonString){
+    private List<Constraint> jsonToConstraints(String jsonString){
         try {
-            return objectMapper.readValue(jsonString, new TypeReference<Constraint>() {});
+            return objectMapper.readValue(jsonString, new TypeReference<List<Constraint>>() {});
         } catch (IOException e) {
             System.out.println("Error while converting JSON String to List of objects!");
             e.printStackTrace();
-            return null ; // or throw an exception if needed
+            return Collections.emptyList(); // or throw an exception if needed
         }
     }
     //Convert the list of objects to JSON String
@@ -185,10 +186,20 @@ public class DatabaseManager {
         return advisorList;
     }
 
-    public Constraint getConstraints(){
-        return constraints;
-    }
+    public HashMap<Integer,String> getConstraints(){
+        Constraint constraint = constraints.get(0);
+        HashMap<Integer,String> constraintsMap = new HashMap<Integer,String>();
+        constraintsMap.put(1, String.valueOf(constraint.getMaxNumberOfCoursesStudentTake()));
+        constraintsMap.put(2, String.valueOf(constraint.isAddDropWeek()));
+        constraintsMap.put(3, String.valueOf(constraint.getMinRequiredECTSForTermProject()));
+        return constraintsMap;
 
+    }
+    
+    public boolean editConstraint(HashMap<Integer, String> editedAttributes){
+        constraints.get(0).editConstraint(editedAttributes);
+        return true;
+    }
 
     public Course findCourseByCourseCode(String courseCode) {
         for (Course course : courseList) {
@@ -198,5 +209,7 @@ public class DatabaseManager {
         }
         return null;
     }
+
+    
 
 }

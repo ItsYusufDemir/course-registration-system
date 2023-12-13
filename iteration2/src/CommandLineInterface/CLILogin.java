@@ -1,7 +1,5 @@
 package iteration2.src.CommandLineInterface;
 import java.util.Scanner;
-import java.util.Stack;
-
 import iteration2.src.controllers.UserController;
 import iteration2.src.models.User;
 //import controllers.UserController;

@@ -1,15 +1,11 @@
 package iteration2.src.controllers;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import iteration2.src.enums.ApprovalStatus;
 import iteration2.src.models.Advisor;
 import iteration2.src.models.SelectedCourse;
 import iteration2.src.models.Student;
-import iteration2.src.utils.DatabaseManager;
 
 public class AdvisorController {
 

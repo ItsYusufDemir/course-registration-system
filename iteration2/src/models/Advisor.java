@@ -5,7 +5,6 @@ import iteration2.src.CommandLineInterface.CLIAdvisor;
 import iteration2.src.enums.ApprovalStatus;
 import iteration2.src.enums.CourseResult;
 import iteration2.src.enums.CourseStatus;
-import iteration2.src.models.User;
 import iteration2.src.utils.DatabaseManager;
 
 public class Advisor extends User {

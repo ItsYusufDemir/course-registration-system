@@ -1,13 +1,13 @@
 package iteration2.src.models;
 import java.util.*;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-
 import iteration2.src.CommandLineInterface.CLIStudent;
 import iteration2.src.controllers.StudentController;
 import iteration2.src.enums.ApprovalStatus;
+import iteration2.src.enums.Color;
 import iteration2.src.enums.CourseStatus;
 import iteration2.src.utils.DatabaseManager;
+import iteration2.src.utils.Util;
+import iteration2.src.enums.CourseResult;
 
 // not sure about access identifier
 public class Student extends User {
@@ -18,7 +18,6 @@ public class Student extends User {
     private Advisor advisorOfStudent;
     private ApprovalStatus approvalStatus;
     private Transcript transcript;
-    private String[][] timeTable;
 
    public Student() {
     
@@ -26,7 +25,7 @@ public class Student extends User {
 
     // not sure about constructor access identifier
     
-    public Student(String userID, String password, String firstName, String lastName, boolean status, String email, String identityNumber, List<SelectedCourse> selectedCourses, Advisor advisorOfStudent, ApprovalStatus approvalStatus, Transcript transcript) {
+    public Student(String userID, String password, String firstName, String lastName, boolean status, String email, String identityNumber, int currentSemester,List<SelectedCourse> selectedCourses, Advisor advisorOfStudent, ApprovalStatus approvalStatus, Transcript transcript) {
         super(userID, password, firstName, lastName, status);
         this.email = email;
         this.identityNumber = identityNumber;
@@ -38,7 +37,7 @@ public class Student extends User {
     }
 
 
-    public List<CourseSection> listAvailableCourses() {
+    public List<CourseSection> listAvailableCourseSections() {
         List<CourseSection> allSelectableCourseSections = new ArrayList<>();
         List<Course> courses = DatabaseManager.getInstance().getCourses();
         List<CourseSection> availableCourseSections = new ArrayList<>();
@@ -61,7 +60,7 @@ public class Student extends User {
                 }
                 availableCourseSections.addAll(findRepeatCourseSections());
             }
-            return availableCourseSections;
+         
             // Courselara bakıcam döneminden üst dersse gpa artı prerequisite check
         }
         return availableCourseSections;// hata vermesin diye şimdilik yazdım
@@ -118,7 +117,7 @@ public class Student extends User {
         else if(course.getCourseType().toString().equals("FACULTY_ELECTIVE") && fteCounter >= 1){
             return false;
         }
-        else if(course.getCourseType().toString().equals("UNIVERSITY_ELECTIVE") && teCounter >= 1){
+        else if(course.getCourseType().toString().equals("UNIVERSITY_ELECTIVE") && ueCounter >= 1){
             return false;
         }
         else{
@@ -148,16 +147,49 @@ public class Student extends User {
     }
 
 
+    // TEST YAZ BUNA
+    private boolean checkCompulsoryCourses() {
+        List<CourseGrade> courseGrades = this.getTranscript().getTakenCourses();
+        for (CourseGrade courseGrade : courseGrades) {
+            if (courseGrade.getCourseResult() == CourseResult.FAILED) {
+                List<SelectedCourse> selectedCourses = this.getSelectedCourses();
+                for (SelectedCourse selectedCourse : selectedCourses) {
+                    if (!selectedCourse.getCourse().equals(courseGrade.getCourse())) {
+                        for (CourseSection section : this.listAvailableCourseSections()) {
+                            if(section.findCourseOfCourseSection().equals(courseGrade.getCourse())){
+                                Util.paintText("You have to take " + courseGrade.getCourse().getCourseName() + " again.",Color.RED);
+                                return true;
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
 
     public void sendSelectedCoursesToApproval(){
+        if(this.approvalStatus == ApprovalStatus.PENDING){
+            Util.paintText("You already sent your courses to approval!",Color.RED);
+        }
+
+        if (checkCompulsoryCourses()) {
+            return;
+        }
+
         this.setApprovalStatus(ApprovalStatus.PENDING);
-        for (SelectedCourse selectedCourse: this.getSelectedCourses()){
-            if(selectedCourse.getStatus() == CourseStatus.DRAFT){
+        List<SelectedCourse> selectedCourses = this.getSelectedCourses();
+        for (SelectedCourse selectedCourse : selectedCourses) {
+            if (selectedCourse.getStatus() == CourseStatus.DRAFT) {
                 selectedCourse.setStatus(CourseStatus.PENDING);
                 selectedCourse.getCourseSection().incrementStudentCount();
+
             }
         }
+        this.setSelectedCourses(selectedCourses);
+        advisorOfStudent.addNotification(this.getFirstName() +" "+ this.getLastName() +" has requested a course approval." );
     }
 
     public void setApprovalStatus(ApprovalStatus approvalStatus) {
@@ -206,7 +238,10 @@ public class Student extends User {
 
 
 
-    public void fillTable() {
+    public String [][] fillTable() {
+
+        String[][] timeTable;
+
         timeTable = new String[5][9];
 
         for (int i = 0; i < 5; i++) {
@@ -222,15 +257,15 @@ public class Student extends User {
                 String day = selectedCourses.get(i).getCourseSection().getSectionDay().get(m);
                 String time = selectedCourses.get(i).getCourseSection().getSectionTime().get(m);
                 if (day.equals("Monday")) {
-                    fillTableWithValues(time, i, 0);
+                    fillTableWithValues(time, i, 0, timeTable);
                 } else if (day.equals("Tuesday")) {
-                    fillTableWithValues(time, i, 1);
+                    fillTableWithValues(time, i, 1, timeTable);
                 } else if (day.equals("Wednesday")) {
-                    fillTableWithValues(time, i, 2);
+                    fillTableWithValues(time, i, 2, timeTable);
                 } else if (day.equals("Thursday")) {
-                    fillTableWithValues(time, i, 3);
+                    fillTableWithValues(time, i, 3, timeTable);
                 } else if (day.equals("Friday")) {
-                    fillTableWithValues(time, i, 4);
+                    fillTableWithValues(time, i, 4, timeTable);
                 } else {
                     System.out.println("Invalid day.");
                 }
@@ -238,9 +273,11 @@ public class Student extends User {
 
             }
         }
+
+        return timeTable;
     }
 
-    public void fillTableWithValues(String time, int i, int day) {
+    public void fillTableWithValues(String time, int i, int day, String[][] timeTable) {
         if (time.equals("08:30-09:20")) {
             timeTable[day][0] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
         } else if (time.equals("09:30-10:20")) {
@@ -266,7 +303,7 @@ public class Student extends User {
 
 
     public List<String> checkConflictCourses() {
-        fillTable();
+        String [][] timeTable = fillTable();
         List<String> conflictedCourses = new ArrayList<String>();
 
         for (int i = 0; i < 5; i++) {
@@ -300,4 +337,11 @@ public class Student extends User {
     public void setCurrentSemester(int currentSemester) {
         this.currentSemester = currentSemester;
     }
+
+    public String [][] createTimeTable() {
+        String [][] timeTable = fillTable();
+        return timeTable;
+    }
+
+
 }

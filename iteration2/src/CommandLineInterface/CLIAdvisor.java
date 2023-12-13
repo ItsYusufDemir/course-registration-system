@@ -2,9 +2,6 @@ package iteration2.src.CommandLineInterface;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import javax.xml.crypto.Data;
-
 import iteration2.src.controllers.AdvisorController;
 import iteration2.src.enums.CourseStatus;
 import iteration2.src.models.Advisor;
