@@ -85,4 +85,10 @@ public class CourseSection {
     public int getStudentCountInsideCourseSection() {
         return studentCountInsideCourseSection;
     }
+
+    public ArrayList<String> getSectionDay() {
+        return sectionDay;
+    }
+
+    
 }

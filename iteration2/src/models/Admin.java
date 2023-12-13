@@ -2,7 +2,6 @@ package iteration2.src.models;
 
 import java.util.HashMap;
 import java.util.List;
-
 import iteration2.src.utils.DatabaseManager;
 
 public class Admin {
@@ -14,7 +13,7 @@ public class Admin {
         return DatabaseManager.getInstance().getCourses();
     }
 
-    public Constraint getConstraints() {
+    public HashMap<Integer,String> getConstraints() {
         return DatabaseManager.getInstance().getConstraints();
     }
 
@@ -24,28 +23,24 @@ public class Admin {
         return course;
     }
 
-    public Course createCourse(int courseCredit, int courseECTS, String courseName, String courseCode,
-            Prerequisite prerequisiteInformation, List<CourseSection> courseSections, CourseType courseType) {
-        Course course = new Course(courseCredit, courseECTS, courseName, courseCode, prerequisiteInformation,
-                courseSections, courseType);
-        getCourseList().add(course);
-        return course;
+
+    public boolean editConstraint(HashMap<Integer, String> editedAttributes) {
+        boolean ret = DatabaseManager.getInstance().editConstraint(editedAttributes);
+        DatabaseManager.getInstance().saveToDatabase();
+        return ret;
     }
 
-    public void editConstraint(HashMap<Integer, String> editedAttributes) {
-        Constraint constraint = getConstraints();
-        constraint.editConstraint(editedAttributes);
+    public boolean deleteCourse(Course course) {
+        boolean ret = getCourseList().remove(course);
         DatabaseManager.getInstance().saveToDatabase();
+        return ret;
     }
 
-    public Course deleteCourse(Course course) {
-        getCourseList().remove(course);
-        DatabaseManager.getInstance().saveToDatabase();
-        return course;
-    }
 
     public Course findCourseByCourseCode(String courseCode) {
         return DatabaseManager.getInstance().findCourseByCourseCode(courseCode);
     }
+
+   
 
 }

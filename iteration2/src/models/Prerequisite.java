@@ -16,7 +16,7 @@ public class Prerequisite {
         int lengthPrerequisiteCourses = course.getPrerequisiteInformation().prerequisiteOfCourses.size();
         List<Course> passedCourses = student.getTranscript().acquirePassedCourses();
         int lengthPassedCourses = passedCourses.size();
-        ArrayList<Boolean> isPrerequisiteCoursesPassed = new ArrayList();
+        ArrayList<Boolean> isPrerequisiteCoursesPassed = new ArrayList<Boolean>();
         for(int i = 0; i < lengthPrerequisiteCourses; i++){
             for(int j = 0; j < lengthPassedCourses; j++){
                 isPrerequisiteCoursesPassed.add(prerequisiteOfCourses.get(i).getCourseCode().equals(passedCourses.get(j).getCourseCode()));

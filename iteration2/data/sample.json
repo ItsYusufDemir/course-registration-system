@@ -1,0 +1,103 @@
+[
+    {
+        "courseCredit": 7,
+        "courseECTS": 7,
+        "givenSemester": 5,
+        "courseName": "Operating Systems",
+        "courseCode": "CSE3033",
+        "prerequisiteInformation": {
+            "prerequisiteOfCourses": [
+                {
+                    "courseCredit": 7,
+                    "courseECTS": 7,
+                    "courseName": "Data Structures",
+                    "courseCode": "CSE2225",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 100,
+                            "lecturerName": "Borahan Tümer",
+                            "sectionTime": ["09:30-10:20", "11:30-12:20"],
+                            "sectionDate": ["Tuesday", "Tuesday"],
+                            "classroom": "Room 301",
+                            "sectionCode": "CSE2225.1",
+                            "studentCountInsideCourseSection": 0
+                        }
+                    ],
+                    "isCompulsory": true
+                }
+            ],
+            "prerequisiteForCourses": null
+        },
+        "courseSections": [
+            {
+                "studentCapacity": 100,
+                "lecturerName": "Ali Haydar Özer",
+                "sectionTime": ["14:00-14:50", "15:00-15:50"],
+                "sectionDate": ["Monday", "Monday"],
+                "classroom": "Room 101",
+                "sectionCode": "CSE3033.1",
+                "studentCountInsideCourseSection": 7
+            }
+        ],
+        "courseType": "COMPULSORY"
+    }
+
+
+
+    [
+        {
+          "sectionTime": ["09:30-10:20", "10:30-11:20"],
+          "sectionDate": ["Tuesday", "Tuesday"]
+        },
+        {
+          "sectionTime": ["08:30-09:20", "09:30-10:20"],
+          "sectionDate": ["Thursday", "Thursday"],
+        },
+        {
+          "sectionTime": ["10:00-11:20", "11:30-12:20"],
+          "sectionDate": ["Wednesday", "Wednesday"]
+        },
+        {
+          "sectionTime": ["09:30-10:20", "10:30-11:50"],
+          "sectionDate": ["Friday", "Friday"]
+        },
+        {
+          "sectionTime": ["12:30-13:20", "13:30-14:20"],
+          "sectionDate": ["Monday", "Monday"]
+        },
+        {
+          "sectionTime": ["11:00-12:20", "12:30-13:20"],
+          "sectionDate": ["Thursday", "Thursday"]
+        },
+        {
+          "sectionTime": ["10:30-11:20", "11:30-12:20"],
+          "sectionDate": ["Monday", "Monday"]
+        },
+        {
+          "sectionTime": ["08:30-09:20", "09:30-10:50"],
+          "sectionDate": ["Wednesday", "Wednesday"]
+        },
+        {
+          "sectionTime": ["13:00-14:20", "14:30-15:20"],
+          "sectionDate": ["Friday", "Friday"]
+        },
+        {
+          "sectionTime": ["09:00-10:20", "10:30-11:20"],
+          "sectionDate": ["Tuesday", "Tuesday"]
+        }
+      ]
+      
+
+
+
+
+
+
+
+
+
+
+
+
+]

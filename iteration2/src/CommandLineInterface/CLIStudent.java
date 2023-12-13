@@ -2,18 +2,10 @@ package iteration2.src.CommandLineInterface;
 
 import java.util.*;
 
-import javax.xml.crypto.Data;
-
 import iteration2.src.controllers.StudentController;
-import iteration2.src.enums.Color;
 import iteration2.src.models.Course;
 import iteration2.src.models.SelectedCourse;
-import iteration2.src.models.Student;
-import iteration2.src.utils.DatabaseManager;
-import iteration2.src.utils.Util;
 import iteration2.src.models.CourseSection;
-
-import java.util.*;
 
 // TODO: change println to printf so it looks better
 
@@ -35,7 +27,7 @@ public class CLIStudent {
             if (studentController.getNotification().isEmpty()) {
                 System.out.println(" Notification\n " +
                         "**************");
-                for (String string : StudentController.getNotification())
+                for (String string : studentController.getNotification())
                     System.out.println(string);
             }
             System.out.println(
@@ -138,7 +130,7 @@ public class CLIStudent {
                     break;
                 } else if (str.equals("q")) {
                     shouldQuit = false;
-                } else if (validateNumber(str, getAvaliableCourseSections().toArray())) {
+                } else if (validateNumber(str, studentController.getAvaliableCourseSections().toArray())) {
                     if (addCourse(str)) {
                         System.out.println("Course successfully added");
                     } else {
@@ -197,7 +189,8 @@ public class CLIStudent {
 
     private boolean addCourse(String str) {
         int rowNumber = Integer.parseInt(getRowNumberFromInput(str));
-        if (studentController.addSelectedCourse(studentController.getAvaliableCourseSections().get(rowNumber - 1)) ) {
+        CourseSection selectedCourseSection = studentController.getAvaliableCourseSections().get(rowNumber - 1);
+        if (studentController.addSelectedCourse(new SelectedCourse(selectedCourseSection.findCourseOfCourseSection(),selectedCourseSection)) ) {
             return true;
         }
         return false;
@@ -245,11 +238,11 @@ public class CLIStudent {
     }
 
     private void listAvaliableCourseSections() {
-        List<Course> avaliableCourses = studentController.listAvailableCourseSections();
+        List<CourseSection> avaliableCourseSections = studentController.listAvailableCourseSections();
         int rowCount = 1;
         Course course;
-        for (CourseSection courseSection : course.getCourseSections()) {
-            course = studentController.findCourseOfCourseSection(courseSection);
+        for (CourseSection courseSection : avaliableCourseSections) {
+            course = courseSection.findCourseOfCourseSection();
             System.out.println(rowCount + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t"
                     + courseSection.getSectionCode() + "\t"
                     + courseSection.getLecturerName() + "\t" + course.getCourseCredit());
