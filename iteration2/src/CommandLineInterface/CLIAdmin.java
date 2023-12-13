@@ -1,6 +1,8 @@
 package iteration2.src.CommandLineInterface;
+import java.awt.*;
 import java.util.*;
 import java.lang.*;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import javax.xml.crypto.Data;
@@ -167,6 +169,8 @@ public class CLIAdmin {
 
         ArrayList prerequisiteCourses = new ArrayList();
         ArrayList courseSections = new ArrayList();
+        ArrayList<String> sectionTimeList = new ArrayList();;
+        ArrayList<String> sectionDateList = new ArrayList();;
         Prerequisite prerequisiteInformation;
         CourseSection courseSection;
         CourseType courseType;
@@ -194,7 +198,7 @@ public class CLIAdmin {
         System.out.println("-> Enter the course information for the fields.");
 
         while(true){
-            System.out.println("1.\tCourse Credit: ");
+            System.out.print("1.\tCourse Credit: ");
             try{
                 courseCredit = scanner.nextInt();
                 break;
@@ -204,7 +208,7 @@ public class CLIAdmin {
         }
 
         while(true){
-            System.out.println("2.\tCourse ECTS: ");
+            System.out.print("2.\tCourse ECTS: ");
             try{
                 courseECTS = scanner.nextInt();
                 break;
@@ -213,14 +217,14 @@ public class CLIAdmin {
             }
         }
 
-        System.out.println("3.\tCourse Name: ");
+        System.out.print("3.\tCourse Name: ");
         courseName = scanner.nextLine();
 
-        System.out.println("4.\tCourse Code: ");
+        System.out.print("4.\tCourse Code: ");
         courseCode = scanner.nextLine();
 
         while(true){
-            System.out.println("5.\tCourse Semester: ");
+            System.out.print("5.\tCourse Semester: ");
             try{
                 givenSemester = scanner.nextInt();
                 break;
@@ -230,7 +234,7 @@ public class CLIAdmin {
         }
 
         while(true){
-            System.out.println("6.\tCourse Type: Compulsory(1), Non-technical Elective(2), Technical Elective(3), University Elective(4), Faculty Elective(5): ");
+            System.out.print("6.\tCourse Type: Compulsory(1), Non-technical Elective(2), Technical Elective(3), University Elective(4), Faculty Elective(5): ");
             try{
                 courseTypeCode = scanner.nextInt();
                 break;
@@ -254,7 +258,7 @@ public class CLIAdmin {
         }
 
         while(true){
-            System.out.println("7.\t Number of Prerequisite Courses: ");
+            System.out.print("7.\t Number of Prerequisite Courses: ");
             try{
                 numberOfPrerequisiteCourses = scanner.nextInt();
                 break;
@@ -279,7 +283,7 @@ public class CLIAdmin {
         }
 
         while(true){
-            System.out.println("8.\tNumber Of Sections: ");
+            System.out.print("8.\tNumber Of Sections: ");
             try{
                 numberOfCourseSections = scanner.nextInt();
                 break;
@@ -293,7 +297,7 @@ public class CLIAdmin {
             System.out.println("Section " + i);
 
             while(true){
-                System.out.println("1.\tStudent Capacity: ");
+                System.out.print("1.\tStudent Capacity: ");
                 try{
                     studentCapacity = scanner.nextInt();
                     break;
@@ -303,22 +307,42 @@ public class CLIAdmin {
             }
 
 
-            System.out.println("2.\tLecturer Name: ");
+            System.out.print("2.\tLecturer Name: ");
             lecturerName = scanner.nextLine();
 
-            System.out.println("3.\tSection Time: ");
-            sectionTime = scanner.nextLine();
+            System.out.println("Following information for section date and time");
+            System.out.println("Input Format for Section Date:\tMonday, Monday, Tuesday");
+            System.out.println("Input Format for Section Time:\t08:30-09:20, 09:30-10:30, 08:-09:20\n");
 
-            System.out.println("4.\tSection Date: ");
-            sectionDate = scanner.nextLine();
+            while(true){
+                System.out.print("3.\tSection Date: ");
+                sectionDate = scanner.nextLine();
+                sectionDateList = Util.makeArrayList(",", sectionDate);
+                if(Util.isInputFormatTrueForDay(sectionDateList) ){
+                    break;
+                }else{
+                    Util.paintText("Invalid input format! Please enter in this format: \tMonday, Monday, Tuesday", Color.RED);
+                }
+            }
 
-            System.out.println("5.\tClassroom: ");
+            while(true){
+                System.out.print("4.\tSection Time: ");
+                sectionTime = scanner.nextLine();
+                sectionTimeList = Util.makeArrayList(":", sectionTime);
+                if(Util.isInputFormatTrueForTime(sectionTimeList)){
+                    break;
+                }else{
+                    Util.paintText("Invalid input format! Please enter in this format: \tMonday, Monday, Tuesday", Color.RED);
+                }
+            }
+
+            System.out.print("5.\tClassroom: ");
             classroom = scanner.nextLine();
 
-            System.out.println("5.\tSection Code: ");
+            System.out.print("6.\tSection Code: ");
             sectionCode = scanner.nextLine();
 
-            courseSections.add(new CourseSection(studentCapacity, lecturerName, sectionTime, sectionDate, classroom, sectionCode));
+            courseSections.add(new CourseSection(studentCapacity, lecturerName, sectionTimeList, sectionDateList, classroom, sectionCode));
         }
 
         Prerequisite prerequisite = new Prerequisite(prerequisiteCourses);
@@ -335,8 +359,8 @@ public class CLIAdmin {
         }
 
     }
-
     private Course findCourse(String courseCode){
         return adminController.findCourse(courseCode);
     }
 }
+

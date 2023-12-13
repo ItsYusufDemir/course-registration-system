@@ -8,8 +8,8 @@ public class CourseSection {
 
     private int studentCapacity;
     private String lecturerName;
-    private String sectionTime;
-    private String sectionDate;
+    private ArrayList<String> sectionTime; // [8:00, 9:00, 8:00]
+    private ArrayList<String> sectionDay; // [Monday, Monday, Tuesday]
     private String classroom;
     private String sectionCode;
     private int studentCountInsideCourseSection;
@@ -17,11 +17,11 @@ public class CourseSection {
     public CourseSection() {
     }
 
-    public CourseSection(int studentCapacity, String lecturerName, String sectionTime, String sectionDate, String classroom, String sectionCode) {
+    public CourseSection(int studentCapacity, String lecturerName, ArrayList<String> sectionTime, ArrayList<String> sectionDay, String classroom, String sectionCode) {
         this.studentCapacity = studentCapacity;
         this.lecturerName = lecturerName;
         this.sectionTime = sectionTime;
-        this.sectionDate = sectionDate;
+        this.sectionDay = sectionDay;
         this.classroom = classroom;
         this.sectionCode = sectionCode;
         this.studentCountInsideCourseSection = 0;
@@ -65,12 +65,12 @@ public class CourseSection {
         return lecturerName;
     }
 
-    public String getSectionTime() {
+    public ArrayList<String> getSectionTime() {
         return sectionTime;
     }
 
-    public String getSectionDate() {
-        return sectionDate;
+    public ArrayList<String> getSectionDate() {
+        return sectionDay;
     }
 
     public String getClassroom() {
