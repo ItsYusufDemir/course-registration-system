@@ -24,7 +24,7 @@ public class CLIStudent {
         shouldQuit = true;
         while (shouldQuit) {
 
-            if (studentController.getNotification().isEmpty()) {
+            if (studentController.getNotification() != null) {
                 System.out.println(" Notification\n " +
                         "**************");
                 for (String string : studentController.getNotification())
