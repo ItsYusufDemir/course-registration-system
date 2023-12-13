@@ -90,5 +90,35 @@ public class CourseSection {
         return sectionDay;
     }
 
+    public void setStudentCapacity(int studentCapacity) {
+        this.studentCapacity = studentCapacity;
+    }
+
+    public void setLecturerName(String lecturerName) {
+        this.lecturerName = lecturerName;
+    }
+
+    public void setSectionTime(ArrayList<String> sectionTime) {
+        this.sectionTime = sectionTime;
+    }
+
+    public void setSectionDay(ArrayList<String> sectionDay) {
+        this.sectionDay = sectionDay;
+    }
+
+    public void setClassroom(String classroom) {
+        this.classroom = classroom;
+    }
+
+    public void setSectionCode(String sectionCode) {
+        this.sectionCode = sectionCode;
+    }
+
+    public void setStudentCountInsideCourseSection(int studentCountInsideCourseSection) {
+        this.studentCountInsideCourseSection = studentCountInsideCourseSection;
+    }
+
+    
+
     
 }

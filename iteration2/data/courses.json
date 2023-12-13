@@ -10,6 +10,7 @@
                 {
                     "courseCredit": 7,
                     "courseECTS": 7,
+                    "givenSemester": 3,
                     "courseName": "Data Structures",
                     "courseCode": "CSE2225",
                     "prerequisiteInformation": null,
@@ -18,23 +19,22 @@
                             "studentCapacity": 100,
                             "lecturerName": "Borahan Tümer",
                             "sectionTime": ["09:30-10:20", "10:30-11:20"],
-                            "sectionDate": ["Tuesday", "Tuesday"],
+                            "sectionDay": ["Tuesday", "Tuesday"],
                             "classroom": "Room 301",
                             "sectionCode": "CSE2225.1",
                             "studentCountInsideCourseSection": 0
                         }
                     ],
-                    "isCompulsory": true
+                    "courseType": "COMPULSORY"
                 }
-            ],
-            "prerequisiteForCourses": null
+            ]
         },
         "courseSections": [
             {
                 "studentCapacity": 100,
                 "lecturerName": "Ali Haydar Özer",
                 "sectionTime": ["08:30-09:20", "09:30-10:20"],
-                "sectionDate": ["Thursday", "Thursday"],
+                "sectionDay": ["Thursday", "Thursday"],
                 "classroom": "Room 101",
                 "sectionCode": "CSE3033.1",
                 "studentCountInsideCourseSection": 7
@@ -45,6 +45,7 @@
     {
         "courseCredit": 7,
         "courseECTS": 7,
+        "givenSemester": 5,
         "courseName": "Database Systems",
         "courseCode": "CSE3055",
         "prerequisiteInformation": {
@@ -52,6 +53,7 @@
                 {
                     "courseCredit": 7,
                     "courseECTS": 7,
+                    "givenSemester": 3,
                     "courseName": "Data Structures",
                     "courseCode": "CSE2225",
                     "prerequisiteInformation": null,
@@ -59,33 +61,34 @@
                         {
                             "studentCapacity": 100,
                             "lecturerName": "Borahan Tümer",
-                            "sectionTime": ["10:00-11:20", "11:30-12:20"],
-                            "sectionDate": ["Wednesday", "Wednesday"],
+                            "sectionTime": ["10:30-11:20", "11:30-12:20"],
+                            "sectionDay": ["Wednesday", "Wednesday"],
                             "classroom": "Room 301",
                             "sectionCode": "CSE2225.1",
                             "studentCountInsideCourseSection": 0
                         }
                     ],
-                    "isCompulsory": true
+                    "courseType": "COMPULSORY"
                 }
-            ],
-            "prerequisiteForCourses": null
+            ]
         },
         "courseSections": [
             {
                 "studentCapacity": 100,
+                "lecturerName": "Mustafa Ağaoğlu",
                 "sectionTime": ["09:30-10:20", "10:30-11:50"],
-                "sectionDate": ["Friday", "Friday"],
+                "sectionDay": ["Friday", "Friday"],
                 "classroom": "Room 701",
                 "sectionCode": "CSE3055.1",
                 "studentCountInsideCourseSection": 7
             }
         ],
-        "isCompulsory": true
+        "courseType": "COMPULSORY"
     },
     {
         "courseCredit": 5,
         "courseECTS": 5,
+        "givenSemester": 5,
         "courseName": "Object-Oriented Software Design",
         "courseCode": "CSE3063",
         "prerequisiteInformation": {
@@ -93,6 +96,7 @@
                 {
                     "courseCredit": 6,
                     "courseECTS": 6,
+                    "givenSemester": 2,
                     "courseName": "Computer Programming II",
                     "courseCode": "CSE1242",
                     "prerequisiteInformation": null,
@@ -100,58 +104,58 @@
                         {
                             "studentCapacity": 6,
                             "lecturerName": "Mustafa Ağaoğlu",
-                            "sectionTime": "2:00 PM - 4:00 PM",
-                            "sectionDate": "Tuesday",
+                            "sectionTime": ["12:30-13:20", "13:30-14:20"],
+                            "sectionDay": ["Monday", "Monday"],
                             "classroom": "Room 301",
                             "sectionCode": "CSE1242.1",
                             "studentCountInsideCourseSection": 0
                         }
                     ],
-                    "isCompulsory": true
+                    "courseType": "COMPULSORY"
                 }
-            ],
-            "prerequisiteForCourses": null
+            ]
         },
         "courseSections": [
             {
                 "studentCapacity": 5,
                 "lecturerName": "Muratcan Ganiz",
-                "sectionTime": "2:00 PM - 4:00 PM",
-                "sectionDate": "Wednesday",
+                "sectionTime": ["11:30-12:20", "12:30-13:20"],
+                "sectionDay": ["Thursday", "Thursday"],
                 "classroom": "Room 201",
                 "sectionCode": "CSE3063.1",
                 "studentCountInsideCourseSection": 5
             }
         ],
-        "isCompulsory": true
+        "courseType": "COMPULSORY"
     },
     {
         "courseCredit": 6,
         "courseECTS": 6,
+        "givenSemester": 5,
         "courseName": "Digital Logic Design",
         "courseCode": "CSE3215",
         "prerequisiteInformation": {
             "prerequisiteOfCourses": [
                 
-            ],
-            "prerequisiteForCourses": null
+            ]
         },
         "courseSections": [
             {
                 "studentCapacity": 100,
                 "lecturerName": "Betül Boz",
-                "sectionTime": "11:00 AM - 1:00 PM",
-                "sectionDate": "Tuesday",
+                "sectionTime": ["10:30-11:20", "11:30-12:20"],
+                "sectionDay": ["Monday", "Monday"],
                 "classroom": "Room 301",
                 "sectionCode": "CSE3215.1",
                 "studentCountInsideCourseSection": 6
             }
         ],
-        "isCompulsory": true
+        "courseType": "COMPULSORY"
     },
     {
         "courseCredit": 4,
         "courseECTS": 4,
+        "givenSemester": 5,
         "courseName": "Modeling and Discrete Simulation",
         "courseCode": "IE3081",
         "prerequisiteInformation": {
@@ -159,6 +163,7 @@
                 {
                     "courseCredit": 5,
                     "courseECTS": 5,
+                    "givenSemester": 4,
                     "courseName": "Probability and Statistics",
                     "courseCode": "STAT2253",
                     "prerequisiteInformation": null,
@@ -166,34 +171,34 @@
                         {
                             "studentCapacity": 100,
                             "lecturerName": "Müjdat Soytürk",
-                            "sectionTime": "2:00 PM - 4:00 PM",
-                            "sectionDate": "Tuesday",
+                            "sectionTime": ["08:30-09:20", "09:30-10:50"],
+                            "sectionDay": ["Wednesday", "Wednesday"],
                             "classroom": "Room 301",
                             "sectionCode": "CSE2225.1",
                             "studentCountInsideCourseSection": 0
                         }
                     ],
-                    "isCompulsory": true
+                    "courseType": "COMPULSORY"
                 }
-            ],
-            "prerequisiteForCourses": null
+            ]
         },
         "courseSections": [
             {
                 "studentCapacity": 100,
                 "lecturerName": "Müjdat Soytürk",
-                "sectionTime": "3:00 PM - 5:00 PM",
-                "sectionDate": "Thursday",
+                "sectionTime": ["13:30-14:20", "14:30-15:20"],
+                "sectionDay": ["Friday", "Friday"],
                 "classroom": "Room 401",
                 "sectionCode": "IE3081.1",
                 "studentCountInsideCourseSection": 4
             }
         ],
-        "isCompulsory": true
+        "courseType": "COMPULSORY"
     },
     {
         "courseCredit": 2,
         "courseECTS": 2,
+        "givenSemester": 6,
         "courseName": "Technical Communications and Entrepreneurship",
         "courseCode": "COM2276",
         "prerequisiteInformation": null,
@@ -201,18 +206,19 @@
             {
                 "studentCapacity": 100,
                 "lecturerName": "Dr.Harris",
-                "sectionTime": "9:00 AM - 11:00 AM",
-                "sectionDate": "Friday",
+                "sectionTime": ["09:30-10:20", "10:30-11:20"],
+                "sectionDay": ["Tuesday", "Tuesday"],
                 "classroom": "Room 501",
                 "sectionCode": "COM2276.1",
                 "studentCountInsideCourseSection": 2
             }
         ],
-        "isCompulsory": true
+        "courseType": "COMPULSORY"
     },
     {
         "courseCredit": 7,
         "courseECTS": 7,
+        "givenSemester": 6,
         "courseName": "Computer Organization",
         "courseCode": "CSE3038",
         "prerequisiteInformation": {
@@ -220,6 +226,7 @@
                 {
                     "courseCredit": 7,
                     "courseECTS": 7,
+                    "givenSemester": 4,
                     "courseName": "Systems Programming",
                     "courseCode": "CSE2138",
                     "prerequisiteInformation": null,
@@ -227,34 +234,34 @@
                         {
                             "studentCapacity": 100,
                             "lecturerName": "Betül Boz",
-                            "sectionTime": "2:00 PM - 4:00 PM",
-                            "sectionDate": "Tuesday",
+                            "sectionTime": ["14:30-15:20", "15:30-16:20"],
+                            "sectionDay": ["Tuesday", "Tuesday"],
                             "classroom": "Room 301",
                             "sectionCode": "CSE2138.1",
                             "studentCountInsideCourseSection": 0
                         }
                     ],
-                    "isCompulsory": true
+                    "courseType": "COMPULSORY"
                 }
-            ],
-            "prerequisiteForCourses": null
+            ]
         },
         "courseSections": [
             {
                 "studentCapacity": 7,
                 "lecturerName": "Dr. Thompson",
-                "sectionTime": "9:00 AM - 11:00 AM",
-                "sectionDate": "Tuesday",
+                "sectionTime": ["14:30-15:20", "15:30-16:20"],
+                "sectionDay": ["Friday", "Friday"],
                 "classroom": "Room 201",
                 "sectionCode": "CSE3038.1",
                 "studentCountInsideCourseSection": 7
             }
         ],
-        "isCompulsory": true
+        "courseType": "COMPULSORY"
     },
     {
         "courseCredit": 7,
         "courseECTS": 7,
+        "givenSemester": 6,
         "courseName": "Software Engineering",
         "courseCode": "CSE3044",
         "prerequisiteInformation": {
@@ -262,6 +269,7 @@
                 {
                     "courseCredit": 7,
                     "courseECTS": 7,
+                    "givenSemester": 5,
                     "courseName": "Database Systems",
                     "courseCode": "CSE3055",
                     "prerequisiteInformation": null,
@@ -269,34 +277,34 @@
                         {
                             "studentCapacity": 100,
                             "lecturerName": "Mustafa Ağaoğlu",
-                            "sectionTime": "2:00 PM - 4:00 PM",
-                            "sectionDate": "Tuesday",
+                            "sectionTime": ["11:30-12:20", "12:30-13:20"],
+                            "sectionDay": ["Thursday", "Thursday"],
                             "classroom": "Room 301",
                             "sectionCode": "CSE3055.1",
                             "studentCountInsideCourseSection": 0
                         }
                     ],
-                    "isCompulsory": true
+                    "courseType": "COMPULSORY"
                 }
-            ],
-            "prerequisiteForCourses": null
+            ]
         },
         "courseSections": [
             {
                 "studentCapacity": 100,
                 "lecturerName": "Dr. Thompson",
-                "sectionTime": "2:00 PM - 4:00 PM",
-                "sectionDate": "Thursday",
+                "sectionTime": ["09:30-10:20", "10:30-11:20"],
+                "sectionDay": ["Wednesday", "Wednesday"],
                 "classroom": "Room 301",
                 "sectionCode": "CSE3044.1",
                 "studentCountInsideCourseSection": 7
             }
         ],
-        "isCompulsory": true
+        "courseType": "COMPULSORY"
     },
     {
         "courseCredit": 5,
         "courseECTS": 5,
+        "givenSemester": 6,
         "courseName": "Introduction to Signals and Systems",
         "courseCode": "CSE3048",
         "prerequisiteInformation": {
@@ -304,6 +312,7 @@
                 {
                     "courseCredit": 4,
                     "courseECTS": 4,
+                    "givenSemester": 3,
                     "courseName": "Differental Equations",
                     "courseCode": "MATH2055",
                     "prerequisiteInformation": null,
@@ -311,34 +320,34 @@
                         {
                             "studentCapacity": 100,
                             "lecturerName": "Dr. Anderson",
-                            "sectionTime": "2:00 PM - 4:00 PM",
-                            "sectionDate": "Tuesday",
+                            "sectionTime": ["10:30-11:20", "11:30-12:20"],
+                            "sectionDay": ["Monday", "Monday"],
                             "classroom": "Room 301",
                             "sectionCode": "MATH2055.1",
                             "studentCountInsideCourseSection": 0
                         }
                     ],
-                    "isCompulsory": true
+                    "courseType": "COMPULSORY"
                 }
-            ],
-            "prerequisiteForCourses": null
+            ]
         },
         "courseSections": [
             {
                 "studentCapacity": 5,
                 "lecturerName": "Dr. Harris",
-                "sectionTime": "1:00 PM - 3:00 PM",
-                "sectionDate": "Wednesday",
+                "sectionTime": ["11:30-12:20", "12:30-13:20"],
+                "sectionDay": ["Thursday", "Thursday"],
                 "classroom": "Room 401",
                 "sectionCode": "CSE3048.1",
                 "studentCountInsideCourseSection": 5
             }
         ],
-        "isCompulsory": true
+        "courseType": "COMPULSORY"
     },
     {
         "courseCredit": 5,
         "courseECTS": 5,
+        "givenSemester": 6,
         "courseName": "Formal Languages and Automata Theory",
         "courseCode": "CSE3264",
         "prerequisiteInformation": {
@@ -346,6 +355,7 @@
                 {
                     "courseCredit": 6,
                     "courseECTS": 6,
+                    "givenSemester": 3,
                     "courseName": "Dicrete Computational Structures",
                     "courseCode": "CSE2023",
                     "prerequisiteInformation": null,
@@ -353,29 +363,28 @@
                         {
                             "studentCapacity": 100,
                             "lecturerName": "Mustafa Ağaoğlu",
-                            "sectionTime": "2:00 PM - 4:00 PM",
-                            "sectionDate": "Tuesday",
+                            "sectionTime": ["14:30-15:20", "15:30-16:20"],
+                            "sectionDay": ["Thursday", "Thursday"],
                             "classroom": "Room 301",
                             "sectionCode": "CSE2023.1",
                             "studentCountInsideCourseSection": 0
                         }
                     ],
-                    "isCompulsory": true
+                    "courseType": "COMPULSORY"
                 }
-            ],
-            "prerequisiteForCourses": null
+            ]
         },
         "courseSections": [
             {
                 "studentCapacity": 5,
                 "lecturerName": "Dr. Thompson",
-                "sectionTime": "3:00 PM - 5:00 PM",
-                "sectionDate": "Monday",
+                "sectionTime": ["10:30-11:20", "11:30-12:20"],
+                "sectionDay": ["Friday", "Friday"],
                 "classroom": "Room 501",
                 "sectionCode": "CSE3264.1",
                 "studentCountInsideCourseSection": 5
             }
         ],
-        "isCompulsory": true
+        "courseType": "COMPULSORY"
     }
 ]
