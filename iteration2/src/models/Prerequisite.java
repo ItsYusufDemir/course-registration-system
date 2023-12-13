@@ -5,14 +5,11 @@ import java.util.List;
 public class Prerequisite {
 
     private List<Course> prerequisiteOfCourses; // elimizdeki dersin prerequisite derslerini tutuyor
-    private List<Course> prerequisiteForCourses; // bu ders hangi derlerin prerequisite dersi ona bakıyor
-
     public Prerequisite() {
     }
 
-    public Prerequisite(List<Course> prerequisiteOfCourses, List<Course> prerequisiteForCourses) {
+    public Prerequisite(List<Course> prerequisiteOfCourses) {
         this.prerequisiteOfCourses = prerequisiteOfCourses;
-        this.prerequisiteForCourses = prerequisiteForCourses;
     }
 
     public boolean checkPrerequisiteCoursePassed(Student student, Course course){
@@ -47,14 +44,6 @@ public class Prerequisite {
 
     public void setPrerequisiteOfCourses(List<Course> prerequisiteOfCourses) {
         this.prerequisiteOfCourses = prerequisiteOfCourses;
-    }
-
-    public List<Course> getPrerequisiteForCourses() {
-        return prerequisiteForCourses;
-    }
-
-    public void setPrerequisiteForCourses(List<Course> prerequisiteForCourses) {
-        this.prerequisiteForCourses = prerequisiteForCourses;
     }
 }
 

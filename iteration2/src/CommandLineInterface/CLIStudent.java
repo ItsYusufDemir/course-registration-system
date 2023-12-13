@@ -5,212 +5,263 @@ import java.util.*;
 import javax.xml.crypto.Data;
 
 import iteration2.src.controllers.StudentController;
+import iteration2.src.enums.Color;
 import iteration2.src.models.Course;
 import iteration2.src.models.SelectedCourse;
 import iteration2.src.models.Student;
 import iteration2.src.utils.DatabaseManager;
+import iteration2.src.utils.Util;
 import iteration2.src.models.CourseSection;
+
+import java.util.*;
+
+// TODO: change println to printf so it looks better
 
 public class CLIStudent {
 
+    private StudentController studentController;
     private Scanner scanner;
-    private StudentController StudentController;
-    private Student currentStudent;
-    private List<SelectedCourse> avaliableCourseSections;
-    private List<CourseSection> selectedCourseSections;
-    private int numberOfAvaliableCourses;
+    private boolean shouldQuit;
 
-    public CLIStudent(Student student) {
-        currentStudent = student;
-        StudentController = new StudentController(currentStudent);
+    public CLIStudent(StudentController studentController) {
+        this.studentController = studentController;
         scanner = new Scanner(System.in);
     }
 
     public void menuPage() {
+        shouldQuit = true;
+        while (shouldQuit) {
 
-        System.out.println(
-                " Menu\n" +
-                        "********\n" +
-                        "  1. My Courses\n" +
-                        "  2. Log out\n\n" +
-                        "Press q to quit");
+            if (studentController.getNotification().isEmpty()) {
+                System.out.println(" Notification\n " +
+                        "**************");
+                for (String string : StudentController.getNotification())
+                    System.out.println(string);
+            }
+            System.out.println(
+                    " Menu\n" +
+                            "********\n" +
+                            "  1. My Courses\n" +
+                            "  2. Log out\n\n" +
+                            "Press q to quit");
 
-        String str = scanner.nextLine();
-        if (str.equals("q")) {
-            DatabaseManager.getInstance().saveToDatabase();
-            System.exit(0);
-        } else if (str.equals("1")) {
+            String str = scanner.nextLine();
 
-            myCoursesPage(currentStudent.listAvailableCourses());
-        } else if (str.equals("2")) {
-            DatabaseManager.getInstance().saveToDatabase();
-            return;
-        } else {
-            System.out.println("Invalid input");
-            System.out.println("\n\n\n");
-            menuPage();
+            if (str.equals("1")) {
+                showMyCoursesPage();
+            } else if (str.equals("2")) {
+                break;
+            } else if (str.equals("q")) {
+                shouldQuit = false;
+            } else {
+                System.out.println("Invalid Input: " + str);
+            }
+
         }
 
     }
 
-    public void myCoursesPage(List<Course> courses) {
+    public void showMyCoursesPage() {
+        shouldQuit = false;
+        while (shouldQuit) {
+            System.out.println(
+                    " My Courses\n" +
+                            "**************\n" +
+                            "  Code\t Name\t Section\t Status\n" +
+                            "  ____\t ____\t _______\t ______");
 
-        scanner = new Scanner(System.in);
+            listSelectedCourses();
 
-        System.out.println(
-                " My Courses\n" +
-                        "**************\n" +
-                        "  Code\t Name\t Section\t Status\n" +
-                        "  ____\t ____\t _______\t ______");
-        listSelectedCourses(currentStudent);
-        System.out.println(
-                "\n\n1. Add Course\n" +
-                        "2. Delete Course\n" +
-                        "3. Send To Approval");
+            System.out.println(
+                    "\n\n1. Add Course\n" +
+                            "2. Delete Course\n" +
+                            "3. Show Timetable\n" +
+                            "4. Send To Approval");
 
-        System.out.println("Press b to go back");
-        System.out.println("Press q to quit");
+            System.out.println("Press b to go back");
+            System.out.println("Press q to quit");
 
-        String str = scanner.nextLine();
+            String str = scanner.nextLine();
 
-        if (str.equals("1")) {
-            addCoursePage(currentStudent.listAvailableCourses());
-        } else if (str.startsWith("2")) {
-            System.out.println("Enter the row number of the course you want to delete : ");
-            str = scanner.nextLine();
-            if ((str.charAt(0) < 58 && str.charAt(0) > 47) && str.length() == 1) {
-                if (deleteCourse(str.charAt(0), currentStudent.getSelectedCourses())) {
-                    System.out.println("Course deleted successfully");
-                    DatabaseManager.getInstance().saveToDatabase();
+            try {
+                if (str.equals("1")) {
+                    showAddCoursePage();
+                } else if (str.equals("2")) {
+                    System.out.println("Enter the row number of the course you want to delete : ");
+                    str = scanner.nextLine();
+                    if (validateNumber(str, studentController.getSelectedCourses().toArray())) {
+                        if (deleteCourse(str)) {
+                            System.out.println("Course successfully deleted");
+                        } else {
+                            System.out.println("Course deletion failed");
+                        }
+                    }
+                } else if (str.equals("3")) {
+                    showTimetablePage();
+                } else if (str.equals("4")) {
+                    studentController.sendSelectedCoursesToApproval();
+                } else if (str.equals("b")) {
+                    break;
+                } else if (str.equals("q")) {
+                    shouldQuit = false;
                 } else {
-                    System.out.println("delete failed");
+                    throw new Exception("Invalid input: " + str);
+
                 }
-            } else {
-                System.out.println("Invalid input");
-                System.out.println("\n\n\n"); 
+            } catch (Exception e) {
+                System.out.println(e);
             }
-            myCoursesPage(currentStudent.listAvailableCourses());
-        } else if (str.equals("3")) {
-            StudentController.sendSelectedCoursesToApproval();
-            myCoursesPage(currentStudent.listAvailableCourses());
-        } else if (str.equals("b")) {
-            DatabaseManager.getInstance().saveToDatabase();
-            menuPage();
-        } else if (str.equals("q")) {
-            DatabaseManager.getInstance().saveToDatabase();
-            System.exit(0);
-        } else {
-            System.out.println("Invalid input");
-            System.out.println("\n\n\n");
-            myCoursesPage(courses);
+
+        }
+    }
+
+    public void showAddCoursePage() {
+        shouldQuit = false;
+        while (shouldQuit) {
+
+            System.out.println(
+                    " Avaliable Courses(To Add)\n" +
+                            "**************\n" +
+                            "  Code\t Name\t Section\t Instructor\t Credit\n" +
+                            "  ____\t ____\t _______\t __________\t ______");
+
+            listAvaliableCourseSections();
+
+            System.out.println("\n\npress b to go back");
+            System.out.println("press q to quit");
+            System.out.println("Enter the row number of the course you want to add : ");
+
+            String str = scanner.nextLine();
+
+            try {
+                if (str.equals("b")) {
+                    break;
+                } else if (str.equals("q")) {
+                    shouldQuit = false;
+                } else if (validateNumber(str, getAvaliableCourseSections().toArray())) {
+                    if (addCourse(str)) {
+                        System.out.println("Course successfully added");
+                    } else {
+                        System.out.println("Course addition failed");
+                    }
+                }
+
+                else {
+                    throw new Exception("Invalid input: " + str);
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
 
         }
 
     }
 
-    public void addCoursePage(List<Course> courses) {
-        scanner = new Scanner(System.in);
+    public void showTimetablePage() {
+        shouldQuit = false;
+        while (shouldQuit) {
 
-        System.out.println(
-                " Avaliable Courses(To Add)\n" +
-                        "**************\n" +
-                        "  Code\t Name\t Section\t Instructor\t Credit\n" +
-                        "  ____\t ____\t _______\t __________\t ______");
-        listAvaliableCourseSections(courses);
-        System.out.println("\n\npress b to go back");
-        System.out.println("press q to quit");
-        System.out.println("Enter the row number of the course you want to add : ");
+            System.out.println(" Timetable\n" +
+                    "***********");
+            System.out.println(studentController.getTimetable());
 
-        String str = scanner.nextLine();
+            String str = scanner.nextLine();
 
-        if (str.equals("b")) {
-            myCoursesPage(currentStudent.listAvailableCourses());
-            DatabaseManager.getInstance().saveToDatabase();
-        } else if (str.equals("q")) {
-            DatabaseManager.getInstance().saveToDatabase();
-            System.exit(0);
-        } else if ((str.charAt(0) < 58 && str.charAt(0) > 47) && str.length() == 1) {
-            if (addCourse(str.charAt(0))) {
-                System.out.println("Course added successfully");
-                DatabaseManager.getInstance().saveToDatabase();
-            } else {
-                System.out.println("add failed");
+            try {
+                if (str.equals("b")) {
+                    break;
+                } else if (str.equals("q")) {
+                    shouldQuit = false;
+                } else {
+                    throw new Exception("Invalid input: " + str);
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
             }
-
-            addCoursePage(currentStudent.listAvailableCourses());
-        } else {
-            System.out.println("Invalid input");
-            System.out.println("\n\n\n");
-            addCoursePage(currentStudent.listAvailableCourses());
         }
     }
 
-    public boolean addCourse(char c) {
-        int index = Integer.parseInt(c + "");
-        if (index <= numberOfAvaliableCourses && checkIfAlreadyAdded(avaliableCourseSections.get(index - 1))) {
-            StudentController.addSelectedCourse(avaliableCourseSections.get(index - 1));
+    private boolean validateNumber(String str, Object[] list) {
+        if (isValidNumber(str)) {
+            if (checkIfValidRowNumber(str, list)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean addCourse(String str) {
+        int rowNumber = Integer.parseInt(getRowNumberFromInput(str));
+        if (studentController.addSelectedCourse(studentController.getAvaliableCourseSections().get(rowNumber - 1))) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
+    private boolean deleteCourse(String str){   
+        int rowNumber = Integer.parseInt(getRowNumberFromInput(str)); 
+        if(studentController.removeSelectedCourse(studentController.getSelectedCourses().get(rowNumber-1)){
+            return true;
+        }
+        return false;
+    }
 
-    public boolean checkIfAlreadyAdded(SelectedCourse selectedCourse) {
+    private String getRowNumberFromInput(String str) {
 
-        for (int i = 0; i < currentStudent.getSelectedCourses().size(); i++) {
+        if (str.contains(" ")) {
+            return str.substring(0, str.indexOf(" "));
+        } else if (str.contains(",")) {
+            return str.substring(0, str.indexOf(","));
+        } else if (str.contains(".")) {
+            return str.substring(0, str.indexOf("."));
+        } else {
 
-            if (selectedCourse.getCourse().getCourseCode().equals(currentStudent.getSelectedCourses().get(i).getCourse().getCourseCode())) {
+            return str;
+        }
+
+    }
+
+    private boolean isValidNumber(String str) {
+        int strLength = getRowNumberFromInput(str).length();
+        for (int i = 0; i < strLength; i++) {
+            if (str.charAt(i) < 48 || str.charAt(i) > 57) {
                 return false;
             }
-            
         }
         return true;
     }
 
-
-    public boolean deleteCourse(char c, List<SelectedCourse> courses) {
-        int index = Integer.parseInt(c + "");
-        String courseWeWantToDelete = currentStudent.getSelectedCourses().get(index-1).getStatus().toString();
-        if (index <= courses.size() && ( courseWeWantToDelete.equalsIgnoreCase("DRAFT"))) {
-            StudentController.removeSelectedCourse(currentStudent.getSelectedCourses().get(index - 1));
-            return true;
-        } else {
+    private boolean checkIfValidRowNumber(String rowNumber, Object[] list) {
+        int rowNumberInt = Integer.parseInt(getRowNumberFromInput(rowNumber));
+        if (rowNumberInt > list.length || rowNumberInt < 1) {
             return false;
         }
+        return true;
     }
 
-    private void listAvaliableCourseSections(List<Course> courses) {
-        int i = 1;
-        int sectionLength = 0;
-        avaliableCourseSections = new ArrayList<SelectedCourse>();
+    private void listAvaliableCourseSections() {
+        List<Course> avaliableCourses = studentController.listAvailableCourseSections();
+        int rowCount = 1;
+        Course course;
+        for (CourseSection courseSection : course.getCourseSections()) {
+            course = studentController.findCourseOfCourseSection(courseSection);
+            System.out.println(rowCount + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t"
+                    + courseSection.getSectionCode() + "\t"
+                    + courseSection.getLecturerName() + "\t" + course.getCourseCredit());
+        }
 
-        for (Course course : courses) {
-            
-            sectionLength = course.acquireAvailableSections().size();
-            
-            for (int j = 0; j < sectionLength; j++) {
-                System.out.println(i + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t"
-                        + course.acquireAvailableSections().get(j).getSectionCode() + "\t"
-                        + course.getCourseSections().get(j).getLecturerName() + "\t" + course.getCourseCredit());
-                i++;
-                avaliableCourseSections.add(new SelectedCourse(course, course.acquireAvailableSections().get(j)));
-                numberOfAvaliableCourses++;
-            }
+    }
+
+    private void listSelectedCourses() {
+        int rowCount = 1;
+        for (SelectedCourse selectedCourse : studentController.getSelectedCourses()) {
+            System.out.println(rowCount + ". " + selectedCourse.getCourse().getCourseCode() + "\t"
+                    + selectedCourse.getCourse().getCourseName() + "\t"
+                    + selectedCourse.getCourseSection().getSectionCode() + "\t" + selectedCourse.getStatus());
         }
     }
 
-    private void listSelectedCourses(Student student) {
-        int i = 0;
-        selectedCourseSections = new ArrayList<CourseSection>();
-        for (SelectedCourse course : student.getSelectedCourses()) {
-            i++;
-            if (course.getCourseSection() != null) {
-                System.out.println(i + ". " + course.getCourse().getCourseCode() + "\t"
-                        + course.getCourse().getCourseName() + "\t" + course.getCourseSection().getSectionCode() + "\t"
-                        + course.getStatus());
-                selectedCourseSections.add(course.getCourseSection());
-            }
-        }
-    }
 }

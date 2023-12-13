@@ -2,6 +2,7 @@ package iteration2.src.utils;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,7 +19,7 @@ import iteration2.src.models.Course;
 import iteration2.src.models.Student;
 import iteration2.src.models.Transcript;
 
-public class DatabaseManager  {
+public class DatabaseManager {
 
     private ObjectMapper objectMapper = null;
     private static DatabaseManager instance = null;
@@ -56,7 +57,7 @@ public class DatabaseManager  {
         Path path = Paths.get(filePath);
 
         try {
-            String jsonContent = Files.lines(path).collect(Collectors.joining("\n"));
+            String jsonContent = Files.lines(path, Charset.forName("Cp1252")).collect(Collectors.joining("\n"));
             return jsonContent;
         } catch (Exception e) {
             //TODO: handle exception   
@@ -188,30 +189,14 @@ public class DatabaseManager  {
         return constraints;
     }
 
-   
 
-   
-    
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public Course findCourseByCourseCode(String courseCode) {
+        for (Course course : courseList) {
+            if (course.getCourseCode().equals(courseCode)) {
+                return course;
+            }
+        }
+        return null;
+    }
 
 }
