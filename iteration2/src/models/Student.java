@@ -1,11 +1,15 @@
 package iteration2.src.models;
 import java.util.*;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import iteration2.src.CommandLineInterface.CLIStudent;
 import iteration2.src.controllers.StudentController;
 import iteration2.src.enums.ApprovalStatus;
 import iteration2.src.enums.CourseStatus;
 import iteration2.src.utils.DatabaseManager;
 
+// not sure about access identifier
 public class Student extends User {
     private String email;
     private String identityNumber;
@@ -14,13 +18,15 @@ public class Student extends User {
     private Advisor advisorOfStudent;
     private ApprovalStatus approvalStatus;
     private Transcript transcript;
-
+    private String[][] timeTable;
 
    public Student() {
     
    }
 
-    public Student(String userID, String password, String firstName, String lastName, boolean status, String email, String identityNumber, int currentSemester, List<SelectedCourse> selectedCourses, Advisor advisorOfStudent, ApprovalStatus approvalStatus, Transcript transcript) {
+    // not sure about constructor access identifier
+    
+    public Student(String userID, String password, String firstName, String lastName, boolean status, String email, String identityNumber, List<SelectedCourse> selectedCourses, Advisor advisorOfStudent, ApprovalStatus approvalStatus, Transcript transcript) {
         super(userID, password, firstName, lastName, status);
         this.email = email;
         this.identityNumber = identityNumber;
@@ -82,22 +88,19 @@ public class Student extends User {
     }
 
 
-
-
     private boolean checkCourseType(Course course){
         int nteCounter = 0;
         int teCounter = 0;
         int fteCounter = 0;
         int ueCounter = 0;
-
         for(SelectedCourse selectedCourse : selectedCourses){
             if(selectedCourse.getCourse().getCourseType().toString().equals("NONTECHNICAL_ELECTIVE") ){
                 nteCounter++;
             }
-            else if(selectedCourse.getCourse().getCourseType().toString().equals("TECHNICAL_ELECTIVE") ){
+            else if(selectedCourse.getCourse().getCourseType().toString().equals("TECHNICAL_ELECTIVE") ) {
                 teCounter++;
             }
-            else if(selectedCourse.getCourse().getCourseType().toString().equals("FACULTY_ELECTIVE" ) ){
+            else if(selectedCourse.getCourse().getCourseType().toString().equals("FACULTY_ELECTIVE" ) ) {
                 fteCounter++;
             }
             else if(selectedCourse.getCourse().getCourseType().toString().equals("UNIVERSITY_ELECTIVE") ){
@@ -144,13 +147,8 @@ public class Student extends User {
         cliStudent.menuPage();
     }
 
-    public List<CourseSection> checkConflictCourses(){
-       return null;
-    }
 
-    public String getTimeTable(){
-       return "";
-    }
+
 
     public void sendSelectedCoursesToApproval(){
         this.setApprovalStatus(ApprovalStatus.PENDING);
@@ -201,6 +199,91 @@ public class Student extends User {
     public void setTranscript(Transcript transcript) {
         this.transcript = transcript;
     }
+
+
+
+
+
+
+
+    public void fillTable() {
+        timeTable = new String[5][9];
+
+        for (int i = 0; i < 5; i++) {
+            for (int m = 0; m < 8; m++) {
+                timeTable[i][m] = "";
+            }
+        }
+        for (int i = 0; i < selectedCourses.size(); i++) {
+
+            for (int m = 0; m < selectedCourses.get(i).getCourseSection().getSectionDay().size(); m++) {
+
+
+                String day = selectedCourses.get(i).getCourseSection().getSectionDay().get(m);
+                String time = selectedCourses.get(i).getCourseSection().getSectionTime().get(m);
+                if (day.equals("Monday")) {
+                    fillTableWithValues(time, i, 0);
+                } else if (day.equals("Tuesday")) {
+                    fillTableWithValues(time, i, 1);
+                } else if (day.equals("Wednesday")) {
+                    fillTableWithValues(time, i, 2);
+                } else if (day.equals("Thursday")) {
+                    fillTableWithValues(time, i, 3);
+                } else if (day.equals("Friday")) {
+                    fillTableWithValues(time, i, 4);
+                } else {
+                    System.out.println("Invalid day.");
+                }
+
+
+            }
+        }
+    }
+
+    public void fillTableWithValues(String time, int i, int day) {
+        if (time.equals("08:30-09:20")) {
+            timeTable[day][0] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
+        } else if (time.equals("09:30-10:20")) {
+            timeTable[day][1] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
+        } else if (time.equals("10:30-11:20")) {
+            timeTable[day][2] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
+        } else if (time.equals("11:30-12:20")) {
+            timeTable[day][3] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
+        } else if (time.equals("12:30-13:20")) {
+            timeTable[day][4] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
+        } else if (time.equals("13:30-14:20")) {
+            timeTable[day][5] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
+        } else if (time.equals("14:30-15:20")) {
+            timeTable[day][6] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
+        } else if (time.equals("15:30-16:20")) {
+            timeTable[day][7] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
+        } else if (time.equals("16:30-17:20")) {
+            timeTable[day][8] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
+        } else {
+            System.out.println("Invalid time");
+        }
+    }
+
+
+    public List<String> checkConflictCourses() {
+        fillTable();
+        List<String> conflictedCourses = new ArrayList<String>();
+
+        for (int i = 0; i < 5; i++) {
+            for (int m = 0; m < 9; m++) {
+                String[] courseCodes = timeTable[i][m].split("-");
+                int length = courseCodes.length;
+                if (length > 1) {
+                    for (int q = 0; q < length; q++) {
+                        conflictedCourses.add(courseCodes[q]);
+                    }
+                }
+
+            }
+        }
+        return conflictedCourses;
+    }
+
 
     public List<SelectedCourse> getSelectedCourses() {
         return selectedCourses;

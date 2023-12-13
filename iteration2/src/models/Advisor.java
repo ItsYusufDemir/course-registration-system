@@ -49,10 +49,17 @@ public class Advisor extends User {
         if(student.getSelectedCourses().size() == 0) {
             student.setApprovalStatus(ApprovalStatus.DONE);
         }
+      String notification = "Your " + selectedCourse.getCourse().getCourseName() + " is rejected.";
+        setNotificationToStudent(student, notification);
+
     }
 
     public List<Student> fetchAdvisedStudents() {
         return DatabaseManager.getInstance().fetchAdvisedStudents(this);
+    }
+
+    public void setNotificationToStudent(Student student, String notification ) {
+        student.addNotification(notification);
     }
 }
 

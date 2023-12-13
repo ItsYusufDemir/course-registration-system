@@ -27,7 +27,9 @@ public class DatabaseManager {
     private List<Student> studentList;
     private List<Advisor> advisorList;
 
-    // Singleton pattern
+    private Constraint constraints;
+
+    //Singleton pattern
     public static DatabaseManager getInstance() {
         if (instance == null) {
             instance = new DatabaseManager();
@@ -41,12 +43,13 @@ public class DatabaseManager {
         objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
 
-        // Read the JSON files and convert them to list of objects
+        //Read the JSON files and convert them to list of objects
         courseList = jsonToCourseList(readFile("iteration2/data/courses.json"));
         advisorList = jsonToAdvisorList(readFile("iteration2/data/advisors.json"));
         studentList = jsonToStudentList(readFile("iteration2/data/students.json"));
-
+        constraints = jsonToConstraints(readFile("iteration2/data/constraints.json"));
     }
+
 
     private String readFile(String relativePath) {
 
@@ -57,7 +60,7 @@ public class DatabaseManager {
             String jsonContent = Files.lines(path, Charset.forName("Cp1252")).collect(Collectors.joining("\n"));
             return jsonContent;
         } catch (Exception e) {
-            // TODO: handle exception
+            //TODO: handle exception   
             System.out.println("File not found!");
             System.out.println(e);
             System.exit(0);
@@ -65,44 +68,50 @@ public class DatabaseManager {
         }
 
     }
+    
 
     private List<Student> jsonToStudentList(String jsonString) {
-
+        
         try {
-            return objectMapper.readValue(jsonString, new TypeReference<List<Student>>() {
-            });
+            return objectMapper.readValue(jsonString, new TypeReference<List<Student>>() {});
         } catch (IOException e) {
             System.out.println("Error while converting JSON String to List of objects!" + jsonString);
             e.printStackTrace();
             return Collections.emptyList(); // or throw an exception if needed
-        }
+        }        
     }
 
     private List<Advisor> jsonToAdvisorList(String jsonString) {
-
+        
         try {
-            return objectMapper.readValue(jsonString, new TypeReference<List<Advisor>>() {
-            });
+            return objectMapper.readValue(jsonString, new TypeReference<List<Advisor>>() {});
         } catch (IOException e) {
             System.out.println("Error while converting JSON String to List of objects!");
             e.printStackTrace();
             return Collections.emptyList(); // or throw an exception if needed
-        }
+        }        
     }
-
     private List<Course> jsonToCourseList(String jsonString) {
-
+        
         try {
-            return objectMapper.readValue(jsonString, new TypeReference<List<Course>>() {
-            });
+            return objectMapper.readValue(jsonString, new TypeReference<List<Course>>() {});
         } catch (IOException e) {
             System.out.println("Error while converting JSON String to List of objects!");
             e.printStackTrace();
             return Collections.emptyList(); // or throw an exception if needed
-        }
+        }        
     }
 
-    // Convert the list of objects to JSON String
+    private Constraint jsonToConstraints(String jsonString){
+        try {
+            return objectMapper.readValue(jsonString, new TypeReference<Constraint>() {});
+        } catch (IOException e) {
+            System.out.println("Error while converting JSON String to List of objects!");
+            e.printStackTrace();
+            return null ; // or throw an exception if needed
+        }
+    }
+    //Convert the list of objects to JSON String
     private <T> String getJsonString(List<T> list) {
 
         String jsonString = "[]";
@@ -118,50 +127,52 @@ public class DatabaseManager {
     }
 
     private static void writeFile(String relativePath, String jsonString) {
-
-        try (FileWriter writer = new FileWriter(relativePath)) {
-
+        
+        try (FileWriter writer = new FileWriter(relativePath)) {  
+            
             writer.write(jsonString);
 
         } catch (IOException e) {
-            // TODO: handle exception
+            //TODO: handle exception
             System.out.println("Error while writing to file!");
         }
     }
 
-    // Save all instances to the database
+    
+    //Save all instances to the database
     public void saveToDatabase() {
-        // writeFile("data/courses.json", getJsonString(courseList));
+        //writeFile("data/courses.json", getJsonString(courseList));
         writeFile("iteration2/data/students.json", getJsonString(studentList));
         writeFile("iteration2/data/advisors.json", getJsonString(advisorList));
+        writeFile("iteration2/data/courses.json", getJsonString(courseList));
+        writeFile("iteration2/data/constraints.json", getJsonString(constraints));
 
-        saveTranscriptsToDatabase(); // Save transcripts to database
-    }
+        saveTranscriptsToDatabase(); //Save transcripts to database
+    }    
 
     private void saveTranscriptsToDatabase() {
 
-        for (int i = 0; i < studentList.size(); i++) {
+        for(int i = 0; i < studentList.size(); i++){
             List<Transcript> transcript = new ArrayList<Transcript>();
             transcript.add(studentList.get(i).getTranscript());
-
-            writeFile("iteration2/data/transcripts/" + studentList.get(i).getUserId() + ".json",
-                    getJsonString(transcript));
+            
+            writeFile("iteration2/data/transcripts/" + studentList.get(i).getUserId() + ".json", getJsonString(transcript));
         }
     }
 
-    // Get students of an advisor
+    //Get students of an advisor
     public List<Student> fetchAdvisedStudents(Advisor advisor) {
 
         List<Student> studentsOfAdvisor = new ArrayList<Student>();
-        for (int i = 0; i < studentList.size(); i++) {
-            if (Objects.equals(studentList.get(i).getAdvisorOfStudent().getUserId(), advisor.getUserId())) {
+         for (int i = 0; i < studentList.size(); i++) {
+            if(Objects.equals(studentList.get(i).getAdvisorOfStudent().getUserId(), advisor.getUserId())){
                 studentsOfAdvisor.add(studentList.get(i));
             }
         }
         return studentsOfAdvisor;
     }
 
-    // Getters
+    //Getters
     public List<Course> getCourses() {
         return courseList;
     }
@@ -173,6 +184,11 @@ public class DatabaseManager {
     public List<Advisor> getAdvisors() {
         return advisorList;
     }
+
+    public Constraint getConstraints(){
+        return constraints;
+    }
+
 
     public Course findCourseByCourseCode(String courseCode) {
         for (Course course : courseList) {
