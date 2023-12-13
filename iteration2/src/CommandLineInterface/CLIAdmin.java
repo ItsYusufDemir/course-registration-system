@@ -1,12 +1,14 @@
 package iteration2.src.CommandLineInterface;
 import java.util.*;
 import java.lang.*;
+import java.util.concurrent.ExecutionException;
 
 import javax.xml.crypto.Data;
 
 import com.fasterxml.jackson.databind.jsonschema.SchemaAware;
 
 import iteration2.src.enums.ApprovalStatus;
+import iteration2.src.enums.Color;
 import iteration2.src.enums.CourseType;
 import iteration2.src.models.Course;
 import iteration2.src.models.CourseSection;
@@ -14,6 +16,7 @@ import iteration2.src.models.Prerequisite;
 import iteration2.src.utils.DatabaseManager;
 import iteration2.src.models.Admin;
 import iteration2.src.controllers.AdminController;
+import iteration2.src.utils.Util;
 
 
 public class CLIAdmin {
@@ -69,7 +72,7 @@ public class CLIAdmin {
                         "  Code\t Name\t \n" +
                         "  ____\t ____\t");
         for(int i = 0; i < courses.size(); i++){
-            System.out.println("  " + (i+1) + ". " + courses.get(i).getCode() + "\t " + courses.get(i).getName());
+            System.out.println("  " + (i+1) + ". " + courses.get(i).getCourseCode() + "\t " + courses.get(i).getCourseName());
         }
         System.out.println(
                 "\n\nPress c to create a new course\n" +
@@ -185,14 +188,30 @@ public class CLIAdmin {
         String classroom;
         String sectionCode;
 
-        System.out.println("********************Create New Course Page********************\n");
+        Util.paintText("********************Create New Course Page********************\n", Color.GREEN);
+
+
         System.out.println("-> Enter the course information for the fields.");
 
-        System.out.println("1.\tCourse Credit: ");
-        courseCredit = scanner.nextInt();
+        while(true){
+            System.out.println("1.\tCourse Credit: ");
+            try{
+                courseCredit = scanner.nextInt();
+                break;
+            }catch (Exception e){
+                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
+            }
+        }
 
-        System.out.println("2.\tCourse ECTS: ");
-        courseECTS = scanner.nextInt();
+        while(true){
+            System.out.println("2.\tCourse ECTS: ");
+            try{
+                courseECTS = scanner.nextInt();
+                break;
+            }catch (Exception e){
+                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
+            }
+        }
 
         System.out.println("3.\tCourse Name: ");
         courseName = scanner.nextLine();
@@ -200,11 +219,25 @@ public class CLIAdmin {
         System.out.println("4.\tCourse Code: ");
         courseCode = scanner.nextLine();
 
-        System.out.println("5.\tCourse Semester: ");
-        givenSemester = scanner.nextInt();
+        while(true){
+            System.out.println("5.\tCourse Semester: ");
+            try{
+                givenSemester = scanner.nextInt();
+                break;
+            }catch (Exception e){
+                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
+            }
+        }
 
-        System.out.println("6.\tCompulsory(1), Non-technical Elective(2), Technical Elective(3), University Elective(4), Faculty Elective(5): ");
-        courseTypeCode = scanner.nextInt(); // TODO: input check yapılacak
+        while(true){
+            System.out.println("6.\tCourse Type: Compulsory(1), Non-technical Elective(2), Technical Elective(3), University Elective(4), Faculty Elective(5): ");
+            try{
+                courseTypeCode = scanner.nextInt();
+                break;
+            }catch (Exception e){
+                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
+            }
+        }
 
         switch (courseTypeCode){
             case 1: courseType = CourseType.COMPULSORY;
@@ -220,8 +253,15 @@ public class CLIAdmin {
             default: courseType = CourseType.COMPULSORY;
         }
 
-        System.out.println("7.\t Number of Prerequisite Courses: "); // TODO: input check
-        numberOfPrerequisiteCourses = scanner.nextInt();
+        while(true){
+            System.out.println("7.\t Number of Prerequisite Courses: ");
+            try{
+                numberOfPrerequisiteCourses = scanner.nextInt();
+                break;
+            }catch (Exception e){
+                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
+            }
+        }
 
         System.out.println("Write course codes of prerequisite courses one by one");
         String prerequisiteCourseCode;
@@ -232,17 +272,36 @@ public class CLIAdmin {
             prerequisiteCourse = findCourse(prerequisiteCourseCode);
             if(prerequisiteCourse != null){
                 prerequisiteCourses.add(prerequisiteCourse);
+            } else{
+                Util.paintText("There is no course with this course code! Try again.", Color.RED);
+                i--;
             }
         }
 
-        System.out.println("8.\tNumber Of Sections: ");
-        numberOfCourseSections = scanner.nextInt();
+        while(true){
+            System.out.println("8.\tNumber Of Sections: ");
+            try{
+                numberOfCourseSections = scanner.nextInt();
+                break;
+            }catch (Exception e){
+                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
+            }
+        }
 
-        for(int i = 0; i < numberOfCourseSections; i++){
+
+        for(int i = 1; i <= numberOfCourseSections; i++){
             System.out.println("Section " + i);
 
-            System.out.println("1.\tStudent Capacity: ");
-            studentCapacity = scanner.nextInt();
+            while(true){
+                System.out.println("1.\tStudent Capacity: ");
+                try{
+                    studentCapacity = scanner.nextInt();
+                    break;
+                }catch (Exception e){
+                    Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
+                }
+            }
+
 
             System.out.println("2.\tLecturer Name: ");
             lecturerName = scanner.nextLine();
@@ -266,10 +325,15 @@ public class CLIAdmin {
 
         course = new Course(courseCredit, courseECTS, givenSemester, courseName, courseCode, prerequisite, courseSections, courseType);
 
-        adminController.createCourse(course);
+        Util.clearScreen();
+        if(adminController.createCourse(course) != null){
+            Util.paintText("SUCCESS: " + courseCode + " is created.", Color.GREEN);
+            return true;
+        } else{
+            Util.paintText("FAIL! " + courseCode + " can't created.", Color.RED);
+            return true;
+        }
 
-        System.out.println( courseCode + " is created.");
-        return true;
     }
 
     private Course findCourse(String courseCode){
