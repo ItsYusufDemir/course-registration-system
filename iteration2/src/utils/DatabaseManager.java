@@ -26,6 +26,8 @@ public class DatabaseManager  {
     private List<Student> studentList;
     private List<Advisor> advisorList;
 
+    private Constraint constraints;
+
     //Singleton pattern
     public static DatabaseManager getInstance() {
         if (instance == null) {
@@ -44,7 +46,7 @@ public class DatabaseManager  {
         courseList = jsonToCourseList(readFile("iteration2/data/courses.json"));
         advisorList = jsonToAdvisorList(readFile("iteration2/data/advisors.json"));
         studentList = jsonToStudentList(readFile("iteration2/data/students.json"));
-
+        constraints = jsonToConstraints(readFile("iteration2/data/constraints.json"));
     }
 
 
@@ -99,6 +101,15 @@ public class DatabaseManager  {
         }        
     }
 
+    private Constraint jsonToConstraints(String jsonString){
+        try {
+            return objectMapper.readValue(jsonString, new TypeReference<Constraint>() {});
+        } catch (IOException e) {
+            System.out.println("Error while converting JSON String to List of objects!");
+            e.printStackTrace();
+            return null ; // or throw an exception if needed
+        }
+    }
     //Convert the list of objects to JSON String
     private <T> String getJsonString(List<T> list) {
 
@@ -132,6 +143,8 @@ public class DatabaseManager  {
         //writeFile("data/courses.json", getJsonString(courseList));
         writeFile("iteration2/data/students.json", getJsonString(studentList));
         writeFile("iteration2/data/advisors.json", getJsonString(advisorList));
+        writeFile("iteration2/data/courses.json", getJsonString(courseList));
+        writeFile("iteration2/data/constraints.json", getJsonString(constraints));
 
         saveTranscriptsToDatabase(); //Save transcripts to database
     }    
@@ -171,7 +184,9 @@ public class DatabaseManager  {
         return advisorList;
     }
 
-
+    public Constraint getConstraints(){
+        return constraints;
+    }
 
    
 
