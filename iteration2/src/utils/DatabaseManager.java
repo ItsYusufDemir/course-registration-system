@@ -190,7 +190,7 @@ public class DatabaseManager {
         Constraint constraint = constraints.get(0);
         HashMap<Integer,String> constraintsMap = new HashMap<Integer,String>();
         constraintsMap.put(1, String.valueOf(constraint.getMaxNumberOfCoursesStudentTake()));
-        constraintsMap.put(2, String.valueOf(constraint.isAddDropWeek()));
+        constraintsMap.put(2, String.valueOf(constraint.getAddDropWeek()));
         constraintsMap.put(3, String.valueOf(constraint.getMinRequiredECTSForTermProject()));
         return constraintsMap;
 
