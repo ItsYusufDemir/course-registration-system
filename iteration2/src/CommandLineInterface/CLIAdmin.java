@@ -1,6 +1,7 @@
 package iteration2.src.CommandLineInterface;
 import java.util.*;
 import java.lang.*;
+import java.util.concurrent.ExecutionException;
 
 import javax.xml.crypto.Data;
 
@@ -69,7 +70,7 @@ public class CLIAdmin {
                         "  Code\t Name\t \n" +
                         "  ____\t ____\t");
         for(int i = 0; i < courses.size(); i++){
-            System.out.println("  " + (i+1) + ". " + courses.get(i).getCode() + "\t " + courses.get(i).getName());
+            System.out.println("  " + (i+1) + ". " + courses.get(i).getCourseCode() + "\t " + courses.get(i).getCourseName());
         }
         System.out.println(
                 "\n\nPress c to create a new course\n" +
@@ -188,11 +189,25 @@ public class CLIAdmin {
         System.out.println("********************Create New Course Page********************\n");
         System.out.println("-> Enter the course information for the fields.");
 
-        System.out.println("1.\tCourse Credit: ");
-        courseCredit = scanner.nextInt();
+        while(true){
+            System.out.println("1.\tCourse Credit: ");
+            try{
+                courseCredit = scanner.nextInt();
+                break;
+            }catch (Exception e){
+                System.out.println("Invalid input ! Please enter an integer value");
+            }
+        }
 
-        System.out.println("2.\tCourse ECTS: ");
-        courseECTS = scanner.nextInt();
+        while(true){
+            System.out.println("2.\tCourse ECTS: ");
+            try{
+                courseECTS = scanner.nextInt();
+                break;
+            }catch (Exception e){
+                System.out.println("Invalid input ! Please enter an integer value");
+            }
+        }
 
         System.out.println("3.\tCourse Name: ");
         courseName = scanner.nextLine();
@@ -200,11 +215,25 @@ public class CLIAdmin {
         System.out.println("4.\tCourse Code: ");
         courseCode = scanner.nextLine();
 
-        System.out.println("5.\tCourse Semester: ");
-        givenSemester = scanner.nextInt();
+        while(true){
+            System.out.println("5.\tCourse Semester: ");
+            try{
+                givenSemester = scanner.nextInt();
+                break;
+            }catch (Exception e){
+                System.out.println("Invalid input ! Please enter an integer value");
+            }
+        }
 
-        System.out.println("6.\tCompulsory(1), Non-technical Elective(2), Technical Elective(3), University Elective(4), Faculty Elective(5): ");
-        courseTypeCode = scanner.nextInt(); // TODO: input check yapılacak
+        while(true){
+            System.out.println("6.\tCourse Type: Compulsory(1), Non-technical Elective(2), Technical Elective(3), University Elective(4), Faculty Elective(5): ");
+            try{
+                courseTypeCode = scanner.nextInt();
+                break;
+            }catch (Exception e){
+                System.out.println("Invalid input ! Please enter an integer value");
+            }
+        }
 
         switch (courseTypeCode){
             case 1: courseType = CourseType.COMPULSORY;
@@ -220,8 +249,15 @@ public class CLIAdmin {
             default: courseType = CourseType.COMPULSORY;
         }
 
-        System.out.println("7.\t Number of Prerequisite Courses: "); // TODO: input check
-        numberOfPrerequisiteCourses = scanner.nextInt();
+        while(true){
+            System.out.println("7.\t Number of Prerequisite Courses: ");
+            try{
+                numberOfPrerequisiteCourses = scanner.nextInt();
+                break;
+            }catch (Exception e){
+                System.out.println("Invalid input ! Please enter an integer value");
+            }
+        }
 
         System.out.println("Write course codes of prerequisite courses one by one");
         String prerequisiteCourseCode;
@@ -232,17 +268,36 @@ public class CLIAdmin {
             prerequisiteCourse = findCourse(prerequisiteCourseCode);
             if(prerequisiteCourse != null){
                 prerequisiteCourses.add(prerequisiteCourse);
+            } else{
+                System.out.println("There is no course with this course code! Try again.");
+                i--;
             }
         }
 
-        System.out.println("8.\tNumber Of Sections: ");
-        numberOfCourseSections = scanner.nextInt();
+        while(true){
+            System.out.println("8.\tNumber Of Sections: ");
+            try{
+                numberOfCourseSections = scanner.nextInt();
+                break;
+            }catch (Exception e){
+                System.out.println("Invalid input ! Please enter an integer value");
+            }
+        }
 
-        for(int i = 0; i < numberOfCourseSections; i++){
+
+        for(int i = 1; i <= numberOfCourseSections; i++){
             System.out.println("Section " + i);
 
-            System.out.println("1.\tStudent Capacity: ");
-            studentCapacity = scanner.nextInt();
+            while(true){
+                System.out.println("1.\tStudent Capacity: ");
+                try{
+                    studentCapacity = scanner.nextInt();
+                    break;
+                }catch (Exception e){
+                    System.out.println("Invalid input ! Please enter an integer value");
+                }
+            }
+
 
             System.out.println("2.\tLecturer Name: ");
             lecturerName = scanner.nextLine();
@@ -266,10 +321,13 @@ public class CLIAdmin {
 
         course = new Course(courseCredit, courseECTS, givenSemester, courseName, courseCode, prerequisite, courseSections, courseType);
 
-        adminController.createCourse(course);
-
-        System.out.println( courseCode + " is created.");
-        return true;
+        if(adminController.createCourse(course) != null){
+            System.out.println( "SUCCESS: " + courseCode + " is created.");
+            return true;
+        } else{
+            System.out.println( "FAIL! " + courseCode + " can't created.");
+            return true;
+        }
     }
 
     private Course findCourse(String courseCode){
