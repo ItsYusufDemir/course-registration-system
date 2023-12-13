@@ -1,6 +1,7 @@
 package iteration2.src.models;
 import java.util.*;
 import iteration2.src.CommandLineInterface.CLIStudent;
+import iteration2.src.controllers.StudentController;
 import iteration2.src.enums.ApprovalStatus;
 import iteration2.src.enums.CourseStatus;
 import iteration2.src.utils.DatabaseManager;
@@ -49,7 +50,7 @@ public class Student extends User {
                 Course course = courseSection.findCourseOfCourseSection();
                 if (courseSection.checkAvailibilty() && course.checkPrerequisite(this) &&
                         !this.transcript.acquirePassedCourses().contains(course) &&
-                        !checkIfItExistsInSelectedCourses(course)) {
+                        !checkIfItExistsInSelectedCourses(course) && checkCourseType(course)) {
                     availableCourseSections.add(courseSection);
                 }
                 availableCourseSections.addAll(findRepeatCourseSections());
@@ -82,12 +83,6 @@ public class Student extends User {
 
 
 
-            if (!(doesContain) && currentCourse.checkPrerequisite(this) &&  checkCourseType(currentCourse)) { // TODO: add the nte te... checks to here 
-                availableCourses.add(currentCourse);
-            }
-        }
-        return availableCourses;
-    }
 
     private boolean checkCourseType(Course course){
         int nteCounter = 0;
@@ -128,19 +123,6 @@ public class Student extends User {
         }
     }
 
-    
-    /*
-        public List<CourseSection> listAvailableCourseSections(){
-        List<Course> allCourses = database;
-        List<Course> passedCourses = transcript.getPassed(); // muho
-        List<CourseSection> availableCourses = new List<Course>();
-        for (int i = 0; i < allCourses.size(); i++) {
-            Course currentCourse = allCourses.get(i);
-            if(!(passedCourses.contains(currentCourse)) && currentCourse.checkPrerequisite(this)){
-                List<CourseSection> currentCourseSections = currentCourse.getAvailableCourseSections();
-                availableCourses.addAll(currentCourseSections);
-            }
-
     public boolean addNewCourse(SelectedCourse selectedCourse){
        // should we check the capacity here or while listing the available courses?
         if(!selectedCourses.contains(selectedCourse))
@@ -158,7 +140,7 @@ public class Student extends User {
 
     @Override
     public void getMyPage() {
-        CLIStudent cliStudent = new CLIStudent(this);
+        CLIStudent cliStudent = new CLIStudent(new StudentController(this));
         cliStudent.menuPage();
     }
 
@@ -210,12 +192,12 @@ public class Student extends User {
 
     public ApprovalStatus getApprovalStatus() {
         return approvalStatus;
-    }*/
+    }
 
     public Transcript getTranscript() {
         return transcript;
     }
-/*
+
     public void setTranscript(Transcript transcript) {
         this.transcript = transcript;
     }
