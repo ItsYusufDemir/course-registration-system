@@ -12,6 +12,7 @@ public class TranscriptTest_CompletedCredits {
     DatabaseManager databaseManager = DatabaseManager.getInstance();
         Transcript transcript = databaseManager.getStudents().get(0).getTranscript();
         double completedCredits = transcript.calculateCompletedCredits();
-        System.out.println(completedCredits);
+        
+        assertEquals(3.0, completedCredits, 0.0);
     }
 }

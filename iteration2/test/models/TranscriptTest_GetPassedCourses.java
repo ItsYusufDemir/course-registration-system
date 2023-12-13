@@ -15,6 +15,7 @@ public class TranscriptTest_GetPassedCourses {
         DatabaseManager databaseManager = DatabaseManager.getInstance();
         Transcript transcript = databaseManager.getStudents().get(0).getTranscript();
         List<Course> testCoursesPassed =  transcript.acquirePassedCourses();
-        System.out.println(testCoursesPassed);
+        
+        assertEquals("Number of passed courses should match the expected count", 10, testCoursesPassed.size());
     }
 }
