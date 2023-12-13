@@ -163,8 +163,10 @@ public class CLIStudent {
         while (shouldQuit) {
 
             System.out.println(" Timetable\n" +
-                    "***********");
-            System.out.println(studentController.getTimetable());
+                               "***********" + 
+                               " Hours/Days\tMonday\tTuesday\tWednesday\tThursday\tFriday\n" + 
+                               " __________\t______\t_______\t_________\t________\t______\n");
+            printTimeTable();
 
             String str = scanner.nextLine();
 
@@ -195,7 +197,7 @@ public class CLIStudent {
 
     private boolean addCourse(String str) {
         int rowNumber = Integer.parseInt(getRowNumberFromInput(str));
-        if (studentController.addSelectedCourse(studentController.getAvaliableCourseSections().get(rowNumber - 1))) {
+        if (studentController.addSelectedCourse(studentController.getAvaliableCourseSections().get(rowNumber - 1)) ) {
             return true;
         }
         return false;
@@ -203,7 +205,7 @@ public class CLIStudent {
 
     private boolean deleteCourse(String str){   
         int rowNumber = Integer.parseInt(getRowNumberFromInput(str)); 
-        if(studentController.removeSelectedCourse(studentController.getSelectedCourses().get(rowNumber-1)){
+        if(studentController.removeSelectedCourse(studentController.getSelectedCourses().get(rowNumber-1)) ){
             return true;
         }
         return false;
@@ -262,6 +264,99 @@ public class CLIStudent {
                     + selectedCourse.getCourse().getCourseName() + "\t"
                     + selectedCourse.getCourseSection().getSectionCode() + "\t" + selectedCourse.getStatus());
         }
+    }
+
+    private void printTimeTable(){
+
+        String timeTable[][];
+        List<String> monCourses;
+        List<String> tueCourses;
+        List<String> wedCourses;
+        List<String> thrCourses;
+        List<String> friCourses;
+
+        timeTable = studentController.getTimeTable();
+
+        String[] times = {"08:30-09:20", "09:30-10:20", "10:30-11:20", "11:30-12:20", "13:00 - 13:50", "14:00 - 14:50", "15:00 - 15:50", "16:00 - 16:50"}; 
+
+        for(int i = 0; i < 8; i++){ // 8 is how many hours we have as an option
+            System.out.println();
+            System.out.print(times[i] + "\t"); // pritns the time
+            
+            //getting the courses for each day at the current hour we are printing 
+            monCourses = divideIntoCourses(timeTable[0][i]);
+            tueCourses = divideIntoCourses(timeTable[1][i]);
+            wedCourses = divideIntoCourses(timeTable[2][i]);
+            thrCourses = divideIntoCourses(timeTable[3][i]);
+            friCourses = divideIntoCourses(timeTable[4][i]);
+            
+            int monCoursesSize = monCourses.size();
+            int tueCoursesSize = tueCourses.size();
+            int wedCoursesSize = wedCourses.size();
+            int thrCoursesSize = thrCourses.size();
+            int friCoursesSize = friCourses.size();
+            // traversing through the days and printing the courses line by line until all of the courses are printed
+            for(int j = 0; j < monCoursesSize || j < tueCoursesSize || j < wedCoursesSize || j < thrCoursesSize || j < friCoursesSize; j++){
+                
+                if(monCourses.get(j) != null){
+                    System.out.print(monCourses.get(j) + "\t");
+                }
+                else{
+                    System.out.print("    \t");
+                }
+
+                if(tueCourses.get(j) != null){
+                    System.out.print(tueCourses.get(j) + "\t");
+                }
+                else{
+                    System.out.print("    \t");
+                }
+
+                if(wedCourses.get(j) != null){
+                    System.out.print(wedCourses.get(j) + "\t");
+                }
+                else{
+                    System.out.print("    \t");
+                }
+
+                if(thrCourses.get(j) != null){
+                    System.out.print(thrCourses.get(j) + "\t");
+                }
+                else{
+                    System.out.print("    \t");
+                }
+
+                if(friCourses.get(j) != null){
+                    System.out.print(friCourses.get(j) + "\t");
+                }
+                else{
+                    System.out.print("    \t");
+                }
+
+                System.out.print("\n");
+            }
+            System.out.println("__________________________________________________________________________________________");
+            
+        }
+    
+    }
+
+    //divides the courses string which is separated with "-" into a courses list
+    private List<String> divideIntoCourses(String str){
+        List<String> courses = new ArrayList<>();
+        String temp = ""; 
+        int strLength = str.length();
+        for(int i = 0; i < strLength; i++){
+            if( str.charAt(i) != '-' ){    // TODO: according to selin we have at the end also "-" this might cause a problem for alignment
+                temp += str.charAt(i);     // fix this if it causes a problem
+            }
+            else{
+                courses.add(temp);
+                temp = "";
+            }
+        }
+
+        return courses;
     }
 
 }
