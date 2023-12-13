@@ -8,6 +8,7 @@ import javax.xml.crypto.Data;
 import com.fasterxml.jackson.databind.jsonschema.SchemaAware;
 
 import iteration2.src.enums.ApprovalStatus;
+import iteration2.src.enums.Color;
 import iteration2.src.enums.CourseType;
 import iteration2.src.models.Course;
 import iteration2.src.models.CourseSection;
@@ -15,6 +16,7 @@ import iteration2.src.models.Prerequisite;
 import iteration2.src.utils.DatabaseManager;
 import iteration2.src.models.Admin;
 import iteration2.src.controllers.AdminController;
+import iteration2.src.utils.Util;
 
 
 public class CLIAdmin {
@@ -186,7 +188,9 @@ public class CLIAdmin {
         String classroom;
         String sectionCode;
 
-        System.out.println("********************Create New Course Page********************\n");
+        Util.paintText("********************Create New Course Page********************\n", Color.GREEN);
+
+
         System.out.println("-> Enter the course information for the fields.");
 
         while(true){
@@ -195,7 +199,7 @@ public class CLIAdmin {
                 courseCredit = scanner.nextInt();
                 break;
             }catch (Exception e){
-                System.out.println("Invalid input ! Please enter an integer value");
+                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
             }
         }
 
@@ -205,7 +209,7 @@ public class CLIAdmin {
                 courseECTS = scanner.nextInt();
                 break;
             }catch (Exception e){
-                System.out.println("Invalid input ! Please enter an integer value");
+                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
             }
         }
 
@@ -221,7 +225,7 @@ public class CLIAdmin {
                 givenSemester = scanner.nextInt();
                 break;
             }catch (Exception e){
-                System.out.println("Invalid input ! Please enter an integer value");
+                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
             }
         }
 
@@ -231,7 +235,7 @@ public class CLIAdmin {
                 courseTypeCode = scanner.nextInt();
                 break;
             }catch (Exception e){
-                System.out.println("Invalid input ! Please enter an integer value");
+                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
             }
         }
 
@@ -255,7 +259,7 @@ public class CLIAdmin {
                 numberOfPrerequisiteCourses = scanner.nextInt();
                 break;
             }catch (Exception e){
-                System.out.println("Invalid input ! Please enter an integer value");
+                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
             }
         }
 
@@ -269,7 +273,7 @@ public class CLIAdmin {
             if(prerequisiteCourse != null){
                 prerequisiteCourses.add(prerequisiteCourse);
             } else{
-                System.out.println("There is no course with this course code! Try again.");
+                Util.paintText("There is no course with this course code! Try again.", Color.RED);
                 i--;
             }
         }
@@ -280,7 +284,7 @@ public class CLIAdmin {
                 numberOfCourseSections = scanner.nextInt();
                 break;
             }catch (Exception e){
-                System.out.println("Invalid input ! Please enter an integer value");
+                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
             }
         }
 
@@ -294,7 +298,7 @@ public class CLIAdmin {
                     studentCapacity = scanner.nextInt();
                     break;
                 }catch (Exception e){
-                    System.out.println("Invalid input ! Please enter an integer value");
+                    Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
                 }
             }
 
@@ -321,13 +325,15 @@ public class CLIAdmin {
 
         course = new Course(courseCredit, courseECTS, givenSemester, courseName, courseCode, prerequisite, courseSections, courseType);
 
+        Util.clearScreen();
         if(adminController.createCourse(course) != null){
-            System.out.println( "SUCCESS: " + courseCode + " is created.");
+            Util.paintText("SUCCESS: " + courseCode + " is created.", Color.GREEN);
             return true;
         } else{
-            System.out.println( "FAIL! " + courseCode + " can't created.");
+            Util.paintText("FAIL! " + courseCode + " can't created.", Color.RED);
             return true;
         }
+
     }
 
     private Course findCourse(String courseCode){
