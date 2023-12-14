@@ -4,6 +4,7 @@ import java.util.*;
 
 import iteration2.src.utils.Util;
 import iteration2.src.controllers.StudentController;
+import iteration2.src.enums.Color;
 import iteration2.src.models.Course;
 import iteration2.src.models.SelectedCourse;
 import iteration2.src.models.CourseSection;
@@ -25,6 +26,7 @@ public class CLIStudent {
         shouldQuit = true;
         while (shouldQuit) {
             Util.clearScreen();
+            
             if (studentController.getNotification() != null) {
                 System.out.println(" Notification\n " +
                         "**************");
@@ -47,7 +49,7 @@ public class CLIStudent {
             } else if (str.equals("q")) {
                 shouldQuit = false;
             } else {
-                System.out.println("Invalid Input: " + str);
+                Util.sendFeedback("Invalid Input: " + str, Color.RED);
             }
 
         }
@@ -56,6 +58,7 @@ public class CLIStudent {
 
     public void showMyCoursesPage() {
         shouldQuit = true;
+        
         while (shouldQuit) {
             Util.clearScreen();
             System.out.println(
@@ -85,10 +88,13 @@ public class CLIStudent {
                     str = scanner.nextLine();
                     if (Util.validateNumber(str, studentController.getSelectedCourses().toArray())) {
                         if (deleteCourse(str)) {
-                            System.out.println("Course successfully deleted");
+                            Util.sendFeedback("Course successfully deleted", Color.GREEN);
                         } else {
-                            System.out.println("Course deletion failed");
+                            Util.sendFeedback("Course deletion failed", Color.RED);
                         }
+                    }
+                    else{
+                        throw new Exception("Invalid input: " + str);
                     }
                 } else if (str.equals("3")) {
                     showTimetablePage();
@@ -103,7 +109,7 @@ public class CLIStudent {
 
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                Util.sendFeedback(e.getLocalizedMessage(), Color.RED);
             }
 
         }
@@ -111,6 +117,7 @@ public class CLIStudent {
 
     public void showAddCoursePage() {
         shouldQuit = true;
+        
         while (shouldQuit) {
             Util.clearScreen();
             System.out.println(
@@ -134,9 +141,9 @@ public class CLIStudent {
                     shouldQuit = false;
                 } else if (Util.validateNumber(str, studentController.getAvaliableCourseSections().toArray())) {
                     if (addCourse(str)) {
-                        System.out.println("Course successfully added");
+                        Util.sendFeedback("Course successfully added", Color.GREEN);
                     } else {
-                        System.out.println("Course addition failed");
+                        Util.sendFeedback("Course addition failed", Color.RED);
                     }
                 }
 
@@ -145,7 +152,7 @@ public class CLIStudent {
                 }
 
             } catch (Exception e) {
-                System.out.println(e);
+                Util.sendFeedback(e.getLocalizedMessage(), Color.RED);
             }
 
         }
@@ -156,6 +163,7 @@ public class CLIStudent {
         shouldQuit = true;
         while (shouldQuit) {
             Util.clearScreen();
+            
             System.out.println(" Timetable\n" +
                                "***********\n" + 
                                " Hours/Days\tMonday\tTuesday\tWednesday\tThursday\tFriday\n" + 
@@ -176,7 +184,7 @@ public class CLIStudent {
                 }
 
             } catch (Exception e) {
-                System.out.println(e);
+                Util.sendFeedback(e.getLocalizedMessage(), Color.RED);
             }
         }
     }
@@ -258,35 +266,35 @@ public class CLIStudent {
             // traversing through the days and printing the courses line by line until all of the courses are printed
             for(int j = 0; j < monCoursesSize || j < tueCoursesSize || j < wedCoursesSize || j < thrCoursesSize || j < friCoursesSize; j++){
                 
-                if(!monCourses.isEmpty() && monCourses.get(j) != ""){
+                if( monCourses.size()>j && monCourses.get(j) != ""){
                     System.out.print(monCourses.get(j) + "\t");
                 }
                 else{
                     System.out.print("     \t");
                 }
 
-                if(!tueCourses.isEmpty() && tueCourses.get(j) != ""){
+                if( tueCourses.size()>j && tueCourses.get(j) != ""){
                     System.out.print(tueCourses.get(j) + "\t");
                 }
                 else{
                     System.out.print("       \t");
                 }
 
-                if(!wedCourses.isEmpty() && wedCourses.get(j) != ""){
+                if( wedCourses.size()>j && wedCourses.get(j) != ""){
                     System.out.print(wedCourses.get(j) + "\t");
                 }
                 else{
                     System.out.print("        \t");
                 }
 
-                if(!thrCourses.isEmpty() && thrCourses.get(j) != ""){
+                if( thrCourses.size()>j && thrCourses.get(j) != ""){
                     System.out.print(thrCourses.get(j) + "\t");
                 }
                 else{
                     System.out.print("       \t");
                 }
 
-                if(!friCourses.isEmpty() && friCourses.get(j) != ""){
+                if( friCourses.size()>j && friCourses.get(j) != ""){
                     System.out.print(friCourses.get(j) + "\t");
                 }
                 else{
