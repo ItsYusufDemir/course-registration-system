@@ -32,6 +32,8 @@ public class CLIAdvisor {
                         "**************");
                 for (String string : advisorController.getNotification())
                     System.out.println(string);
+
+                advisorController.clearNotifications();
             }
             if(!isInvalid){
                 isInvalid = false;

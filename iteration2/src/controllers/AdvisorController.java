@@ -70,6 +70,9 @@ public class AdvisorController {
         currentAdvisor.logout();
     }
 
+    public void clearNotifications() {
+        currentAdvisor.clearNotifications();
+    }
 
 
     // GETTER AND SETTER
