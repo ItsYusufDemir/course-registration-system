@@ -125,7 +125,6 @@ public class Util {
             if(!(list.get(i).charAt(2) == ':' && list.get(i).charAt(5) == '-' && list.get(i).charAt(8) == ':')){ // format control
                 return false;
             }
-
             timeList = list.get(i).split("-"); // ["08:30", "09:20]
 
             if(timeList.length > 2){
