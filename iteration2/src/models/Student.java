@@ -143,9 +143,13 @@ public class Student extends User {
     }
 
     public boolean addNewCourse(SelectedCourse selectedCourse){
-       
-        if(!selectedCourses.contains(selectedCourse))
-            return selectedCourses.add(selectedCourse);
+
+       // should we check the capacity here or while listing the available courses?
+        if(!selectedCourses.contains(selectedCourse)){
+            selectedCourses.add(selectedCourse);
+            DatabaseManager.getInstance().saveToDatabase();
+            return true;
+        }
         else{
             return false;
 
@@ -153,7 +157,12 @@ public class Student extends User {
     }
 
     public boolean deleteCourse(SelectedCourse selectedCourse){
-        return selectedCourses.remove(selectedCourse);
+        if(selectedCourses.contains(selectedCourse) && selectedCourse.getStatus() != CourseStatus.PENDING){
+            selectedCourses.remove(selectedCourse);
+            DatabaseManager.getInstance().saveToDatabase();
+            return true;
+        }
+        return false;
     }
 
 
