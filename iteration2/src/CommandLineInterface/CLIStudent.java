@@ -24,7 +24,7 @@ public class CLIStudent {
     public void menuPage() {
         shouldQuit = true;
         while (shouldQuit) {
-
+            Util.clearScreen();
             if (studentController.getNotification() != null) {
                 System.out.println(" Notification\n " +
                         "**************");
@@ -57,6 +57,7 @@ public class CLIStudent {
     public void showMyCoursesPage() {
         shouldQuit = true;
         while (shouldQuit) {
+            Util.clearScreen();
             System.out.println(
                     " My Courses\n" +
                             "**************\n" +
@@ -111,7 +112,7 @@ public class CLIStudent {
     public void showAddCoursePage() {
         shouldQuit = true;
         while (shouldQuit) {
-
+            Util.clearScreen();
             System.out.println(
                     " Avaliable Courses(To Add)\n" +
                             "**************\n" +
@@ -154,7 +155,7 @@ public class CLIStudent {
     public void showTimetablePage() {
         shouldQuit = true;
         while (shouldQuit) {
-
+            Util.clearScreen();
             System.out.println(" Timetable\n" +
                                "***********\n" + 
                                " Hours/Days\tMonday\tTuesday\tWednesday\tThursday\tFriday\n" + 
