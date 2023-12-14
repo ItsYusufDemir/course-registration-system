@@ -3,6 +3,7 @@ import java.util.Scanner;
 import iteration2.src.controllers.UserController;
 import iteration2.src.models.User;
 //import controllers.UserController;
+import iteration2.src.utils.Util;
 
 public class CLILogin {
 
@@ -11,7 +12,7 @@ public class CLILogin {
     
 
     public User loginPage(){
-
+        Util.clearScreen();
         Scanner input = new Scanner(System.in);
         do {
             System.out.println(" Login ");

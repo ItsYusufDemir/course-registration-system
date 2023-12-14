@@ -39,4 +39,8 @@ public class AdminController {
         return currentAdmin.findCourseByCourseCode(courseCode);
     }
 
+    public void logOut(){
+        currentAdmin.logout();
+    }
+
 }
