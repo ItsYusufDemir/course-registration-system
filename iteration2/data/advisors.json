@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+[{"userId":"111111","password":"advisor","firstName":"Murat Can","lastName":"Ganiz","status":true,"notifications":null},{"userId":"111112","password":"advisor","firstName":"BetÃƒÆ’Ã‚Â¼l","lastName":"Boz","status":true,"notifications":null},{"userId":"111113","password":"advisor","firstName":"Mustafa","lastName":"AÃƒâ€žÃ…Â¸aoÃƒâ€žÃ…Â¸lu","status":true,"notifications":null},{"userId":"111114","password":"advisor","firstName":"Ali Haydar","lastName":"ÃƒÆ’Ã¢â‚¬â€œzer","status":true,"notifications":null}]
+=======
 [
     {
         "userId": "111111",
@@ -32,3 +35,4 @@
         "notifications": []
     }
 ]
+>>>>>>> 4b9739d0f3e4ffb029b55ec9044a304b39b7f5c2

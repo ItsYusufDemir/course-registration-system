@@ -71,9 +71,7 @@ public class CourseSection {
         return sectionTime;
     }
 
-    public ArrayList<String> getSectionDate() {
-        return sectionDay;
-    }
+    
 
     public String getClassroom() {
         return classroom;
