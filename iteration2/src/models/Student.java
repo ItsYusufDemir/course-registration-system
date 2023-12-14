@@ -199,16 +199,30 @@ public class Student extends User {
     public void sendSelectedCoursesToApproval(){
 
         if(this.approvalStatus == ApprovalStatus.PENDING){
-            Util.paintText("You already sent your courses to approval!",Color.RED);
+            Util.sendFeedback("You already sent your courses to approval!",Color.RED);
             return;
         }
 
         if (checkCompulsoryCourses()) {
+            Util.sendFeedback("Please add your failed courses!", Color.RED);
             return;
         }
 
         this.setApprovalStatus(ApprovalStatus.PENDING);
         List<SelectedCourse> selectedCourses = this.getSelectedCourses();
+
+        int numberOfPendingCourses = 0;
+        for (SelectedCourse selectedCourse : selectedCourses) {
+            if (selectedCourse.getStatus() == CourseStatus.PENDING) {
+                numberOfPendingCourses++;
+            }
+        }
+
+        if (numberOfPendingCourses == 0) {
+            Util.sendFeedback("You have no pending courses!", Color.RED);
+            return;
+        }
+
         for (SelectedCourse selectedCourse : selectedCourses) {
 
 
@@ -232,6 +246,10 @@ public class Student extends User {
         }
         this.setSelectedCourses(selectedCourses);
         advisorOfStudent.addNotification(this.getFirstName() +" "+ this.getLastName() +" has requested a course approval.");
+
+        Util.sendFeedback("Courses are sent to advisor", Color.GREEN);
+
+        DatabaseManager.getInstance().saveToDatabase();
     }
 
     public void setApprovalStatus(ApprovalStatus approvalStatus) {

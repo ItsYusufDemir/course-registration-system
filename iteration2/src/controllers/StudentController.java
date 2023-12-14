@@ -41,6 +41,10 @@ public class StudentController {
         System.exit(0);
     }
 
+    public void clearNotifications() {
+        currentStudent.clearNotifications();
+    }
+
     public List<CourseSection> getAvaliableCourseSections() {
         return currentStudent.listAvailableCourseSections();
     }

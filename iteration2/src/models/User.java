@@ -91,6 +91,10 @@ public abstract class User implements Showable {
         this.notifications = notifications;
     }
 
+    public void clearNotifications() {
+        notifications.clear();
+    }
+
     
 
     

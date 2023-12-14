@@ -32,6 +32,8 @@ public class CLIStudent {
                         "**************");
                 for (String string : studentController.getNotification())
                     System.out.println(string);
+
+                studentController.clearNotifications();
             }
             System.out.println(
                     " Menu\n" +
