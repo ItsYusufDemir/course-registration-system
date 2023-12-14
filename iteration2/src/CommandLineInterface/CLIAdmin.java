@@ -7,7 +7,6 @@ import iteration2.src.models.Course;
 import iteration2.src.models.CourseSection;
 import iteration2.src.models.Prerequisite;
 import iteration2.src.utils.DatabaseManager;
-import iteration2.src.models.Admin;
 import iteration2.src.controllers.AdminController;
 import iteration2.src.utils.Util;
 
@@ -16,11 +15,10 @@ public class CLIAdmin {
 
     private Scanner scanner;
     private AdminController adminController;
-    private Admin currentadmin;
+
     
-    CLIAdmin(Admin admin){
-        this.currentadmin = admin;
-        adminController = new AdminController(admin);
+    public CLIAdmin(AdminController admin){
+        adminController = new AdminController();
         scanner = new Scanner(System.in);
     }
 
