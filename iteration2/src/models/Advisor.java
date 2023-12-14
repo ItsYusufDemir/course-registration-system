@@ -36,9 +36,14 @@ public class Advisor extends User {
         student.getTranscript().getTakenCourses().add(newCourse);
         
 
-        if(student.getSelectedCourses().size() == 0) {
-            student.setApprovalStatus(ApprovalStatus.DONE);
+        //sadece pending olanların size ı 0 ise
+        for(SelectedCourse course : student.getSelectedCourses()) {
+            if(course.getStatus() == CourseStatus.PENDING) {
+                return;
+            }
         }
+
+        student.setApprovalStatus(ApprovalStatus.DONE);     
     }
 
     public void rejectCourse(Student student, SelectedCourse selectedCourse) {
