@@ -33,8 +33,8 @@ public class Transcript{
     public double calculateCompletedCredits(){
         double total = 0.0;
         for(CourseGrade course : takenCourses){
-            
-            total += course.getCourse().getCourseCredit();
+            if(course.getCourseResult() == CourseResult.PASSED)
+                total += course.getCourse().getCourseCredit();
         }
         return total;
     }
