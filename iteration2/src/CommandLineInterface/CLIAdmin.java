@@ -24,38 +24,40 @@ public class CLIAdmin {
 
 
     public void menuPage() {
+        Util.clearScreen();
+            System.out.println(
+                    " Menu\n" +
+                            "********\n" +
+                            "  1. Course list\n" +
+                            "  2. Constraint Settings\n\n" +
+                            "Press q to quit\n" +
+                            "Press corresponding row number to review and make changes for the list you want.\n" 
+                            );
 
-        System.out.println(
-                " Menu\n" +
-                        "********\n" +
-                        "  1. Course list\n" +
-                        "  2. Constraint Settings\n\n" +
-                        "Press q to quit\n" +
-                        "Press corresponding row number to review and make changes for the list you want.\n" 
-                        );
-
-        String str = scanner.nextLine();
-        if (str.equals("q")) {
-            DatabaseManager.getInstance().saveToDatabase();
-            System.exit(0);
-        } else if (str.equals("1")) {
-            Util.clearScreen();
-            courseListPage();
-        } else if (str.equals("2")) {
-            Util.clearScreen();
-            constraintPage();
-        } else {
-            Util.paintText("Invalid input", Color.RED);
-            System.out.println("\n\n\n");
-            menuPage();
-        }
+            String str = scanner.nextLine();
+            if (str.equals("q")) {
+                DatabaseManager.getInstance().saveToDatabase();
+                Util.clearScreen();
+                adminController.logOut();
+            } else if (str.equals("1")) {
+                Util.clearScreen();
+                courseListPage();
+            } else if (str.equals("2")) {
+                Util.clearScreen();
+                constraintPage();
+            } else {
+                Util.paintText("Invalid input", Color.RED);
+                System.out.println("\n\n\n");
+                menuPage();
+            }
+    
 
     }
 
 
 
         public void courseListPage() {
-
+        Util.clearScreen();
         scanner = new Scanner(System.in);
         List<Course> courses = adminController.getCourseList();
 
@@ -96,18 +98,21 @@ public class CLIAdmin {
             }
             courseListPage();
         } else if (str.equals("b")) {
+            Util.clearScreen();
             menuPage();
         } else if (str.equals("q")) {
-            System.exit(0);
+            Util.clearScreen();
+            adminController.logOut();
         } else {
             Util.paintText("Invalid input", Color.RED);
             System.out.println("\n\n\n");
             courseListPage();
         }
-
+    
     }
 
     public void constraintPage (){
+        Util.clearScreen();
         scanner = new Scanner(System.in);
         HashMap<Integer, String> editedAttributes = adminController.getConstraints();
         
@@ -166,14 +171,17 @@ public class CLIAdmin {
             constraintPage();
         }
         else if (str.equals("b")) {
+            Util.clearScreen();
             menuPage();
         } else if (str.equals("q")) {
-            System.exit(0);
+            Util.clearScreen();
+            adminController.logOut();
         } else {
             Util.paintText("Invalid input", Color.RED);
             System.out.println("\n\n\n");
             constraintPage();
         }
+    
     }
 
     public boolean createNewCoursePage(){

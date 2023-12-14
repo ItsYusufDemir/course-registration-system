@@ -9,7 +9,7 @@ public class Util {
     public static void clearScreen() {
         //System.out.print("\033[H\033[2J");
         //System.out.flush();
-        try{
+        /*try{
             final String os = System.getProperty("os.name");
             if (os.contains("Windows") || os.contains("windows")){
                 Runtime.getRuntime().exec("clr");
@@ -18,7 +18,9 @@ public class Util {
             }
         }catch (Exception e){
             e.printStackTrace();
-        }
+        }*/
+
+        System.out.print("\033\143");
     }
 
     public static void paintText(String message, String color) {
