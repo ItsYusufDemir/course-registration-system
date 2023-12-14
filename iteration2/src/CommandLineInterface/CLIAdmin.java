@@ -46,8 +46,7 @@ public class CLIAdmin {
                 Util.clearScreen();
                 constraintPage();
             } else {
-                Util.paintText("Invalid input", Color.RED);
-                System.out.println("\n\n\n");
+                Util.sendFeedback("Invalid input", Color.RED);
                 menuPage();
             }
     
@@ -87,14 +86,13 @@ public class CLIAdmin {
                 Course course = courses.get(Integer.parseInt(Util.getRowNumberFromInput(str)) - 1);
                 if (adminController.deleteCourse(course)) {
                     Util.clearScreen();
-                    Util.sendFeedback("Course deleted successfully", Color.GREEN, 2);
+                    Util.sendFeedback("Course deleted successfully", Color.GREEN);
                 } else {
                     Util.clearScreen();
-                    Util.sendFeedback("Delete failed", Color.RED, 2);
+                    Util.sendFeedback("Delete failed", Color.RED);
                 }
             } else {
-                Util.paintText("Invalid input", Color.RED);
-                System.out.println("\n\n\n"); 
+                Util.sendFeedback("Invalid input", Color.RED);
             }
             courseListPage();
         } else if (str.equals("b")) {
@@ -104,8 +102,7 @@ public class CLIAdmin {
             Util.clearScreen();
             adminController.logOut();
         } else {
-            Util.paintText("Invalid input", Color.RED);
-            System.out.println("\n\n\n");
+            Util.sendFeedback("Invalid input", Color.RED);
             courseListPage();
         }
     
@@ -140,8 +137,7 @@ public class CLIAdmin {
                 editedAttributes.put(2, "false");
                 System.out.println("Add-Drop changed successfully");
             } else {
-                System.out.println("Invalid input");
-                System.out.println("\n\n\n"); 
+                Util.sendFeedback("Invalid input", Color.RED);
             }
             adminController.editConstraint(editedAttributes);
             constraintPage();
@@ -152,8 +148,7 @@ public class CLIAdmin {
                 editedAttributes.put(1, str);
                 System.out.println("Max Number Of Courses That Can Be Taken changed successfully");
             } else {
-                Util.paintText("Invalid input", Color.RED);
-                System.out.println("\n\n\n"); 
+                Util.sendFeedback("Invalid input", Color.RED);
             }
             adminController.editConstraint(editedAttributes);
             constraintPage();
@@ -164,8 +159,7 @@ public class CLIAdmin {
                 editedAttributes.put(3, str);
                 System.out.println("Min Required ECTS For Term Project changed successfully");
             } else {
-                Util.paintText("Invalid input", Color.RED);
-                System.out.println("\n\n\n"); 
+                Util.sendFeedback("Invalid input", Color.RED);
             }
             adminController.editConstraint(editedAttributes);
             constraintPage();
@@ -177,8 +171,7 @@ public class CLIAdmin {
             Util.clearScreen();
             adminController.logOut();
         } else {
-            Util.paintText("Invalid input", Color.RED);
-            System.out.println("\n\n\n");
+            Util.sendFeedback("Invalid input", Color.RED);
             constraintPage();
         }
     
@@ -235,6 +228,7 @@ public class CLIAdmin {
                 courseECTS = Integer.parseInt(currentInput);
                 break;
             }catch (Exception e){
+                
                 Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
             }
         }
@@ -265,6 +259,12 @@ public class CLIAdmin {
             try{
                 currentInput = scanner.nextLine();
                 courseTypeCode = Integer.parseInt(currentInput);
+
+                if(courseTypeCode < 1 || courseTypeCode > 5){
+                    Util.paintText("Invalid input ! Please enter an integer value between 1-5", Color.RED);
+                    continue;
+                }
+
                 break;
             }catch (Exception e){
                 Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
@@ -342,7 +342,7 @@ public class CLIAdmin {
 
             System.out.println("\nFollowing information for section day and time");
             System.out.println("Input Format for Section Day:\tMonday, Monday, Tuesday");
-            System.out.println("Input Format for Section Time:\t08:30-09:20, 09:30-10:30, 08:-09:20\n");
+            System.out.println("Input Format for Section Time:\t08:30-09:20, 09:30-10:30, 08:30-09:20\n");
 
             while(true){
                 while(true){
@@ -391,10 +391,10 @@ public class CLIAdmin {
         Util.clearScreen();
 
         if(adminController.createCourse(course) != null){
-            Util.sendFeedback("SUCCESS: " + courseCode + " is created.", Color.GREEN, 2);
+            Util.sendFeedback("SUCCESS: " + courseCode + " is created.", Color.GREEN);
             return true;
         } else{
-            Util.sendFeedback("FAIL! " + courseCode + " can't created.", Color.RED, 2);
+            Util.sendFeedback("FAIL! " + courseCode + " can't created.", Color.RED);
             return false;
         }
 

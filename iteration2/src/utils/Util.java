@@ -27,22 +27,16 @@ public class Util {
         System.out.println(color + message + Color.DEFAULT);
     }
 
-    public static void sendFeedback(String message, String color, int duration) {
+    public static void sendFeedback(String message, String color) {
         paintText(message, color);
-        try {
-            Thread.sleep(duration);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        animationTimer(1);
+        clearScreen();
     }
 
-    public static void sendFeedback(String message, int duration) {
+    public static void sendFeedback(String message) {
         System.out.println(message);
-        try {
-            Thread.sleep(duration);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        animationTimer(1);
+        clearScreen();
     }
 
     public static String getRowNumberFromInput(String str) {
@@ -134,7 +128,7 @@ public class Util {
             }
 
             for(int j = 0; j < 2; j++){
-                timeComponentList = timeList[i].split(":");
+                timeComponentList = timeList[j].split(":");
                 try{
                     hour = Integer.parseInt(timeComponentList[0]);
                     minute = Integer.parseInt(timeComponentList[1]);
@@ -151,5 +145,33 @@ public class Util {
             }
         }
         return true;
+    }
+
+
+    private static void animationTimer(int duration) {
+        
+            paintText("3", Color.RED);
+            try {
+                Thread.sleep(duration * 1000);
+            } catch (Exception e) {
+                paintText("Thread sleep error", Color.RED);
+            }
+            
+
+            paintText("2", Color.RED);
+            try {
+                Thread.sleep(duration * 1000);
+            } catch (Exception e) {
+                paintText("Thread sleep error", Color.RED);
+            }
+
+            paintText("1", Color.RED);
+            try {
+                Thread.sleep(duration * 1000);
+            } catch (Exception e) {
+                paintText("Thread sleep error", Color.RED);
+            }
+
+        
     }
 }

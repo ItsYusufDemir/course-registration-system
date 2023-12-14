@@ -3,11 +3,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import iteration2.src.controllers.AdvisorController;
+import iteration2.src.enums.Color;
 import iteration2.src.enums.CourseStatus;
 import iteration2.src.models.Advisor;
 import iteration2.src.models.SelectedCourse;
 import iteration2.src.models.Student;
 import iteration2.src.utils.DatabaseManager;
+import iteration2.src.utils.Util;
 
 public class CLIAdvisor {
 
@@ -125,6 +127,8 @@ public class CLIAdvisor {
            if(!isInvalid){
                isInvalid = false;
 
+            Util.clearScreen();
+
        System.out.println(" Courses Of The Student ");
        System.out.println("***************************");
        System.out.println("   Code         Number        Section       Status ");
@@ -170,6 +174,9 @@ public class CLIAdvisor {
                        System.out.println("Invalid choice. Try again.");
                        isInvalid = true;
                    }
+               }
+               else {;
+                    Util.sendFeedback("Invalid choice!", Color.RED);
                }
            }
            catch(NumberFormatException e){
