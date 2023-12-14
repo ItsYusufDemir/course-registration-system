@@ -7,8 +7,18 @@ import java.util.Arrays;
 
 public class Util {
     public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        //System.out.print("\033[H\033[2J");
+        //System.out.flush();
+        try{
+            final String os = System.getProperty("os.name");
+            if (os.contains("Windows") || os.contains("windows")){
+                Runtime.getRuntime().exec("clr");
+            }else {
+                Runtime.getRuntime().exec("clear");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public static void paintText(String message, String color) {
@@ -98,35 +108,47 @@ public class Util {
         }
         return true;
     }
-    public static boolean isInputFormatTrueForTime(ArrayList<String> list){
+    public static boolean isInputFormatTrueForTime(ArrayList<String> list){ // ["08:30-09:20", "09:30-10:30", "08:-09:20"]
         int length = list.size();
         int hour;
         int minute;
+        String[] timeComponentList;
         String[] timeList;
+
+
         for(int i = 0; i < length; i++){
-            if(!list.get(i).contains(":")){
+
+            if(list.get(i).length() != 11){
                 return false;
             }
 
-            timeList = list.get(i).split(":");
-            try{
-                hour = Integer.parseInt(timeList[0]);
-                minute = Integer.parseInt(timeList[0]);
-            }catch (Exception e){
+            if(!(list.get(i).charAt(2) == ':' && list.get(i).charAt(5) == '-' && list.get(i).charAt(8) == ':')){ // format control
                 return false;
             }
 
-            if(0 < hour && hour > 23){
+            timeList = list.get(i).split("-"); // ["08:30", "09:20]
+
+            if(timeList.length > 2){
                 return false;
             }
 
+            for(int j = 0; j < 2; j++){
+                timeComponentList = timeList[i].split(":");
+                try{
+                    hour = Integer.parseInt(timeComponentList[0]);
+                    minute = Integer.parseInt(timeComponentList[1]);
+                }catch (Exception e){
+                    return false;
+                }
+                if(0 > hour || hour > 23){
+                    return false;
+                }
 
-            if(0 < minute && minute > 59){
-                return false;
+                if(0 > minute || minute > 59){
+                    return false;
+                }
             }
-
         }
         return true;
     }
-
 }
