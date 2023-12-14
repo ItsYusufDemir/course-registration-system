@@ -4,6 +4,7 @@ import java.util.*;
 
 import iteration2.src.utils.Util;
 import iteration2.src.controllers.StudentController;
+import iteration2.src.enums.Color;
 import iteration2.src.models.Course;
 import iteration2.src.models.SelectedCourse;
 import iteration2.src.models.CourseSection;
@@ -24,7 +25,8 @@ public class CLIStudent {
     public void menuPage() {
         shouldQuit = true;
         while (shouldQuit) {
-            //Util.clearScreen();
+            Util.clearScreen();
+            
             if (studentController.getNotification() != null) {
                 System.out.println(" Notification\n " +
                         "**************");
@@ -47,7 +49,7 @@ public class CLIStudent {
             } else if (str.equals("q")) {
                 shouldQuit = false;
             } else {
-                System.out.println("Invalid Input: " + str);
+                Util.sendFeedback("Invalid Input: " + str, Color.RED);
             }
 
         }
@@ -56,8 +58,9 @@ public class CLIStudent {
 
     public void showMyCoursesPage() {
         shouldQuit = true;
+        
         while (shouldQuit) {
-            //Util.clearScreen();
+            Util.clearScreen();
             System.out.println(
                     " My Courses\n" +
                             "**************\n" +
@@ -85,9 +88,9 @@ public class CLIStudent {
                     str = scanner.nextLine();
                     if (Util.validateNumber(str, studentController.getSelectedCourses().toArray())) {
                         if (deleteCourse(str)) {
-                            System.out.println("Course successfully deleted");
+                            Util.sendFeedback("Course successfully deleted", Color.GREEN);
                         } else {
-                            System.out.println("Course deletion failed");
+                            Util.sendFeedback("Course deletion failed", Color.RED);
                         }
                     }
                     else{
@@ -106,7 +109,7 @@ public class CLIStudent {
 
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                Util.sendFeedback(e.getLocalizedMessage(), Color.RED);
             }
 
         }
@@ -114,8 +117,9 @@ public class CLIStudent {
 
     public void showAddCoursePage() {
         shouldQuit = true;
+        
         while (shouldQuit) {
-            //Util.clearScreen();
+            Util.clearScreen();
             System.out.println(
                     " Avaliable Courses(To Add)\n" +
                             "**************\n" +
@@ -137,9 +141,9 @@ public class CLIStudent {
                     shouldQuit = false;
                 } else if (Util.validateNumber(str, studentController.getAvaliableCourseSections().toArray())) {
                     if (addCourse(str)) {
-                        System.out.println("Course successfully added");
+                        Util.sendFeedback("Course successfully added", Color.GREEN);
                     } else {
-                        System.out.println("Course addition failed");
+                        Util.sendFeedback("Course addition failed", Color.RED);
                     }
                 }
 
@@ -148,7 +152,7 @@ public class CLIStudent {
                 }
 
             } catch (Exception e) {
-                System.out.println(e);
+                Util.sendFeedback(e.getLocalizedMessage(), Color.RED);
             }
 
         }
@@ -158,7 +162,8 @@ public class CLIStudent {
     public void showTimetablePage() {
         shouldQuit = true;
         while (shouldQuit) {
-            //Util.clearScreen();
+            Util.clearScreen();
+            
             System.out.println(" Timetable\n" +
                                "***********\n" + 
                                " Hours/Days\tMonday\tTuesday\tWednesday\tThursday\tFriday\n" + 
@@ -179,7 +184,7 @@ public class CLIStudent {
                 }
 
             } catch (Exception e) {
-                System.out.println(e);
+                Util.sendFeedback(e.getLocalizedMessage(), Color.RED);
             }
         }
     }
