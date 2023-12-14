@@ -1,16 +1,16 @@
 package iteration2.test.models;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
+import org.junit.Test;
+
 import iteration2.src.enums.CourseResult;
 import iteration2.src.models.Course;
 import iteration2.src.models.CourseGrade;
 import iteration2.src.models.Transcript;
-import iteration2.src.utils.DatabaseManager;
-
-import org.junit.Before;
-import org.junit.Test;
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class TranscriptTest_GetPassedCourses {
 

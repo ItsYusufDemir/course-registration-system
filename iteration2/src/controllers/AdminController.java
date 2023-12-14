@@ -1,8 +1,6 @@
 package iteration2.src.controllers;
 import iteration2.src.models.Admin;
-import iteration2.src.models.Advisor;
 import iteration2.src.models.Course;
-import iteration2.src.models.Student;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,15 +16,15 @@ public class AdminController {
     }
 
     public List<Course> getCourseList(){
-        return currentAdmin.getCourseList();
+        return currentAdmin.fetchCourseList();
     }
 
-    public Constraint getConstraint(){
-        return currentAdmin.getConstraint();
+    public HashMap<Integer, String> getConstraints(){
+        return currentAdmin.fetchConstraints();
     }
 
     public Course createCourse(Course course){
-        return currentAdmin.createCourseList();
+        return currentAdmin.createCourse(course);
     }
 
     public void editConstraint(HashMap<Integer, String> editedAttributes){
@@ -37,7 +35,8 @@ public class AdminController {
         return currentAdmin.deleteCourse(course);
     }
 
-    public Course findCourse(String courseCode){
-        return currentAdmin.findCourse(courseCode);
+    public Course findCourseByCourseCode(String courseCode){
+        return currentAdmin.findCourseByCourseCode(courseCode);
     }
+
 }

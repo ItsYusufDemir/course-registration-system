@@ -49,7 +49,9 @@ public class CourseSection {
     public Course findCourseOfCourseSection(){
         List<Course> courses = DatabaseManager.getInstance().getCourses();
         for (Course course : courses) {
-            if(course.getCourseCode().equals(this.getSectionCode().split(".")[0])){
+
+            String courseCode = this.getSectionCode().substring(0, this.getSectionCode().indexOf("."));
+            if(course.getCourseCode().equals(courseCode)){
                 return course;
             }
         }
@@ -69,9 +71,7 @@ public class CourseSection {
         return sectionTime;
     }
 
-    public ArrayList<String> getSectionDate() {
-        return sectionDay;
-    }
+    
 
     public String getClassroom() {
         return classroom;
@@ -85,4 +85,40 @@ public class CourseSection {
     public int getStudentCountInsideCourseSection() {
         return studentCountInsideCourseSection;
     }
+
+    public ArrayList<String> getSectionDay() {
+        return sectionDay;
+    }
+
+    public void setStudentCapacity(int studentCapacity) {
+        this.studentCapacity = studentCapacity;
+    }
+
+    public void setLecturerName(String lecturerName) {
+        this.lecturerName = lecturerName;
+    }
+
+    public void setSectionTime(ArrayList<String> sectionTime) {
+        this.sectionTime = sectionTime;
+    }
+
+    public void setSectionDay(ArrayList<String> sectionDay) {
+        this.sectionDay = sectionDay;
+    }
+
+    public void setClassroom(String classroom) {
+        this.classroom = classroom;
+    }
+
+    public void setSectionCode(String sectionCode) {
+        this.sectionCode = sectionCode;
+    }
+
+    public void setStudentCountInsideCourseSection(int studentCountInsideCourseSection) {
+        this.studentCountInsideCourseSection = studentCountInsideCourseSection;
+    }
+
+    
+
+    
 }

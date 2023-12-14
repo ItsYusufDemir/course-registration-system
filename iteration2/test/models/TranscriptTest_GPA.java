@@ -4,11 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import iteration2.src.models.Course;
 import iteration2.src.enums.CourseResult;
+import iteration2.src.models.Course;
 import iteration2.src.models.CourseGrade;
 import iteration2.src.models.Transcript;
-import iteration2.src.utils.DatabaseManager;
 
 public class TranscriptTest_GPA {
 

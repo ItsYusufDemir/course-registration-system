@@ -105,6 +105,20 @@ public class Course {
     public int getGivenSemester() {
         return givenSemester;
     }
+
+    public void setGivenSemester(int givenSemester) {
+        this.givenSemester = givenSemester;
+    }
+
+    public void setCourseSections(List<CourseSection> courseSections) {
+        this.courseSections = courseSections;
+    }
+
+    public void setCourseType(CourseType courseType) {
+        this.courseType = courseType;
+    }
+
+    
   
 
 }

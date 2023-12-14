@@ -1,18 +1,17 @@
 package iteration2.test.models;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
 import iteration2.src.enums.CourseResult;
 import iteration2.src.models.Course;
 import iteration2.src.models.CourseGrade;
 import iteration2.src.models.Prerequisite;
+import iteration2.src.models.SelectedCourse;
 import iteration2.src.models.Student;
 import iteration2.src.models.Transcript;
-import iteration2.src.utils.DatabaseManager;
-import static org.junit.Assert.*;
-
-import java.util.List;
-
-import iteration2.src.enums.ApprovalStatus;
-import iteration2.src.models.SelectedCourse;
 
 public class PrerequisiteTest {
 
@@ -47,7 +46,7 @@ public class PrerequisiteTest {
 
         List<SelectedCourse> selectedCourses = List.of(selectedCourse1, selectedCourse2, selectedCourse3);
 
-        Student student = new Student("1", "1", "eren", "duyuk", false, "a", "1", selectedCourses, null, null, transcript);
+        Student student = new Student("1", "1", "eren", "duyuk", false, "a", "1", 0, selectedCourses, null, null, transcript);
 
         
         assertTrue("Prerequisite should be passed", course2.checkPrerequisite(student));

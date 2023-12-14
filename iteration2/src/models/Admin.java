@@ -3,49 +3,51 @@ package iteration2.src.models;
 import java.util.HashMap;
 import java.util.List;
 
+import iteration2.src.CommandLineInterface.CLIAdmin;
+import iteration2.src.CommandLineInterface.CLIStudent;
+import iteration2.src.controllers.AdminController;
+import iteration2.src.controllers.StudentController;
 import iteration2.src.utils.DatabaseManager;
 
-public class Admin {
+public class Admin extends User {
 
     public Admin() {
     }
 
-    public List<Course> getCourseList() {
+    public List<Course> fetchCourseList() {
         return DatabaseManager.getInstance().getCourses();
     }
 
-    public Constraint getConstraints() {
+    public HashMap<Integer,String> fetchConstraints() {
         return DatabaseManager.getInstance().getConstraints();
     }
 
     public Course createCourse(Course course) {
-        getCourseList().add(course);
+        fetchCourseList().add(course);
         DatabaseManager.getInstance().saveToDatabase();
         return course;
     }
 
-    public Course createCourse(int courseCredit, int courseECTS, String courseName, String courseCode,
-            Prerequisite prerequisiteInformation, List<CourseSection> courseSections, CourseType courseType) {
-        Course course = new Course(courseCredit, courseECTS, courseName, courseCode, prerequisiteInformation,
-                courseSections, courseType);
-        getCourseList().add(course);
-        return course;
+    public boolean editConstraint(HashMap<Integer, String> editedAttributes) {
+        boolean ret = DatabaseManager.getInstance().editConstraint(editedAttributes);
+        DatabaseManager.getInstance().saveToDatabase();
+        return ret;
     }
 
-    public void editConstraint(HashMap<Integer, String> editedAttributes) {
-        Constraint constraint = getConstraints();
-        constraint.editConstraint(editedAttributes);
+    public boolean deleteCourse(Course course) {
+        boolean ret = fetchCourseList().remove(course);
         DatabaseManager.getInstance().saveToDatabase();
+        return ret;
     }
 
-    public Course deleteCourse(Course course) {
-        getCourseList().remove(course);
-        DatabaseManager.getInstance().saveToDatabase();
-        return course;
-    }
 
     public Course findCourseByCourseCode(String courseCode) {
         return DatabaseManager.getInstance().findCourseByCourseCode(courseCode);
     }
 
+    @Override
+    public void getMyPage() {
+        CLIAdmin cliAdmin = new CLIAdmin(new AdminController(this));
+        cliAdmin.menuPage();
+    }
 }

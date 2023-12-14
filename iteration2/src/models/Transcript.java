@@ -1,7 +1,5 @@
 package iteration2.src.models;
 import iteration2.src.enums.CourseResult;
-import iteration2.src.utils.DatabaseManager;
-
 import java.util.*;
 
 public class Transcript{

@@ -1,14 +1,14 @@
 package iteration2.test.models;
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+
+import org.junit.Test;
+
 import iteration2.src.enums.CourseResult;
 import iteration2.src.models.Course;
 import iteration2.src.models.CourseGrade;
 import iteration2.src.models.Transcript;
-import iteration2.src.utils.DatabaseManager;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-
-import java.util.List;
 
 public class TranscriptTest_CompletedCredits {
 

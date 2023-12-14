@@ -1,22 +1,12 @@
 package iteration2.src.CommandLineInterface;
-import java.awt.*;
 import java.util.*;
-import java.lang.*;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-
-import javax.xml.crypto.Data;
-
-import com.fasterxml.jackson.databind.jsonschema.SchemaAware;
-
-import iteration2.src.enums.ApprovalStatus;
 import iteration2.src.enums.Color;
 import iteration2.src.enums.CourseType;
 import iteration2.src.models.Course;
 import iteration2.src.models.CourseSection;
 import iteration2.src.models.Prerequisite;
 import iteration2.src.utils.DatabaseManager;
-import iteration2.src.models.Admin;
 import iteration2.src.controllers.AdminController;
 import iteration2.src.utils.Util;
 
@@ -25,11 +15,10 @@ public class CLIAdmin {
 
     private Scanner scanner;
     private AdminController adminController;
-    private Admin currentadmin;
+
     
-    CLIAdmin(Admin admin){
-        this.currentadmin = admin;
-        adminController = new AdminController(admin);
+    public CLIAdmin(AdminController admin){
+        adminController = new AdminController();
         scanner = new Scanner(System.in);
     }
 
@@ -89,8 +78,9 @@ public class CLIAdmin {
         } else if (str.startsWith("d")) {
             System.out.println("Enter the row number of the course you want to delete : ");
             str = scanner.nextLine();
-            if (isValidNumber(str) && checkIfValidRowNumber(str, courses)) {
-                if (deleteCourse(course)) {
+            if (Util.isValidNumber(str) && Util.checkIfValidRowNumber(str, courses.toArray())) {
+                Course course = courses.get(Integer.parseInt(Util.getRowNumberFromInput(str)) - 1);
+                if (adminController.deleteCourse(course)) {
                     System.out.println("Course deleted successfully");
                 } else {
                     System.out.println("delete failed");
@@ -107,20 +97,21 @@ public class CLIAdmin {
         } else {
             System.out.println("Invalid input");
             System.out.println("\n\n\n");
-            myCoursesPage(courses);
+            courseListPage();
         }
 
     }
 
     public void constraintPage (){
         scanner = new Scanner(System.in);
-        Constraint constraint = adminController.getConstraint();
+        HashMap<Integer, String> editedAttributes = adminController.getConstraints();
         
         System.out.println(
                 " Constraint Settings\n" +
                         "**************\n");
-        System.out.println("1. Add-Drop: " + constraint.getIsAddDropWeek);
-        System.out.println("2. Max Number Of Courses That Can Be Taken:: " + constraint.getmaxNumberOfCoursesStudentTake);
+        System.out.println("1. Add-Drop: " + editedAttributes.get(2));
+        System.out.println("2. Max Number Of Courses That Can Be Taken:: " + editedAttributes.get(1));
+        System.out.println("3. Min Required ECTS For Term Project: " + editedAttributes.get(3));
         System.out.println("");
         System.out.println("Press b to go back");
         System.out.println("Press q to quit");
@@ -133,10 +124,10 @@ public class CLIAdmin {
             System.out.println("Enter true or false for add drop: ");
             str = scanner.nextLine();
             if (str.equals("true")) {
-                constraint.setIsAddDropWeek(true);
+                editedAttributes.put(2, "true");
                 System.out.println("Add-Drop changed successfully");
             } else if (str.equals("false")) {
-                constraint.setIsAddDropWeek(false);
+                editedAttributes.put(2, "false");
                 System.out.println("Add-Drop changed successfully");
             } else {
                 System.out.println("Invalid input");
@@ -146,15 +137,28 @@ public class CLIAdmin {
         } else if (str.startsWith("2")) {
             System.out.println("Enter the new value for Max Number Of Courses That Can Be Taken: ");
             str = scanner.nextLine();
-            if (isValidNumber(str)) {
-                constraint.setmaxNumberOfCoursesStudentTake(Integer.parseInt(str));
+            if (Util.isValidNumber(str)) {
+                editedAttributes.put(1, str);
                 System.out.println("Max Number Of Courses That Can Be Taken changed successfully");
             } else {
                 System.out.println("Invalid input");
                 System.out.println("\n\n\n"); 
             }
             constraintPage();
-        } else if (str.equals("b")) {
+        } else if (str.startsWith("3")) {
+            System.out.println("Enter the new value for Min Required ECTS For Term Project: ");
+            str = scanner.nextLine();
+            if (Util.isValidNumber(str)) {
+                editedAttributes.put(3, str);
+                System.out.println("Min Required ECTS For Term Project changed successfully");
+            } else {
+                System.out.println("Invalid input");
+                System.out.println("\n\n\n"); 
+            }
+            constraintPage();
+        }
+        
+        else if (str.equals("b")) {
             menuPage();
         } else if (str.equals("q")) {
             System.exit(0);
@@ -273,7 +277,7 @@ public class CLIAdmin {
         for(int i = 1; i <= numberOfPrerequisiteCourses; i++){
             System.out.print(i + ".\t");
             prerequisiteCourseCode = scanner.nextLine();
-            prerequisiteCourse = findCourse(prerequisiteCourseCode);
+            prerequisiteCourse = findCourseByCourseCode(prerequisiteCourseCode);
             if(prerequisiteCourse != null){
                 prerequisiteCourses.add(prerequisiteCourse);
             } else{
@@ -359,8 +363,8 @@ public class CLIAdmin {
         }
 
     }
-    private Course findCourse(String courseCode){
-        return adminController.findCourse(courseCode);
+    private Course findCourseByCourseCode(String courseCode){
+        return adminController.findCourseByCourseCode(courseCode);
     }
 }
 
