@@ -41,30 +41,43 @@ public class Student extends User {
         List<CourseSection> allSelectableCourseSections = new ArrayList<>();
         List<Course> courses = DatabaseManager.getInstance().getCourses();
         List<CourseSection> availableCourseSections = new ArrayList<>();
+
+
+        //Find all possible course sections
         for (int i = 0; i < courses.size(); i++) {
-            if (this.currentSemester < courses.get(i).getGivenSemester() // if course is from upper semester
-                    && this.transcript.calculateGPA() >= 3.0 // if GPA of the student is greater than 3.0
-                    && courses.get(i).checkPrerequisite(this)) { // if prerequisite courses of that course are completed
+
+            //Check engineering project availability
+            if(courses.get(i).getCourseCode().equals("CSE4297") || courses.get(i).getCourseCode().equals("CSE4298")){
+                if(transcript.checkEngineeringProjectAvailability()) {
+                    allSelectableCourseSections.addAll(courses.get(i).getCourseSections());
+                }
+            }
+            else if (this.currentSemester < courses.get(i).getGivenSemester() // if course is from upper semester
+                    && this.transcript.calculateGPA() >= 3.0) { // if GPA of the student is greater than 3.0) 
                 allSelectableCourseSections.addAll(courses.get(i).getCourseSections());
-            } else if (this.currentSemester == courses.get(i).getGivenSemester() // if course is from current semester
-                    && courses.get(i).checkPrerequisite(this)) { // if prerequisite courses of that course are completed
+
+            } //If it is a current semester course or a course from lower semester
+            else {
                 allSelectableCourseSections.addAll(courses.get(i).getCourseSections());
             }
 
-         
-            
         }
 
-        
-            for (CourseSection courseSection : allSelectableCourseSections) {
+        //Eliminate the ones that are not available
+        for (CourseSection courseSection : allSelectableCourseSections) {
                 Course course = courseSection.findCourseOfCourseSection();
+
                 if (courseSection.checkAvailibilty() && course.checkPrerequisite(this) &&
                         !this.transcript.acquirePassedCourses().contains(course) &&
                         !checkIfItExistsInSelectedCourses(course) && checkCourseType(course)) {
                     availableCourseSections.add(courseSection);
                 }
-                availableCourseSections.addAll(findRepeatCourseSections());
-            }
+
+        }    
+
+        availableCourseSections.addAll(findRepeatCourseSections());
+
+
         return availableCourseSections;// hata vermesin diye şimdilik yazdım
     }
 
@@ -79,13 +92,14 @@ public class Student extends User {
 
     private List<CourseSection> findRepeatCourseSections(){
        List<CourseGrade> takenCourses = this.transcript.getTakenCourses();
-       List<CourseSection> repeatCourses = new ArrayList<>();
+       List<CourseSection> repeatCourseSections = new ArrayList<>();
+
        for(CourseGrade course: takenCourses) {
            if(course.getLetterGrade() == "DD" || course.getLetterGrade() == "DC"){
-               repeatCourses.addAll(course.getCourse().getCourseSections());
+               repeatCourseSections.addAll(course.getCourse().getCourseSections());
            }
        }
-       return repeatCourses;
+       return repeatCourseSections;
     }
 
 
@@ -125,9 +139,11 @@ public class Student extends User {
         else{
         return true;
         }
+
     }
 
     public boolean addNewCourse(SelectedCourse selectedCourse){
+
        // should we check the capacity here or while listing the available courses?
         if(!selectedCourses.contains(selectedCourse)){
             selectedCourses.add(selectedCourse);
@@ -181,6 +197,7 @@ public class Student extends User {
 
 
     public void sendSelectedCoursesToApproval(){
+
         if(this.approvalStatus == ApprovalStatus.PENDING){
             Util.paintText("You already sent your courses to approval!",Color.RED);
             return;
@@ -193,14 +210,28 @@ public class Student extends User {
         this.setApprovalStatus(ApprovalStatus.PENDING);
         List<SelectedCourse> selectedCourses = this.getSelectedCourses();
         for (SelectedCourse selectedCourse : selectedCourses) {
+
+
             if (selectedCourse.getStatus() == CourseStatus.DRAFT) {
                 selectedCourse.setStatus(CourseStatus.PENDING);
                 selectedCourse.getCourseSection().incrementStudentCount();
 
+            }//If the course is a repeat course
+            else if (findRepeatCourseSections().contains(selectedCourse.getCourseSection())) {
+                selectedCourse.setStatus(CourseStatus.PENDING);
+                
+                for(CourseGrade courseGrade : this.getTranscript().getTakenCourses()){
+                    if(courseGrade.getCourse().getCourseCode().equals(selectedCourse.getCourse().getCourseCode())){
+                        courseGrade.setCourseResult(CourseResult.ACTIVE);
+                    }
+                }
+
+                selectedCourse.getCourseSection().incrementStudentCount();
             }
+
         }
         this.setSelectedCourses(selectedCourses);
-        advisorOfStudent.addNotification(this.getFirstName() +" "+ this.getLastName() +" has requested a course approval." );
+        advisorOfStudent.addNotification(this.getFirstName() +" "+ this.getLastName() +" has requested a course approval.");
     }
 
     public void setApprovalStatus(ApprovalStatus approvalStatus) {

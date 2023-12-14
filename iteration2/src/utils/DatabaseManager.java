@@ -215,6 +215,7 @@ public class DatabaseManager {
         constraintsMap.put(1, String.valueOf(constraint.getMaxNumberOfCoursesStudentTake()));
         constraintsMap.put(2, String.valueOf(constraint.getAddDropWeek()));
         constraintsMap.put(3, String.valueOf(constraint.getMinRequiredECTSForTermProject()));
+        
         return constraintsMap;
 
     }

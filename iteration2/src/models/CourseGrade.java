@@ -64,4 +64,16 @@ public class CourseGrade {
     public CourseResult getCourseResult() {
         return courseResult;
     }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public void setLetterGrade(String letterGrade) {
+        this.letterGrade = letterGrade;
+    }
+
+    public void setCourseResult(CourseResult courseResult) {
+        this.courseResult = courseResult;
+    }
 }
