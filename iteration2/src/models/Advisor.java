@@ -1,6 +1,8 @@
 package iteration2.src.models;
 import java.util.List;
 
+import javax.xml.crypto.Data;
+
 import iteration2.src.CommandLineInterface.CLIAdvisor;
 import iteration2.src.enums.ApprovalStatus;
 import iteration2.src.enums.CourseResult;
@@ -43,7 +45,9 @@ public class Advisor extends User {
             }
         }
 
-        student.setApprovalStatus(ApprovalStatus.DONE);     
+        student.setApprovalStatus(ApprovalStatus.DONE);   
+        
+        DatabaseManager.getInstance().saveToDatabase();
     }
 
     public void rejectCourse(Student student, SelectedCourse selectedCourse) {
@@ -56,6 +60,7 @@ public class Advisor extends User {
       String notification = "Your " + selectedCourse.getCourse().getCourseName() + " is rejected.";
         setNotificationToStudent(student, notification);
 
+        DatabaseManager.getInstance().saveToDatabase();
     }
 
     public List<Student> fetchAdvisedStudents() {
@@ -64,6 +69,8 @@ public class Advisor extends User {
 
     public void setNotificationToStudent(Student student, String notification ) {
         student.addNotification(notification);
+
+        DatabaseManager.getInstance().saveToDatabase();
     }
 }
 

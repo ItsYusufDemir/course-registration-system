@@ -21,10 +21,18 @@ public class CLIAdvisor {
     }
 
     public void menuPage() {
+
         boolean isInvalid = false;
         Scanner input = new Scanner(System.in);
         AdvisorController advisorController = new AdvisorController(advisor);
         while (true) {
+            Util.clearScreen();
+            if (advisorController.getNotification() != null && advisorController.getNotification().size() > 0) {
+                System.out.println(" Notification\n " +
+                        "**************");
+                for (String string : advisorController.getNotification())
+                    System.out.println(string);
+            }
             if(!isInvalid){
                 isInvalid = false;
       //  while(true) {
@@ -52,7 +60,7 @@ public class CLIAdvisor {
                     advisorController.logOut();
                     break;
                 } else {
-                    System.out.println("Invalid choice");
+                    Util.sendFeedback("Invalid choice", Color.RED);
                     isInvalid = true;
                 }
             }
@@ -100,7 +108,7 @@ public class CLIAdvisor {
                     }
                 }
                 else {
-                    System.out.println("Invalid choice. Try again");
+                    Util.sendFeedback("Invalid choice. Try again", Color.RED);
                     isInvalid = true;
                 }
             } catch (NumberFormatException e) {
@@ -110,7 +118,7 @@ public class CLIAdvisor {
                     advisorController.logOut();
                     return true;
                 } else {
-                    System.out.println("Invalid choice. Try again");
+                    Util.sendFeedback("Invalid choice. Try again", Color.RED);
                     isInvalid = true;
                 }
             }
@@ -122,7 +130,7 @@ public class CLIAdvisor {
 
        boolean isInvalid = false;
         Scanner input = new Scanner(System.in);
-       List<SelectedCourse> courses = student.getSelectedCourses();
+       List<SelectedCourse> courses = student.fetchSelectedCoursesForAdvisor();
        while (true) {
            if(!isInvalid){
                isInvalid = false;
@@ -156,12 +164,10 @@ public class CLIAdvisor {
 
                    if (choice2.equals("a")) {
                        advisorController.approveCourse(student,courses.get(choiceInt - 1));
-                       DatabaseManager.getInstance().saveToDatabase();
                        System.out.println();
                    }
                    else if (choice2.equals("d")) {
                        advisorController.denyCourse(student,courses.get(choiceInt - 1));
-                       DatabaseManager.getInstance().saveToDatabase();
                    }
                    else if (choice.equals("b")) {
                        return false;
@@ -171,7 +177,7 @@ public class CLIAdvisor {
                        return true;
                    }
                    else {
-                       System.out.println("Invalid choice. Try again.");
+                       Util.sendFeedback("Invalid choice. Try again", Color.RED);
                        isInvalid = true;
                    }
                }
@@ -186,7 +192,7 @@ public class CLIAdvisor {
                    advisorController.logOut();
                    return true;
                } else {
-                   System.out.println("Invalid choice. Try again");
+                   Util.sendFeedback("Invalid choice. Try again", Color.RED);
                    isInvalid = true;
                }
            }

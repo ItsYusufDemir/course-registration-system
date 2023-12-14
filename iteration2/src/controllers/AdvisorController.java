@@ -61,6 +61,10 @@ public class AdvisorController {
         return Collections.sort(studentList, Comparator.comparing(Student::getFirstName).thenComparing(Student::getLastName));
     }*/
 
+    public List<String> getNotification() {
+        return currentAdvisor.getNotifications();
+    }
+
 
     public void logOut(){
         currentAdvisor.logout();
