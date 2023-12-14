@@ -16,11 +16,11 @@ public class AdminController {
     }
 
     public List<Course> getCourseList(){
-        return currentAdmin.getCourseList();
+        return currentAdmin.fetchCourseList();
     }
 
     public HashMap<Integer, String> getConstraints(){
-        return currentAdmin.getConstraints();
+        return currentAdmin.fetchConstraints();
     }
 
     public Course createCourse(Course course){

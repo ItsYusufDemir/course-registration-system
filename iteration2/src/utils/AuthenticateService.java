@@ -12,8 +12,9 @@ public class AuthenticateService {
         DatabaseManager database = DatabaseManager.getInstance();
         List<User> users = new ArrayList<>();
 
-        users.addAll(database.getStudents());
+        users.addAll(database.getAdmins());
         users.addAll(database.getAdvisors());
+        users.addAll(database.getStudents());
 
         for (User user : users) {
             if (user.checkCredentials(userID, password)) {

@@ -15,6 +15,8 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
+
+import iteration2.src.models.Admin;
 import iteration2.src.models.Advisor;
 import iteration2.src.models.Constraint;
 import iteration2.src.models.Course;
@@ -29,6 +31,8 @@ public class DatabaseManager {
     private List<Student> studentList;
     private List<Advisor> advisorList;
     private List<Constraint> constraints;
+    private List<Admin> adminList;
+
 
     //Singleton pattern
     public static DatabaseManager getInstance() {
@@ -49,6 +53,7 @@ public class DatabaseManager {
         advisorList = jsonToAdvisorList(readFile("iteration2/data/advisors.json"));
         studentList = jsonToStudentList(readFile("iteration2/data/students.json"));
         constraints = jsonToConstraints(readFile("iteration2/data/constraints.json"));
+        adminList = jsonToAdminList(readFile("iteration2/data/admins.json"));
     }
 
 
@@ -112,6 +117,20 @@ public class DatabaseManager {
             return Collections.emptyList(); // or throw an exception if needed
         }
     }
+
+
+    private List<Admin> jsonToAdminList(String jsonString){
+        try {
+            return objectMapper.readValue(jsonString, new TypeReference<List<Admin>>() {});
+        } catch (IOException e) {
+            System.out.println("Error while converting JSON String to List of objects!");
+            e.printStackTrace();
+            return Collections.emptyList(); // or throw an exception if needed
+        }
+    }
+
+
+
     //Convert the list of objects to JSON String
     private <T> String getJsonString(List<T> list) {
 
@@ -184,6 +203,10 @@ public class DatabaseManager {
 
     public List<Advisor> getAdvisors() {
         return advisorList;
+    }
+
+    public List<Admin> getAdmins() {
+        return adminList;
     }
 
     public HashMap<Integer,String> getConstraints(){
