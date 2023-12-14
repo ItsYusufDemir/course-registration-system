@@ -44,9 +44,14 @@ public class Transcript{
     }
 
     public double calculateGPA(){
+
         double totalPoint = 0.0;
         double totalCredit = 0.0;
         for(CourseGrade course : takenCourses){
+
+            if(course.getCourseResult() != CourseResult.PASSED)
+                continue;
+
             totalPoint += course.getCourse().getCourseCredit()*course.convertLetterGradeToScore();
             totalCredit += course.getCourse().getCourseCredit();
         }
