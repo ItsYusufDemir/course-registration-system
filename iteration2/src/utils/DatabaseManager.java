@@ -63,7 +63,7 @@ public class DatabaseManager {
         Path path = Paths.get(filePath);
 
         try {
-            String jsonContent = Files.lines(path, Charset.forName("Cp1252")).collect(Collectors.joining("\n"));
+            String jsonContent = Files.lines(path, Charset.forName("UTF8")).collect(Collectors.joining("\n"));
             return jsonContent;
         } catch (Exception e) {
             //TODO: handle exception   
