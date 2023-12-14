@@ -42,20 +42,19 @@ public class StudentController {
     }
 
     public List<CourseSection> getAvaliableCourseSections() {
-        return null;
+        return currentStudent.listAvailableCourseSections();
     }
 
     public List<SelectedCourse> getSelectedCourses() {
-        return null;
+        
+        return currentStudent.getSelectedCourses();
     }
 
     public List<String> getNotifications() {
-        return null;
+        return currentStudent.getNotifications();
     }
 
-	public List<CourseSection> listAvailableCourseSections() {
-		return null;
-	}
+	
 
     
 }

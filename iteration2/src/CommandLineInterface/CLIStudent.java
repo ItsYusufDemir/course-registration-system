@@ -2,6 +2,7 @@ package iteration2.src.CommandLineInterface;
 
 import java.util.*;
 
+import iteration2.src.utils.Util;
 import iteration2.src.controllers.StudentController;
 import iteration2.src.models.Course;
 import iteration2.src.models.SelectedCourse;
@@ -54,7 +55,7 @@ public class CLIStudent {
     }
 
     public void showMyCoursesPage() {
-        shouldQuit = false;
+        shouldQuit = true;
         while (shouldQuit) {
             System.out.println(
                     " My Courses\n" +
@@ -81,7 +82,7 @@ public class CLIStudent {
                 } else if (str.equals("2")) {
                     System.out.println("Enter the row number of the course you want to delete : ");
                     str = scanner.nextLine();
-                    if (validateNumber(str, studentController.getSelectedCourses().toArray())) {
+                    if (Util.validateNumber(str, studentController.getSelectedCourses().toArray())) {
                         if (deleteCourse(str)) {
                             System.out.println("Course successfully deleted");
                         } else {
@@ -108,7 +109,7 @@ public class CLIStudent {
     }
 
     public void showAddCoursePage() {
-        shouldQuit = false;
+        shouldQuit = true;
         while (shouldQuit) {
 
             System.out.println(
@@ -130,7 +131,7 @@ public class CLIStudent {
                     break;
                 } else if (str.equals("q")) {
                     shouldQuit = false;
-                } else if (validateNumber(str, studentController.getAvaliableCourseSections().toArray())) {
+                } else if (Util.validateNumber(str, studentController.getAvaliableCourseSections().toArray())) {
                     if (addCourse(str)) {
                         System.out.println("Course successfully added");
                     } else {
@@ -151,15 +152,17 @@ public class CLIStudent {
     }
 
     public void showTimetablePage() {
-        shouldQuit = false;
+        shouldQuit = true;
         while (shouldQuit) {
 
             System.out.println(" Timetable\n" +
-                               "***********" + 
+                               "***********\n" + 
                                " Hours/Days\tMonday\tTuesday\tWednesday\tThursday\tFriday\n" + 
                                " __________\t______\t_______\t_________\t________\t______\n");
             printTimeTable();
 
+            System.out.println("\n\npress b to go back");
+            System.out.println("press q to quit");
             String str = scanner.nextLine();
 
             try {
@@ -177,18 +180,10 @@ public class CLIStudent {
         }
     }
 
-    private boolean validateNumber(String str, Object[] list) {
-        if (isValidNumber(str)) {
-            if (checkIfValidRowNumber(str, list)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
+   
 
     private boolean addCourse(String str) {
-        int rowNumber = Integer.parseInt(getRowNumberFromInput(str));
+        int rowNumber = Integer.parseInt(Util.getRowNumberFromInput(str));
         CourseSection selectedCourseSection = studentController.getAvaliableCourseSections().get(rowNumber - 1);
         if (studentController.addSelectedCourse(new SelectedCourse(selectedCourseSection.findCourseOfCourseSection(),selectedCourseSection)) ) {
             return true;
@@ -197,48 +192,17 @@ public class CLIStudent {
     }
 
     private boolean deleteCourse(String str){   
-        int rowNumber = Integer.parseInt(getRowNumberFromInput(str)); 
+        int rowNumber = Integer.parseInt(Util.getRowNumberFromInput(str)); 
         if(studentController.removeSelectedCourse(studentController.getSelectedCourses().get(rowNumber-1)) ){
             return true;
         }
         return false;
     }
 
-    private String getRowNumberFromInput(String str) {
-
-        if (str.contains(" ")) {
-            return str.substring(0, str.indexOf(" "));
-        } else if (str.contains(",")) {
-            return str.substring(0, str.indexOf(","));
-        } else if (str.contains(".")) {
-            return str.substring(0, str.indexOf("."));
-        } else {
-
-            return str;
-        }
-
-    }
-
-    private boolean isValidNumber(String str) {
-        int strLength = getRowNumberFromInput(str).length();
-        for (int i = 0; i < strLength; i++) {
-            if (str.charAt(i) < 48 || str.charAt(i) > 57) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean checkIfValidRowNumber(String rowNumber, Object[] list) {
-        int rowNumberInt = Integer.parseInt(getRowNumberFromInput(rowNumber));
-        if (rowNumberInt > list.length || rowNumberInt < 1) {
-            return false;
-        }
-        return true;
-    }
+    
 
     private void listAvaliableCourseSections() {
-        List<CourseSection> avaliableCourseSections = studentController.listAvailableCourseSections();
+        List<CourseSection> avaliableCourseSections = studentController.getAvailableCourseSections();
         int rowCount = 1;
         Course course;
         for (CourseSection courseSection : avaliableCourseSections) {
@@ -246,6 +210,7 @@ public class CLIStudent {
             System.out.println(rowCount + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t"
                     + courseSection.getSectionCode() + "\t"
                     + courseSection.getLecturerName() + "\t" + course.getCourseCredit());
+            rowCount++;
         }
 
     }
@@ -256,6 +221,7 @@ public class CLIStudent {
             System.out.println(rowCount + ". " + selectedCourse.getCourse().getCourseCode() + "\t"
                     + selectedCourse.getCourse().getCourseName() + "\t"
                     + selectedCourse.getCourseSection().getSectionCode() + "\t" + selectedCourse.getStatus());
+            rowCount++;
         }
     }
 
@@ -270,7 +236,7 @@ public class CLIStudent {
 
         timeTable = studentController.getTimeTable();
 
-        String[] times = {"08:30-09:20", "09:30-10:20", "10:30-11:20", "11:30-12:20", "13:00 - 13:50", "14:00 - 14:50", "15:00 - 15:50", "16:00 - 16:50"}; 
+        String[] times = {"08:30-09:20", "09:30-10:20", "10:30-11:20", "11:30-12:20", "12:30 - 13:20", "13:30 - 14:20", "14:30 - 15:20", "15:30 - 16:20"}; 
 
         for(int i = 0; i < 8; i++){ // 8 is how many hours we have as an option
             System.out.println();
@@ -291,44 +257,44 @@ public class CLIStudent {
             // traversing through the days and printing the courses line by line until all of the courses are printed
             for(int j = 0; j < monCoursesSize || j < tueCoursesSize || j < wedCoursesSize || j < thrCoursesSize || j < friCoursesSize; j++){
                 
-                if(monCourses.get(j) != null){
+                if(!monCourses.isEmpty() && monCourses.get(j) != ""){
                     System.out.print(monCourses.get(j) + "\t");
                 }
                 else{
-                    System.out.print("    \t");
+                    System.out.print("     \t");
                 }
 
-                if(tueCourses.get(j) != null){
+                if(!tueCourses.isEmpty() && tueCourses.get(j) != ""){
                     System.out.print(tueCourses.get(j) + "\t");
                 }
                 else{
-                    System.out.print("    \t");
+                    System.out.print("       \t");
                 }
 
-                if(wedCourses.get(j) != null){
+                if(!wedCourses.isEmpty() && wedCourses.get(j) != ""){
                     System.out.print(wedCourses.get(j) + "\t");
                 }
                 else{
-                    System.out.print("    \t");
+                    System.out.print("        \t");
                 }
 
-                if(thrCourses.get(j) != null){
+                if(!thrCourses.isEmpty() && thrCourses.get(j) != ""){
                     System.out.print(thrCourses.get(j) + "\t");
                 }
                 else{
-                    System.out.print("    \t");
+                    System.out.print("       \t");
                 }
 
-                if(friCourses.get(j) != null){
+                if(!friCourses.isEmpty() && friCourses.get(j) != ""){
                     System.out.print(friCourses.get(j) + "\t");
                 }
                 else{
-                    System.out.print("    \t");
+                    System.out.print("      \t");
                 }
 
                 System.out.print("\n");
             }
-            System.out.println("__________________________________________________________________________________________");
+            System.out.println("\n__________________________________________________________________________________________");
             
         }
     

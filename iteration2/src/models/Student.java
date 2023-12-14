@@ -51,6 +51,11 @@ public class Student extends User {
                 allSelectableCourseSections.addAll(courses.get(i).getCourseSections());
             }
 
+         
+            
+        }
+
+        
             for (CourseSection courseSection : allSelectableCourseSections) {
                 Course course = courseSection.findCourseOfCourseSection();
                 if (courseSection.checkAvailibilty() && course.checkPrerequisite(this) &&
@@ -60,9 +65,6 @@ public class Student extends User {
                 }
                 availableCourseSections.addAll(findRepeatCourseSections());
             }
-         
-            // Courselara bakıcam döneminden üst dersse gpa artı prerequisite check
-        }
         return availableCourseSections;// hata vermesin diye şimdilik yazdım
     }
 
@@ -173,6 +175,7 @@ public class Student extends User {
     public void sendSelectedCoursesToApproval(){
         if(this.approvalStatus == ApprovalStatus.PENDING){
             Util.paintText("You already sent your courses to approval!",Color.RED);
+            return;
         }
 
         if (checkCompulsoryCourses()) {
@@ -242,7 +245,7 @@ public class Student extends User {
 
         String[][] timeTable;
 
-        timeTable = new String[5][9];
+        timeTable = new String[5][8];
 
         for (int i = 0; i < 5; i++) {
             for (int m = 0; m < 8; m++) {
@@ -294,9 +297,8 @@ public class Student extends User {
             timeTable[day][6] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
         } else if (time.equals("15:30-16:20")) {
             timeTable[day][7] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
-        } else if (time.equals("16:30-17:20")) {
-            timeTable[day][8] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
-        } else {
+        }
+         else {
             System.out.println("Invalid time");
         }
     }

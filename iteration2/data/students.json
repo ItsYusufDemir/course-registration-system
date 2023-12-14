@@ -6,6 +6,7 @@
     "status": true,
     "email": "karamustafa@marun.edu.tr",
     "identityNumber": "11111111111",
+    "currentSemester": "5",
     "selectedCourses": [],
     "advisorOfStudent": {
         "userId": "111111",
@@ -14,7 +15,7 @@
         "lastName": "Ganiz",
         "status": true
     },
-    "approvalStatus": "PENDING",
+    "approvalStatus": "DONE",
     "transcript": {
         "takenCourses": [
             {
@@ -206,7 +207,7 @@
                     ],
                     "courseType": "COMPULSORY"
                 },
-                "letterGrade": null,
+                "letterGrade": "AA",
                 "courseResult": "ACTIVE"
             },
             {
@@ -254,7 +255,7 @@
                     ],
                     "courseType": "COMPULSORY"
                 },
-                "letterGrade": null,
+                "letterGrade": "CC",
                 "courseResult": "ACTIVE"
             },
             {
@@ -302,7 +303,7 @@
                     ],
                     "courseType": "COMPULSORY"
                 },
-                "letterGrade": null,
+                "letterGrade": "BB",
                 "courseResult": "ACTIVE"
             }
         ]
