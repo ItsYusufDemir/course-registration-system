@@ -1,9 +1,1 @@
-[
-    { 
-        "maxNumberOfCoursesStudentTake": 10,
-        "addDropWeek": false,
-        "minRequiredECTSForTermProject": 165
-        
-    }
-
-]
+[{"maxNumberOfCoursesStudentTake":10,"addDropWeek":false,"minRequiredECTSForTermProject":165}]

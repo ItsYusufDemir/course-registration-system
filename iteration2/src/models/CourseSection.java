@@ -49,7 +49,9 @@ public class CourseSection {
     public Course findCourseOfCourseSection(){
         List<Course> courses = DatabaseManager.getInstance().getCourses();
         for (Course course : courses) {
-            if(course.getCourseCode().equals(this.getSectionCode().split(".")[0])){
+
+            String courseCode = this.getSectionCode().substring(0, this.getSectionCode().indexOf("."));
+            if(course.getCourseCode().equals(courseCode)){
                 return course;
             }
         }
@@ -69,9 +71,7 @@ public class CourseSection {
         return sectionTime;
     }
 
-    public ArrayList<String> getSectionDate() {
-        return sectionDay;
-    }
+    
 
     public String getClassroom() {
         return classroom;
