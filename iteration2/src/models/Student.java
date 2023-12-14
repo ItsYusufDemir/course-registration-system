@@ -143,7 +143,7 @@ public class Student extends User {
     }
 
     public boolean addNewCourse(SelectedCourse selectedCourse){
-       // should we check the capacity here or while listing the available courses?
+       
         if(!selectedCourses.contains(selectedCourse))
             return selectedCourses.add(selectedCourse);
         else{
@@ -188,6 +188,7 @@ public class Student extends User {
 
 
     public void sendSelectedCoursesToApproval(){
+
         if(this.approvalStatus == ApprovalStatus.PENDING){
             Util.paintText("You already sent your courses to approval!",Color.RED);
             return;
@@ -200,6 +201,8 @@ public class Student extends User {
         this.setApprovalStatus(ApprovalStatus.PENDING);
         List<SelectedCourse> selectedCourses = this.getSelectedCourses();
         for (SelectedCourse selectedCourse : selectedCourses) {
+
+
             if (selectedCourse.getStatus() == CourseStatus.DRAFT) {
                 selectedCourse.setStatus(CourseStatus.PENDING);
                 selectedCourse.getCourseSection().incrementStudentCount();
