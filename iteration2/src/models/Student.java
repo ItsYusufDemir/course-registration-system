@@ -363,6 +363,18 @@ public class Student extends User {
     }
 
 
+    public List<SelectedCourse> fetchSelectedCoursesForAdvisor() {
+        List<SelectedCourse> selectedCourses = new ArrayList<SelectedCourse>();
+        for (int i = 0; i < this.selectedCourses.size(); i++) {
+            if(this.selectedCourses.get(i).getStatus() != CourseStatus.DRAFT){
+                selectedCourses.add(this.selectedCourses.get(i));
+
+            }
+        }
+        return selectedCourses;
+    }
+
+
     public List<SelectedCourse> getSelectedCourses() {
         return selectedCourses;
     }

@@ -17,7 +17,7 @@
         "status": true,
         "notifications": []
     },
-    "approvalStatus": "PENDING",
+    "approvalStatus": "DONE",
     "transcript": {
         "takenCourses": [
             {
@@ -288,7 +288,7 @@
         "status": true,
         "notifications": []
     },
-    "approvalStatus": "PENDING",
+    "approvalStatus": "DONE",
     "transcript": {
         "takenCourses": [
             {
@@ -553,7 +553,7 @@
         "status": true,
         "notifications": []
     },
-    "approvalStatus": "PENDING",
+    "approvalStatus": "DONE",
     "transcript": {
         "takenCourses": [
             {
@@ -821,7 +821,7 @@
         "status": true,
         "notifications": []
     },
-    "approvalStatus": "PENDING",
+    "approvalStatus": "DONE",
     "transcript": {
         "takenCourses": [
             {
@@ -1090,7 +1090,7 @@
         "status": true,
         "notifications": []
     },
-    "approvalStatus": "PENDING",
+    "approvalStatus": "DONE",
     "transcript": {
         "takenCourses": [
             {
@@ -1358,7 +1358,7 @@
         "status": true,
         "notifications": []
     },
-    "approvalStatus": "PENDING",
+    "approvalStatus": "DONE",
     "transcript": {
         "takenCourses": [
             {
@@ -1626,7 +1626,7 @@
         "status": true,
         "notifications": []
     },
-    "approvalStatus": "PENDING",
+    "approvalStatus": "DONE",
     "transcript": {
         "takenCourses": [
             {
@@ -1894,7 +1894,7 @@
         "status": true,
         "notifications": []
     },
-    "approvalStatus": "PENDING",
+    "approvalStatus": "DONE",
     "transcript": {
         "takenCourses": [
             {
@@ -2162,7 +2162,7 @@
         "status": true,
         "notifications": []
     },
-    "approvalStatus": "PENDING",
+    "approvalStatus": "DONE",
     "transcript": {
         "takenCourses": [
             {
@@ -2430,7 +2430,7 @@
         "status": true,
         "notifications": []
     },
-    "approvalStatus": "PENDING",
+    "approvalStatus": "DONE",
     "transcript": {
         "takenCourses": [
             {
@@ -2699,7 +2699,7 @@
         "status": true,
         "notifications": []
     },
-    "approvalStatus": "PENDING",
+    "approvalStatus": "DONE",
     "transcript": {
         "takenCourses": [
             {
