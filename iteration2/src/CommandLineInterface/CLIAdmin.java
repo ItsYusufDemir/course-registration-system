@@ -30,7 +30,7 @@ public class CLIAdmin {
                         "********\n" +
                         "  1. Course list\n" +
                         "  2. Constraint Settings\n\n" +
-                        "Press q to quit" +
+                        "Press q to quit\n" +
                         "Press corresponding row number to review and make changes for the list you want.\n" 
                         );
 
@@ -85,11 +85,10 @@ public class CLIAdmin {
                 Course course = courses.get(Integer.parseInt(Util.getRowNumberFromInput(str)) - 1);
                 if (adminController.deleteCourse(course)) {
                     Util.clearScreen();
-                    Util.paintText("Course deleted successfully", Color.GREEN);
-
+                    Util.sendFeedback("Course deleted successfully", Color.GREEN, 2);
                 } else {
                     Util.clearScreen();
-                    Util.paintText("Delete failed", Color.RED);
+                    Util.sendFeedback("Delete failed", Color.RED, 2);
                 }
             } else {
                 Util.paintText("Invalid input", Color.RED);
@@ -384,10 +383,10 @@ public class CLIAdmin {
         Util.clearScreen();
 
         if(adminController.createCourse(course) != null){
-            Util.paintText("SUCCESS: " + courseCode + " is created.", Color.GREEN);
+            Util.sendFeedback("SUCCESS: " + courseCode + " is created.", Color.GREEN, 2);
             return true;
         } else{
-            Util.paintText("FAIL! " + courseCode + " can't created.", Color.RED);
+            Util.sendFeedback("FAIL! " + courseCode + " can't created.", Color.RED, 2);
             return false;
         }
 
