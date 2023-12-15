@@ -26,13 +26,16 @@ public class CLIStudent {
         shouldQuit = true;
         while (shouldQuit) {
             Util.clearScreen();
-            
+
             if (studentController.getNotification() != null) {
-                System.out.println(" Notification\n " +
-                        "**************");
+                Util.paintTextln(" Notification\n " +
+                        "**************", Color.YELLOW);
                 for (String string : studentController.getNotification())
-                    System.out.println(string);
+                    Util.paintTextln(string, Color.RED);
+                studentController.clearNotifications();
             }
+
+            System.out.println("\n\n");
             System.out.println(
                     " Menu\n" +
                             "********\n" +
@@ -58,7 +61,7 @@ public class CLIStudent {
 
     public void showMyCoursesPage() {
         shouldQuit = true;
-        
+
         while (shouldQuit) {
             Util.clearScreen();
             System.out.println(
@@ -92,8 +95,7 @@ public class CLIStudent {
                         } else {
                             Util.sendFeedback("Course deletion failed", Color.RED);
                         }
-                    }
-                    else{
+                    } else {
                         throw new Exception("Invalid input: " + str);
                     }
                 } else if (str.equals("3")) {
@@ -117,7 +119,7 @@ public class CLIStudent {
 
     public void showAddCoursePage() {
         shouldQuit = true;
-        
+
         while (shouldQuit) {
             Util.clearScreen();
             System.out.println(
@@ -163,7 +165,7 @@ public class CLIStudent {
         shouldQuit = true;
         while (shouldQuit) {
             Util.clearScreen();
-            
+
             System.out.println(" Timetable\n" +
                                "***********\n" + 
                                " Hours/Days    Monday    Tuesday    Wednesday    Thursday    Friday\n" + 
@@ -189,26 +191,23 @@ public class CLIStudent {
         }
     }
 
-   
-
     private boolean addCourse(String str) {
         int rowNumber = Integer.parseInt(Util.getRowNumberFromInput(str));
         CourseSection selectedCourseSection = studentController.getAvaliableCourseSections().get(rowNumber - 1);
-        if (studentController.addSelectedCourse(new SelectedCourse(selectedCourseSection.findCourseOfCourseSection(),selectedCourseSection)) ) {
+        if (studentController.addSelectedCourse(
+                new SelectedCourse(selectedCourseSection.findCourseOfCourseSection(), selectedCourseSection))) {
             return true;
         }
         return false;
     }
 
-    private boolean deleteCourse(String str){   
-        int rowNumber = Integer.parseInt(Util.getRowNumberFromInput(str)); 
-        if(studentController.removeSelectedCourse(studentController.getSelectedCourses().get(rowNumber-1)) ){
+    private boolean deleteCourse(String str) {
+        int rowNumber = Integer.parseInt(Util.getRowNumberFromInput(str));
+        if (studentController.removeSelectedCourse(studentController.getSelectedCourses().get(rowNumber - 1))) {
             return true;
         }
         return false;
     }
-
-    
 
     private void listAvaliableCourseSections() {
         List<CourseSection> avaliableCourseSections = studentController.getAvailableCourseSections();
@@ -234,7 +233,7 @@ public class CLIStudent {
         }
     }
 
-    private void printTimeTable(){
+    private void printTimeTable() {
 
         String timeTable[][];
         List<String> monCourses;
@@ -247,7 +246,7 @@ public class CLIStudent {
 
         String[] times = {"08:30-09:20", "09:30-10:20", "10:30-11:20", "11:30-12:20", "12:30-13:20", "13:30-14:20", "14:30-15:20", "15:30-16:20"}; 
 
-        for(int i = 0; i < 8; i++){ // 8 is how many hours we have as an option
+        for (int i = 0; i < 8; i++) { // 8 is how many hours we have as an option
             System.out.println();
             System.out.print(times[i] + "    "); // pritns the time
             
@@ -257,7 +256,7 @@ public class CLIStudent {
             wedCourses = divideIntoCourses(timeTable[2][i]);
             thrCourses = divideIntoCourses(timeTable[3][i]);
             friCourses = divideIntoCourses(timeTable[4][i]);
-            
+
             int monCoursesSize = monCourses.size();
             int tueCoursesSize = tueCourses.size();
             int wedCoursesSize = wedCourses.size();
@@ -328,22 +327,23 @@ public class CLIStudent {
 
                 System.out.print("\n               ");
             }
-            System.out.println("\n__________________________________________________________________________________________");
-            
+            System.out.println(
+                    "\n__________________________________________________________________________________________");
+
         }
-    
+
     }
 
-    //divides the courses string which is separated with "-" into a courses list
-    private List<String> divideIntoCourses(String str){
+    // divides the courses string which is separated with "-" into a courses list
+    private List<String> divideIntoCourses(String str) {
         List<String> courses = new ArrayList<>();
-        String temp = ""; 
+        String temp = "";
         int strLength = str.length();
-        for(int i = 0; i < strLength; i++){
-            if( str.charAt(i) != '-' ){    // TODO: according to selin we have at the end also "-" this might cause a problem for alignment
-                temp += str.charAt(i);     // fix this if it causes a problem
-            }
-            else{
+        for (int i = 0; i < strLength; i++) {
+            if (str.charAt(i) != '-') { // TODO: according to selin we have at the end also "-" this might cause a
+                                        // problem for alignment
+                temp += str.charAt(i); // fix this if it causes a problem
+            } else {
                 courses.add(temp);
                 temp = "";
             }

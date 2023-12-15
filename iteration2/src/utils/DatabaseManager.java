@@ -79,7 +79,17 @@ public class DatabaseManager {
     private List<Student> jsonToStudentList(String jsonString) {
         
         try {
-            return objectMapper.readValue(jsonString, new TypeReference<List<Student>>() {});
+            List<Student> students = objectMapper.readValue(jsonString, new TypeReference<List<Student>>() {});
+            for(Student student: students){
+                for(Advisor advisor: advisorList){
+                    if(Objects.equals(student.getAdvisorOfStudent().getUserId(), advisor.getUserId())){
+                        student.setAdvisorOfStudent(advisor);
+                    }
+                }
+            }
+
+            return students;
+
         } catch (IOException e) {
             System.out.println("Error while converting JSON String to List of objects!" + jsonString);
             e.printStackTrace();

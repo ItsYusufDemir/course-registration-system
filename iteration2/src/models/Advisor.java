@@ -5,9 +5,11 @@ import javax.xml.crypto.Data;
 
 import iteration2.src.CommandLineInterface.CLIAdvisor;
 import iteration2.src.enums.ApprovalStatus;
+import iteration2.src.enums.Color;
 import iteration2.src.enums.CourseResult;
 import iteration2.src.enums.CourseStatus;
 import iteration2.src.utils.DatabaseManager;
+import iteration2.src.utils.Util;
 
 public class Advisor extends User {
 
@@ -27,7 +29,7 @@ public class Advisor extends User {
     public void acceptCourse(Student student, SelectedCourse selectedCourse) {
 
         if(selectedCourse.getStatus() != CourseStatus.PENDING) {
-            System.out.println("This course is not pending for approval.");
+            Util.sendFeedback("This course is not pending for approval.", Color.RED);
             return;
         }
 
@@ -51,14 +53,28 @@ public class Advisor extends User {
     }
 
     public void rejectCourse(Student student, SelectedCourse selectedCourse) {
-        selectedCourse.setStatus(CourseStatus.DENIED);
-        student.getSelectedCourses().remove(selectedCourse);
 
-        if(student.getSelectedCourses().size() == 0) {
-            student.setApprovalStatus(ApprovalStatus.DONE);
+        if(selectedCourse.getStatus() != CourseStatus.PENDING) {
+            Util.sendFeedback("This course is not pending for approval.", Color.RED);
+            return;
         }
-      String notification = "Your " + selectedCourse.getCourse().getCourseName() + " is rejected.";
+
+        selectedCourse.setStatus(CourseStatus.DENIED);
+        
+        
+        String notification = "Your " + selectedCourse.getCourse().getCourseName() + " is rejected.";
         setNotificationToStudent(student, notification);
+
+
+        //sadece pending olanların size ı 0 ise
+        for(SelectedCourse course : student.getSelectedCourses()) {
+            if(course.getStatus() == CourseStatus.PENDING) {
+                return;
+            }
+        }
+
+        student.setApprovalStatus(ApprovalStatus.DONE);   
+        
 
         DatabaseManager.getInstance().saveToDatabase();
     }
