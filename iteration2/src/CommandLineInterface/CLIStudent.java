@@ -5,6 +5,7 @@ import java.util.*;
 import iteration2.src.utils.Util;
 import iteration2.src.controllers.StudentController;
 import iteration2.src.enums.Color;
+import iteration2.src.enums.CourseStatus;
 import iteration2.src.models.Course;
 import iteration2.src.models.SelectedCourse;
 import iteration2.src.models.CourseSection;
@@ -66,9 +67,11 @@ public class CLIStudent {
             Util.clearScreen();
             System.out.println(
                     " My Courses\n" +
-                            "**************\n" +
-                            "  Code\t Name\t Section\t Status\n" +
-                            "  ____\t ____\t _______\t ______");
+                            "**************\n" );
+            System.out.printf("    %10s    %50s    %15s    Status\n",  "Code", "Name", "Section");
+                            //"  Code    Name    Section    Status\n" +
+                            //"  ____    ____    _______    ______");
+            System.out.printf("    %10s    %50s    %15s    ______\n",  "____", "____", "_______");      
 
             listSelectedCourses();
 
@@ -124,9 +127,9 @@ public class CLIStudent {
             Util.clearScreen();
             System.out.println(
                     " Avaliable Courses(To Add)\n" +
-                            "**************\n" +
-                            "  Code\t Name\t Section\t Instructor\t Credit\n" +
-                            "  ____\t ____\t _______\t __________\t ______");
+                            "**************\n" );
+            System.out.printf("    %10s    %50s    %15s    %20s    %s\n", "Code", "Name", "Section", "Instructor", "Credit");
+            System.out.printf("    %10s    %50s    %15s    %20s    %s\n", "____", "____", "_______", "__________", "______");
 
             listAvaliableCourseSections();
 
@@ -215,9 +218,8 @@ public class CLIStudent {
         Course course;
         for (CourseSection courseSection : avaliableCourseSections) {
             course = courseSection.findCourseOfCourseSection();
-            System.out.println(rowCount + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t"
-                    + courseSection.getSectionCode() + "\t"
-                    + courseSection.getLecturerName() + "\t" + course.getCourseCredit());
+            System.out.printf("%d.  %10s    %50s    %15s    %20s    %d\n", rowCount, course.getCourseCode(), course.getCourseName(),
+                    courseSection.getSectionCode(), courseSection.getLecturerName(), course.getCourseCredit());
             rowCount++;
         }
 
@@ -226,9 +228,24 @@ public class CLIStudent {
     private void listSelectedCourses() {
         int rowCount = 1;
         for (SelectedCourse selectedCourse : studentController.getSelectedCourses()) {
+            
+            System.out.printf( "%d.  %10s    %50s    %15s    " , rowCount, selectedCourse.getCourse().getCourseCode(),
+                                selectedCourse.getCourse().getCourseName(),
+                    selectedCourse.getCourseSection().getSectionCode());
+                    
+            if(selectedCourse.getStatus() == CourseStatus.APPROVED)
+                Util.paintText(selectedCourse.getStatus() + "\n", Color.GREEN);
+            else if(selectedCourse.getStatus() == CourseStatus.PENDING)
+                Util.paintText(selectedCourse.getStatus() + "\n", Color.YELLOW);
+            else if(selectedCourse.getStatus() == CourseStatus.DENIED)
+                Util.paintText(selectedCourse.getStatus() + "\n", Color.RED);
+            else
+                System.out.print(selectedCourse.getStatus() + "\n");
+            /*
             System.out.println(rowCount + ". " + selectedCourse.getCourse().getCourseCode() + "\t"
                     + selectedCourse.getCourse().getCourseName() + "\t"
                     + selectedCourse.getCourseSection().getSectionCode() + "\t" + selectedCourse.getStatus());
+            */
             rowCount++;
         }
     }
