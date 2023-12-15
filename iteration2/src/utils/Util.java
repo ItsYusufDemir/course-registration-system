@@ -1,10 +1,9 @@
 package iteration2.src.utils;
 
-import iteration2.src.enums.Color;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import iteration2.src.interfaces.Color;
 
 public class Util {
     public static void clearScreen() {
