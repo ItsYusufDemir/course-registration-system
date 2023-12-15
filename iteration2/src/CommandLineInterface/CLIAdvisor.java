@@ -28,13 +28,15 @@ public class CLIAdvisor {
         while (true) {
             Util.clearScreen();
             if (advisorController.getNotification() != null && advisorController.getNotification().size() > 0) {
-                System.out.println(" Notification\n " +
-                        "**************");
+                Util.paintText(" Notifications\n " +
+                        "**************", Color.YELLOW);
                 for (String string : advisorController.getNotification())
-                    System.out.println(string);
+                    Util.paintText(string, Color.RED);
+                    advisorController.clearNotifications();
+                }
 
-                advisorController.clearNotifications();
-            }
+            System.out.println("\n\n");
+
             if(!isInvalid){
                 isInvalid = false;
       //  while(true) {
