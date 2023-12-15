@@ -9,13 +9,13 @@ import iteration2.src.enums.CourseStatus;
 import iteration2.src.models.Advisor;
 import iteration2.src.models.SelectedCourse;
 import iteration2.src.models.Student;
-import iteration2.src.utils.DatabaseManager;
 import iteration2.src.utils.Util;
 
 public class CLIAdvisor {
 
     private Advisor advisor;
     private AdvisorController advisorController;
+    Scanner input;
 
     public CLIAdvisor(Advisor advisor) {
         this.advisor = advisor;
@@ -25,7 +25,7 @@ public class CLIAdvisor {
     public void menuPage() {
 
         boolean isInvalid = false;
-        Scanner input = new Scanner(System.in);
+        input = new Scanner(System.in);
         AdvisorController advisorController = new AdvisorController(advisor);
         while (true) {
             Util.clearScreen();
@@ -73,7 +73,6 @@ public class CLIAdvisor {
 
     public boolean showStudentPage(List<Student> students) {
         boolean isInvalid = false;
-        Scanner input = new Scanner(System.in);
         while (true) {
             if (!isInvalid) {
                 isInvalid = false;
@@ -138,7 +137,6 @@ public class CLIAdvisor {
     public boolean coursesOfStudentPage(Student student) {
 
         boolean isInvalid = false;
-        Scanner input = new Scanner(System.in);
         List<SelectedCourse> courses = student.fetchSelectedCoursesForAdvisor();
         while (true) {
             if (!isInvalid) {

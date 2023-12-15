@@ -29,10 +29,10 @@ public class CLIStudent {
             Util.clearScreen();
 
             if (studentController.getNotification() != null) {
-                Util.paintText(" Notification\n " +
+                Util.paintTextln(" Notification\n " +
                         "**************", Color.YELLOW);
                 for (String string : studentController.getNotification())
-                    Util.paintText(string, Color.RED);
+                    Util.paintTextln(string, Color.RED);
                 studentController.clearNotifications();
             }
 

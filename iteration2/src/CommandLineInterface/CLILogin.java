@@ -1,19 +1,18 @@
 package iteration2.src.CommandLineInterface;
+
 import java.util.Scanner;
 import iteration2.src.controllers.UserController;
 import iteration2.src.models.User;
-//import controllers.UserController;
 import iteration2.src.utils.Util;
 
 public class CLILogin {
 
     private User user;
+    Scanner input = new Scanner(System.in);
 
-    
-
-    public User loginPage(){
+    public User loginPage() {
         Util.clearScreen();
-        Scanner input = new Scanner(System.in);
+        input = new Scanner(System.in);
         do {
             System.out.println(" Login ");
             System.out.println(" ******** ");
@@ -24,21 +23,19 @@ public class CLILogin {
             System.out.print("Password:");
             String password = input.nextLine();
 
-            //UserController userController = new UserController();
+            // UserController userController = new UserController();
             UserController userController = new UserController();
-            user = userController.loginUser(username,password);
+            user = userController.loginUser(username, password);
 
-
-            if(user == null){
+            if (user == null) {
                 System.out.println("Invalid username or password.");
             }
         }
-      //recursive yapma, do while a dönüştür
-        while(user == null );
+        // recursive yapma, do while a dönüştür
+        while (user == null);
 
-        //input.close();
+        // input.close();
         return user;
-        }
-
     }
 
+}
