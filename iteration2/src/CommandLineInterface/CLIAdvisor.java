@@ -1,4 +1,5 @@
 package iteration2.src.CommandLineInterface;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,7 +16,8 @@ public class CLIAdvisor {
 
     private Advisor advisor;
     private AdvisorController advisorController;
-    public CLIAdvisor(Advisor advisor){
+
+    public CLIAdvisor(Advisor advisor) {
         this.advisor = advisor;
         advisorController = new AdvisorController(advisor);
     }
@@ -28,90 +30,87 @@ public class CLIAdvisor {
         while (true) {
             Util.clearScreen();
             if (advisorController.getNotification() != null && advisorController.getNotification().size() > 0) {
-                Util.paintText(" Notifications\n " +
+                Util.paintTextln(" Notifications\n " +
                         "**************", Color.YELLOW);
                 for (String string : advisorController.getNotification())
-                    Util.paintText(string, Color.RED);
-                    advisorController.clearNotifications();
-                }
+                    Util.paintTextln(string, Color.RED);
+                advisorController.clearNotifications();
+            }
 
             System.out.println("\n\n");
 
-            if(!isInvalid){
+            if (!isInvalid) {
                 isInvalid = false;
-      //  while(true) {
-            System.out.println(" Menu ");
-            System.out.println("********");
-            System.out.println("    1. Student List");
-            System.out.println("    2. Log out");
-            }
-            else{
+                // while(true) {
+                System.out.println(" Menu ");
+                System.out.println("********");
+                System.out.println("    1. Student List");
+                System.out.println("    2. Log out");
+            } else {
                 isInvalid = false;
             }
             boolean shouldQuit = false;
             String choice = input.nextLine();
 
-                if (choice.equals("1")) {
-                    List<Student> students = advisorController.getStudentListOrderByStatus();
-                    shouldQuit = showStudentPage(students);
+            if (choice.equals("1")) {
+                List<Student> students = advisorController.getStudentListOrderByStatus();
+                shouldQuit = showStudentPage(students);
 
-                    if (shouldQuit) {
-                        break;
-                    } else {
-                        continue;
-                    }
-                } else if (choice.equals("2")) {
-                    advisorController.logOut();
+                if (shouldQuit) {
                     break;
                 } else {
-                    Util.sendFeedback("Invalid choice", Color.RED);
-                    isInvalid = true;
+                    continue;
                 }
+            } else if (choice.equals("2")) {
+                advisorController.logOut();
+                break;
+            } else {
+                Util.sendFeedback("Invalid choice", Color.RED);
+                isInvalid = true;
             }
+        }
     }
-
 
     public boolean showStudentPage(List<Student> students) {
         boolean isInvalid = false;
         Scanner input = new Scanner(System.in);
         while (true) {
-            if(!isInvalid){
+            if (!isInvalid) {
                 isInvalid = false;
 
+                System.out.println(" Student List");
+                System.out.println("****************");
+                System.out.println("   Number      Name");
+                System.out.println("   ------      -----");
 
-        System.out.println(" Student List");
-        System.out.println("****************");
-        System.out.println("   Number      Name");
-        System.out.println("   ------      -----");
+                for (int i = 0; i < students.size(); i++) {
+                    System.out.println((i + 1) + ". " + students.get(i).getUserId() + "    "
+                            + students.get(i).getFirstName() + " " + students.get(i).getLastName());
+                }
 
-        for (int i = 0; i < students.size(); i++) {
-            System.out.println((i + 1) + ". " + students.get(i).getUserId() + "    " + students.get(i).getFirstName() + " " + students.get(i).getLastName());
-        }
-
-        System.out.println("Select Student:");
-        System.out.println("Press b to back");
-        System.out.println("Press q to quit");
-            }
-            else{
+                System.out.println("Select Student:");
+                System.out.println("Press b to back");
+                System.out.println("Press q to quit");
+            } else {
                 isInvalid = false;
             }
-        List<SelectedCourse> selectedCoursesThatStatusIsPending = new ArrayList<SelectedCourse>();
+            List<SelectedCourse> selectedCoursesThatStatusIsPending = new ArrayList<SelectedCourse>();
 
             String choice = input.nextLine();
             try {
                 int choice2 = Integer.parseInt(choice);
                 if (choice2 > 0 && choice2 <= students.size()) {
-                    for(int i=0; i<students.get(choice2-1).getSelectedCourses().size();i++) {
-                        if (students.get(choice2-1).getSelectedCourses().get(i).getStatus() == CourseStatus.PENDING) {
-                            selectedCoursesThatStatusIsPending.add(students.get(choice2-1).getSelectedCourses().get(i));
+                    for (int i = 0; i < students.get(choice2 - 1).getSelectedCourses().size(); i++) {
+                        if (students.get(choice2 - 1).getSelectedCourses().get(i).getStatus() == CourseStatus.PENDING) {
+                            selectedCoursesThatStatusIsPending
+                                    .add(students.get(choice2 - 1).getSelectedCourses().get(i));
                         }
                     }
                     boolean shouldQuit = coursesOfStudentPage(students.get(choice2 - 1));
-                    if(shouldQuit){
+                    if (shouldQuit) {
                         return true;
                     }
-                }
-                else {
+                } else {
                     Util.sendFeedback("Invalid choice. Try again", Color.RED);
                     isInvalid = true;
                 }
@@ -129,80 +128,74 @@ public class CLIAdvisor {
         }
     }
 
+    public boolean coursesOfStudentPage(Student student) {
 
-   public boolean  coursesOfStudentPage(Student student){
-
-       boolean isInvalid = false;
+        boolean isInvalid = false;
         Scanner input = new Scanner(System.in);
-       List<SelectedCourse> courses = student.fetchSelectedCoursesForAdvisor();
-       while (true) {
-           if(!isInvalid){
-               isInvalid = false;
+        List<SelectedCourse> courses = student.fetchSelectedCoursesForAdvisor();
+        while (true) {
+            if (!isInvalid) {
+                isInvalid = false;
 
-            Util.clearScreen();
+                Util.clearScreen();
 
-       System.out.println(" Courses Of The Student ");
-       System.out.println("***************************");
-       System.out.println("   Code         Number        Section       Status ");
-       System.out.println("  ------        ------         ------       ------ ");
+                System.out.println(" Courses Of The Student ");
+                System.out.println("***************************");
+                System.out.println("   Code         Number        Section       Status ");
+                System.out.println("  ------        ------         ------       ------ ");
 
-       for(int i = 0; i < courses.size() ; i++) {
-           System.out.println((i+1) + ". " + courses.get(i).getCourse().getCourseCode()  + "    " + courses.get(i).getCourse().getCourseName() + "    " + courses.get(i).getCourseSection().getSectionCode() + "    " + courses.get(i).getStatus());
-       }
+                for (int i = 0; i < courses.size(); i++) {
+                    System.out.println((i + 1) + ". " + courses.get(i).getCourse().getCourseCode() + "    "
+                            + courses.get(i).getCourse().getCourseName() + "    "
+                            + courses.get(i).getCourseSection().getSectionCode() + "    " + courses.get(i).getStatus());
+                }
 
-           System.out.println("Press b to back");
-           System.out.println("Press q to quit");
-           System.out.println("Select Course: ");
-       }
-            else{
-                   isInvalid = false;
-               }
-           String choice = input.nextLine();
-           try {
-               int choiceInt = Integer.parseInt(choice);
-               if (choiceInt > 0 && choiceInt <= courses.size()) {
-                   System.out.println("Press a to approve");
-                   System.out.println("Press d to deny");
+                System.out.println("Press b to back");
+                System.out.println("Press q to quit");
+                System.out.println("Select Course: ");
+            } else {
+                isInvalid = false;
+            }
+            String choice = input.nextLine();
+            try {
+                int choiceInt = Integer.parseInt(choice);
+                if (choiceInt > 0 && choiceInt <= courses.size()) {
+                    System.out.println("Press a to approve");
+                    System.out.println("Press d to deny");
 
-                   String choice2 = input.nextLine();
+                    String choice2 = input.nextLine();
 
-                   if (choice2.equals("a")) {
-                       advisorController.approveCourse(student,courses.get(choiceInt - 1));
-                       System.out.println();
-                   }
-                   else if (choice2.equals("d")) {
-                       advisorController.denyCourse(student,courses.get(choiceInt - 1));
-                   }
-                   else if (choice.equals("b")) {
-                       return false;
-                   }
-                   else if (choice.equals("q")) {
-                       advisorController.logOut();
-                       return true;
-                   }
-                   else {
-                       Util.sendFeedback("Invalid choice. Try again", Color.RED);
-                       isInvalid = true;
-                   }
-               }
-               else {;
+                    if (choice2.equals("a")) {
+                        advisorController.approveCourse(student, courses.get(choiceInt - 1));
+                        System.out.println();
+                    } else if (choice2.equals("d")) {
+                        advisorController.denyCourse(student, courses.get(choiceInt - 1));
+                    } else if (choice.equals("b")) {
+                        return false;
+                    } else if (choice.equals("q")) {
+                        advisorController.logOut();
+                        return true;
+                    } else {
+                        Util.sendFeedback("Invalid choice. Try again", Color.RED);
+                        isInvalid = true;
+                    }
+                } else {
+                    ;
                     Util.sendFeedback("Invalid choice!", Color.RED);
-               }
-           }
-           catch(NumberFormatException e){
-               if (choice.equals("b")) {
-                   return false;
-               } else if (choice.equals("q")) {
-                   advisorController.logOut();
-                   return true;
-               } else {
-                   Util.sendFeedback("Invalid choice. Try again", Color.RED);
-                   isInvalid = true;
-               }
-           }
+                }
+            } catch (NumberFormatException e) {
+                if (choice.equals("b")) {
+                    return false;
+                } else if (choice.equals("q")) {
+                    advisorController.logOut();
+                    return true;
+                } else {
+                    Util.sendFeedback("Invalid choice. Try again", Color.RED);
+                    isInvalid = true;
+                }
+            }
 
-       }
+        }
 
-
-   }
+    }
 }
