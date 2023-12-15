@@ -220,15 +220,15 @@ public class Student extends User {
         this.setApprovalStatus(ApprovalStatus.PENDING);
         List<SelectedCourse> selectedCourses = this.getSelectedCourses();
 
-        int numberOfPendingCourses = 0;
+        int numberOfDraftCourses = 0;
         for (SelectedCourse selectedCourse : selectedCourses) {
-            if (selectedCourse.getStatus() == CourseStatus.PENDING) {
-                numberOfPendingCourses++;
+            if (selectedCourse.getStatus() == CourseStatus.DRAFT) {
+                numberOfDraftCourses++;
             }
         }
 
-        if (numberOfPendingCourses == 0) {
-            Util.sendFeedback("You have no pending courses!", Color.RED);
+        if (numberOfDraftCourses == 0) {
+            Util.sendFeedback("You have no course to send to approval!", Color.RED);
             return;
         }
 

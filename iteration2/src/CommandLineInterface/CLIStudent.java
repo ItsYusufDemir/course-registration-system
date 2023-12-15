@@ -28,13 +28,14 @@ public class CLIStudent {
             Util.clearScreen();
             
             if (studentController.getNotification() != null) {
-                System.out.println(" Notification\n " +
-                        "**************");
+                Util.paintText(" Notification\n " +
+                        "**************", Color.YELLOW);
                 for (String string : studentController.getNotification())
-                    System.out.println(string);
-
+                    Util.paintText(string, Color.RED);
                 studentController.clearNotifications();
-            }
+                }
+
+            System.out.println("\n\n");
             System.out.println(
                     " Menu\n" +
                             "********\n" +
