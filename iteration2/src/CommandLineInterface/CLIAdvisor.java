@@ -80,12 +80,19 @@ public class CLIAdvisor {
 
                 System.out.println(" Student List");
                 System.out.println("****************");
-                System.out.println("   Number      Name");
-                System.out.println("   ------      -----");
-
+                /*
+                 * System.out.println("   Number      Name");
+                 * System.out.println("   ------      -----");
+                 */
+                System.out.printf("%10s    %30s\n", "Number", "Name");
                 for (int i = 0; i < students.size(); i++) {
-                    System.out.println((i + 1) + ". " + students.get(i).getUserId() + "    "
-                            + students.get(i).getFirstName() + " " + students.get(i).getLastName());
+
+                    System.out.printf("%d.  %10s    %30s\n", i + 1, students.get(i).getUserId(),
+                            students.get(i).getFirstName() + " " + students.get(i).getLastName());
+                    /*
+                     * System.out.println((i + 1) + ". " + students.get(i).getUserId() + "    "
+                     * + students.get(i).getFirstName() + " " + students.get(i).getLastName());
+                     */
                 }
 
                 System.out.println("Select Student:");
@@ -139,15 +146,40 @@ public class CLIAdvisor {
 
                 Util.clearScreen();
 
+                System.out.println(
+                        " Student: " + student.getFirstName() + " " + student.getLastName() + "'s TimeTable \n");
+                Util.printTimeTable(student.createTimeTable());
+
                 System.out.println(" Courses Of The Student ");
                 System.out.println("***************************");
-                System.out.println("   Code         Number        Section       Status ");
-                System.out.println("  ------        ------         ------       ------ ");
+                /*
+                 * System.out.println("   Code         Number        Section       Status ");
+                 * System.out.println("  ------        ------         ------       ------ ");
+                 */
+                System.out.printf("    %10s    %50s    %15s    %15s\n", "Code", "Name", "Section", "Status");
+                System.out.printf("    %10s    %50s   %15s     %15s\n", "-----", "------", "--------", "------");
 
                 for (int i = 0; i < courses.size(); i++) {
-                    System.out.println((i + 1) + ". " + courses.get(i).getCourse().getCourseCode() + "    "
-                            + courses.get(i).getCourse().getCourseName() + "    "
-                            + courses.get(i).getCourseSection().getSectionCode() + "    " + courses.get(i).getStatus());
+                    /*
+                     * System.out.println((i + 1) + ". " +
+                     * courses.get(i).getCourse().getCourseCode() + "    "
+                     * + courses.get(i).getCourse().getCourseName() + "    "
+                     * + courses.get(i).getCourseSection().getSectionCode() + "    " +
+                     * courses.get(i).getStatus());
+                     */
+                    System.out.printf("%d.  %10s    %50s    %15s             ", i + 1,
+                            courses.get(i).getCourse().getCourseCode(),
+                            courses.get(i).getCourse().getCourseName(),
+                            courses.get(i).getCourseSection().getSectionCode());
+
+                    if (courses.get(i).getStatus() == CourseStatus.APPROVED)
+                        Util.paintText(courses.get(i).getStatus() + "\n", Color.GREEN);
+                    else if (courses.get(i).getStatus() == CourseStatus.PENDING)
+                        Util.paintText(courses.get(i).getStatus() + "\n", Color.YELLOW);
+                    else if (courses.get(i).getStatus() == CourseStatus.DENIED)
+                        Util.paintText(courses.get(i).getStatus() + "\n", Color.RED);
+                    else
+                        System.out.print(courses.get(i).getStatus() + "\n");
                 }
 
                 System.out.println("Press b to back");

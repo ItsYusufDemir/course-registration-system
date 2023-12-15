@@ -52,9 +52,9 @@ public class Student extends User {
                 if (transcript.checkEngineeringProjectAvailability()) {
                     allSelectableCourseSections.addAll(courses.get(i).getCourseSections());
                 }
-            } else if (this.currentSemester < courses.get(i).getGivenSemester() // if course is from upper semester
-                    && this.transcript.calculateGPA() >= 3.0) { // if GPA of the student is greater than 3.0)
-                allSelectableCourseSections.addAll(courses.get(i).getCourseSections());
+            } else if (this.currentSemester < courses.get(i).getGivenSemester()) {// if course is from upper semester
+                if (this.transcript.calculateGPA() >= 3.0) // if GPA of the student is greater than 3.0)
+                    allSelectableCourseSections.addAll(courses.get(i).getCourseSections());
 
             } // If it is a current semester course or a course from lower semester
             else {
@@ -161,7 +161,7 @@ public class Student extends User {
     }
 
     // TEST YAZ BUNA
-    private boolean checkCompulsoryCourses() {
+    public boolean checkCompulsoryCourses() {
         List<CourseGrade> courseGrades = this.getTranscript().getTakenCourses();
         for (CourseGrade courseGrade : courseGrades) {
             if (courseGrade.getCourseResult() == CourseResult.FAILED) {
@@ -186,6 +186,16 @@ public class Student extends User {
 
     public void sendSelectedCoursesToApproval() {
 
+        int numberOfDraftCourses = 0;
+        this.approvalStatus = ApprovalStatus.DONE;
+        for (SelectedCourse selectedCourse : selectedCourses) {
+            if (selectedCourse.getStatus() == CourseStatus.PENDING)
+                this.approvalStatus = ApprovalStatus.PENDING;
+
+            if (selectedCourse.getStatus() == CourseStatus.DRAFT)
+                numberOfDraftCourses++;
+
+        }
         if (this.approvalStatus == ApprovalStatus.PENDING) {
             Util.sendFeedback("You already sent your courses to approval!", Color.RED);
             return;
@@ -198,13 +208,6 @@ public class Student extends User {
 
         this.setApprovalStatus(ApprovalStatus.PENDING);
         List<SelectedCourse> selectedCourses = this.getSelectedCourses();
-
-        int numberOfDraftCourses = 0;
-        for (SelectedCourse selectedCourse : selectedCourses) {
-            if (selectedCourse.getStatus() == CourseStatus.DRAFT) {
-                numberOfDraftCourses++;
-            }
-        }
 
         if (numberOfDraftCourses == 0) {
             Util.sendFeedback("You have no course to send to approval!", Color.RED);

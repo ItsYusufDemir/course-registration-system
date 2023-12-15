@@ -4,6 +4,7 @@ import iteration2.src.enums.Color;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Util {
     public static void clearScreen() {
@@ -179,4 +180,114 @@ public class Util {
         }
 
     }
+
+    public static void printTimeTable(String timeTable[][]) {
+
+        List<String> monCourses;
+        List<String> tueCourses;
+        List<String> wedCourses;
+        List<String> thrCourses;
+        List<String> friCourses;
+
+        String[] times = { "08:30-09:20", "09:30-10:20", "10:30-11:20", "11:30-12:20", "12:30-13:20", "13:30-14:20",
+                "14:30-15:20", "15:30-16:20" };
+
+        for (int i = 0; i < 8; i++) { // 8 is how many hours we have as an option
+            System.out.println();
+            System.out.print(times[i] + "    "); // pritns the time
+
+            // getting the courses for each day at the current hour we are printing
+            monCourses = divideIntoCourses(timeTable[0][i]);
+            tueCourses = divideIntoCourses(timeTable[1][i]);
+            wedCourses = divideIntoCourses(timeTable[2][i]);
+            thrCourses = divideIntoCourses(timeTable[3][i]);
+            friCourses = divideIntoCourses(timeTable[4][i]);
+
+            int monCoursesSize = monCourses.size();
+            int tueCoursesSize = tueCourses.size();
+            int wedCoursesSize = wedCourses.size();
+            int thrCoursesSize = thrCourses.size();
+            int friCoursesSize = friCourses.size();
+            // traversing through the days and printing the courses line by line until all
+            // of the courses are printed
+            for (int j = 0; j < monCoursesSize || j < tueCoursesSize || j < wedCoursesSize || j < thrCoursesSize
+                    || j < friCoursesSize; j++) {
+
+                if (monCoursesSize > j && monCourses.get(j) != "") {
+                    if (monCoursesSize > 1) {
+                        Util.paintText(monCourses.get(j) + " ", Color.RED);
+                    } else {
+                        Util.paintText(monCourses.get(j) + " ", Color.DEFAULT);
+                    }
+                } else {
+                    System.out.print("          ");
+                }
+
+                if (tueCoursesSize > j && tueCourses.get(j) != "") {
+                    if (tueCoursesSize > 1) {
+                        Util.paintText(tueCourses.get(j) + "  ", Color.RED);
+                    } else {
+                        Util.paintText(tueCourses.get(j) + "  ", Color.DEFAULT);
+                    }
+                } else {
+                    System.out.print("           ");
+                }
+
+                if (wedCoursesSize > j && wedCourses.get(j) != "") {
+                    if (wedCoursesSize > 1) {
+                        Util.paintText(wedCourses.get(j) + "    ", Color.RED);
+                    } else {
+                        Util.paintText(wedCourses.get(j) + "    ", Color.DEFAULT);
+                    }
+                } else {
+                    System.out.print("             ");
+                }
+
+                if (thrCoursesSize > j && thrCourses.get(j) != "") {
+                    if (thrCoursesSize > 1) {
+                        Util.paintText(thrCourses.get(j) + "   ", Color.RED);
+                    } else {
+                        Util.paintText(thrCourses.get(j) + "   ", Color.DEFAULT);
+                    }
+                } else {
+                    System.out.print("            ");
+                }
+
+                if (friCoursesSize > j && friCourses.get(j) != "") {
+                    if (friCoursesSize > 1) {
+                        Util.paintText(friCourses.get(j) + " ", Color.RED);
+                    } else {
+                        Util.paintText(friCourses.get(j) + " ", Color.DEFAULT);
+                    }
+                } else {
+                    System.out.print("          ");
+                }
+
+                System.out.print("\n               ");
+            }
+            System.out.println(
+                    "\n__________________________________________________________________________________________");
+
+        }
+
+    }
+
+    // divides the courses string which is separated with "-" into a courses list
+    private static List<String> divideIntoCourses(String str) {
+        List<String> courses = new ArrayList<>();
+        String temp = "";
+        int strLength = str.length();
+        for (int i = 0; i < strLength; i++) {
+            if (str.charAt(i) != '-') { // TODO: according to selin we have at the end also "-" this might cause a
+                                        // problem for alignment
+                temp += str.charAt(i); // fix this if it causes a problem
+            } else {
+                courses.add(temp);
+                temp = "";
+            }
+        }
+
+        return courses;
+    }
+
 }
