@@ -2,8 +2,6 @@ package iteration2.src.models;
 
 import java.util.*;
 
-import javax.xml.crypto.Data;
-
 import iteration2.src.CommandLineInterface.CLIStudent;
 import iteration2.src.controllers.StudentController;
 import iteration2.src.enums.ApprovalStatus;
