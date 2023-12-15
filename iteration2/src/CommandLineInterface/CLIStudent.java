@@ -4,8 +4,8 @@ import java.util.*;
 
 import iteration2.src.utils.Util;
 import iteration2.src.controllers.StudentController;
-import iteration2.src.enums.Color;
 import iteration2.src.enums.CourseStatus;
+import iteration2.src.interfaces.Color;
 import iteration2.src.models.Course;
 import iteration2.src.models.SelectedCourse;
 import iteration2.src.models.CourseSection;

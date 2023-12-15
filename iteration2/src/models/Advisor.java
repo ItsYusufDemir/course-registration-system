@@ -4,9 +4,9 @@ import java.util.List;
 
 import iteration2.src.CommandLineInterface.CLIAdvisor;
 import iteration2.src.enums.ApprovalStatus;
-import iteration2.src.enums.Color;
 import iteration2.src.enums.CourseResult;
 import iteration2.src.enums.CourseStatus;
+import iteration2.src.interfaces.Color;
 import iteration2.src.utils.DatabaseManager;
 import iteration2.src.utils.Util;
 

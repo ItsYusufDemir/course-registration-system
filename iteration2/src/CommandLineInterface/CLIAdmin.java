@@ -2,8 +2,9 @@ package iteration2.src.CommandLineInterface;
 
 import java.util.*;
 import java.util.List;
-import iteration2.src.enums.Color;
+
 import iteration2.src.enums.CourseType;
+import iteration2.src.interfaces.Color;
 import iteration2.src.models.Course;
 import iteration2.src.models.CourseSection;
 import iteration2.src.models.Prerequisite;
