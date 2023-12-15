@@ -168,8 +168,8 @@ public class CLIStudent {
             
             System.out.println(" Timetable\n" +
                                "***********\n" + 
-                               " Hours/Days\tMonday\tTuesday\tWednesday\tThursday\tFriday\n" + 
-                               " __________\t______\t_______\t_________\t________\t______\n");
+                               " Hours/Days    Monday    Tuesday    Wednesday    Thursday    Friday\n" + 
+                               " __________    ______    _______    _________    ________    ______\n");
             printTimeTable();
 
             System.out.println("\n\npress b to go back");
@@ -251,7 +251,7 @@ public class CLIStudent {
 
         for(int i = 0; i < 8; i++){ // 8 is how many hours we have as an option
             System.out.println();
-            System.out.print(times[i] + "\t"); // pritns the time
+            System.out.print(times[i] + "    "); // pritns the time
             
             //getting the courses for each day at the current hour we are printing 
             monCourses = divideIntoCourses(timeTable[0][i]);
@@ -269,41 +269,41 @@ public class CLIStudent {
             for(int j = 0; j < monCoursesSize || j < tueCoursesSize || j < wedCoursesSize || j < thrCoursesSize || j < friCoursesSize; j++){
                 
                 if( monCourses.size()>j && monCourses.get(j) != ""){
-                    System.out.print(monCourses.get(j) + "\t");
+                    System.out.print(monCourses.get(j) + "    ");
                 }
                 else{
-                    System.out.print("     \t");
+                    System.out.print("         ");
                 }
 
                 if( tueCourses.size()>j && tueCourses.get(j) != ""){
-                    System.out.print(tueCourses.get(j) + "\t");
+                    System.out.print(tueCourses.get(j) + "    ");
                 }
                 else{
-                    System.out.print("       \t");
+                    System.out.print("           ");
                 }
 
                 if( wedCourses.size()>j && wedCourses.get(j) != ""){
-                    System.out.print(wedCourses.get(j) + "\t");
+                    System.out.print(wedCourses.get(j) + "    ");
                 }
                 else{
-                    System.out.print("        \t");
+                    System.out.print("            ");
                 }
 
                 if( thrCourses.size()>j && thrCourses.get(j) != ""){
-                    System.out.print(thrCourses.get(j) + "\t");
+                    System.out.print(thrCourses.get(j) + "    ");
                 }
                 else{
-                    System.out.print("       \t");
+                    System.out.print("           ");
                 }
 
                 if( friCourses.size()>j && friCourses.get(j) != ""){
-                    System.out.print(friCourses.get(j) + "\t");
+                    System.out.print(friCourses.get(j) + "    ");
                 }
                 else{
-                    System.out.print("      \t");
+                    System.out.print("          ");
                 }
 
-                System.out.print("\n");
+                System.out.print("\n               ");
             }
             System.out.println("\n__________________________________________________________________________________________");
             

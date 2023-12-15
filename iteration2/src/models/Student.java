@@ -1,5 +1,8 @@
 package iteration2.src.models;
 import java.util.*;
+
+import javax.xml.crypto.Data;
+
 import iteration2.src.CommandLineInterface.CLIStudent;
 import iteration2.src.controllers.StudentController;
 import iteration2.src.enums.ApprovalStatus;
@@ -144,7 +147,13 @@ public class Student extends User {
 
     public boolean addNewCourse(SelectedCourse selectedCourse){
 
-       // should we check the capacity here or while listing the available courses?
+       HashMap<Integer, String> constraints = DatabaseManager.getInstance().getConstraints();
+
+       if(selectedCourses.size() >= Integer.parseInt(constraints.get(1))){
+           Util.sendFeedback("You can not take more than " + constraints.get(1) + " courses in one term.", Color.RED);
+           return false;
+       }
+
         if(!selectedCourses.contains(selectedCourse)){
             selectedCourses.add(selectedCourse);
             DatabaseManager.getInstance().saveToDatabase();
