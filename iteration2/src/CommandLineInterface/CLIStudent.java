@@ -266,36 +266,61 @@ public class CLIStudent {
             // traversing through the days and printing the courses line by line until all of the courses are printed
             for(int j = 0; j < monCoursesSize || j < tueCoursesSize || j < wedCoursesSize || j < thrCoursesSize || j < friCoursesSize; j++){
                 
-                if( monCourses.size()>j && monCourses.get(j) != ""){
-                    System.out.print(monCourses.get(j) + " ");
+                if( monCoursesSize>j && monCourses.get(j) != ""){
+                    if(monCoursesSize > 1){
+                        Util.paintText(monCourses.get(j) + " ", Color.RED);
+                    }
+                    else{
+                        Util.paintText(monCourses.get(j) + " ", Color.DEFAULT);
+                    }
                 }
                 else{
                     System.out.print("          ");
                 }
 
-                if( tueCourses.size()>j && tueCourses.get(j) != ""){
-                    System.out.print(tueCourses.get(j) + "  ");
+                if( tueCoursesSize>j && tueCourses.get(j) != ""){
+                    if(tueCoursesSize > 1){
+                        Util.paintText(tueCourses.get(j) + "  ", Color.RED);
+                    }
+                    else{
+                        Util.paintText(tueCourses.get(j) + "  ", Color.DEFAULT);
+                    }
                 }
                 else{
                     System.out.print("           ");
                 }
 
-                if( wedCourses.size()>j && wedCourses.get(j) != ""){
-                    System.out.print(wedCourses.get(j) + "    ");
+                if( wedCoursesSize>j && wedCourses.get(j) != ""){
+                    if(wedCoursesSize > 1){
+                        Util.paintText(wedCourses.get(j) + "    ", Color.RED);
+                    }
+                    else{
+                        Util.paintText(wedCourses.get(j) + "    ", Color.DEFAULT);
+                    }
                 }
                 else{
                     System.out.print("             ");
                 }
 
-                if( thrCourses.size()>j && thrCourses.get(j) != ""){
-                    System.out.print(thrCourses.get(j) + "   ");
+                if( thrCoursesSize>j && thrCourses.get(j) != ""){
+                    if(thrCoursesSize > 1){
+                        Util.paintText(thrCourses.get(j) + "   ", Color.RED);
+                    }
+                    else{
+                        Util.paintText(thrCourses.get(j) + "   ", Color.DEFAULT);
+                    }
                 }
                 else{
                     System.out.print("            ");
                 }
 
-                if( friCourses.size()>j && friCourses.get(j) != ""){
-                    System.out.print(friCourses.get(j) + " ");
+                if( friCoursesSize>j && friCourses.get(j) != ""){
+                    if(friCoursesSize > 1){
+                        Util.paintText(friCourses.get(j) + " ", Color.RED);
+                    }
+                    else{
+                        Util.paintText(friCourses.get(j) + " ", Color.DEFAULT);
+                    }
                 }
                 else{
                     System.out.print("          ");
