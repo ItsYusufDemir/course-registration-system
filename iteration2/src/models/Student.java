@@ -1,4 +1,5 @@
 package iteration2.src.models;
+
 import java.util.*;
 import iteration2.src.CommandLineInterface.CLIStudent;
 import iteration2.src.controllers.StudentController;
@@ -19,13 +20,15 @@ public class Student extends User {
     private ApprovalStatus approvalStatus;
     private Transcript transcript;
 
-   public Student() {
-    
-   }
+    public Student() {
+
+    }
 
     // not sure about constructor access identifier
-    
-    public Student(String userID, String password, String firstName, String lastName, boolean status, String email, String identityNumber, int currentSemester,List<SelectedCourse> selectedCourses, Advisor advisorOfStudent, ApprovalStatus approvalStatus, Transcript transcript) {
+
+    public Student(String userID, String password, String firstName, String lastName, boolean status, String email,
+            String identityNumber, int currentSemester, List<SelectedCourse> selectedCourses, Advisor advisorOfStudent,
+            ApprovalStatus approvalStatus, Transcript transcript) {
         super(userID, password, firstName, lastName, status);
         this.email = email;
         this.identityNumber = identityNumber;
@@ -36,128 +39,114 @@ public class Student extends User {
         this.transcript = transcript;
     }
 
-
     public List<CourseSection> listAvailableCourseSections() {
         List<CourseSection> allSelectableCourseSections = new ArrayList<>();
         List<Course> courses = DatabaseManager.getInstance().getCourses();
         List<CourseSection> availableCourseSections = new ArrayList<>();
 
-
-        //Find all possible course sections
+        // Find all possible course sections
         for (int i = 0; i < courses.size(); i++) {
 
-            //Check engineering project availability
-            if(courses.get(i).getCourseCode().equals("CSE4297") || courses.get(i).getCourseCode().equals("CSE4298")){
-                if(transcript.checkEngineeringProjectAvailability()) {
+            // Check engineering project availability
+            if (courses.get(i).getCourseCode().equals("CSE4297") || courses.get(i).getCourseCode().equals("CSE4298")) {
+                if (transcript.checkEngineeringProjectAvailability()) {
                     allSelectableCourseSections.addAll(courses.get(i).getCourseSections());
                 }
-            }
-            else if (this.currentSemester < courses.get(i).getGivenSemester() // if course is from upper semester
-                    && this.transcript.calculateGPA() >= 3.0) { // if GPA of the student is greater than 3.0) 
+            } else if (this.currentSemester < courses.get(i).getGivenSemester() // if course is from upper semester
+                    && this.transcript.calculateGPA() >= 3.0) { // if GPA of the student is greater than 3.0)
                 allSelectableCourseSections.addAll(courses.get(i).getCourseSections());
 
-            } //If it is a current semester course or a course from lower semester
+            } // If it is a current semester course or a course from lower semester
             else {
                 allSelectableCourseSections.addAll(courses.get(i).getCourseSections());
             }
 
         }
 
-        //Eliminate the ones that are not available
+        // Eliminate the ones that are not available
         for (CourseSection courseSection : allSelectableCourseSections) {
-                Course course = courseSection.findCourseOfCourseSection();
+            Course course = courseSection.findCourseOfCourseSection();
 
-                if (courseSection.checkAvailibilty() && course.checkPrerequisite(this) &&
-                        !this.transcript.acquirePassedCourses().contains(course) &&
-                        !checkIfItExistsInSelectedCourses(course) && checkCourseType(course)) {
-                    availableCourseSections.add(courseSection);
-                }
+            if (courseSection.checkAvailibilty() && course.checkPrerequisite(this) &&
+                    !this.transcript.acquirePassedCourses().contains(course) &&
+                    !checkIfItExistsInSelectedCourses(course) && checkCourseType(course)) {
+                availableCourseSections.add(courseSection);
+            }
 
-        }    
+        }
 
         availableCourseSections.addAll(findRepeatCourseSections());
-
 
         return availableCourseSections;// hata vermesin diye şimdilik yazdım
     }
 
-    private boolean checkIfItExistsInSelectedCourses(Course course){
-        for (SelectedCourse selectedCourse: selectedCourses){
-            if(selectedCourse.getCourse().equals(course)){
+    private boolean checkIfItExistsInSelectedCourses(Course course) {
+        for (SelectedCourse selectedCourse : selectedCourses) {
+            if (selectedCourse.getCourse().equals(course)) {
                 return true;
             }
         }
         return false;
     }
 
-    private List<CourseSection> findRepeatCourseSections(){
-       List<CourseGrade> takenCourses = this.transcript.getTakenCourses();
-       List<CourseSection> repeatCourseSections = new ArrayList<>();
+    private List<CourseSection> findRepeatCourseSections() {
+        List<CourseGrade> takenCourses = this.transcript.getTakenCourses();
+        List<CourseSection> repeatCourseSections = new ArrayList<>();
 
-       for(CourseGrade course: takenCourses) {
-           if(course.getLetterGrade() == "DD" || course.getLetterGrade() == "DC"){
-               repeatCourseSections.addAll(course.getCourse().getCourseSections());
-           }
-       }
-       return repeatCourseSections;
+        for (CourseGrade course : takenCourses) {
+            if (course.getLetterGrade() == "DD" || course.getLetterGrade() == "DC") {
+                repeatCourseSections.addAll(course.getCourse().getCourseSections());
+            }
+        }
+        return repeatCourseSections;
     }
 
-
-    private boolean checkCourseType(Course course){
+    private boolean checkCourseType(Course course) {
         int nteCounter = 0;
         int teCounter = 0;
         int fteCounter = 0;
         int ueCounter = 0;
-        for(SelectedCourse selectedCourse : selectedCourses){
-            if(selectedCourse.getCourse().getCourseType().toString().equals("NONTECHNICAL_ELECTIVE") ){
+        for (SelectedCourse selectedCourse : selectedCourses) {
+            if (selectedCourse.getCourse().getCourseType().toString().equals("NONTECHNICAL_ELECTIVE")) {
                 nteCounter++;
-            }
-            else if(selectedCourse.getCourse().getCourseType().toString().equals("TECHNICAL_ELECTIVE") ) {
+            } else if (selectedCourse.getCourse().getCourseType().toString().equals("TECHNICAL_ELECTIVE")) {
                 teCounter++;
-            }
-            else if(selectedCourse.getCourse().getCourseType().toString().equals("FACULTY_ELECTIVE" ) ) {
+            } else if (selectedCourse.getCourse().getCourseType().toString().equals("FACULTY_ELECTIVE")) {
                 fteCounter++;
-            }
-            else if(selectedCourse.getCourse().getCourseType().toString().equals("UNIVERSITY_ELECTIVE") ){
+            } else if (selectedCourse.getCourse().getCourseType().toString().equals("UNIVERSITY_ELECTIVE")) {
                 ueCounter++;
             }
         }
 
-
-        if(course.getCourseType().toString().equals("NONTECHNICAL_ELECTIVE") && nteCounter >= 2){
+        if (course.getCourseType().toString().equals("NONTECHNICAL_ELECTIVE") && nteCounter >= 2) {
             return false;
-        }
-        else if(course.getCourseType().toString().equals("TECHNICAL_ELECTIVE") && teCounter >= 4){
+        } else if (course.getCourseType().toString().equals("TECHNICAL_ELECTIVE") && teCounter >= 4) {
             return false;
-        }
-        else if(course.getCourseType().toString().equals("FACULTY_ELECTIVE") && fteCounter >= 1){
+        } else if (course.getCourseType().toString().equals("FACULTY_ELECTIVE") && fteCounter >= 1) {
             return false;
-        }
-        else if(course.getCourseType().toString().equals("UNIVERSITY_ELECTIVE") && ueCounter >= 1){
+        } else if (course.getCourseType().toString().equals("UNIVERSITY_ELECTIVE") && ueCounter >= 1) {
             return false;
-        }
-        else{
-        return true;
+        } else {
+            return true;
         }
 
     }
 
-    public boolean addNewCourse(SelectedCourse selectedCourse){
+    public boolean addNewCourse(SelectedCourse selectedCourse) {
 
-       // should we check the capacity here or while listing the available courses?
-        if(!selectedCourses.contains(selectedCourse)){
+        // should we check the capacity here or while listing the available courses?
+        if (!selectedCourses.contains(selectedCourse)) {
             selectedCourses.add(selectedCourse);
             DatabaseManager.getInstance().saveToDatabase();
             return true;
-        }
-        else{
+        } else {
             return false;
 
         }
     }
 
-    public boolean deleteCourse(SelectedCourse selectedCourse){
-        if(selectedCourses.contains(selectedCourse) && selectedCourse.getStatus() != CourseStatus.PENDING){
+    public boolean deleteCourse(SelectedCourse selectedCourse) {
+        if (selectedCourses.contains(selectedCourse) && selectedCourse.getStatus() != CourseStatus.PENDING) {
             selectedCourses.remove(selectedCourse);
             DatabaseManager.getInstance().saveToDatabase();
             return true;
@@ -165,13 +154,11 @@ public class Student extends User {
         return false;
     }
 
-
     @Override
     public void getMyPage() {
         CLIStudent cliStudent = new CLIStudent(new StudentController(this));
         cliStudent.menuPage();
     }
-
 
     // TEST YAZ BUNA
     private boolean checkCompulsoryCourses() {
@@ -182,9 +169,11 @@ public class Student extends User {
                 for (SelectedCourse selectedCourse : selectedCourses) {
                     if (!selectedCourse.getCourse().equals(courseGrade.getCourse())) {
                         for (CourseSection section : this.listAvailableCourseSections()) {
-                            if(section.findCourseOfCourseSection().equals(courseGrade.getCourse())){
-                                Util.paintText("You have to take " + courseGrade.getCourse().getCourseName() + " again.",Color.RED);
-                                return true;
+                            if (section.findCourseOfCourseSection().equals(courseGrade.getCourse())) {
+                                Util.paintTextln(
+                                        "You have to take " + courseGrade.getCourse().getCourseName() + " again.",
+                                        Color.RED);
+                                return false;
 
                             }
                         }
@@ -192,18 +181,17 @@ public class Student extends User {
                 }
             }
         }
-        return false;
+        return true;
     }
 
+    public void sendSelectedCoursesToApproval() {
 
-    public void sendSelectedCoursesToApproval(){
-
-        if(this.approvalStatus == ApprovalStatus.PENDING){
-            Util.sendFeedback("You already sent your courses to approval!",Color.RED);
+        if (this.approvalStatus == ApprovalStatus.PENDING) {
+            Util.sendFeedback("You already sent your courses to approval!", Color.RED);
             return;
         }
 
-        if (checkCompulsoryCourses()) {
+        if (!checkCompulsoryCourses()) {
             Util.sendFeedback("Please add your failed courses!", Color.RED);
             return;
         }
@@ -225,17 +213,16 @@ public class Student extends User {
 
         for (SelectedCourse selectedCourse : selectedCourses) {
 
-
             if (selectedCourse.getStatus() == CourseStatus.DRAFT) {
                 selectedCourse.setStatus(CourseStatus.PENDING);
                 selectedCourse.getCourseSection().incrementStudentCount();
 
-            }//If the course is a repeat course
+            } // If the course is a repeat course
             else if (findRepeatCourseSections().contains(selectedCourse.getCourseSection())) {
                 selectedCourse.setStatus(CourseStatus.PENDING);
-                
-                for(CourseGrade courseGrade : this.getTranscript().getTakenCourses()){
-                    if(courseGrade.getCourse().getCourseCode().equals(selectedCourse.getCourse().getCourseCode())){
+
+                for (CourseGrade courseGrade : this.getTranscript().getTakenCourses()) {
+                    if (courseGrade.getCourse().getCourseCode().equals(selectedCourse.getCourse().getCourseCode())) {
                         courseGrade.setCourseResult(CourseResult.ACTIVE);
                     }
                 }
@@ -245,7 +232,8 @@ public class Student extends User {
 
         }
         this.setSelectedCourses(selectedCourses);
-        advisorOfStudent.addNotification(this.getFirstName() +" "+ this.getLastName() +" has requested a course approval.");
+        advisorOfStudent
+                .addNotification(this.getFirstName() + " " + this.getLastName() + " has requested a course approval.");
 
         Util.sendFeedback("Courses are sent to advisor", Color.GREEN);
 
@@ -292,13 +280,7 @@ public class Student extends User {
         this.transcript = transcript;
     }
 
-
-
-
-
-
-
-    public String [][] fillTable() {
+    public String[][] fillTable() {
 
         String[][] timeTable;
 
@@ -312,7 +294,6 @@ public class Student extends User {
         for (int i = 0; i < selectedCourses.size(); i++) {
 
             for (int m = 0; m < selectedCourses.get(i).getCourseSection().getSectionDay().size(); m++) {
-
 
                 String day = selectedCourses.get(i).getCourseSection().getSectionDay().get(m);
                 String time = selectedCourses.get(i).getCourseSection().getSectionTime().get(m);
@@ -329,7 +310,6 @@ public class Student extends User {
                 } else {
                     System.out.println("Invalid day.");
                 }
-
 
             }
         }
@@ -354,15 +334,13 @@ public class Student extends User {
             timeTable[day][6] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
         } else if (time.equals("15:30-16:20")) {
             timeTable[day][7] += selectedCourses.get(i).getCourseSection().getSectionCode() + "-";
-        }
-         else {
+        } else {
             System.out.println("Invalid time");
         }
     }
 
-
     public List<String> checkConflictCourses() {
-        String [][] timeTable = fillTable();
+        String[][] timeTable = fillTable();
         List<String> conflictedCourses = new ArrayList<String>();
 
         for (int i = 0; i < 5; i++) {
@@ -380,18 +358,16 @@ public class Student extends User {
         return conflictedCourses;
     }
 
-
     public List<SelectedCourse> fetchSelectedCoursesForAdvisor() {
         List<SelectedCourse> selectedCourses = new ArrayList<SelectedCourse>();
         for (int i = 0; i < this.selectedCourses.size(); i++) {
-            if(this.selectedCourses.get(i).getStatus() != CourseStatus.DRAFT){
+            if (this.selectedCourses.get(i).getStatus() != CourseStatus.DRAFT) {
                 selectedCourses.add(this.selectedCourses.get(i));
 
             }
         }
         return selectedCourses;
     }
-
 
     public List<SelectedCourse> getSelectedCourses() {
         return selectedCourses;
@@ -409,10 +385,9 @@ public class Student extends User {
         this.currentSemester = currentSemester;
     }
 
-    public String [][] createTimeTable() {
-        String [][] timeTable = fillTable();
+    public String[][] createTimeTable() {
+        String[][] timeTable = fillTable();
         return timeTable;
     }
-
 
 }

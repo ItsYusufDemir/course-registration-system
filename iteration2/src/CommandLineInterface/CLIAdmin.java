@@ -1,4 +1,5 @@
 package iteration2.src.CommandLineInterface;
+
 import java.util.*;
 import java.util.List;
 import iteration2.src.enums.Color;
@@ -10,52 +11,45 @@ import iteration2.src.utils.DatabaseManager;
 import iteration2.src.controllers.AdminController;
 import iteration2.src.utils.Util;
 
-
 public class CLIAdmin {
 
     private Scanner scanner;
     private AdminController adminController;
 
-    
-    public CLIAdmin(AdminController adminContoller){
+    public CLIAdmin(AdminController adminContoller) {
         this.adminController = adminContoller;
         scanner = new Scanner(System.in);
     }
 
-
     public void menuPage() {
         Util.clearScreen();
-            System.out.println(
-                    " Menu\n" +
-                            "********\n" +
-                            "  1. Course list\n" +
-                            "  2. Constraint Settings\n\n" +
-                            "Press q to quit\n" +
-                            "Press corresponding row number to review and make changes for the list you want.\n" 
-                            );
+        System.out.println(
+                " Menu\n" +
+                        "********\n" +
+                        "  1. Course list\n" +
+                        "  2. Constraint Settings\n\n" +
+                        "Press q to quit\n" +
+                        "Press corresponding row number to review and make changes for the list you want.\n");
 
-            String str = scanner.nextLine();
-            if (str.equals("q")) {
-                DatabaseManager.getInstance().saveToDatabase();
-                Util.clearScreen();
-                adminController.logOut();
-            } else if (str.equals("1")) {
-                Util.clearScreen();
-                courseListPage();
-            } else if (str.equals("2")) {
-                Util.clearScreen();
-                constraintPage();
-            } else {
-                Util.sendFeedback("Invalid input", Color.RED);
-                menuPage();
-            }
-    
+        String str = scanner.nextLine();
+        if (str.equals("q")) {
+            DatabaseManager.getInstance().saveToDatabase();
+            Util.clearScreen();
+            adminController.logOut();
+        } else if (str.equals("1")) {
+            Util.clearScreen();
+            courseListPage();
+        } else if (str.equals("2")) {
+            Util.clearScreen();
+            constraintPage();
+        } else {
+            Util.sendFeedback("Invalid input", Color.RED);
+            menuPage();
+        }
 
     }
 
-
-
-        public void courseListPage() {
+    public void courseListPage() {
         Util.clearScreen();
         scanner = new Scanner(System.in);
         List<Course> courses = adminController.getCourseList();
@@ -65,8 +59,9 @@ public class CLIAdmin {
                         "**************\n" +
                         "  Code\t\t\t\t Name\t \n" +
                         "  ____\t ____\t");
-        for(int i = 0; i < courses.size(); i++){
-            System.out.println("  " + (i+1) + ". " + courses.get(i).getCourseCode() + "\t " + courses.get(i).getCourseName());
+        for (int i = 0; i < courses.size(); i++) {
+            System.out.println(
+                    "  " + (i + 1) + ". " + courses.get(i).getCourseCode() + "\t " + courses.get(i).getCourseName());
         }
         System.out.println(
                 "\n\nPress c to create a new course\n" +
@@ -105,14 +100,14 @@ public class CLIAdmin {
             Util.sendFeedback("Invalid input", Color.RED);
             courseListPage();
         }
-    
+
     }
 
-    public void constraintPage (){
+    public void constraintPage() {
         Util.clearScreen();
         scanner = new Scanner(System.in);
         HashMap<Integer, String> editedAttributes = adminController.getConstraints();
-        
+
         System.out.println(
                 " Constraint Settings\n" +
                         "**************\n");
@@ -163,8 +158,7 @@ public class CLIAdmin {
             }
             adminController.editConstraint(editedAttributes);
             constraintPage();
-        }
-        else if (str.equals("b")) {
+        } else if (str.equals("b")) {
             Util.clearScreen();
             menuPage();
         } else if (str.equals("q")) {
@@ -174,15 +168,17 @@ public class CLIAdmin {
             Util.sendFeedback("Invalid input", Color.RED);
             constraintPage();
         }
-    
+
     }
 
-    public boolean createNewCoursePage(){
+    public boolean createNewCoursePage() {
 
         ArrayList prerequisiteCourses = new ArrayList();
         ArrayList courseSections = new ArrayList();
-        ArrayList<String> sectionTimeList = new ArrayList();;
-        ArrayList<String> sectionDateList = new ArrayList();;
+        ArrayList<String> sectionTimeList = new ArrayList();
+        ;
+        ArrayList<String> sectionDateList = new ArrayList();
+        ;
         Prerequisite prerequisiteInformation;
         CourseSection courseSection;
         CourseType courseType;
@@ -205,31 +201,30 @@ public class CLIAdmin {
         String sectionCode;
         String currentInput;
 
-        Util.paintText("********************Create New Course Page********************\n", Color.GREEN);
-
+        Util.paintTextln("********************Create New Course Page********************\n", Color.GREEN);
 
         System.out.println("-> Enter the course information for the fields.");
 
-        while(true){
+        while (true) {
             System.out.print("1.\tCourse Credit: ");
-            try{
+            try {
                 currentInput = scanner.nextLine();
                 courseCredit = Integer.parseInt(currentInput);
                 break;
-            }catch (Exception e){
-                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
+            } catch (Exception e) {
+                Util.paintTextln("Invalid input ! Please enter an integer value", Color.RED);
             }
         }
 
-        while(true){
+        while (true) {
             System.out.print("2.\tCourse ECTS: ");
-            try{
+            try {
                 currentInput = scanner.nextLine();
                 courseECTS = Integer.parseInt(currentInput);
                 break;
-            }catch (Exception e){
-                
-                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
+            } catch (Exception e) {
+
+                Util.paintTextln("Invalid input ! Please enter an integer value", Color.RED);
             }
         }
 
@@ -239,101 +234,107 @@ public class CLIAdmin {
         System.out.print("4.\tCourse Code: ");
         courseCode = scanner.nextLine();
 
-        while(true){
+        while (true) {
             System.out.print("5.\tCourse Semester: ");
-            try{
+            try {
                 currentInput = scanner.nextLine();
                 givenSemester = Integer.parseInt(currentInput);
-                if(givenSemester > 10){
-                    Util.paintText("Invalid input ! Computer Engineering faculty has maximum 10 semester\n"
+                if (givenSemester > 10) {
+                    Util.paintTextln("Invalid input ! Computer Engineering faculty has maximum 10 semester\n"
                             + "Please enter integer between 1-10", Color.RED);
                 }
                 break;
-            }catch (Exception e){
-                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
+            } catch (Exception e) {
+                Util.paintTextln("Invalid input ! Please enter an integer value", Color.RED);
             }
         }
 
-        while(true){
-            System.out.print("6.\tCourse Type: Compulsory(1), Non-technical Elective(2), Technical Elective(3), University Elective(4), Faculty Elective(5): ");
-            try{
+        while (true) {
+            System.out.print(
+                    "6.\tCourse Type: Compulsory(1), Non-technical Elective(2), Technical Elective(3), University Elective(4), Faculty Elective(5): ");
+            try {
                 currentInput = scanner.nextLine();
                 courseTypeCode = Integer.parseInt(currentInput);
 
-                if(courseTypeCode < 1 || courseTypeCode > 5){
-                    Util.paintText("Invalid input ! Please enter an integer value between 1-5", Color.RED);
+                if (courseTypeCode < 1 || courseTypeCode > 5) {
+                    Util.paintTextln("Invalid input ! Please enter an integer value between 1-5", Color.RED);
                     continue;
                 }
 
                 break;
-            }catch (Exception e){
-                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
+            } catch (Exception e) {
+                Util.paintTextln("Invalid input ! Please enter an integer value", Color.RED);
             }
         }
 
-        switch (courseTypeCode){
-            case 1: courseType = CourseType.COMPULSORY;
-            break;
-            case 2: courseType = CourseType.NONTECHNICAL_ELECTIVE;
-            break;
-            case 3: courseType = CourseType.TECHNICAL_ELECTIVE;
-            break;
-            case 4: courseType = CourseType.UNIVERSITY_ELECTIVE;
-            break;
-            case 5: courseType = CourseType.FACULTY_ELECTIVE;
-            break;
-            default: courseType = CourseType.COMPULSORY;
+        switch (courseTypeCode) {
+            case 1:
+                courseType = CourseType.COMPULSORY;
+                break;
+            case 2:
+                courseType = CourseType.NONTECHNICAL_ELECTIVE;
+                break;
+            case 3:
+                courseType = CourseType.TECHNICAL_ELECTIVE;
+                break;
+            case 4:
+                courseType = CourseType.UNIVERSITY_ELECTIVE;
+                break;
+            case 5:
+                courseType = CourseType.FACULTY_ELECTIVE;
+                break;
+            default:
+                courseType = CourseType.COMPULSORY;
         }
 
-        while(true){
+        while (true) {
             System.out.print("7.\t Number of Prerequisite Courses: ");
-            try{
+            try {
                 currentInput = scanner.nextLine();
                 numberOfPrerequisiteCourses = Integer.parseInt(currentInput);
                 break;
-            }catch (Exception e){
-                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
+            } catch (Exception e) {
+                Util.paintTextln("Invalid input ! Please enter an integer value", Color.RED);
             }
         }
 
         System.out.println("Write course codes of prerequisite courses one by one");
         String prerequisiteCourseCode;
         Course prerequisiteCourse;
-        for(int i = 1; i <= numberOfPrerequisiteCourses; i++){
+        for (int i = 1; i <= numberOfPrerequisiteCourses; i++) {
             System.out.print(i + ".\t");
             prerequisiteCourseCode = scanner.nextLine();
             prerequisiteCourse = findCourseByCourseCode(prerequisiteCourseCode);
-            if(prerequisiteCourse != null){
+            if (prerequisiteCourse != null) {
                 prerequisiteCourses.add(prerequisiteCourse);
-            } else{
-                Util.paintText("There is no course with this course code! Try again.", Color.RED);
+            } else {
+                Util.paintTextln("There is no course with this course code! Try again.", Color.RED);
                 i--;
             }
         }
 
-        while(true){
+        while (true) {
             System.out.print("8.\tNumber Of Sections: ");
-            try{
+            try {
                 currentInput = scanner.nextLine();
                 numberOfCourseSections = Integer.parseInt(currentInput);
                 break;
-            }catch (Exception e){
-                Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
+            } catch (Exception e) {
+                Util.paintTextln("Invalid input ! Please enter an integer value", Color.RED);
             }
         }
 
-
-        for(int i = 1; i <= numberOfCourseSections; i++){
+        for (int i = 1; i <= numberOfCourseSections; i++) {
             System.out.println("Section " + i);
 
-            while(true){
+            while (true) {
                 System.out.print("1.\tStudent Capacity: ");
-                try{
+                try {
                     currentInput = scanner.nextLine();
                     studentCapacity = Integer.parseInt(currentInput);
                     break;
-                }catch (Exception e){
-                    Util.paintText("Invalid input ! Please enter an integer value", Color.RED);
+                } catch (Exception e) {
+                    Util.paintTextln("Invalid input ! Please enter an integer value", Color.RED);
                 }
             }
 
@@ -344,34 +345,37 @@ public class CLIAdmin {
             System.out.println("Input Format for Section Day:\tMonday, Monday, Tuesday");
             System.out.println("Input Format for Section Time:\t08:30-09:20, 09:30-10:30, 08:30-09:20\n");
 
-            while(true){
-                while(true){
+            while (true) {
+                while (true) {
                     System.out.print("3.\tSection Day: ");
                     sectionDate = scanner.nextLine();
                     sectionDateList = Util.makeArrayList(",", sectionDate);
-                    if(Util.isInputFormatTrueForDay(sectionDateList) ){
+                    if (Util.isInputFormatTrueForDay(sectionDateList)) {
                         break;
-                    }else{
-                        Util.paintText("Invalid input format! Please enter in this format: \tMonday, Monday, Tuesday", Color.RED);
+                    } else {
+                        Util.paintTextln("Invalid input format! Please enter in this format: \tMonday, Monday, Tuesday",
+                                Color.RED);
                     }
                 }
 
-                while(true){
+                while (true) {
                     System.out.print("4.\tSection Time: ");
                     sectionTime = scanner.nextLine();
                     sectionTimeList = Util.makeArrayList(",", sectionTime);
 
-                    if(Util.isInputFormatTrueForTime(sectionTimeList)){
+                    if (Util.isInputFormatTrueForTime(sectionTimeList)) {
                         break;
-                    }else{
-                        Util.paintText("Invalid input format! Please enter in this format: \t08:30-09:20, 09:30-10:30, 08:30-09:20", Color.RED);
+                    } else {
+                        Util.paintTextln(
+                                "Invalid input format! Please enter in this format: \t08:30-09:20, 09:30-10:30, 08:30-09:20",
+                                Color.RED);
                     }
                 }
 
-                if(sectionTimeList.size() == sectionDateList.size()){
+                if (sectionTimeList.size() == sectionDateList.size()) {
                     break;
-                }else{
-                    Util.paintText("Number of entered days must be equal to number of times entered", Color.RED);
+                } else {
+                    Util.paintTextln("Number of entered days must be equal to number of times entered", Color.RED);
                 }
             }
 
@@ -381,26 +385,28 @@ public class CLIAdmin {
             System.out.print("6.\tSection Code: ");
             sectionCode = scanner.nextLine();
 
-            courseSections.add(new CourseSection(studentCapacity, lecturerName, sectionTimeList, sectionDateList, classroom, sectionCode));
+            courseSections.add(new CourseSection(studentCapacity, lecturerName, sectionTimeList, sectionDateList,
+                    classroom, sectionCode));
         }
 
         Prerequisite prerequisite = new Prerequisite(prerequisiteCourses);
 
-        course = new Course(courseCredit, courseECTS, givenSemester, courseName, courseCode, prerequisite, courseSections, courseType);
+        course = new Course(courseCredit, courseECTS, givenSemester, courseName, courseCode, prerequisite,
+                courseSections, courseType);
 
         Util.clearScreen();
 
-        if(adminController.createCourse(course) != null){
+        if (adminController.createCourse(course) != null) {
             Util.sendFeedback("SUCCESS: " + courseCode + " is created.", Color.GREEN);
             return true;
-        } else{
+        } else {
             Util.sendFeedback("FAIL! " + courseCode + " can't created.", Color.RED);
             return false;
         }
 
     }
-    private Course findCourseByCourseCode(String courseCode){
+
+    private Course findCourseByCourseCode(String courseCode) {
         return adminController.findCourseByCourseCode(courseCode);
     }
 }
-
