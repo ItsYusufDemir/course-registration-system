@@ -49,7 +49,7 @@ public class DatabaseManager {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
 
         //Read the JSON files and convert them to list of objects
-        courseList = jsonToqseList(readFile("iteration2/data/courses.json"));
+        courseList = jsonToCourseList(readFile("iteration2/data/courses.json"));
         advisorList = jsonToAdvisorList(readFile("iteration2/data/advisors.json"));
         studentList = jsonToStudentList(readFile("iteration2/data/students.json"));
         constraints = jsonToConstraints(readFile("iteration2/data/constraints.json"));
