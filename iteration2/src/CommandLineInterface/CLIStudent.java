@@ -5,6 +5,7 @@ import java.util.*;
 import iteration2.src.utils.Util;
 import iteration2.src.controllers.StudentController;
 import iteration2.src.enums.Color;
+import iteration2.src.enums.CourseStatus;
 import iteration2.src.models.Course;
 import iteration2.src.models.SelectedCourse;
 import iteration2.src.models.CourseSection;
@@ -66,9 +67,11 @@ public class CLIStudent {
             Util.clearScreen();
             System.out.println(
                     " My Courses\n" +
-                            "**************\n" +
-                            "  Code\t Name\t Section\t Status\n" +
-                            "  ____\t ____\t _______\t ______");
+                            "**************\n" );
+            System.out.printf("    %10s    %50s    %15s    Status\n",  "Code", "Name", "Section");
+                            //"  Code    Name    Section    Status\n" +
+                            //"  ____    ____    _______    ______");
+            System.out.printf("    %10s    %50s    %15s    ______\n",  "____", "____", "_______");      
 
             listSelectedCourses();
 
@@ -124,9 +127,9 @@ public class CLIStudent {
             Util.clearScreen();
             System.out.println(
                     " Avaliable Courses(To Add)\n" +
-                            "**************\n" +
-                            "  Code\t Name\t Section\t Instructor\t Credit\n" +
-                            "  ____\t ____\t _______\t __________\t ______");
+                            "**************\n" );
+            System.out.printf("    %10s    %50s    %15s    %20s    %s\n", "Code", "Name", "Section", "Instructor", "Credit");
+            System.out.printf("    %10s    %50s    %15s    %20s    %s\n", "____", "____", "_______", "__________", "______");
 
             listAvaliableCourseSections();
 
@@ -167,9 +170,9 @@ public class CLIStudent {
             Util.clearScreen();
 
             System.out.println(" Timetable\n" +
-                    "***********\n" +
-                    " Hours/Days\tMonday\tTuesday\tWednesday\tThursday\tFriday\n" +
-                    " __________\t______\t_______\t_________\t________\t______\n");
+                               "***********\n" + 
+                               " Hours/Days    Monday    Tuesday    Wednesday    Thursday    Friday\n" + 
+                               " __________    ______    _______    _________    ________    ______\n");
             printTimeTable();
 
             System.out.println("\n\npress b to go back");
@@ -215,9 +218,8 @@ public class CLIStudent {
         Course course;
         for (CourseSection courseSection : avaliableCourseSections) {
             course = courseSection.findCourseOfCourseSection();
-            System.out.println(rowCount + ". " + course.getCourseCode() + "\t" + course.getCourseName() + "\t"
-                    + courseSection.getSectionCode() + "\t"
-                    + courseSection.getLecturerName() + "\t" + course.getCourseCredit());
+            System.out.printf("%d.  %10s    %50s    %15s    %20s    %d\n", rowCount, course.getCourseCode(), course.getCourseName(),
+                    courseSection.getSectionCode(), courseSection.getLecturerName(), course.getCourseCredit());
             rowCount++;
         }
 
@@ -226,9 +228,24 @@ public class CLIStudent {
     private void listSelectedCourses() {
         int rowCount = 1;
         for (SelectedCourse selectedCourse : studentController.getSelectedCourses()) {
+            
+            System.out.printf( "%d.  %10s    %50s    %15s    " , rowCount, selectedCourse.getCourse().getCourseCode(),
+                                selectedCourse.getCourse().getCourseName(),
+                    selectedCourse.getCourseSection().getSectionCode());
+                    
+            if(selectedCourse.getStatus() == CourseStatus.APPROVED)
+                Util.paintText(selectedCourse.getStatus() + "\n", Color.GREEN);
+            else if(selectedCourse.getStatus() == CourseStatus.PENDING)
+                Util.paintText(selectedCourse.getStatus() + "\n", Color.YELLOW);
+            else if(selectedCourse.getStatus() == CourseStatus.DENIED)
+                Util.paintText(selectedCourse.getStatus() + "\n", Color.RED);
+            else
+                System.out.print(selectedCourse.getStatus() + "\n");
+            /*
             System.out.println(rowCount + ". " + selectedCourse.getCourse().getCourseCode() + "\t"
                     + selectedCourse.getCourse().getCourseName() + "\t"
                     + selectedCourse.getCourseSection().getSectionCode() + "\t" + selectedCourse.getStatus());
+            */
             rowCount++;
         }
     }
@@ -244,14 +261,13 @@ public class CLIStudent {
 
         timeTable = studentController.getTimeTable();
 
-        String[] times = { "08:30-09:20", "09:30-10:20", "10:30-11:20", "11:30-12:20", "12:30 - 13:20", "13:30 - 14:20",
-                "14:30 - 15:20", "15:30 - 16:20" };
+        String[] times = {"08:30-09:20", "09:30-10:20", "10:30-11:20", "11:30-12:20", "12:30-13:20", "13:30-14:20", "14:30-15:20", "15:30-16:20"}; 
 
         for (int i = 0; i < 8; i++) { // 8 is how many hours we have as an option
             System.out.println();
-            System.out.print(times[i] + "\t"); // pritns the time
-
-            // getting the courses for each day at the current hour we are printing
+            System.out.print(times[i] + "    "); // pritns the time
+            
+            //getting the courses for each day at the current hour we are printing 
             monCourses = divideIntoCourses(timeTable[0][i]);
             tueCourses = divideIntoCourses(timeTable[1][i]);
             wedCourses = divideIntoCourses(timeTable[2][i]);
@@ -263,42 +279,70 @@ public class CLIStudent {
             int wedCoursesSize = wedCourses.size();
             int thrCoursesSize = thrCourses.size();
             int friCoursesSize = friCourses.size();
-            // traversing through the days and printing the courses line by line until all
-            // of the courses are printed
-            for (int j = 0; j < monCoursesSize || j < tueCoursesSize || j < wedCoursesSize || j < thrCoursesSize
-                    || j < friCoursesSize; j++) {
-
-                if (monCourses.size() > j && monCourses.get(j) != "") {
-                    System.out.print(monCourses.get(j) + "\t");
-                } else {
-                    System.out.print("     \t");
+            // traversing through the days and printing the courses line by line until all of the courses are printed
+            for(int j = 0; j < monCoursesSize || j < tueCoursesSize || j < wedCoursesSize || j < thrCoursesSize || j < friCoursesSize; j++){
+                
+                if( monCoursesSize>j && monCourses.get(j) != ""){
+                    if(monCoursesSize > 1){
+                        Util.paintText(monCourses.get(j) + " ", Color.RED);
+                    }
+                    else{
+                        Util.paintText(monCourses.get(j) + " ", Color.DEFAULT);
+                    }
+                }
+                else{
+                    System.out.print("          ");
                 }
 
-                if (tueCourses.size() > j && tueCourses.get(j) != "") {
-                    System.out.print(tueCourses.get(j) + "\t");
-                } else {
-                    System.out.print("       \t");
+                if( tueCoursesSize>j && tueCourses.get(j) != ""){
+                    if(tueCoursesSize > 1){
+                        Util.paintText(tueCourses.get(j) + "  ", Color.RED);
+                    }
+                    else{
+                        Util.paintText(tueCourses.get(j) + "  ", Color.DEFAULT);
+                    }
+                }
+                else{
+                    System.out.print("           ");
                 }
 
-                if (wedCourses.size() > j && wedCourses.get(j) != "") {
-                    System.out.print(wedCourses.get(j) + "\t");
-                } else {
-                    System.out.print("        \t");
+                if( wedCoursesSize>j && wedCourses.get(j) != ""){
+                    if(wedCoursesSize > 1){
+                        Util.paintText(wedCourses.get(j) + "    ", Color.RED);
+                    }
+                    else{
+                        Util.paintText(wedCourses.get(j) + "    ", Color.DEFAULT);
+                    }
+                }
+                else{
+                    System.out.print("             ");
                 }
 
-                if (thrCourses.size() > j && thrCourses.get(j) != "") {
-                    System.out.print(thrCourses.get(j) + "\t");
-                } else {
-                    System.out.print("       \t");
+                if( thrCoursesSize>j && thrCourses.get(j) != ""){
+                    if(thrCoursesSize > 1){
+                        Util.paintText(thrCourses.get(j) + "   ", Color.RED);
+                    }
+                    else{
+                        Util.paintText(thrCourses.get(j) + "   ", Color.DEFAULT);
+                    }
+                }
+                else{
+                    System.out.print("            ");
                 }
 
-                if (friCourses.size() > j && friCourses.get(j) != "") {
-                    System.out.print(friCourses.get(j) + "\t");
-                } else {
-                    System.out.print("      \t");
+                if( friCoursesSize>j && friCourses.get(j) != ""){
+                    if(friCoursesSize > 1){
+                        Util.paintText(friCourses.get(j) + " ", Color.RED);
+                    }
+                    else{
+                        Util.paintText(friCourses.get(j) + " ", Color.DEFAULT);
+                    }
+                }
+                else{
+                    System.out.print("          ");
                 }
 
-                System.out.print("\n");
+                System.out.print("\n               ");
             }
             System.out.println(
                     "\n__________________________________________________________________________________________");
