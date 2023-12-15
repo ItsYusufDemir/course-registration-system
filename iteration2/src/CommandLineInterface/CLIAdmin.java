@@ -173,14 +173,10 @@ public class CLIAdmin {
 
     public boolean createNewCoursePage() {
 
-        ArrayList prerequisiteCourses = new ArrayList();
-        ArrayList courseSections = new ArrayList();
-        ArrayList<String> sectionTimeList = new ArrayList();
-        ;
-        ArrayList<String> sectionDateList = new ArrayList();
-        ;
-        Prerequisite prerequisiteInformation;
-        CourseSection courseSection;
+        ArrayList<Course> prerequisiteCourses = new ArrayList<Course>();
+        ArrayList<CourseSection> courseSections = new ArrayList<CourseSection>();
+        ArrayList<String> sectionTimeList = new ArrayList<String>();
+        ArrayList<String> sectionDateList = new ArrayList<String>();
         CourseType courseType;
         Course course;
 

@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import iteration2.src.CommandLineInterface.CLIAdmin;
-import iteration2.src.CommandLineInterface.CLIStudent;
 import iteration2.src.controllers.AdminController;
-import iteration2.src.controllers.StudentController;
 import iteration2.src.utils.DatabaseManager;
 
 public class Admin extends User {
@@ -18,7 +16,7 @@ public class Admin extends User {
         return DatabaseManager.getInstance().getCourses();
     }
 
-    public HashMap<Integer,String> fetchConstraints() {
+    public HashMap<Integer, String> fetchConstraints() {
         return DatabaseManager.getInstance().getConstraints();
     }
 
@@ -39,7 +37,6 @@ public class Admin extends User {
         DatabaseManager.getInstance().saveToDatabase();
         return ret;
     }
-
 
     public Course findCourseByCourseCode(String courseCode) {
         return DatabaseManager.getInstance().findCourseByCourseCode(courseCode);
