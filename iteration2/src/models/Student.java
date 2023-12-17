@@ -69,7 +69,7 @@ public class Student extends User {
             Course course = courseSection.findCourseOfCourseSection();
 
             if (courseSection.checkAvailibilty() && course.checkPrerequisite(this) &&
-                    !this.transcript.acquirePassedCourses().contains(course) &&
+                    !checkIfItWasTaken(course) &&
                     !checkIfItExistsInSelectedCourses(course) && checkCourseType(course)) {
                 availableCourseSections.add(courseSection);
             }
@@ -84,6 +84,16 @@ public class Student extends User {
     private boolean checkIfItExistsInSelectedCourses(Course course) {
         for (SelectedCourse selectedCourse : selectedCourses) {
             if (selectedCourse.getCourse().equals(course)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkIfItWasTaken(Course course) {
+        List<Course> takenCourses = this.transcript.acquirePassedCourses();
+        for (Course takenCourse : takenCourses) {
+            if (takenCourse.getCourseName().equals(course.getCourseName())) {
                 return true;
             }
         }
