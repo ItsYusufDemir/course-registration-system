@@ -60,7 +60,7 @@ public class CLIStudent {
 
     }
 
-    public void showMyCoursesPage() {
+    private void showMyCoursesPage() {
         shouldQuit = true;
 
         while (shouldQuit) {
@@ -120,7 +120,7 @@ public class CLIStudent {
         }
     }
 
-    public void showAddCoursePage() {
+    private void showAddCoursePage() {
         shouldQuit = true;
 
         while (shouldQuit) {
@@ -166,7 +166,7 @@ public class CLIStudent {
 
     }
 
-    public void showTimetablePage() {
+    private void showTimetablePage() {
         shouldQuit = true;
         while (shouldQuit) {
             Util.clearScreen();
