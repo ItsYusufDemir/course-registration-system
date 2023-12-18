@@ -71,7 +71,7 @@ public class CLIAdvisor {
         }
     }
 
-    public boolean showStudentPage(List<Student> students) {
+    private boolean showStudentPage(List<Student> students) {
         boolean isInvalid = false;
         while (true) {
             if (!isInvalid) {
@@ -134,7 +134,7 @@ public class CLIAdvisor {
         }
     }
 
-    public boolean coursesOfStudentPage(Student student) {
+    private boolean coursesOfStudentPage(Student student) {
 
         boolean isInvalid = false;
         List<SelectedCourse> courses = student.fetchSelectedCoursesForAdvisor();

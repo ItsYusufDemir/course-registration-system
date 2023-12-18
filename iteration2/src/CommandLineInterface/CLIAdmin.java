@@ -50,7 +50,7 @@ public class CLIAdmin {
 
     }
 
-    public void courseListPage() {
+    private void courseListPage() {
         Util.clearScreen();
         scanner = new Scanner(System.in);
         List<Course> courses = adminController.getCourseList();
@@ -104,7 +104,7 @@ public class CLIAdmin {
 
     }
 
-    public void constraintPage() {
+    private void constraintPage() {
         Util.clearScreen();
         scanner = new Scanner(System.in);
         HashMap<Integer, String> editedAttributes = adminController.getConstraints();
@@ -172,7 +172,7 @@ public class CLIAdmin {
 
     }
 
-    public boolean createNewCoursePage() {
+    private boolean createNewCoursePage() {
 
         ArrayList<Course> prerequisiteCourses = new ArrayList<Course>();
         ArrayList<CourseSection> courseSections = new ArrayList<CourseSection>();

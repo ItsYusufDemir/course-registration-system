@@ -3111,7 +3111,7 @@
     "notifications": [],
     "email": "bilalkeskin@marun.edu.tr",
     "identityNumber": "098765432",
-    "currentSemester": 3,
+    "currentSemester": 4,
     "selectedCourses": [],
     "advisorOfStudent":   {
       "userId": "111112",
@@ -4050,7 +4050,7 @@
     "notifications": [],
     "email": "kemalaksu@marun.edu.tr",
     "identityNumber": "333444555",
-    "currentSemester": 3,
+    "currentSemester": 4,
     "selectedCourses": [],
     "advisorOfStudent": {
       "userId": "111111",
@@ -4991,7 +4991,7 @@
     "notifications": [],
     "email": "melekakpinar@marun.edu.tr",
     "identityNumber": "009988556",
-    "currentSemester": 3,
+    "currentSemester": 4,
     "selectedCourses": [],
     "advisorOfStudent":  {
       "userId": "111113",
@@ -5931,7 +5931,7 @@
     "notifications": [],
     "email": "aslihanakyuz@marun.edu.tr",
     "identityNumber": "44422227777",
-    "currentSemester": 3,
+    "currentSemester": 4,
     "selectedCourses": [],
     "advisorOfStudent":  {
       "userId": "111114",
@@ -6871,7 +6871,7 @@
   "notifications": [],
   "email": "duyguyilmaz@marun.edu.tr",
   "identityNumber": "457645671",
-  "currentSemester": 3,
+  "currentSemester": 4,
   "selectedCourses": [],
   "advisorOfStudent":   {
     "userId": "111112",
