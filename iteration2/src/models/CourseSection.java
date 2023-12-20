@@ -1,5 +1,7 @@
 package iteration2.src.models;
+
 import iteration2.src.utils.DatabaseManager;
+import iteration2.src.utils.Util;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -17,7 +19,8 @@ public class CourseSection {
     public CourseSection() {
     }
 
-    public CourseSection(int studentCapacity, String lecturerName, ArrayList<String> sectionTime, ArrayList<String> sectionDay, String classroom, String sectionCode) {
+    public CourseSection(int studentCapacity, String lecturerName, ArrayList<String> sectionTime,
+            ArrayList<String> sectionDay, String classroom, String sectionCode) {
         this.studentCapacity = studentCapacity;
         this.lecturerName = lecturerName;
         this.sectionTime = sectionTime;
@@ -27,37 +30,37 @@ public class CourseSection {
         this.studentCountInsideCourseSection = 0;
     }
 
-    public boolean checkAvailibilty(){
-        if(studentCapacity >= studentCountInsideCourseSection){
+    public boolean checkAvailibilty() {
+        if (studentCapacity >= studentCountInsideCourseSection) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    public int incrementStudentCount(){
+    public int incrementStudentCount() {
         studentCountInsideCourseSection++;
+        Util.getLogger().info("Student count incremented. Current section count: " + studentCountInsideCourseSection);
         return studentCountInsideCourseSection;
     }
 
-    public int decrementStudentCount(){
+    public int decrementStudentCount() {
         studentCountInsideCourseSection--;
+        Util.getLogger().info("Student count decremented. Current section count: " + studentCountInsideCourseSection);
         return studentCountInsideCourseSection;
     }
 
-    public Course findCourseOfCourseSection(){
+    public Course findCourseOfCourseSection() {
         List<Course> courses = DatabaseManager.getInstance().getCourses();
         for (Course course : courses) {
 
             String courseCode = this.getSectionCode().substring(0, this.getSectionCode().indexOf("."));
-            if(course.getCourseCode().equals(courseCode)){
+            if (course.getCourseCode().equals(courseCode)) {
                 return course;
             }
         }
         return null;
     }
-
 
     public int getStudentCapacity() {
         return studentCapacity;
@@ -71,8 +74,6 @@ public class CourseSection {
         return sectionTime;
     }
 
-    
-
     public String getClassroom() {
         return classroom;
     }
@@ -80,7 +81,6 @@ public class CourseSection {
     public String getSectionCode() {
         return sectionCode;
     }
-
 
     public int getStudentCountInsideCourseSection() {
         return studentCountInsideCourseSection;
@@ -118,7 +118,4 @@ public class CourseSection {
         this.studentCountInsideCourseSection = studentCountInsideCourseSection;
     }
 
-    
-
-    
 }

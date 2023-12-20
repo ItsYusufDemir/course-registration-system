@@ -18,11 +18,13 @@ public class AuthenticateService {
 
         for (User user : users) {
             if (user.checkCredentials(userID, password)) {
+                Util.getLogger().info("User:" + userID + " logged in");
                 return user;
+
             }
 
         }
-
+        Util.getLogger().info("User:" + userID + " failed to log in");
         return null;
 
     }

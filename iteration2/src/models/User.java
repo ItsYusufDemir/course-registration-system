@@ -3,6 +3,7 @@ package iteration2.src.models;
 import java.util.List;
 
 import iteration2.src.interfaces.Showable;
+import iteration2.src.utils.Util;
 
 public abstract class User implements Showable {
     private String userId;
@@ -26,6 +27,7 @@ public abstract class User implements Showable {
 
     public void logout() {
         System.out.println("User logged out");
+        Util.getLogger().info("User:" + userId + " logged out");
         return;
     }
 
@@ -95,7 +97,4 @@ public abstract class User implements Showable {
         notifications.clear();
     }
 
-    
-
-    
 }

@@ -1,5 +1,7 @@
 package iteration2.src.models;
+
 import iteration2.src.enums.CourseStatus;
+import iteration2.src.utils.Util;
 
 public class SelectedCourse {
     private Course course;
@@ -17,18 +19,19 @@ public class SelectedCourse {
 
     public void setStatus(CourseStatus status) {
         this.status = status;
+        Util.getLogger().info("Course (" + course.getCourseCode() + ") status changed to :" + status.toString());
     }
 
-    /* 
-    public boolean mayitbeApproved() {
-        if (status == CourseStatus.APPROVED) {
-            return true;
-        } 
-        else {
-            return false;
-        }
-    }
-    */
+    /*
+     * public boolean mayitbeApproved() {
+     * if (status == CourseStatus.APPROVED) {
+     * return true;
+     * }
+     * else {
+     * return false;
+     * }
+     * }
+     */
 
     public Course getCourse() {
         return course;
