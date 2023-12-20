@@ -1,11 +1,35 @@
 package iteration2.src.utils;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+
 import iteration2.src.interfaces.Color;
 
 public class Util {
+
+    private static Logger logger;
+
+    public static void initLogger() {
+        LogManager logManager = LogManager.getLogManager();
+        try {
+            FileInputStream fis = new FileInputStream("iteration2/logging.properties");
+            logManager.readConfiguration(fis);
+        } catch (SecurityException | IOException e) {
+            e.printStackTrace();
+        }
+
+        logger = logManager.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    }
+
+    public static Logger getLogger() {
+        return logger;
+    }
+
     public static void clearScreen() {
         // System.out.print("\033[H\033[2J");
         // System.out.flush();

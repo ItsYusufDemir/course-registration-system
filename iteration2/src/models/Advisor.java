@@ -29,6 +29,8 @@ public class Advisor extends User {
 
         if (selectedCourse.getStatus() != CourseStatus.PENDING) {
             Util.sendFeedback("This course is not pending for approval.", Color.RED);
+            Util.getLogger().warning(this.getUserId() + " - Course: " + selectedCourse.getCourse().getCourseCode()
+                    + " is not pending for approval.");
             return;
         }
 
@@ -38,6 +40,9 @@ public class Advisor extends User {
 
         student.getTranscript().getTakenCourses().add(newCourse);
 
+        Util.getLogger().info(this.getUserId() + " - Course: " + selectedCourse.getCourse().getCourseCode()
+                + " is approved for student: " + student.getUserId());
+
         // sadece pending olanların size ı 0 ise
         for (SelectedCourse course : student.getSelectedCourses()) {
             if (course.getStatus() == CourseStatus.PENDING) {
@@ -46,6 +51,7 @@ public class Advisor extends User {
         }
 
         student.setApprovalStatus(ApprovalStatus.DONE);
+        Util.getLogger().info(this.getUserId() + " - Student: " + student.getUserId() + " is approved.");
 
         DatabaseManager.getInstance().saveToDatabase();
     }
@@ -58,10 +64,10 @@ public class Advisor extends User {
         }
 
         selectedCourse.setStatus(CourseStatus.DENIED);
-
         String notification = "Your " + selectedCourse.getCourse().getCourseName() + " is rejected.";
         setNotificationToStudent(student, notification);
-
+        Util.getLogger().info(this.getUserId() + " - Course: " + selectedCourse.getCourse().getCourseCode()
+                + " is rejected for student: " + student.getUserId());
         // sadece pending olanların size ı 0 ise
         for (SelectedCourse course : student.getSelectedCourses()) {
             if (course.getStatus() == CourseStatus.PENDING) {
@@ -69,6 +75,7 @@ public class Advisor extends User {
             }
         }
 
+        Util.getLogger().info(this.getUserId() + " - Student: " + student.getUserId() + " is approved.");
         student.setApprovalStatus(ApprovalStatus.DONE);
 
         DatabaseManager.getInstance().saveToDatabase();

@@ -2,6 +2,8 @@ package iteration2.src.models;
 
 import java.util.HashMap;
 
+import iteration2.src.utils.Util;
+
 public class Constraint {
     private int maxNumberOfCoursesStudentTake;
     private boolean addDropWeek;
@@ -53,7 +55,5 @@ public class Constraint {
         attributes.put(3, String.valueOf(minRequiredECTSForTermProject));
         return attributes;
     }
-
-    
 
 }

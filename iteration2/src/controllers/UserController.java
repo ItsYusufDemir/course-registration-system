@@ -15,12 +15,13 @@ public class UserController {
         AuthenticateService authenticateService = new AuthenticateService();
         return currentUser = authenticateService.authenticateUser(username, password);
     }
-/*
-    void logoutUser() {
-        currentUser.logout();
-        currentUser = null;
-    }
-*/
+
+    /*
+     * void logoutUser() {
+     * currentUser.logout();
+     * currentUser = null;
+     * }
+     */
     User getCurrentUser() {
         return currentUser;
     }

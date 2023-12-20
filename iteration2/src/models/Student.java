@@ -149,14 +149,20 @@ public class Student extends User {
 
         if (selectedCourses.size() >= Integer.parseInt(constraints.get(1))) {
             Util.sendFeedback("You can not take more than " + constraints.get(1) + " courses in one term.", Color.RED);
+            Util.getLogger().warning(this.getUserId() + " - Student can not take more than " + constraints.get(1)
+                    + " courses in one term.");
             return false;
         }
 
         if (!selectedCourses.contains(selectedCourse)) {
             selectedCourses.add(selectedCourse);
             DatabaseManager.getInstance().saveToDatabase();
+            Util.getLogger().info(this.getUserId() + " - Course: " + selectedCourse.getCourse().getCourseCode()
+                    + " added to student: " + this.getUserId());
             return true;
         } else {
+            Util.getLogger().warning(this.getUserId() + " - Course: " + selectedCourse.getCourse().getCourseCode()
+                    + " is already added to student: " + this.getUserId());
             return false;
 
         }
@@ -166,8 +172,12 @@ public class Student extends User {
         if (selectedCourses.contains(selectedCourse) && selectedCourse.getStatus() != CourseStatus.PENDING) {
             selectedCourses.remove(selectedCourse);
             DatabaseManager.getInstance().saveToDatabase();
+            Util.getLogger().info(this.getUserId() + " - Course: " + selectedCourse.getCourse().getCourseCode()
+                    + " deleted from student: " + this.getUserId());
             return true;
         }
+        Util.getLogger().warning(this.getUserId() + " - Course: " + selectedCourse.getCourse().getCourseCode()
+                + " is not deleted from student: " + this.getUserId());
         return false;
     }
 
@@ -177,7 +187,6 @@ public class Student extends User {
         cliStudent.menuPage();
     }
 
-    // TEST YAZ BUNA
     public boolean checkCompulsoryCourses() {
         List<CourseGrade> courseGrades = this.getTranscript().getTakenCourses();
         for (CourseGrade courseGrade : courseGrades) {
@@ -187,9 +196,9 @@ public class Student extends User {
                     if (!selectedCourse.getCourse().equals(courseGrade.getCourse())) {
                         for (CourseSection section : this.listAvailableCourseSections()) {
                             if (section.findCourseOfCourseSection().equals(courseGrade.getCourse())) {
-                                Util.paintText(
-                                        "You have to take " + courseGrade.getCourse().getCourseName() + " again.",
-                                        Color.RED);
+                                Util.getLogger().warning("Student: " + this.getUserId() + " has failed course: "
+                                        + courseGrade.getCourse().getCourseCode()
+                                        + " and has not added it to his/her courses.");
                                 return true;
 
                             }
@@ -214,6 +223,8 @@ public class Student extends User {
         }
         if (this.approvalStatus == ApprovalStatus.PENDING) {
             Util.sendFeedback("You already sent your courses to approval!", Color.RED);
+            Util.getLogger().warning(this.getUserId() + " - Student: " + this.getUserId()
+                    + " already sent his/her courses to approval.");
             return;
         }
 
@@ -227,6 +238,8 @@ public class Student extends User {
 
         if (numberOfDraftCourses == 0) {
             Util.sendFeedback("You have no course to send to approval!", Color.RED);
+            Util.getLogger().warning(this.getUserId() + " - Student: " + this.getUserId()
+                    + " has no course to send to approval.");
             return;
         }
 
@@ -255,7 +268,8 @@ public class Student extends User {
                 .addNotification(this.getFirstName() + " " + this.getLastName() + " has requested a course approval.");
 
         Util.sendFeedback("Courses are sent to advisor", Color.GREEN);
-
+        Util.getLogger()
+                .info(this.getUserId() + " - Student: " + this.getUserId() + " sent his/her courses to approval.");
         DatabaseManager.getInstance().saveToDatabase();
     }
 
