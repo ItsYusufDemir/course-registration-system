@@ -14,7 +14,7 @@ public class Util {
 
     private static Logger logger;
 
-    public static void initLogger() {
+    private static void initLogger() {
         LogManager logManager = LogManager.getLogManager();
         try {
             FileInputStream fis = new FileInputStream("iteration2/logging.properties");
@@ -27,6 +27,8 @@ public class Util {
     }
 
     public static Logger getLogger() {
+        if (logger == null)
+            initLogger();
         return logger;
     }
 
