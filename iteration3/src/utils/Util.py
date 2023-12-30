@@ -32,7 +32,7 @@ class Util:
             Util.paintTextln(".", Color.YELLOW)
             time.sleep(1)
 
-    def isValidNumber(string : str):
+    def isValidNumber(string : str) -> int:
         try:
             return int(string)
         except ValueError:
@@ -44,17 +44,17 @@ class Util:
             return True
         return False
 
-    def makeArrayList(pattern: str, string: str):
+    def makeArrayList(pattern: str, string: str)->[str]:
         return string.split(pattern)
     
 
-    def isInputFormatTrueForDay(list:[str]):
+    def isInputFormatTrueForDay(list:[str])->bool:
         for(day) in list:
             if day not in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]:
                 return False
         return True
     
-    def isInputFormatTrueForTime(list:[str]):
+    def isInputFormatTrueForTime(list:[str])->bool:
         for(time) in list:
             if time != 11:
                 return False
@@ -73,7 +73,7 @@ class Util:
         return True
     
 
-    def divideIntoCourses(string:str):
+    def divideIntoCourses(string:str)->[str]:
         list = string.split("-")
         # if a empty string is present in the list, remove the comment below
         # list.remove("")
