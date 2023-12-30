@@ -1,3 +1,5 @@
+from iteration3.src.utils import Util
+from iteration3.src.interfaces import Color
 from src.enums.CourseStatus import CourseStatus
 from src.models.SelectedCourse import SelectedCourse
 
@@ -13,7 +15,7 @@ class CLIStudent(object):
     def _menuPage(self):
         
         while(self._shouldQuit):
-            #Util.clearScreen() #TODO: Add this
+            Util.clearScreen()
             print("\n\n")
             print(" Menu\n" +
                             "********\n" +
@@ -28,12 +30,12 @@ class CLIStudent(object):
             elif _choice == "q":
                 self._shouldQuit = False
             else:
-                print("Invalid input" + _choice) # TODO: Add color
+                Util.sendFeedback("Invalid input" + _choice, Color.RED)
 
 
     def _showMyCoursesPage(self):
         while(self._shouldQuit):
-            #Util.clearScreen() #TODO: Add this
+            Util.clearScreen()
             print("\n\n")
             print(" My Courses\n" +
                   "**************\n")
@@ -57,11 +59,11 @@ class CLIStudent(object):
                     self._showAddCoursePage()
                 elif self._choice == "2":
                     self._choice = input("Enter the row number of the course you want to delete : ")
-                    if self._choice.isdigit():  #TODO: use util validate number method
+                    if Util.validateNumber(self._choice):  
                         if self._deleteCourse():
-                            print("Course deleted successfully") #TODO: Add color
+                            Util.sendFeedback("Course deleted successfully", Color.GREEN)
                         else:
-                            print("Course deletion failed")
+                            Util.sendFeedback("Course deletion failed", Color.RED)
                     else:
                         raise Exception("Invalid input" + self._choice)
                 elif self._choice == "3":
@@ -76,12 +78,12 @@ class CLIStudent(object):
                     raise Exception("Invalid input" + self._choice)
                     
             except Exception as e:
-                print(e) #TODO: change to Util send feedback method
+                Util.sendFeedback(e, Color.RED)
     
     def _showAddCoursePage(self):
         self._shouldQuit = True
         while(self._shouldQuit):
-            #Util.clearScreen() #TODO: Add this
+            Util.clearScreen()
             print("\n\n")
             print(" Add Course\n" +
                   "**************\n")
@@ -103,12 +105,12 @@ class CLIStudent(object):
                 elif self._choice == "q":
                     self._shouldQuit = False
 
-                elif self._choice.isdigit(): #TODO: use util validate number method
+                elif Util.validateNumber(self._choice): 
 
                     if self._addCourse(self._choice):
-                        print("Course added successfully") # TODO: Add color
+                        Util.sendFeedback("Course added successfully", Color.GREEN)
                     else:
-                        print("Course addition failed")
+                        Util.sendFeedback("Course addition failed", Color.RED)
 
                 else:
                     raise Exception("Invalid input" + self._choice)
@@ -118,8 +120,8 @@ class CLIStudent(object):
     def _showTimeTablePage(self):
         self._shouldQuit = True
         while(self._shouldQuit):
-            #Util.clearScreen()
-            #Util.printTimeTable(self._studentController.getStudentTimeTable()) #TODO: Add this
+            Util.clearScreen()
+            Util.printTimeTable(self._studentController.getStudentTimeTable())
             print("\n\n press b to go back\n")
             print("Press q to quit\n")
 
@@ -133,7 +135,7 @@ class CLIStudent(object):
                 else:
                     raise Exception("Invalid input" + self._choice)
             except Exception as e:
-                print(e) #TODO: change to Util send feedback method
+                Util.sendFeedback(e, Color.RED)
     
     def _addCourse(self, str):
         rowNumber = int(str) #TODO: use util get row num method
@@ -165,11 +167,11 @@ class CLIStudent(object):
                     selectedCourse.getCourseSection().getSectionCode())
             
             if selectedCourse.getStatus() == CourseStatus.APPROVED:
-                print(selectedCourse.getStatus() + "\n") #TODO: Add color
+                Util.paintText(selectedCourse.getStatus() + "\n", Color.GREEN)
             elif selectedCourse.getStatus() == CourseStatus.PENDING:
-                print(selectedCourse.getStatus() + "\n")
+                Util.paintText(selectedCourse.getStatus() + "\n", Color.YELLOW)
             elif selectedCourse.getStatus() == CourseStatus.DENIED:
-                print(selectedCourse.getStatus() + "\n")
+                Util.paintText(selectedCourse.getStatus() + "\n", Color.RED)
             else:
                 print(selectedCourse.getStatus() + "\n")
             
