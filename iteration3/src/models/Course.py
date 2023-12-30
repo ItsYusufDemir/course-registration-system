@@ -10,13 +10,22 @@ class Course:
         self._courseSections = courseSections
         self._courseType = courseType
 
-    def checkPrerequisite(student):
-        None
+
+    def checkPrerequisite(self, student):
+        if self._prerequisiteInformation is None:
+            return True
+        elif not self._prerequisiteInformation.getPrerequisiteOfCourses():
+            return True
+        else:
+            return self._prerequisiteInformation.checkPrerequisiteCoursePassed(student, self)
+        
     
     def acquireAvailableSections(self):
         availableCourseSections = []
-        for i in self._courseSections:
-            None
+        for courseSection in self._courseSections:
+            if courseSection.checkAvailability():
+                availableCourseSections.append(courseSection)
+        return availableCourseSections
     
     
 
@@ -25,6 +34,11 @@ class Course:
             return True
         else:
             return False
+        
+    def getCourseCode(self):
+        return self._courseCode
 
+    def getPrerequisiteInformation(self):
+        return self._prerequisiteInformation
 
     
