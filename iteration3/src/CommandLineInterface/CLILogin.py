@@ -1,6 +1,6 @@
-from src.controllers.UserController import UserController
-from src.models.User import User
-from src.utils.Util import Util
+from controllers import UserController
+from models import User
+from utils import Util
 
 class CLILogin(object):
      
