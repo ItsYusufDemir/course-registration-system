@@ -1,3 +1,6 @@
+import logging
+from iteration3.src.utils.DatabaseManager import DatabaseManager
+
 class CourseSection:
 
     def __init__(self, studentCapacity, lecturerName, sectionTime, sectionDay, classroom, sectionCode, studentCountInsideCourseSection):
@@ -15,22 +18,21 @@ class CourseSection:
         else:
             return False
         
-    
     def incrementStudentCount(self):
         self._studentCountInsideCourseSection += 1
-        # TODO: logging
+        logging.log(logging.INFO, "Student count incremented. Current section count: " + self._studentCountInsideCourseSection)
         return self._studentCountInsideCourseSection
     
     def decrementStudentCount(self):
         self._studentCountInsideCourseSection -= 1
-        # TODO: logging
+        logging.log(logging.INFO, "Student count decremented. Current section count: " + self._studentCountInsideCourseSection)
         return self._studentCountInsideCourseSection
     
     def findCourseOfCourseSection(self):
         index = self._sectionCode.index(".")
         courseCode = self._sectionCode[:index]
 
-        courses = [] # TODO: DBden çekilecek
+        courses = DatabaseManager().getCourseList()
         for course in courses:
             if course.getCourseCode == courseCode:
                 return course
