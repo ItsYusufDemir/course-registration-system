@@ -1,0 +1,8 @@
+from enum import Enum
+
+class CourseType(Enum):
+    COMPULSORY = 1
+    NONTECHNICAL_ELECTIVE = 2
+    TECHNICAL_ELECTIVE = 3
+    UNIVERSITY_ELECTIVE = 4
+    FACULTY_ELECTIVE = 5
