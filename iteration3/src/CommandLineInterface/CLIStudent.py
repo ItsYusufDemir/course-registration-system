@@ -13,7 +13,7 @@ class CLIStudent(object):
     def _menuPage(self):
         
         while(self._shouldQuit):
-            #Util.clearScreen()
+            #Util.clearScreen() #TODO: Add this
             print("\n\n")
             print(" Menu\n" +
                             "********\n" +
@@ -33,7 +33,7 @@ class CLIStudent(object):
 
     def _showMyCoursesPage(self):
         while(self._shouldQuit):
-            #Util.clearScreen()
+            #Util.clearScreen() #TODO: Add this
             print("\n\n")
             print(" My Courses\n" +
                   "**************\n")
@@ -76,12 +76,12 @@ class CLIStudent(object):
                     raise Exception("Invalid input" + self._choice)
                     
             except Exception as e:
-                print(e) #TODO: change to Util sen feedback method
+                print(e) #TODO: change to Util send feedback method
     
     def _showAddCoursePage(self):
         self._shouldQuit = True
         while(self._shouldQuit):
-            #Util.clearScreen()
+            #Util.clearScreen() #TODO: Add this
             print("\n\n")
             print(" Add Course\n" +
                   "**************\n")
@@ -119,7 +119,7 @@ class CLIStudent(object):
         self._shouldQuit = True
         while(self._shouldQuit):
             #Util.clearScreen()
-            #Util.printTimeTable(self._studentController.getStudentTimeTable())
+            #Util.printTimeTable(self._studentController.getStudentTimeTable()) #TODO: Add this
             print("\n\n press b to go back\n")
             print("Press q to quit\n")
 
