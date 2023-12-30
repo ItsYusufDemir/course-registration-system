@@ -1,7 +1,7 @@
-from iteration3.src.utils import Util
-from iteration3.src.interfaces import Color
-from src.enums.CourseStatus import CourseStatus
-from src.models.SelectedCourse import SelectedCourse
+from utils import Util
+from interfaces import Color
+from enums.CourseStatus import CourseStatus
+from models.SelectedCourse import SelectedCourse
 
 class CLIStudent(object):
     

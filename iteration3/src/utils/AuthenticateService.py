@@ -1,5 +1,5 @@
 import logging
-from src.utils.DatabaseManager import DatabaseManager
+from utils.DatabaseManager import DatabaseManager
 
 class AuthenticateService(object):
     
