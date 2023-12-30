@@ -1,4 +1,5 @@
 #beyza
+from enums.CourseResult import CourseResult
 class CourseGrade:
     def __init__(self, course, letterGrade, courseResult):
         self.course = course

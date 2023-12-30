@@ -1,5 +1,5 @@
-from interfaces import Showable
 import logging
+from interfaces.Showable import Showable
 
 class User(Showable):
     def __init__(self, userId, password, firstName, lastName, status, notifications):

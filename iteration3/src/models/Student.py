@@ -1,15 +1,16 @@
 #beyza
-from enums import ApprovalStatus
-import User
+from enums.ApprovalStatus import ApprovalStatus
+from models.User import User
 class Student(User):
-    def __init__(self, userID, password, firstName, lastName, status, email, identityNumber, currentSemester, selectedCourses, advisorOfStudent, transcript):
-        super().__init__(userID, password, firstName, lastName, status)
+    def __init__(self, userId, password, firstName, lastName, status, notifications, email, identityNumber, currentSemester,
+                  selectedCourses, advisorOfStudent, approvalStatus, transcript):
+        super().__init__(userId, password, firstName, lastName, status, notifications)
         self.email = email
         self.identityNumber = identityNumber
         self.currentSemester = currentSemester
         self.selectedCourses = selectedCourses
         self.advisorOfStudent = advisorOfStudent
-        self.approvalStatus = ApprovalStatus.DONE
+        self.approvalStatus = approvalStatus
         self.transcript = transcript
         
     def listAvailableCourseSections(self):

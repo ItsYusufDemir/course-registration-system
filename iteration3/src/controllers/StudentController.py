@@ -1,5 +1,5 @@
 #beyza
-from models import Student
+from models.Student import Student
 class StudentController:
     def __init__(self, currentStudent):
         self.currentStudent = currentStudent

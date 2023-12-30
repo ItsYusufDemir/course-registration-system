@@ -1,13 +1,20 @@
-import iteration3.src.models.User as User
+from CommandLineInterface.CLIAdvisor import CLIAdvisor
+from enums.ApprovalStatus import ApprovalStatus
+from enums.CourseStatus import CourseStatus
+from interfaces.Color import Color
+from models.User import User
+from models.CourseGrade import CourseGrade
+from utils.DatabaseManager import DatabaseManager
+from utils.Util import Util
 
 
 class Advisor(User):
 
-    def __init__(self, userID, password, firstName, lastName, status):
-        super().__init__(userID, password, firstName, lastName, status)
+    def __init__(self, userId, password, firstName, lastName, status, notifications):
+        super().__init__(userId, password, firstName, lastName, status, notifications)
 
-    def get myPage(self):
-        cliAdvisor = cliAdvisor()
+    def getMyPage(self):
+        cliAdvisor = CLIAdvisor()
         cliAdvisor.menuPage()
     
     def acceptCourse(self, student, selectedCourse):
@@ -31,7 +38,7 @@ class Advisor(User):
             if(course.getStatus() == CourseStatus.PENDING):
                 return
 
-        student.setStatus(StudentStatus.DONE)
+        student.setStatus(ApprovalStatus.DONE)
         Util.getLogger().info(self.getUserId() + " - Student: " + student.getUserId() + " is approved.")
 
         DatabaseManager.getInstance().saveToDatabase()
@@ -48,7 +55,7 @@ class Advisor(User):
         selectedCourse.setStatus(CourseStatus.DENIED)
 
         notification = "Your " + selectedCourse.getCourse().getCourseCode() + " course is rejected."
-        setNotificationToStudent(student, notification)
+        self.setNotificationToStudent(student, notification)
 
         Util.getLogger().info(self.getUserId() + " - Course: " + selectedCourse.getCourse().getCourseCode()
                 + " is rejected for student: " + student.getUserId())
@@ -58,16 +65,16 @@ class Advisor(User):
                 return
             
         Util.getLogger().info(self.getUserId() + " - Student: " + student.getUserId() + " is approved.")
-        student.setApproved(StudentStatus.DONE)
+        student.setApproved(ApprovalStatus.DONE)
 
         DatabaseManager.getInstance().saveToDatabase()
 
 
 
-        def fetchAdvisedStudents(self):
-            return DatabaseManager.getInstance().fetchAdvisedStudents(self)
+    def fetchAdvisedStudents(self):
+        return DatabaseManager.getInstance().fetchAdvisedStudents(self)
 
 
-        def setNotificationToStudent(self, student, notification):
-            student.addNotification(notification)
-            DatabaseManager.getInstance().saveToDatabase()
+    def setNotificationToStudent(self, student, notification):
+        student.addNotification(notification)
+        DatabaseManager.getInstance().saveToDatabase()

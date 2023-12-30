@@ -1,14 +1,5 @@
 import json
-
-import os
-import sys
 from typing import Dict
-from iteration3.src.models.Constraint import Constraint
-
-
-#from ..models.Constraint import Constraint
-#from iteration3.src.models.Course import Course
-#from iteration3.src.models.Student import Student
 
 class DatabaseManager:
     _instance = None
@@ -28,34 +19,39 @@ class DatabaseManager:
         return cls._instance
 
     def initialize(self):
+
+        from models.Admin import Admin
+        from models.Advisor import Advisor
+        from models.Constraint import Constraint
+        from models.Course import Course
+        from models.Student import Student
+
+
         #Read json files and store them in the corresponding lists
 
-        # with open("iteration3/data/courses.json", "r") as json_file:
-        #     coursesJsonString = json.load(json_file)
-        #     course_list = [Course(**courseJsonString) for courseJsonString in coursesJsonString]
+        with open("iteration3/data/courses.json", "r") as json_file:
+            coursesJsonString = json.load(json_file)
+            self.courseList = [Course(**courseJsonString) for courseJsonString in coursesJsonString]
         
         
-        # with open("iteration3/data/students.json", "r") as json_file:
-        #     studentsJsonString = json.load(json_file)
-        #     student_list = [Student(**studentJsonString) for studentJsonString in studentsJsonString]
+        with open("iteration3/data/students.json", "r") as json_file:
+            studentsJsonString = json.load(json_file)
+            self.studentList = [Student(**studentJsonString) for studentJsonString in studentsJsonString]
 
        
-        # with open("iteration3/data/advisors.json", "r") as json_file:
-        #     advisorsJsonString = json.load(json_file)
-        #     advisor_list = [Advisor(**advisorJsonString) for advisorJsonString in advisorsJsonString]
+        with open("iteration3/data/advisors.json", "r") as json_file:
+            advisorsJsonString = json.load(json_file)
+            self.advisorList = [Advisor(**advisorJsonString) for advisorJsonString in advisorsJsonString]
         
         with open("iteration3/data/constraints.json", "r") as json_file:
             constraintsJsonString = json.load(json_file)
             self.constraintList = [Constraint(**constraintJsonString) for constraintJsonString in constraintsJsonString]
 
-        """
         with open("iteration3/data/admins.json", "r") as json_file:
             adminsJsonString = json.load(json_file)
-            admin_list = [Admin(**adminJsonString) for adminJsonString in adminsJsonString]
-        """
+            self.adminList = [Admin(**adminJsonString) for adminJsonString in adminsJsonString]
+       
 
-        
-    
     def saveTranscriptsToDatabase(self):
         for student in self.studentList:
             transcript = [student.transcript]

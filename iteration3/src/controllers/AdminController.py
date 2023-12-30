@@ -1,5 +1,3 @@
-from models.Admin import Admin
-
 class AdminController:
     def __init__(self, currentAdmin):
         self._currentAdmin = currentAdmin
