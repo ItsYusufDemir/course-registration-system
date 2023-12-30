@@ -1,4 +1,4 @@
-from iteration3.src.interfaces.Showable import Showable
+from interfaces import Showable
 import logging
 
 class User(Showable):
@@ -14,7 +14,7 @@ class User(Showable):
         print("User logged out")
         logging.log(logging.INFO, "User: "+self.userId+" logged out")
    
-    def checkCredentials(self, userId, password):
+    def checkCredentials(self, userId, password)->bool:
         if self.userId == userId and self.password == password:
             return True
         else:
