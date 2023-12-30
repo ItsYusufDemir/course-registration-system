@@ -36,7 +36,8 @@ public class DatabaseManager {
 
     //Singleton pattern
     public static DatabaseManager getInstance() {
-        if (instance == null) {
+        if (instance 
+        == null) {
             instance = new DatabaseManager();
             instance.initialize();
         }

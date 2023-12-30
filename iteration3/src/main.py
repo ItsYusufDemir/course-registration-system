@@ -1,17 +1,22 @@
-list = ["elma", "armut", "salam"]
+import os
+import sys
+from dotenv import load_dotenv
 
-for i in list:
-    print(i)
+#set python path
+load_dotenv()
+sys.path.insert(0, os.getenv("PYTHONPATH"))
 
-my_list = [10, 20, 30, 40, 50]
+from iteration3.src.models.CourseRegistrationSystem import CourseRegistrationSystem
+from iteration3.src.utils.Util import Util
 
-# Aranan öğenin indeksini bulma
-aranan_indeks = my_list.index(30)
-print("Aranan öğenin indeksi:", aranan_indeks)
+class Main:
+    @staticmethod
+    def main():
+        # Create the course registration system and start it
+        courseRegistrationSystem = CourseRegistrationSystem()
+        Util.getLogger().info("Course registration system starting.")
+        courseRegistrationSystem.start()
 
-my_string = "Python_Programming"
+if __name__ == "__main__":
+    Main.main()
 
-# Get substring from the beginning to index 6 (excluding 6)
-substring = my_string[:6]
-print(substring)
-print(1==2)

@@ -1,7 +1,7 @@
 class Constraint:
-    def __init__(self, maxNumberOfCoursesStudentTake, isAddDropWeek, minRequiredECTSForTermProject):
-        self._maxNumberOfCoursesStudentTake = maxNumberOfCoursesStudentTake
-        self._isAddDropWeek = isAddDropWeek
+    def __init__(self, maxNumberOfCoursesStudentTake, addDropWeek, minRequiredECTSForTermProject):
+        self.maxNumberOfCoursesStudentTake = maxNumberOfCoursesStudentTake
+        self.addDropWeek = addDropWeek
         self.minRequiredECTSForTermProject = minRequiredECTSForTermProject
 
     def editConstraint(editedAttributes):
