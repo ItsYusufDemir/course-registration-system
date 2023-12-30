@@ -1,3 +1,4 @@
+import logging
 from src.utils.DatabaseManager import DatabaseManager
 
 class AuthenticateService(object):
@@ -14,8 +15,8 @@ class AuthenticateService(object):
 
         for self.user in self.users:
               if self.user.checkCredentials(self.userID, self.password):
-                   #TODO: add log
+                   logging.log(logging.INFO, "User: "+self.userId+" logged in")
                    return self.user
         
-        #TODO: add log
+        logging.log(logging.INFO, "User: "+self.userId+" faild to log in")
         return None
