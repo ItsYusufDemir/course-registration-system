@@ -14,5 +14,34 @@ class CourseSection:
             return True
         else:
             return False
+        
+    
+    def incrementStudentCount(self):
+        self._studentCountInsideCourseSection += 1
+        # TODO: logging
+        return self._studentCountInsideCourseSection
+    
+    def decrementStudentCount(self):
+        self._studentCountInsideCourseSection -= 1
+        # TODO: logging
+        return self._studentCountInsideCourseSection
+    
+    def findCourseOfCourseSection(self):
+        index = self._sectionCode.index(".")
+        courseCode = self._sectionCode[:index]
+
+        courses = [] # TODO: DBden çekilecek
+        for course in courses:
+            if course.getCourseCode == courseCode:
+                return course
+        return None
+    
+    
+        
+
+
+
+
+
 
         
