@@ -1,14 +1,15 @@
-from controllers import AdvisorController
-from enums import CourseStatus
-from models import SelectedCourse
-from models import Student
-from utils import Util
+from controllers.AdvisorController import AdvisorController
+from enums.CourseStatus import CourseStatus
+from interfaces.Color import Color
+from models.SelectedCourse import SelectedCourse
+from models.Student import Student
+from utils.Util import Util
 
 class CLIAdvisor(object):
 
     def __init__(self, advisor, advisorController):
         self._advisor = advisor
-        self._advisorController = AdvisorController(advisor)
+        self._advisorController = advisorController
 
 
     def menuPage(self):
@@ -17,10 +18,10 @@ class CLIAdvisor(object):
            Util.clearScreen()
            if self._advisorController.getNotification() != None and len(self. _advisorController.getNotification()) > 0:
                  Util.paintTextln(" Notifications\n " +
-                        "**************", color)
+                        "**************", Color.YELLOW)
            
            for string in  self._advisorController.getNotification():
-                 Util.paintTextln(string, color)
+                 Util.paintTextln(string, Color.YELLOW)
                  self._advisorController.clearNotifications()
 
            print("\n\n")
@@ -50,7 +51,7 @@ class CLIAdvisor(object):
                 self._advisorController.logOut()
                 break
            else:
-                Util.sendFeedback("Invalid choice", color)
+                Util.sendFeedback("Invalid choice", Color.RED)
                 isInvalid = True
 
     def showStudentPage(self,students):
@@ -87,7 +88,7 @@ class CLIAdvisor(object):
                       if(shouldQuit):
                            return True
                  else:
-                      Util.sendFeedback("Invalid choice. Try again.",color)
+                      Util.sendFeedback("Invalid choice. Try again.",Color.RED)
                       isInvalid = True
               
               
@@ -98,7 +99,7 @@ class CLIAdvisor(object):
                         self._advisorController.logOut()
                         return True
                    else:
-                        Util.sendFeedback("Invalid choice. Try again.",color)
+                        Util.sendFeedback("Invalid choice. Try again.",Color.RED)
                         isInvalid = True
    
               
@@ -135,11 +136,11 @@ class CLIAdvisor(object):
                          print(f"{i}  {courses[i].getCourse().getCourseCode():>10}    {courses[i].getCourse().getCourseName():>50}    {courses[i].getCourse().getSectionCode():>15}")
 
                          if(courses[i].getStatus == CourseStatus.APPROVED):
-                              Util.paintText(courses[i].getStatus() + "\n", Color)
+                              Util.paintText(courses[i].getStatus() + "\n", Color.GREEN )
                          elif(courses[i].getStatus() == CourseStatus.PENDING):
-                             Util.paintText(courses[i].getStatus() + "\n", Color)
+                             Util.paintText(courses[i].getStatus() + "\n", Color.YELLOW)
                          elif (courses[i].getStatus() == CourseStatus.DENIED):
-                             Util.paintText(courses[i].getStatus() + "\n", Color)
+                             Util.paintText(courses[i].getStatus() + "\n", Color.RED)
                          else:
                              print(courses[i].getStatus() + "\n");          
 
@@ -170,11 +171,11 @@ class CLIAdvisor(object):
                         self._advisorController.logOut()
                         return True
                     else:
-                        Util.sendFeedback("Invalid choice. Try again", Color)
+                        Util.sendFeedback("Invalid choice. Try again", Color.RED)
                         isInvalid = True
                     
                 else:
-                    Util.sendFeedback("Invalid choice!", Color)
+                    Util.sendFeedback("Invalid choice!", Color.RED)
                 
            else: 
                 if choice == "b":
@@ -183,5 +184,5 @@ class CLIAdvisor(object):
                     self._advisorController.logOut()
                     return True
                 else:
-                    Util.sendFeedback("Invalid choice. Try again", Color)
+                    Util.sendFeedback("Invalid choice. Try again", Color.RED)
                     isInvalid = True 

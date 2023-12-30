@@ -10,7 +10,7 @@ class Prerequisite:
         for prerequisitecourse in course.getPrerequisiteInformation().prerequisiteOfCourses:
             for passedCourse in student.getTranscript().acquirePassedCourses():
                 isPrerequisiteCoursesPassed.append(prerequisitecourse.getCourseCode() == passedCourse.getCourseCode())
-            if _isContainTrue(isPrerequisiteCoursesPassed) == False:
+            if self._isContainTrue(isPrerequisiteCoursesPassed) == False:
                 return False
         return True # if all prerequisite courses passed
             

@@ -1,10 +1,14 @@
-from iteration3.src.CommandLineInterface.CLILogin import CLILogin
-from iteration3.src.utils.Util import Util
+from CommandLineInterface.CLILogin import CLILogin
+from models.User import User
+from utils.Util import Util
 
 class CourseRegistrationSystem:
 
+    def __init__(self):
+        pass
+
     def start(self):
-        user = None
+        user: User = None
 
         while True:
             # Create command line interface for login page and start it

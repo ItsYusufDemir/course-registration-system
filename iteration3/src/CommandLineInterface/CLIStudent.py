@@ -1,5 +1,5 @@
-from utils import Util
-from interfaces import Color
+from utils.Util import Util
+from interfaces.Color import Color
 from enums.CourseStatus import CourseStatus
 from models.SelectedCourse import SelectedCourse
 
@@ -52,30 +52,30 @@ class CLIStudent(object):
             print("Press b to go back\n")
             print("Press q to quit\n")
 
-            self._choice = input()
+            _choice = input()
 
             try:
-                if self._choice == "1":
+                if _choice == "1":
                     self._showAddCoursePage()
-                elif self._choice == "2":
-                    self._choice = input("Enter the row number of the course you want to delete : ")
-                    if Util.validateNumber(self._choice):  
+                elif _choice == "2":
+                    _choice = input("Enter the row number of the course you want to delete : ")
+                    if Util.validateNumber(_choice):  
                         if self._deleteCourse():
                             Util.sendFeedback("Course deleted successfully", Color.GREEN)
                         else:
                             Util.sendFeedback("Course deletion failed", Color.RED)
                     else:
-                        raise Exception("Invalid input" + self._choice)
-                elif self._choice == "3":
+                        raise Exception("Invalid input" + _choice)
+                elif _choice == "3":
                     self._showTimeTablePage()
-                elif self._choice == "4":
+                elif _choice == "4":
                     self._studentController.sendSelectedCoursesToApproval()
-                elif self._choice == "b":
+                elif _choice == "b":
                     break
-                elif self._choice == "q":
+                elif _choice == "q":
                     self._shouldQuit = False
                 else:
-                    raise Exception("Invalid input" + self._choice)
+                    raise Exception("Invalid input" + _choice)
                     
             except Exception as e:
                 Util.sendFeedback(e, Color.RED)
@@ -96,24 +96,24 @@ class CLIStudent(object):
             print("Press q to quit\n")
             
 
-            self._choice = input("Enter the row number of the course you want to add : ")
+            _choice = input("Enter the row number of the course you want to add : ")
 
             try:
-                if self._choice == "b":
+                if _choice == "b":
                     break
 
-                elif self._choice == "q":
+                elif _choice == "q":
                     self._shouldQuit = False
 
-                elif Util.validateNumber(self._choice): 
+                elif Util.validateNumber(_choice): 
 
-                    if self._addCourse(self._choice):
+                    if self._addCourse(_choice):
                         Util.sendFeedback("Course added successfully", Color.GREEN)
                     else:
                         Util.sendFeedback("Course addition failed", Color.RED)
 
                 else:
-                    raise Exception("Invalid input" + self._choice)
+                    raise Exception("Invalid input" + _choice)
                 
             except Exception as e:
                 print(e)
@@ -125,15 +125,15 @@ class CLIStudent(object):
             print("\n\n press b to go back\n")
             print("Press q to quit\n")
 
-            self._choice = input()
+            _choice = input()
 
             try:
-                if self._choice == "b":
+                if _choice == "b":
                     break
-                elif self._choice == "q":
+                elif _choice == "q":
                     self._shouldQuit = False
                 else:
-                    raise Exception("Invalid input" + self._choice)
+                    raise Exception("Invalid input" + _choice)
             except Exception as e:
                 Util.sendFeedback(e, Color.RED)
     

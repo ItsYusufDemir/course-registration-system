@@ -13,49 +13,49 @@ class Transcirpt(object):
         self._takenCourses.append( CourseGrade(course, None, CourseResult.ACTIVE) )
 
     def acquirePassedCourses(self):
-        self.passedCourses = list()
-        for self.course in self._takenCourses:
-            if self.course.result == CourseResult.PASSED:
-                self.passedCourses.append(self.course)
+        passedCourses = list()
+        for course in self._takenCourses:
+            if course.result == CourseResult.PASSED:
+                passedCourses.append(course)
         
-        return self.passedCourses
+        return passedCourses
     
     def calculateCompletedCredits(self):
-        self.total = 0.0
-        for self.course in self._takenCourses:
-            if self.course.result == CourseResult.PASSED:
-                self.total += self.course.getCourse().getCredit()
+        total = 0.0
+        for course in self._takenCourses:
+            if course.result == CourseResult.PASSED:
+                total += course.getCourse().getCredit()
         
-        return self.total
+        return total
     
     def calculateGPA(self):
-        self.totalPoint = 0.0
-        self.totalCredit = 0.0
+        totalPoint = 0.0
+        totalCredit = 0.0
 
-        for self.courseGrade in self._takenCourses:
-            if self.courseGrade.result != CourseResult.PASSED:
+        for courseGrade in self._takenCourses:
+            if courseGrade.result != CourseResult.PASSED:
                 continue
-            self.totalPoint += self.courseGrade.getCourse().getCourseCredit() * self.courseGrade.convertLetterGradeToScore()
-            self.totalCredit += self.courseGrade.getCourse().getCourseCredit()
+            totalPoint += courseGrade.getCourse().getCourseCredit() * courseGrade.convertLetterGradeToScore()
+            totalCredit += courseGrade.getCourse().getCourseCredit()
         
-        return self.totalPoint / self.totalCredit
+        return totalPoint / totalCredit
     
     def checkEngineeringProjectAvailability(self):
-        self.totalCreditsForEngineeringProject = 0.0
+        totalCreditsForEngineeringProject = 0.0
 
-        self.constraint = DatabaseManager.getInstance().getConstraint() # TODO: not sure if we will dictionary or not
+        constraintsMap = DatabaseManager.getInstance().getConstraint()
 
-        self.restricedCourses = ["ISG121", "ISG122"]
-        self.restricedCourseTypes = [CourseType.NONTECHNICAL_ELECTIVE, CourseType.UNIVERSITY_ELECTIVE,
+        restricedCourses = ["ISG121", "ISG122"]
+        restricedCourseTypes = [CourseType.NONTECHNICAL_ELECTIVE, CourseType.UNIVERSITY_ELECTIVE,
                                     CourseType.TECHNICAL_ELECTIVE,CourseType.FACULTY_ELECTIVE,]
         
-        for self.takenCourse in self._takenCourses:
-           if (self.takenCourse.getCourseResult() == CourseResult.PASSED and 
-               self.takenCourse.getCourse().getCourseType() not in self.restricedCourseTypes and
-                 self.takenCourse.getCourse().getCourseCode() not in self.restricedCourses ):
-               self.totalCreditsForEngineeringProject += self.takenCourse.getCourse().getCredit()
+        for takenCourse in self._takenCourses:
+           if (takenCourse.getCourseResult() == CourseResult.PASSED and 
+               takenCourse.getCourse().getCourseType() not in restricedCourseTypes and
+                takenCourse.getCourse().getCourseCode() not in restricedCourses ):
+               totalCreditsForEngineeringProject += takenCourse.getCourse().getCredit()
 
-        if self.totalCreditsForEngineeringProject >= self.constraint[3]:
+        if totalCreditsForEngineeringProject >= constraintsMap['3']:
             return True
         else:
             return False
