@@ -1,6 +1,6 @@
 import os
 
-from interfaces.Color import Color
+from interfaces import Color
 
 
 class Util:

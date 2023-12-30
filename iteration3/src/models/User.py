@@ -1,4 +1,4 @@
-from iteration3.src.interfaces.Showable import Showable
+from interfaces import Showable
 import logging
 
 class User(Showable):

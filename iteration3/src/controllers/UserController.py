@@ -1,5 +1,5 @@
-from utils.AuthenticateService import AuthenticateService
-from models.User import User
+from utils import AuthenticateService
+from models import User
 class UserController:
     def __init__(self):
         self.currentUser = None

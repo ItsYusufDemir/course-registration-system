@@ -1,10 +1,8 @@
 import logging
-from models.User import User
-from models.Course import Course
-from models.Constraint import Constraint
-from utils.DatabaseManager import DatabaseManager
-from CommandLineInterface.CLIAdmin import CLIAdmin
-from controllers.AdminController import AdminController
+from models import User, Course, Constraint
+from utils import DatabaseManager
+from CommandLineInterface import CLIAdmin
+from controllers import AdminController
 
 class Admin(User): 
 
