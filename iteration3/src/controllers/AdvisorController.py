@@ -5,13 +5,13 @@ class AdvisorController:
     studentList = None
 
     def __init__(self, currentAdvisor):
-        self.currentAdvisor = currentAdvisor
+        self.currentAdvisor = currentAdvisor.__init__()
         self.studentList = currentAdvisor.fetchAdvisedStudents()
 
-    def approveCourse(self, student, selectedCourse)
+    def approveCourse(self, student, selectedCourse):
         currentAdvisor.acceptCourse(student, selectedCourse)
 
-    def denyCourse(self, student, selectedCourse)
+    def denyCourse(self, student, selectedCourse):
         currentAdvisor.rejectCourse(student, selectedCourse)
         selectedCourse.getCourseSection().decrementStudentCount()
 
