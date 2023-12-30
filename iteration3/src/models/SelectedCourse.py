@@ -1,5 +1,5 @@
-from src.enums.CourseStatus import CourseStatus
-from src.utils.Util import Util
+from enums import CourseStatus
+from utils import Util
 
 class SelectedCourse(object):
     def __init__(self,course,status,courseSection):

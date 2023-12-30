@@ -1,8 +1,8 @@
-from src.controllers.AdvisorController import AdvisorController
-from src.enums.CourseStatus import CourseStatus
-from src.models.SelectedCourse import SelectedCourse
-from src.models.Student import Student
-from src.utils.Util import Util
+from controllers import AdvisorController
+from enums import CourseStatus
+from models import SelectedCourse
+from models import Student
+from utils import Util
 
 class CLIAdvisor(object):
 
