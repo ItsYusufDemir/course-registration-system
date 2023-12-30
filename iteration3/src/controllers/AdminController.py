@@ -1,4 +1,4 @@
-from iteration3.src.models.Admin import Admin
+from models.Admin import Admin
 
 class AdminController:
     def __init__(self, currentAdmin):
