@@ -138,7 +138,7 @@ class CLIStudent(object):
                 Util.sendFeedback(e, Color.RED)
     
     def _addCourse(self, str):
-        rowNumber = int(str) #TODO: use util get row num method
+        rowNumber = int(str) #TODO: check if valid row number
         selectedCourseSection = self._studentController.getAvaliableCourseSections().get(rowNumber-1)
         if self._studentController.addSelectedCourse( SelectedCourse( selectedCourseSection.findCourseOfCourseSection(), selectedCourseSection ) ):
             return True
@@ -146,7 +146,7 @@ class CLIStudent(object):
         return False
     
     def _deleteCourse(self, str):
-        rowNumber = int(str) #TODO: use util get row num method
+        rowNumber = int(str) #TODO: check if valid row number
         if self._studentController.removeSelectedCourse( self._studentController.getSelectedCourses().get(rowNumber-1) ):
             return True
         
