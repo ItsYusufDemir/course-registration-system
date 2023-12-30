@@ -146,7 +146,7 @@ class CLIStudent(object):
         return False
     
     def _deleteCourse(self, str):
-        rowNumber = int(str) #TODO: check if valid row number
+        rowNumber = int(str) #TODO: check if valid row number 
         if self._studentController.removeSelectedCourse( self._studentController.getSelectedCourses().get(rowNumber-1) ):
             return True
         
