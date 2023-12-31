@@ -1,28 +1,28 @@
 class Course:
 
     def __init__(self, courseCredit, courseECTS, givenSemester, courseName, courseCode, prerequisiteInformation, courseSections, courseType):
-        self._courseCredit = courseCredit
-        self._courseECTS = courseECTS
-        self._givenSemester = givenSemester
-        self._courseName = courseName
-        self._courseCode = courseCode
-        self._prerequisiteInformation = prerequisiteInformation
-        self._courseSections = courseSections
-        self._courseType = courseType
+        self.courseCredit = courseCredit
+        self.courseECTS = courseECTS
+        self.givenSemester = givenSemester
+        self.courseName = courseName
+        self.courseCode = courseCode
+        self.prerequisiteInformation = prerequisiteInformation
+        self.courseSections = courseSections
+        self.courseType = courseType
 
 
     def checkPrerequisite(self, student):
-        if self._prerequisiteInformation is None:
+        if self.prerequisiteInformation is None:
             return True
-        elif not self._prerequisiteInformation.getPrerequisiteOfCourses():
+        elif not self.prerequisiteInformation.getPrerequisiteOfCourses():
             return True
         else:
-            return self._prerequisiteInformation.checkPrerequisiteCoursePassed(student, self)
+            return self.prerequisiteInformation.checkPrerequisiteCoursePassed(student, self)
         
     
     def acquireAvailableSections(self):
         availableCourseSections = []
-        for courseSection in self._courseSections:
+        for courseSection in self.courseSections:
             if courseSection.checkAvailability():
                 availableCourseSections.append(courseSection)
         return availableCourseSections
@@ -30,15 +30,18 @@ class Course:
     
 
     def equals(self, course):
-        if self._courseCode == course._courseCode:
+        if self.courseCode == course.getCourseCode:
             return True
         else:
             return False
         
     def getCourseCode(self):
-        return self._courseCode
+        return self.courseCode
 
     def getPrerequisiteInformation(self):
-        return self._prerequisiteInformation
+        return self.prerequisiteInformation
+    
+    def getCourseName(self):
+        return self.courseName
 
     

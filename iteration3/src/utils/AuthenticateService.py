@@ -6,12 +6,11 @@ class AuthenticateService(object):
     
     def authenticateUser(self, userID, password):
         
-
         databaseManager = DatabaseManager.getInstance()
         users: [User] = []
-        users.extend(databaseManager.getAdmins())
-        users.extend(databaseManager.getAdvisors())
-        users.extend(databaseManager.getStudents())
+        users.extend(databaseManager.getAdminList())
+        users.extend(databaseManager.getAdvisorList())
+        users.extend(databaseManager.getStudentList())
 
         for user in users:
               if user.checkCredentials(userID, password):

@@ -7,14 +7,14 @@ from enums.CourseType import CourseType
 class Transcirpt(object):
     
     def __init__(self, takenCourses):
-        self._takenCourses = takenCourses
+        self.takenCourses = takenCourses
     
     def addTakenCourse(self, course):
-        self._takenCourses.append( CourseGrade(course, None, CourseResult.ACTIVE) )
+        self.takenCourses.append( CourseGrade(course, None, CourseResult.ACTIVE) )
 
     def acquirePassedCourses(self):
         passedCourses = list()
-        for course in self._takenCourses:
+        for course in self.takenCourses:
             if course.result == CourseResult.PASSED:
                 passedCourses.append(course)
         
@@ -22,7 +22,7 @@ class Transcirpt(object):
     
     def calculateCompletedCredits(self):
         total = 0.0
-        for course in self._takenCourses:
+        for course in self.takenCourses:
             if course.result == CourseResult.PASSED:
                 total += course.getCourse().getCredit()
         
@@ -32,7 +32,7 @@ class Transcirpt(object):
         totalPoint = 0.0
         totalCredit = 0.0
 
-        for courseGrade in self._takenCourses:
+        for courseGrade in self.takenCourses:
             if courseGrade.result != CourseResult.PASSED:
                 continue
             totalPoint += courseGrade.getCourse().getCourseCredit() * courseGrade.convertLetterGradeToScore()
@@ -49,7 +49,7 @@ class Transcirpt(object):
         restricedCourseTypes = [CourseType.NONTECHNICAL_ELECTIVE, CourseType.UNIVERSITY_ELECTIVE,
                                     CourseType.TECHNICAL_ELECTIVE,CourseType.FACULTY_ELECTIVE,]
         
-        for takenCourse in self._takenCourses:
+        for takenCourse in self.takenCourses:
            if (takenCourse.getCourseResult() == CourseResult.PASSED and 
                takenCourse.getCourse().getCourseType() not in restricedCourseTypes and
                 takenCourse.getCourse().getCourseCode() not in restricedCourses ):

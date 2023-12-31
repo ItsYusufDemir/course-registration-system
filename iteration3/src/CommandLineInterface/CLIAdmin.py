@@ -1,6 +1,6 @@
 from enums.CourseType import CourseType
 from interfaces.Color import Color
-from models.Course import Course, CourseadminController
+from models.Course import Course
 from models.CourseSection import CourseSection
 from models.Prerequisite import Prerequisite
 from utils.Util import Util
@@ -42,24 +42,24 @@ class CLIAdmin():
                         "  Code\t\t\t\t Name\t \n" +
                         "  ____\t ____\t")
         
-        for course,i in courses:
-            print("  " + (i + 1) + ". " + courses.get(i).getCourseCode() + "\t " + courses.get(i).getCourseName())
+        for i in range(len(courses)):
+            print("  " + str(i + 1) + ". " + courses[i].getCourseCode() + "\t " + courses[i].getCourseName())
 
         print("\n\nPress c to create a new course\n" +
                         "Press d to delete course\n")
         print("Press b to go back\n")
         print("Press q to quit\n")
 
-        str = input()
+        _choice = input()
 
-        if str == "c":
+        if _choice == "c":
             self.createNewCoursePage()
             self.courseListPage()
-        elif str == "d":
+        elif _choice == "d":
             print("Enter the row number of the course you want to delete : ")
-            str = input()
-            if Util.isValidNumber(str) and Util.checkIfValidRowNumber(str, courses):
-                if self.adminController.deleteCourse(course):
+            _choice = input() 
+            if Util.validateNumber(_choice, courses):
+                if self.adminController.deleteCourse(courses[(int(_choice)-1)]):
                     Util.clearScreen()
                     Util.sendFeedback("Course deleted successfully", Color.GREEN)
                 else:
@@ -68,10 +68,12 @@ class CLIAdmin():
             else:
                 Util.clearScreen()
                 Util.sendFeedback("Invalid input", Color.RED)
-        elif str == "b":
+
+            self.courseListPage()
+        elif _choice == "b":
             Util.clearScreen()
             self.menuPage()
-        elif str == "q":
+        elif _choice == "q":
             Util.clearScreen()
             self.adminController.logout()
         else:
@@ -95,15 +97,15 @@ class CLIAdmin():
         print()
         print("Enter the row number to edit:")
 
-        str = input()
+        _choice = input()
 
-        if str == "1":
+        if _choice == "1":
             print("Enter true or false for add drop: ")
-            str = input()
-            if str == "true":
+            _choice = input()
+            if _choice == "true":
                 editedAttributes.put(2, "true")
                 Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
-            elif str == "false":
+            elif _choice == "false":
                 editedAttributes.put(2, "false")
                 Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
             else:
@@ -111,32 +113,32 @@ class CLIAdmin():
 
             self.adminController.editConstraint(editedAttributes)
             self.constraintPage()
-        elif str == "2":
+        elif _choice == "2":
             print("Enter the max number of courses that can be taken: ")
-            str = input()
-            if Util.isValidNumber(str):
-                editedAttributes.put(1, str)
+            _choice = input()
+            if Util.isValidNumber(_choice):
+                editedAttributes.put(1, _choice)
                 Util.sendFeedback("Max number of courses that can be taken changed successfully", Color.GREEN)
             else:
                 Util.sendFeedback("Invalid input", Color.RED)
 
             self.adminController.editConstraint(editedAttributes)
             self.constraintPage()
-        elif str == "3":
+        elif _choice == "3":
             print("Enter the min required ECTS for term project: ")
-            str = input()
-            if Util.isValidNumber(str):
-                editedAttributes.put(3, str)
+            _choice = input()
+            if Util.isValidNumber(_choice):
+                editedAttributes.put(3, _choice)
                 Util.sendFeedback("Min required ECTS for term project changed successfully", Color.GREEN)
             else:
                 Util.sendFeedback("Invalid input", Color.RED)
 
             self.adminController.editConstraint(editedAttributes)
             self.constraintPage()
-        elif str == "b":
+        elif _choice == "b":
             Util.clearScreen()
             self.menuPage()
-        elif str == "q":
+        elif _choice == "q":
             Util.clearScreen()
             self.adminController.logout()
         else:

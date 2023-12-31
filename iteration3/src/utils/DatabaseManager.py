@@ -57,30 +57,30 @@ class DatabaseManager:
             transcript = [student.transcript]
             filePath = f"iteration3/data/transcripts/{student.userId}.json"
             
-            with open(filePath, "w") as jsonFile:
+            with open(filePath, "w", encoding="utf-8") as jsonFile:
                 json.dump(transcript, jsonFile, indent=4, default=lambda o: o.__dict__)
     
     def saveCoursesList(self):
-        with open("iteration3/data/courses.json", "w") as json_file:
+        with open("iteration3/data/courses.json", "w", encoding="utf-8") as json_file:
             json.dump(self.courseList, json_file, indent=4, default=lambda o: o.__dict__)
 
     def saveStudentList(self):
-        with open("iteration3/data/students.json", "w") as json_file:
-            json.dump(self.student_list, json_file, indent=4, default=lambda o: o.__dict__)
+        with open("iteration3/data/students.json", "w", encoding="utf-8") as json_file:
+            json.dump(self.studentList, json_file, indent=4, default=lambda o: o.__dict__)
 
         self.saveTranscriptsToDatabase()
 
     def saveAdvisorList(self):
-        with open("iteration3/data/advisors.json", "w") as json_file:
-            json.dump(self.advisor_list, json_file, indent=4, default=lambda o: o.__dict__)
+        with open("iteration3/data/advisors.json", "w", encoding="utf-8") as json_file:
+            json.dump(self.advisorList, json_file, indent=4, default=lambda o: o.__dict__)
 
     def saveConstraintsList(self):
-        with open("iteration3/data/constraints.json", "w") as json_file:
+        with open("iteration3/data/constraints.json", "w", encoding="utf-8") as json_file:
             json.dump(self.constraintList, json_file, indent=4, default=lambda o: o.__dict__)
 
     def saveAdminList(self):
-        with open("iteration3/data/admins.json", "w") as json_file:
-            json.dump(self.admin_list, json_file, indent=4, default=lambda o: o.__dict__)
+        with open("iteration3/data/admins.json", "w", encoding="utf-8") as json_file:
+            json.dump(self.adminList, json_file, indent=4, default=lambda o: o.__dict__)
 
     def saveToDatabase(self):
         self.saveCoursesList()
@@ -104,16 +104,16 @@ class DatabaseManager:
         return None
     
     # Getters
-    def getCourses(self):
+    def getCourseList(self):
         return self.courseList
 
-    def getStudents(self):
+    def getStudentList(self):
         return self.studentList
 
-    def getAdvisors(self):
+    def getAdvisorList(self):
         return self.advisorList
 
-    def getAdmins(self):
+    def getAdminList(self):
         return self.adminList
     
     def getConstraints(self):

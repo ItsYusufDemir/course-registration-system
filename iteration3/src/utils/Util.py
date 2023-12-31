@@ -9,27 +9,23 @@ class Util:
         os.system('cls' if os.name == 'nt' else 'clear')
 
     def paintText(message : str, color: Color):
-        print(color.value + message + Color.DEFAULT.value, end="")
+        print(color.value + message + Color.DEFAULT.value, end="", flush=True)
     
     def paintTextln(message : str, color: Color):
         print(color.value + message + Color.DEFAULT.value)
 
-    def sendFeedback(message : str, color: Color):
-        print(color.value + message + Color.DEFAULT.value)
+    def sendFeedback(message, color=None):
+        if color is not None:
+            print(color.value + message + Color.DEFAULT.value, end="", flush=True)
+        else:
+            print(message, end="", flush=True)
         Util.animationTimer(3)
         Util.clearScreen()
 
-    def sendFeedback(message : str):
-        print(message)
-        Util.animationTimer(3)
-
-        Util.clearScreen()
-
-
-    def animationTimer(time : int):
+    def animationTimer(duration : int):
         import time
-        for i in range(time):
-            Util.paintTextln(".", Color.YELLOW)
+        for i in range(duration):
+            Util.paintText(".", Color.YELLOW)
             time.sleep(1)
 
     def isValidNumber(string : str) -> int:
@@ -40,7 +36,7 @@ class Util:
         
 
     def validateNumber(string : str, list: []):
-        if Util.isValidNumber(string) in range(0, len(list)):
+        if 0 <= Util.isValidNumber(string) <= len(list):
             return True
         return False
 
