@@ -1,7 +1,6 @@
-
 from enums.CourseType import CourseType
 from interfaces.Color import Color
-from models.Course import Course
+from models.Course import Course, CourseadminController
 from models.CourseSection import CourseSection
 from models.Prerequisite import Prerequisite
 from utils.Util import Util
@@ -23,7 +22,7 @@ class CLIAdmin():
         str = input()
         if str == "q":
             Util.clearScreen()
-            self.adminController.logout()
+            self.adminController.logOut()
         elif str == "1":
             Util.clearScreen()
             self.courseListPage()
