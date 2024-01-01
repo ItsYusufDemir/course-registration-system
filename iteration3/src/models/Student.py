@@ -1,6 +1,8 @@
 #beyza
+import logging
 from enums.ApprovalStatus import ApprovalStatus
 from models.User import User
+
 class Student(User):
     def __init__(self, userId, password, firstName, lastName, status, notifications, email, identityNumber, currentSemester,
                   selectedCourses, advisorOfStudent, approvalStatus, transcript):

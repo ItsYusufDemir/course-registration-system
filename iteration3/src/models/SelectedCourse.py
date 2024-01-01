@@ -1,5 +1,5 @@
+import logging
 from enums.CourseStatus import CourseStatus
-from utils.Util import Util
 
 class SelectedCourse(object):
     def __init__(self,course,status,courseSection):
@@ -10,8 +10,7 @@ class SelectedCourse(object):
 
     def setStatus(self,status):
         self.status = status
-        # Util.getLogger().info("Course (" + course.getCourseCode(
-        #) + ") status changed to :" + status.toString());
+        logging.log(logging.INFO, f"Course ({self.course.getCourseCode()}) status changed to: {status}")
 
     def getCourse(self):
         return self.course

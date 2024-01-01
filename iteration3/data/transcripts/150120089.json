@@ -12,7 +12,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 150,
-                            "lecturerName": "Zeynep Y\u0131lmaz",
+                            "lecturerName": "Zeynep Yılmaz",
                             "sectionTime": [
                                 "10:30-11:20",
                                 "11:30-12:20",
@@ -46,7 +46,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 150,
-                            "lecturerName": "Zeynep Y\u0131lmaz",
+                            "lecturerName": "Zeynep Yılmaz",
                             "sectionTime": [
                                 "10:30-11:20",
                                 "11:30-12:20",
@@ -112,7 +112,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 40,
-                            "lecturerName": "H\u00fcseyin Yalt\u0131r\u0131k",
+                            "lecturerName": "Hüseyin Yaltırık",
                             "sectionTime": [
                                 "13:30-14:20",
                                 "14:30-15:20"
@@ -127,7 +127,7 @@
                         },
                         {
                             "studentCapacity": 40,
-                            "lecturerName": "H\u00fcseyin Yalt\u0131r\u0131k",
+                            "lecturerName": "Hüseyin Yaltırık",
                             "sectionTime": [
                                 "12:30-13:20",
                                 "13:30-14:20"
@@ -142,7 +142,7 @@
                         },
                         {
                             "studentCapacity": 40,
-                            "lecturerName": "H\u00fcseyin Yalt\u0131r\u0131k",
+                            "lecturerName": "Hüseyin Yaltırık",
                             "sectionTime": [
                                 "14:30-15:20",
                                 "15:30-16:20"
@@ -172,7 +172,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 150,
-                            "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                            "lecturerName": "Sanem Arslan Yılmaz",
                             "sectionTime": [
                                 "08:30-09:20",
                                 "09:30-10:20",
@@ -212,7 +212,7 @@
                                 "courseSections": [
                                     {
                                         "studentCapacity": 150,
-                                        "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                                        "lecturerName": "Sanem Arslan Yılmaz",
                                         "sectionTime": [
                                             "08:30-09:20",
                                             "09:30-10:20",
@@ -235,7 +235,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 150,
-                            "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                            "lecturerName": "Sanem Arslan Yılmaz",
                             "sectionTime": [
                                 "08:30-09:20",
                                 "09:30-10:20",
@@ -331,7 +331,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 40,
-                            "lecturerName": "H\u00fcseyin Yalt\u0131r\u0131k",
+                            "lecturerName": "Hüseyin Yaltırık",
                             "sectionTime": [
                                 "13:30-14:20",
                                 "14:30-15:20"
@@ -346,7 +346,7 @@
                         },
                         {
                             "studentCapacity": 40,
-                            "lecturerName": "H\u00fcseyin Yalt\u0131r\u0131k",
+                            "lecturerName": "Hüseyin Yaltırık",
                             "sectionTime": [
                                 "12:30-13:20",
                                 "13:30-14:20"
@@ -361,7 +361,7 @@
                         },
                         {
                             "studentCapacity": 40,
-                            "lecturerName": "H\u00fcseyin Yalt\u0131r\u0131k",
+                            "lecturerName": "Hüseyin Yaltırık",
                             "sectionTime": [
                                 "14:30-15:20",
                                 "15:30-16:20"
@@ -391,7 +391,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 120,
-                            "lecturerName": "Ece Nur Ko\u00e7ak",
+                            "lecturerName": "Ece Nur Koçak",
                             "sectionTime": [
                                 "11:30-12:20",
                                 "12:30-13:20"
@@ -415,13 +415,13 @@
                     "courseCredit": 2,
                     "courseECTS": 2,
                     "givenSemester": 1,
-                    "courseName": "Atat\u00fcrk \u0130lkeleri ve \u0130nk\u0131lap Tarihi I",
+                    "courseName": "Atatürk İlkeleri ve İnkılap Tarihi I",
                     "courseCode": "ATA121",
                     "prerequisiteInformation": null,
                     "courseSections": [
                         {
                             "studentCapacity": 200,
-                            "lecturerName": "H\u00fclya Aslan",
+                            "lecturerName": "Hülya Aslan",
                             "sectionTime": [
                                 "11:30-12:20",
                                 "12:30-13:20"
@@ -445,13 +445,13 @@
                     "courseCredit": 2,
                     "courseECTS": 2,
                     "givenSemester": 2,
-                    "courseName": "Atat\u00fcrk \u0130lkeleri ve \u0130nk\u0131lap Tarihi II",
+                    "courseName": "Atatürk İlkeleri ve İnkılap Tarihi II",
                     "courseCode": "ATA122",
                     "prerequisiteInformation": null,
                     "courseSections": [
                         {
                             "studentCapacity": 200,
-                            "lecturerName": "H\u00fclya Aslan",
+                            "lecturerName": "Hülya Aslan",
                             "sectionTime": [
                                 "11:30-12:20",
                                 "12:30-13:20"
@@ -481,7 +481,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 120,
-                            "lecturerName": "Beste Turanl\u0131",
+                            "lecturerName": "Beste Turanlı",
                             "sectionTime": [
                                 "11:30-12:20",
                                 "12:30-13:20",
@@ -513,7 +513,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 150,
-                            "lecturerName": "Zeynep Y\u0131lmaz",
+                            "lecturerName": "Zeynep Yılmaz",
                             "sectionTime": [
                                 "10:30-11:20",
                                 "11:30-12:20",
@@ -539,13 +539,13 @@
                     "courseCredit": 2,
                     "courseECTS": 2,
                     "givenSemester": 1,
-                    "courseName": "T\u00fcrk Dili I",
+                    "courseName": "Türk Dili I",
                     "courseCode": "TRD121",
                     "prerequisiteInformation": null,
                     "courseSections": [
                         {
                             "studentCapacity": 200,
-                            "lecturerName": "Yasemin \u00d6zkaya",
+                            "lecturerName": "Yasemin Özkaya",
                             "sectionTime": [
                                 "08:30-09:20",
                                 "09:30-10:20"
@@ -569,13 +569,13 @@
                     "courseCredit": 2,
                     "courseECTS": 2,
                     "givenSemester": 2,
-                    "courseName": "T\u00fcrk Dili II",
+                    "courseName": "Türk Dili II",
                     "courseCode": "TRD122",
                     "prerequisiteInformation": null,
                     "courseSections": [
                         {
                             "studentCapacity": 200,
-                            "lecturerName": "Yasemin \u00d6zkaya",
+                            "lecturerName": "Yasemin Özkaya",
                             "sectionTime": [
                                 "08:30-09:20",
                                 "09:30-10:20"
@@ -621,7 +621,7 @@
                                             "courseSections": [
                                                 {
                                                     "studentCapacity": 150,
-                                                    "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                                                    "lecturerName": "Sanem Arslan Yılmaz",
                                                     "sectionTime": [
                                                         "08:30-09:20",
                                                         "09:30-10:20",
@@ -644,7 +644,7 @@
                                 "courseSections": [
                                     {
                                         "studentCapacity": 150,
-                                        "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                                        "lecturerName": "Sanem Arslan Yılmaz",
                                         "sectionTime": [
                                             "08:30-09:20",
                                             "09:30-10:20",
@@ -667,7 +667,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 150,
-                            "lecturerName": "Borahan T\u00fcmer",
+                            "lecturerName": "Borahan Tümer",
                             "sectionTime": [
                                 "13:30-14:20",
                                 "14:30-15:20",
@@ -707,7 +707,7 @@
                                 "courseSections": [
                                     {
                                         "studentCapacity": 150,
-                                        "lecturerName": "Zeynep Y\u0131lmaz",
+                                        "lecturerName": "Zeynep Yılmaz",
                                         "sectionTime": [
                                             "10:30-11:20",
                                             "11:30-12:20",
@@ -732,7 +732,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 200,
-                            "lecturerName": "\u00c7i\u011fdem Ero\u011flu Erdem",
+                            "lecturerName": "Çiğdem Eroğlu Erdem",
                             "sectionTime": [
                                 "11:30-12:20",
                                 "12:30-13:20",
@@ -764,7 +764,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 150,
-                            "lecturerName": "Zeynep Y\u0131lmaz",
+                            "lecturerName": "Zeynep Yılmaz",
                             "sectionTime": [
                                 "12:30-13:20",
                                 "13:30-14:20",
@@ -827,7 +827,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 150,
-                            "lecturerName": "Fulya \u00c7all\u0131alp",
+                            "lecturerName": "Fulya Çallıalp",
                             "sectionTime": [
                                 "11:30-12:20",
                                 "12:30-13:20",
@@ -859,7 +859,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 150,
-                            "lecturerName": "Ay\u015fe Bengi \u00d6zl\u00fcarda",
+                            "lecturerName": "Ayşe Bengi Özlüarda",
                             "sectionTime": [
                                 "13:30-14:20",
                                 "14:30-15:20"
@@ -889,7 +889,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 150,
-                            "lecturerName": "Mustafa A\u011fao\u011flu",
+                            "lecturerName": "Mustafa Ağaoğlu",
                             "sectionTime": [
                                 "08:30-9:20",
                                 "8:30-9:20",
@@ -921,7 +921,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 150,
-                            "lecturerName": "Bet\u00fcl Boz",
+                            "lecturerName": "Betül Boz",
                             "sectionTime": [
                                 "10:30-11:20",
                                 "11:30-12:20",
@@ -969,7 +969,7 @@
                                             "courseSections": [
                                                 {
                                                     "studentCapacity": 150,
-                                                    "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                                                    "lecturerName": "Sanem Arslan Yılmaz",
                                                     "sectionTime": [
                                                         "08:30-09:20",
                                                         "09:30-10:20",
@@ -992,7 +992,7 @@
                                 "courseSections": [
                                     {
                                         "studentCapacity": 150,
-                                        "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                                        "lecturerName": "Sanem Arslan Yılmaz",
                                         "sectionTime": [
                                             "08:30-09:20",
                                             "09:30-10:20",
@@ -1086,7 +1086,7 @@
                                 "courseSections": [
                                     {
                                         "studentCapacity": 150,
-                                        "lecturerName": "Fulya \u00c7all\u0131alp",
+                                        "lecturerName": "Fulya Çallıalp",
                                         "sectionTime": [
                                             "11:30-12:20",
                                             "12:30-13:20",
@@ -1109,7 +1109,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 150,
-                            "lecturerName": "O\u011fuzhan Ceylan",
+                            "lecturerName": "Oğuzhan Ceylan",
                             "sectionTime": [
                                 "08:30-09:20",
                                 "11:30-12:20",
@@ -1141,7 +1141,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 150,
-                            "lecturerName": "M\u00fcjdat Soyt\u00fcrk",
+                            "lecturerName": "Müjdat Soytürk",
                             "sectionTime": [
                                 "09:30-10:20",
                                 "10:30-11:20",
@@ -1197,7 +1197,7 @@
                                                         "courseSections": [
                                                             {
                                                                 "studentCapacity": 150,
-                                                                "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                                                                "lecturerName": "Sanem Arslan Yılmaz",
                                                                 "sectionTime": [
                                                                     "08:30-09:20",
                                                                     "09:30-10:20",
@@ -1220,7 +1220,7 @@
                                             "courseSections": [
                                                 {
                                                     "studentCapacity": 150,
-                                                    "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                                                    "lecturerName": "Sanem Arslan Yılmaz",
                                                     "sectionTime": [
                                                         "08:30-09:20",
                                                         "09:30-10:20",
@@ -1243,7 +1243,7 @@
                                 "courseSections": [
                                     {
                                         "studentCapacity": 150,
-                                        "lecturerName": "Borahan T\u00fcmer",
+                                        "lecturerName": "Borahan Tümer",
                                         "sectionTime": [
                                             "13:30-14:20",
                                             "14:30-15:20",
@@ -1266,7 +1266,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 150,
-                            "lecturerName": "\u00d6mer Kor\u00e7ak",
+                            "lecturerName": "Ömer Korçak",
                             "sectionTime": [
                                 "10:30-11:20",
                                 "11:30-12:20",
@@ -1322,7 +1322,7 @@
                                                         "courseSections": [
                                                             {
                                                                 "studentCapacity": 150,
-                                                                "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                                                                "lecturerName": "Sanem Arslan Yılmaz",
                                                                 "sectionTime": [
                                                                     "08:30-09:20",
                                                                     "09:30-10:20",
@@ -1345,7 +1345,7 @@
                                             "courseSections": [
                                                 {
                                                     "studentCapacity": 150,
-                                                    "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                                                    "lecturerName": "Sanem Arslan Yılmaz",
                                                     "sectionTime": [
                                                         "08:30-09:20",
                                                         "09:30-10:20",
@@ -1368,7 +1368,7 @@
                                 "courseSections": [
                                     {
                                         "studentCapacity": 150,
-                                        "lecturerName": "Borahan T\u00fcmer",
+                                        "lecturerName": "Borahan Tümer",
                                         "sectionTime": [
                                             "13:30-14:20",
                                             "14:30-15:20",
@@ -1391,7 +1391,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 100,
-                            "lecturerName": "Mustafa A\u011fao\u011flu",
+                            "lecturerName": "Mustafa Ağaoğlu",
                             "sectionTime": [
                                 "09:30-10:20",
                                 "10:30-11:20"
@@ -1421,7 +1421,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 100,
-                            "lecturerName": "Bet\u00fcl Boz",
+                            "lecturerName": "Betül Boz",
                             "sectionTime": [
                                 "10:30-11:20",
                                 "11:30-12:20"
@@ -1475,7 +1475,7 @@
                                                         "courseSections": [
                                                             {
                                                                 "studentCapacity": 150,
-                                                                "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                                                                "lecturerName": "Sanem Arslan Yılmaz",
                                                                 "sectionTime": [
                                                                     "08:30-09:20",
                                                                     "09:30-10:20",
@@ -1498,7 +1498,7 @@
                                             "courseSections": [
                                                 {
                                                     "studentCapacity": 150,
-                                                    "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                                                    "lecturerName": "Sanem Arslan Yılmaz",
                                                     "sectionTime": [
                                                         "08:30-09:20",
                                                         "09:30-10:20",
@@ -1521,7 +1521,7 @@
                                 "courseSections": [
                                     {
                                         "studentCapacity": 150,
-                                        "lecturerName": "Borahan T\u00fcmer",
+                                        "lecturerName": "Borahan Tümer",
                                         "sectionTime": [
                                             "13:30-14:20",
                                             "14:30-15:20",
@@ -1544,7 +1544,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 100,
-                            "lecturerName": "Ali Haydar \u00d6zer",
+                            "lecturerName": "Ali Haydar Özer",
                             "sectionTime": [
                                 "08:30-09:20",
                                 "09:30-10:20"
@@ -1590,7 +1590,7 @@
                                             "courseSections": [
                                                 {
                                                     "studentCapacity": 150,
-                                                    "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                                                    "lecturerName": "Sanem Arslan Yılmaz",
                                                     "sectionTime": [
                                                         "08:30-09:20",
                                                         "09:30-10:20",
@@ -1613,7 +1613,7 @@
                                 "courseSections": [
                                     {
                                         "studentCapacity": 150,
-                                        "lecturerName": "Sanem Arslan Y\u0131lmaz",
+                                        "lecturerName": "Sanem Arslan Yılmaz",
                                         "sectionTime": [
                                             "08:30-09:20",
                                             "09:30-10:20",
@@ -1674,7 +1674,7 @@
                                 "courseSections": [
                                     {
                                         "studentCapacity": 150,
-                                        "lecturerName": "M\u00fcjdat Soyt\u00fcrk",
+                                        "lecturerName": "Müjdat Soytürk",
                                         "sectionTime": [
                                             "09:30-10:20",
                                             "10:30-11:20",
@@ -1697,7 +1697,7 @@
                     "courseSections": [
                         {
                             "studentCapacity": 100,
-                            "lecturerName": "M\u00fcjdat Soyt\u00fcrk",
+                            "lecturerName": "Müjdat Soytürk",
                             "sectionTime": [
                                 "13:30-14:20",
                                 "14:30-15:20"

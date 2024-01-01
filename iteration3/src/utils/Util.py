@@ -36,7 +36,7 @@ class Util:
         
 
     def validateNumber(string : str, list: []):
-        if 0 <= Util.isValidNumber(string) <= len(list):
+        if 0 < Util.isValidNumber(string) <= len(list):
             return True
         return False
 
@@ -45,27 +45,39 @@ class Util:
     
 
     def isInputFormatTrueForDay(list:[str])->bool:
-        for(day) in list:
-            if day not in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]:
+        valid_days = ["monday", "tuesday", "wednesday", "thursday", "friday"]
+
+        for day in list:
+            cleaned_day = day.strip().lower()
+            if cleaned_day not in valid_days:
                 return False
         return True
     
-    def isInputFormatTrueForTime(list:[str])->bool:
-        for(time) in list:
-            if time != 11:
+    def isInputFormatTrueForTime(lst: [str]) -> bool:
+        for time in lst:
+            time = time.strip()
+
+            if len(time) != 11:
                 return False
-            
+
             if time[2] != ":" or time[5] != "-" or time[8] != ":":
                 return False
-            
+
             timeList = time.split("-")
+
             if len(timeList) != 2:
                 return False
-            
-            for(timeHours) in timeList:
-                if timeHours[0:2] not in range(0, 24) or timeHours[3:5] not in range(0, 60):
+
+            for timeHours in timeList:
+                try:
+                    hour = int(timeHours[0:2])
+                    minute = int(timeHours[3:5])
+                except ValueError:
                     return False
-                
+
+                if not (0 <= hour <= 23) or not (0 <= minute <= 59):
+                    return False
+
         return True
     
 

@@ -20,12 +20,12 @@ class CourseSection:
         
     def incrementStudentCount(self):
         self.studentCountInsideCourseSection += 1
-        logging.log(logging.INFO, "Student count incremented. Current section count: " + self.studentCountInsideCourseSection)
+        logging.log(logging.INFO, "Student count incremented. Current section count: " + str(self.studentCountInsideCourseSection))
         return self.studentCountInsideCourseSection
     
     def decrementStudentCount(self):
         self.studentCountInsideCourseSection -= 1
-        logging.log(logging.INFO, "Student count decremented. Current section count: " + self.studentCountInsideCourseSection)
+        logging.log(logging.INFO, "Student count decremented. Current section count: " + str(self.studentCountInsideCourseSection))
         return self.studentCountInsideCourseSection
     
     def findCourseOfCourseSection(self):

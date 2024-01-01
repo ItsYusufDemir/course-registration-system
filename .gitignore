@@ -12,5 +12,6 @@
 Testing.java
 out
 __pycache__
+logs.log
 
 

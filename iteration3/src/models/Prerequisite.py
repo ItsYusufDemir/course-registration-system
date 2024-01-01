@@ -1,6 +1,6 @@
 class Prerequisite:
     def __init__ (self, prerequisiteOfCourses):
-        self._prerequisiteOfCourses == prerequisiteOfCourses
+        self.prerequisiteOfCourses = prerequisiteOfCourses
 
 
 
@@ -24,4 +24,4 @@ class Prerequisite:
 
 
     def getPrerequisiteOfCourses(self):
-        return self._prerequisiteOfCourses
+        return self.prerequisiteOfCourses
