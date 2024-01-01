@@ -1,4 +1,6 @@
+import logging
 from CommandLineInterface.CLIAdvisor import CLIAdvisor
+from controllers.AdvisorController import AdvisorController
 from enums.ApprovalStatus import ApprovalStatus
 from enums.CourseStatus import CourseStatus
 from interfaces.Color import Color
@@ -14,15 +16,14 @@ class Advisor(User):
         super().__init__(userId, password, firstName, lastName, status, notifications)
 
     def getMyPage(self):
-        cliAdvisor = CLIAdvisor()
+        cliAdvisor = CLIAdvisor(AdvisorController(self))
         cliAdvisor.menuPage()
     
     def acceptCourse(self, student, selectedCourse):
 
         if(selectedCourse.status != CourseStatus.PENDING):
             Util.sendFeedback("This course is not pending for approval.", Color.RED)
-            Util.getLogger().warning(self.getUserId() + " - Course: " + selectedCourse.getCourse().getCourseCode()
-                    + " is not pending for approval.")
+            logging.log(logging.INFO, f"{self.getUserId()} - Course: {selectedCourse.getCourse().getCourseCode()} is not pending for approval.")
             return
         
         selectedCourse.setStatus(CourseStatus.APPROVED)
@@ -31,16 +32,14 @@ class Advisor(User):
 
         student.getTranscript().getTakenCourses().add(newCourse)
 
-        Util.getLogger().info(self.getUserId() + " - Course: " + selectedCourse.getCourse().getCourseCode()
-                + " is approved for student: " + student.getUserId())
+        logging.log(logging.INFO, f"{self.getUserId()} - Course: {selectedCourse.getCourse().getCourseCode()} is approved for student: {student.getUserId()}")
         
         for course in student.getSelectedCourses():
             if(course.getStatus() == CourseStatus.PENDING):
                 return
 
         student.setStatus(ApprovalStatus.DONE)
-        Util.getLogger().info(self.getUserId() + " - Student: " + student.getUserId() + " is approved.")
-
+        logging.log(logging.INFO, f"{self.getUserId()} - Student: {student.getUserId()} is approved.")
         DatabaseManager.getInstance().saveToDatabase()
 
 
@@ -57,14 +56,13 @@ class Advisor(User):
         notification = "Your " + selectedCourse.getCourse().getCourseCode() + " course is rejected."
         self.setNotificationToStudent(student, notification)
 
-        Util.getLogger().info(self.getUserId() + " - Course: " + selectedCourse.getCourse().getCourseCode()
-                + " is rejected for student: " + student.getUserId())
+        logging.log(logging.INFO, f"{self.getUserId()} - Course: {selectedCourse.getCourse().getCourseCode()} is rejected for student: {student.getUserId()}")
         
         for course in student.getSelectedCourses():
             if(course.getStatus() == CourseStatus.PENDING):
                 return
-            
-        Util.getLogger().info(self.getUserId() + " - Student: " + student.getUserId() + " is approved.")
+
+        logging.log(logging.INFO, f"{self.getUserId()} - Student: {student.getUserId()} is approved.")            
         student.setApproved(ApprovalStatus.DONE)
 
         DatabaseManager.getInstance().saveToDatabase()

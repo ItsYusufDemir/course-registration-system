@@ -1,23 +1,22 @@
+import logging
 from enums.CourseStatus import CourseStatus
-from utils.Util import Util
 
 class SelectedCourse(object):
     def __init__(self,course,status,courseSection):
-        self._course = course
-        self._status = CourseStatus.DRAFT
-        self._courseSection = courseSection
+        self.course = course
+        self.status = CourseStatus.DRAFT
+        self.courseSection = courseSection
 
 
     def setStatus(self,status):
-        self._status = status
-        # Util.getLogger().info("Course (" + course.getCourseCode(
-        #) + ") status changed to :" + status.toString());
+        self.status = status
+        logging.log(logging.INFO, f"Course ({self.course.getCourseCode()}) status changed to: {status}")
 
     def getCourse(self):
-        return self._course
+        return self.course
 
     def getStatus(self):
-        return self._status
+        return self.status
     
     def getCourseSection(self):
-        return self._courseSection
+        return self.courseSection

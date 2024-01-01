@@ -1,8 +1,8 @@
 from enum import Enum
 
-class CourseStatus(Enum):
-    DRAFT = 1
-    PENDING = 2
-    APPROVED = 3
-    DENIED = 4
-    ACTIVE = 5
+class CourseStatus(str, Enum):
+    DRAFT = "DRAFT"
+    PENDING = "PENDING"
+    APPROVED = "APPROVED"
+    DENIED = "DENIED"
+    ACTIVE = "ACTIVE"

@@ -7,8 +7,7 @@ from utils.Util import Util
 
 class CLIAdvisor(object):
 
-    def __init__(self, advisor, advisorController):
-        self._advisor = advisor
+    def __init__(self, advisorController):
         self._advisorController = advisorController
 
 

@@ -1,4 +1,5 @@
 from controllers.UserController import UserController
+from interfaces.Color import Color
 from models.User import User
 from utils.Util import Util
 
@@ -21,7 +22,7 @@ class CLILogin(object):
             self._user = userController.login(username, password)
             
             if self._user is None:
-               print("Invalid username or password.")
+               Util.sendFeedback("Invalid username or password", Color.RED)
 
             else:
                break

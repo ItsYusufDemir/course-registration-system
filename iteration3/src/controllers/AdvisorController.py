@@ -3,7 +3,7 @@ from enums.ApprovalStatus import ApprovalStatus
 class AdvisorController:
 
     def __init__(self, currentAdvisor):
-        self.currentAdvisor = currentAdvisor.__init__()
+        self.currentAdvisor = currentAdvisor
         self.studentList = currentAdvisor.fetchAdvisedStudents()
 
     def approveCourse(self, student, selectedCourse):

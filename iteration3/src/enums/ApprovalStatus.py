@@ -1,6 +1,5 @@
-#beyza
 from enum import Enum
 
-class ApprovalStatus(Enum):
-    PENDING = 1
-    DONE = 2
+class ApprovalStatus(str,Enum):
+    DONE = "DONE"
+    PENDING = "PENDING"

@@ -1,6 +1,6 @@
 from enums.CourseType import CourseType
 from interfaces.Color import Color
-from models.Course import Course, CourseadminController
+from models.Course import Course
 from models.CourseSection import CourseSection
 from models.Prerequisite import Prerequisite
 from utils.Util import Util
@@ -22,7 +22,7 @@ class CLIAdmin():
         str = input()
         if str == "q":
             Util.clearScreen()
-            self.adminController.logOut()
+            self.adminController.logout()
         elif str == "1":
             Util.clearScreen()
             self.courseListPage()
@@ -42,24 +42,24 @@ class CLIAdmin():
                         "  Code\t\t\t\t Name\t \n" +
                         "  ____\t ____\t")
         
-        for course,i in courses:
-            print("  " + (i + 1) + ". " + courses.get(i).getCourseCode() + "\t " + courses.get(i).getCourseName())
+        for i in range(len(courses)):
+            print("  " + str(i + 1) + ". " + courses[i].getCourseCode() + "\t " + courses[i].getCourseName())
 
         print("\n\nPress c to create a new course\n" +
                         "Press d to delete course\n")
-        print("Press b to go back\n")
+        print("Press b to go back")
         print("Press q to quit\n")
 
-        str = input()
+        _choice = input()
 
-        if str == "c":
+        if _choice == "c":
             self.createNewCoursePage()
             self.courseListPage()
-        elif str == "d":
-            print("Enter the row number of the course you want to delete : ")
-            str = input()
-            if Util.isValidNumber(str) and Util.checkIfValidRowNumber(str, courses):
-                if self.adminController.deleteCourse(course):
+        elif _choice == "d":
+            print("Enter the row number of the course you want to delete : ", end='')
+            _choice = input() 
+            if Util.validateNumber(_choice, courses):
+                if self.adminController.deleteCourse(courses[(int(_choice)-1)]):
                     Util.clearScreen()
                     Util.sendFeedback("Course deleted successfully", Color.GREEN)
                 else:
@@ -68,10 +68,12 @@ class CLIAdmin():
             else:
                 Util.clearScreen()
                 Util.sendFeedback("Invalid input", Color.RED)
-        elif str == "b":
+
+            self.courseListPage()
+        elif _choice == "b":
             Util.clearScreen()
             self.menuPage()
-        elif str == "q":
+        elif _choice == "q":
             Util.clearScreen()
             self.adminController.logout()
         else:
@@ -81,7 +83,7 @@ class CLIAdmin():
 
     def constraintPage(self):
         Util.clearScreen()
-        editedAttributes = self.adminController.getConstraint()
+        editedAttributes = self.adminController.getConstraints()
 
         print(" Constraint Settings\n" +
                         "**************\n")
@@ -93,50 +95,44 @@ class CLIAdmin():
         print("Press b to go back")
         print("Press q to quit")
         print()
-        print("Enter the row number to edit:")
+        print("Enter the row number to edit:", end='')
 
-        str = input()
+        _choice = input()
 
-        if str == "1":
-            print("Enter true or false for add drop: ")
-            str = input()
-            if str == "true":
-                editedAttributes.put(2, "true")
-                Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
-            elif str == "false":
-                editedAttributes.put(2, "false")
+        if _choice == "1":
+            print("Enter true or false for add drop: ", end='')
+            _choice = input()
+            if _choice.lower() in ["true", "false"]:
+                editedAttributes[2] = _choice.lower()
                 Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
             else:
                 Util.sendFeedback("Invalid input", Color.RED)
-
             self.adminController.editConstraint(editedAttributes)
             self.constraintPage()
-        elif str == "2":
-            print("Enter the max number of courses that can be taken: ")
-            str = input()
-            if Util.isValidNumber(str):
-                editedAttributes.put(1, str)
+        elif _choice == "2":
+            print("Enter the max number of courses that can be taken: ", end='')
+            _choice = input()
+            if Util.isValidNumber(_choice):
+                editedAttributes[1] = int(_choice)
                 Util.sendFeedback("Max number of courses that can be taken changed successfully", Color.GREEN)
             else:
                 Util.sendFeedback("Invalid input", Color.RED)
-
             self.adminController.editConstraint(editedAttributes)
             self.constraintPage()
-        elif str == "3":
-            print("Enter the min required ECTS for term project: ")
-            str = input()
-            if Util.isValidNumber(str):
-                editedAttributes.put(3, str)
+        elif _choice == "3":
+            print("Enter the min required ECTS for term project: ", end='')
+            _choice = input()
+            if Util.isValidNumber(_choice):
+                editedAttributes[3] = int(_choice)
                 Util.sendFeedback("Min required ECTS for term project changed successfully", Color.GREEN)
             else:
                 Util.sendFeedback("Invalid input", Color.RED)
-
             self.adminController.editConstraint(editedAttributes)
             self.constraintPage()
-        elif str == "b":
+        elif _choice == "b":
             Util.clearScreen()
             self.menuPage()
-        elif str == "q":
+        elif _choice == "q":
             Util.clearScreen()
             self.adminController.logout()
         else:
@@ -163,7 +159,7 @@ class CLIAdmin():
 
         courseName = None
         courseCode = None
-        LecturerName = None
+        lecturerName = None
         sectionTime = None
         sectionDate = None
         classroom = None
@@ -175,7 +171,7 @@ class CLIAdmin():
         print("-> Enter the course information for the fields.")
 
         while True:
-            print("1.\tCourse Credit: ")
+            print("1.\tCourse Credit: ", end='')
             try:
                 currentInput = input()
                 courseCredit = int(currentInput)
@@ -185,7 +181,7 @@ class CLIAdmin():
                 continue
 
         while True:
-            print("2.\tCourse ECTS: ")
+            print("2.\tCourse ECTS: ", end='')
             try:
                 currentInput = input()
                 courseECTS = int(currentInput)
@@ -194,14 +190,14 @@ class CLIAdmin():
                 Util.sendFeedback("Invalid input ! Please enter an integer value", Color.RED)
                 continue
 
-        print("3.\tCourse Name: ")
+        print("3.\tCourse Name: ", end='')
         courseName = input()
 
-        print("4.\tCourse Code: ")
+        print("4.\tCourse Code: ", end='')
         courseCode = input()
 
         while True:
-            print("5.\tCourse Semester: ")
+            print("5.\tCourse Semester: ", end='')
             try:
                 currentInput = input()
                 givenSemester = int(currentInput)
@@ -211,7 +207,7 @@ class CLIAdmin():
                 continue
         
         while True:
-            print("6.\tCourse Type: Compulsory(1), Non-technical Elective(2), Technical Elective(3), University Elective(4), Faculty Elective(5): ")
+            print("6.\tCourse Type: Compulsory(1), Non-technical Elective(2), Technical Elective(3), University Elective(4), Faculty Elective(5): ", end='')
             try:
                 currentInput = input()
                 courseTypeCode = int(currentInput)
@@ -227,14 +223,14 @@ class CLIAdmin():
 
         switcher = {
                 1: CourseType.COMPULSORY,
-                2: CourseType.NON_TECHNICAL_ELECTIVE,
+                2: CourseType.NONTECHNICAL_ELECTIVE,
                 3: CourseType.TECHNICAL_ELECTIVE,
                 4: CourseType.UNIVERSITY_ELECTIVE,
                 5: CourseType.FACULTY_ELECTIVE
         }
 
         while True:
-            print("7.\tNumber of Pre-requisite Courses: ")
+            print("7.\tNumber of Pre-requisite Courses: ", end='')
             try:
                 currentInput = input()
                 numberOfPreRequisiteCourses = int(currentInput)
@@ -247,19 +243,22 @@ class CLIAdmin():
         prerequisiteCourseCode = None
         prerequisiteCourse = None
 
-        for i in range(numberOfPreRequisiteCourses):
-            print(i + ".\t")
+        i = 0
+        while i < numberOfPreRequisiteCourses:
+            print(str(i + 1) + ".\t", end='')
             prerequisiteCourseCode = input()
-            prerequisiteCourse = self.findCourseByCode(prerequisiteCourseCode)
+            prerequisiteCourse = self.findCourseByCourseCode(prerequisiteCourseCode)
 
-            if prerequisiteCourse == None:
-                Util.sendFeedback("There is no course with this course code! Try again.", Color.RED)
-                i = i - 1
-                continue
+            if prerequisiteCourse is None:
+                Util.sendFeedback("There is no course with this course code! Try again", Color.RED)
+            else:
+                prerequisiteCourses.append(prerequisiteCourse)
+                i = i + 1  # Only increment i when a valid input is received
+                
         
 
         while True:
-            print("8.\tNumber of Course Sections: ")
+            print("8.\tNumber of Course Sections: ", end='')
             try:
                 currentInput = input()
                 numberOfCourseSections = int(currentInput)
@@ -269,10 +268,10 @@ class CLIAdmin():
                 continue
 
         for i in range(numberOfCourseSections):
-            print("Section " + i)
+            print("Section " + str(i + 1))
 
             while True:
-                print("1.\tStudent Capacity: ")
+                print("1.\tStudent Capacity: ", end='')
                 try:
                     currentInput = input()
                     studentCapacity = int(currentInput)
@@ -281,15 +280,15 @@ class CLIAdmin():
                     Util.sendFeedback("Invalid input ! Please enter an integer value", Color.RED)
                     continue
         
-            print("2.\tLecturer Name: ")
-            LecturerName = input()
+            print("2.\tLecturer Name: ", end='')
+            lecturerName = input()
 
             print("\nFollowing information for section day and time")
             print("Input Format for Section Day:\tMonday, Monday, Tuesday")
-            print("Input Format for Section Time:\t08:40-10:30, 15:40-17:30")
+            print("Input Format for Section Time:\t08:30-09:20, 09:30-10:30, 08:30-09:20")
 
             while True:
-                print("3.\tSection Day: ")
+                print("3.\tSection Day: ", end='')
                 sectionDate = input()
                 sectionDateList = Util.makeArrayList(",", sectionDate)
                 if Util.isInputFormatTrueForDay(sectionDateList):
@@ -299,7 +298,7 @@ class CLIAdmin():
                     continue
 
             while True:
-                print("4.\tSection Time: ")
+                print("4.\tSection Time: ", end='')
                 sectionTime = input()
                 sectionTimeList = Util.makeArrayList(",", sectionTime)
                 if Util.isInputFormatTrueForTime(sectionTimeList):
@@ -308,23 +307,27 @@ class CLIAdmin():
                     Util.sendFeedback("Invalid input ! Please enter a valid time", Color.RED)
                     continue
 
-            if sectionTimeList.size() == sectionDateList.size():
+            if len(sectionTimeList) == len(sectionDateList):
                 break
+
 
             else:
                 Util.sendFeedback("Number of entered days must be equal to number of times entered", Color.RED)
                 continue
         
 
-        print("5.\tClassroom: ")
+        print("9.\tClassroom: ", end='')
         classroom = input()
 
-        print("6.\tSection Code: ")
+        print("10.\tSection Code: ", end='')
         sectionCode = input()
 
-        courseSections.add(CourseSection(studentCapacity, LecturerName, sectionDateList, sectionTimeList, classroom, sectionCode))
+        courseSections.append(CourseSection(studentCapacity, lecturerName, sectionDateList, sectionTimeList, classroom, sectionCode,0))
         prerequisite = Prerequisite(prerequisiteCourses)
-        course = Course(courseCredit, courseECTS, courseName, courseCode, givenSemester, switcher.get(courseTypeCode), prerequisite, courseSections)
+        course = Course(courseCredit, courseECTS,givenSemester, courseName, courseCode, prerequisite, courseSections, switcher.get(courseTypeCode))
+
+        print(course.__dict__)
+       
 
         Util.clearScreen()
 

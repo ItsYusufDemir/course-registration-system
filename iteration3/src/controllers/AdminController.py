@@ -20,5 +20,5 @@ class AdminController:
     def findCourseByCourseCode(self, courseCode):
         return self._currentAdmin.findCourseByCourseCode(courseCode)
     
-    def logOut(self):
+    def logout(self):
         self._currentAdmin.logout()

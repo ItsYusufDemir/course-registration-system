@@ -1,4 +1,5 @@
 #beyza
+import logging
 from enums.ApprovalStatus import ApprovalStatus
 from models.User import User
 from utils.DatabaseManager import DatabaseManager
@@ -9,6 +10,7 @@ from models.Transcript import Transcript
 from enums.CourseResult import CourseResult
 from models.CourseSection import CourseSection
 from CommandLineInterface.CLIStudent import CLIStudent
+
 
 class Student(User):
     def __init__(self, userId, password, firstName, lastName, status, notifications, email, identityNumber, currentSemester,
