@@ -4,10 +4,16 @@ from utils.DatabaseManager import DatabaseManager
 from enums.CourseType import CourseType
 
 
-class Transcirpt(object):
+class Transcript(object):
     
     def __init__(self, takenCourses):
         self.takenCourses = takenCourses
+
+    @classmethod
+    def dictToObject(cls, dict):
+        return cls(
+            [CourseGrade.dictToObject(courseGrade) for courseGrade in dict['takenCourses']]
+        )
     
     def addTakenCourse(self, course):
         self.takenCourses.append( CourseGrade(course, None, CourseResult.ACTIVE) )

@@ -1,3 +1,8 @@
+from enums.CourseType import CourseType
+from models.CourseSection import CourseSection
+from models.Prerequisite import Prerequisite
+
+
 class Course:
 
     def __init__(self, courseCredit, courseECTS, givenSemester, courseName, courseCode, prerequisiteInformation, courseSections, courseType):
@@ -9,6 +14,19 @@ class Course:
         self.prerequisiteInformation = prerequisiteInformation
         self.courseSections = courseSections
         self.courseType = courseType
+
+    @classmethod
+    def dictToObject(cls, courseDict):
+        return cls(
+            courseDict['courseCredit'],
+            courseDict['courseECTS'],
+            courseDict['givenSemester'],
+            courseDict['courseName'],
+            courseDict['courseCode'],
+            Prerequisite.dictToObject(courseDict['prerequisiteInformation']) if courseDict['prerequisiteInformation'] else None,
+            [CourseSection.dictToObject(courseSection) for courseSection in courseDict['courseSections']],
+            CourseType.dictToEnum(courseDict['courseType'])
+        )
 
 
     def checkPrerequisite(self, student):

@@ -10,6 +10,17 @@ class User(Showable):
         self.status = status
         self.notifications = notifications
 
+    @classmethod
+    def dictToObject(self, dict):
+        return User(
+            dict['userId'],
+            dict['password'],
+            dict['firstName'],
+            dict['lastName'],
+            dict['status'],
+            dict['notifications']
+        )
+
     def logout(self):
         print("User logged out")
         logging.log(logging.INFO, "User: "+self.userId+" logged out")
@@ -23,3 +34,9 @@ class User(Showable):
     def clearNotifications(self):
         self.notifications = []
         logging.log(logging.INFO, "Notifications seen for user: "+self.userId)
+
+    def getUserId(self):
+        return self.userId
+    
+    def getNotifications(self):
+        return self.notifications

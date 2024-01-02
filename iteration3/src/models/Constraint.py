@@ -4,6 +4,14 @@ class Constraint:
         self.addDropWeek = addDropWeek
         self.minRequiredECTSForTermProject = minRequiredECTSForTermProject
 
+    @classmethod
+    def dictToObject(cls, dict):
+        return cls(
+            dict['maxNumberOfCoursesStudentTake'],
+            dict['addDropWeek'],
+            dict['minRequiredECTSForTermProject']
+        )
+
     def editConstraint(self, editedAttributes):
         self.maxNumberOfCoursesStudentTake = int(editedAttributes[1])
         self.addDropWeek = bool(editedAttributes[2])

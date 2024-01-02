@@ -12,6 +12,18 @@ class CourseSection:
         self.sectionCode = sectionCode
         self.studentCountInsideCourseSection = studentCountInsideCourseSection
 
+    @classmethod
+    def dictToObject(cls, dict):
+        return cls(
+            dict['studentCapacity'],
+            dict['lecturerName'],
+            dict['sectionTime'],
+            dict['sectionDay'],
+            dict['classroom'],
+            dict['sectionCode'],
+            dict['studentCountInsideCourseSection']
+        )
+
     def checkAvailability(self):
         if self.studentCapacity >= self.studentCountInsideCourseSection:
             return True

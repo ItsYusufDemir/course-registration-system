@@ -33,27 +33,25 @@ class DatabaseManager:
 
         #Read json files and store them in the corresponding lists
 
-        with open("iteration3/data/courses.json", "r", encoding='utf-8') as json_file:
-            coursesJsonString = json.load(json_file)
-            self.courseList = [Course(**courseJsonString) for courseJsonString in coursesJsonString]
+        with open("iteration3/data/courses.json", "r", encoding='utf-8') as jsonFile:
+            coursesJsonString = json.load(jsonFile)
+            self.courseList = [Course.dictToObject(courseDict) for courseDict in coursesJsonString]
         
-        
-        with open("iteration3/data/students.json", "r", encoding='utf-8') as json_file:
-            studentsJsonString = json.load(json_file)
-            self.studentList = [Student(**studentJsonString) for studentJsonString in studentsJsonString]
-
+        with open("iteration3/data/students.json", "r", encoding='utf-8') as jsonFile:
+            studentsJsonString = json.load(jsonFile)
+            self.studentList = [Student.dictToObject(studentDict) for studentDict in studentsJsonString]
        
-        with open("iteration3/data/advisors.json", "r", encoding='utf-8') as json_file:
-            advisorsJsonString = json.load(json_file)
-            self.advisorList = [Advisor(**advisorJsonString) for advisorJsonString in advisorsJsonString]
+        with open("iteration3/data/advisors.json", "r", encoding='utf-8') as jsonFile:
+            advisorsJsonString = json.load(jsonFile)
+            self.advisorList = [Advisor.dictToObject(advisorDict) for advisorDict in advisorsJsonString]
         
-        with open("iteration3/data/constraints.json", "r", encoding='utf-8') as json_file:
-            constraintsJsonString = json.load(json_file)
-            self.constraintList = [Constraint(**constraintJsonString) for constraintJsonString in constraintsJsonString]
+        with open("iteration3/data/constraints.json", "r", encoding='utf-8') as jsonFile:
+            constraintsJsonString = json.load(jsonFile)
+            self.constraintList = [Constraint.dictToObject(constraintDict) for constraintDict in constraintsJsonString]
 
-        with open("iteration3/data/admins.json", "r", encoding='utf-8') as json_file:
-            adminsJsonString = json.load(json_file)
-            self.adminList = [Admin(**adminJsonString) for adminJsonString in adminsJsonString]
+        with open("iteration3/data/admins.json", "r", encoding='utf-8') as jsonFile:
+            adminsJsonString = json.load(jsonFile)
+            self.adminList = [Admin.dictToObject(adminDict) for adminDict in adminsJsonString]
         
 
     def saveTranscriptsToDatabase(self):
@@ -72,7 +70,6 @@ class DatabaseManager:
     def saveStudentList(self):
         with open("iteration3/data/students.json", "w", encoding="utf-8") as json_file:
             json.dump(self.studentList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
-
         self.saveTranscriptsToDatabase()
 
     def saveAdvisorList(self):
@@ -95,7 +92,7 @@ class DatabaseManager:
         self.saveAdminList()
 
     def fetchAdvisedStudents(self, advisor):
-        studentsOfAdvisor = [student for student in self.studentList if student.advisorOfStudent.userId == advisor.userId]
+        studentsOfAdvisor = [student for student in self.studentList if student.getAdvisorOfStudent().getUserId() == advisor.userId]
         return studentsOfAdvisor
 
     def editConstraints(self, editedAttributes: Dict[int, str]) -> bool:
@@ -132,16 +129,21 @@ class DatabaseManager:
         return constraintsMap
     
     def jsonDefault(self, obj):
-        if hasattr(obj, '__dict__'):
+        """
+        Custom JSON serialization function to handle non-serializable objects.
+        """
+        if isinstance(obj, Enum):
+            # Handle Enum objects by converting them to their values
+            return obj.value
+        elif hasattr(obj, '__dict__'):
+            # If the object has a '__dict__' attribute, use it for serialization
             return obj.__dict__
-        elif isinstance(obj, (list, tuple)):
-            return [self.jsonDefault(item) for item in obj]
         elif isinstance(obj, set):
-            return [self.jsonDefault(item) for item in obj]
-        elif isinstance(obj, Enum):
-            return obj.value  # Serialize the Enum as its value
+            # Handle sets by converting them to lists
+            return list(obj)
         else:
-            return obj
+            # For other types, raise a TypeError (you can customize this part)
+            raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
         
 
 
