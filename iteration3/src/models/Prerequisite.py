@@ -2,7 +2,12 @@ class Prerequisite:
     def __init__ (self, prerequisiteOfCourses):
         self.prerequisiteOfCourses = prerequisiteOfCourses
 
-
+    @classmethod
+    def dictToObject(cls, dict):
+        from models.Course import Course
+        return cls(
+            [Course.dictToObject(course) for course in dict['prerequisiteOfCourses']]
+        )
 
     def checkPrerequisiteCoursePassed(self, student, course):
         isPrerequisiteCoursesPassed = []

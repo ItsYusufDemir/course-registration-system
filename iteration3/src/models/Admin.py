@@ -8,6 +8,14 @@ from controllers.AdminController import AdminController
 
 class Admin(User): 
 
+    def __init__(self, userId, password, firstName, lastName, status, notifications):
+        super().__init__(userId, password, firstName, lastName, status, notifications)
+
+    @classmethod
+    def dictToObject(cls, adminDict):
+        return cls(adminDict["userId"], adminDict["password"], adminDict["firstName"],
+                    adminDict["lastName"], adminDict["status"], adminDict["notifications"])
+
     def fetchCourseList(self)->[Course]:
         return DatabaseManager().getInstance().getCourseList()
     

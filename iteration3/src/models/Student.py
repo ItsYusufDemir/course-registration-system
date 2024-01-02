@@ -1,12 +1,13 @@
 #beyza
 import logging
 from enums.ApprovalStatus import ApprovalStatus
+from models.SelectedCourse import SelectedCourse
+from models.Transcript import Transcript
 from models.User import User
 from utils.DatabaseManager import DatabaseManager
 from utils.Util import Util
 from interfaces.Color import Color
 from enums.CourseStatus import CourseStatus
-from models.Transcript import Transcript
 from enums.CourseResult import CourseResult
 from models.CourseSection import CourseSection
 from CommandLineInterface.CLIStudent import CLIStudent
@@ -23,6 +24,28 @@ class Student(User):
         self.advisorOfStudent = advisorOfStudent
         self.approvalStatus = approvalStatus
         self.transcript = transcript
+
+    @classmethod
+    def dictToObject(cls, studentDict):
+
+        from models.Advisor import Advisor
+
+
+        return cls(
+            studentDict['userId'],
+            studentDict['password'],
+            studentDict['firstName'],
+            studentDict['lastName'],
+            studentDict['status'],
+            studentDict['notifications'],
+            studentDict['email'],
+            studentDict['identityNumber'],
+            studentDict['currentSemester'],
+            [SelectedCourse.dictToObject(selectedCourse) for selectedCourse in studentDict['selectedCourses']],
+            Advisor.dictToObject(studentDict['advisorOfStudent']),
+            ApprovalStatus.dictToEnum(studentDict['approvalStatus']),
+            Transcript.dictToObject(studentDict['transcript'])
+        )
         
     def listAvailableCourseSections(self):
         allSelectableCourseSections = []
@@ -262,3 +285,6 @@ class Student(User):
     def createTimeTable(self):
         timeTable = self.fillTable()
         return timeTable
+    
+    def getAdvisorOfStudent(self):
+        return self.advisorOfStudent

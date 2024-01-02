@@ -5,6 +5,15 @@ class CourseGrade:
         self.course = course
         self.letterGrade = letterGrade
         self.courseResult = courseResult
+
+    @classmethod
+    def dictToObject(cls, dict):
+        from models.Course import Course
+        return cls(
+            Course.dictToObject(dict['course']),
+            dict['letterGrade'],
+            CourseResult.dictToEnum(dict['courseResult'])
+        )
         
     def convertLetterGradeToScore(self):
         match self.letterGrade:
