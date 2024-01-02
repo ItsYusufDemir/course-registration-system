@@ -17,18 +17,18 @@ class AdvisorController:
         studentListOrder = []
 
         for student in self.studentList:
-            if(student.getStatus() == ApprovalStatus.PENDING):
+            if(student.getApprovalStatus() == ApprovalStatus.PENDING):
                 studentListOrder.append(student)
         
         for student in self.studentList:
-            if(student.getStatus() == ApprovalStatus.DONE):
+            if(student.getApprovalStatus() == ApprovalStatus.DONE):
                 studentListOrder.append(student)
 
         return studentListOrder
 
 
     def getNotification(self):
-        return self.currentAdvisor.getNotification()
+        return self.currentAdvisor.getNotifications()
 
     def logOut(self):
         self.currentAdvisor.logout()
