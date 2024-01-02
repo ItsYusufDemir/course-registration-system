@@ -106,7 +106,7 @@ class CLIAdvisor(object):
                print(f"    {'-----':>10}    {'------':>50}    {'--------':>15}    {'------':>15}")
 
                for i in range(len(courses)):
-                    print(f"{i}  {courses[i].getCourse().getCourseCode():>10}    {courses[i].getCourse().getCourseName():>50}    {courses[i].getCourse().getSectionCode():>15}")
+                    print(f"{i+1}  {courses[i].getCourse().getCourseCode():>10}    {courses[i].getCourse().getCourseName():>50}    {courses[i].getCourseSection().getSectionCode():>15}   " , end="           ")
 
                     if courses[i].getStatus() == CourseStatus.APPROVED:
                          Util.paintText(courses[i].getStatus() + "\n", Color.GREEN)
@@ -130,10 +130,18 @@ class CLIAdvisor(object):
                          choice2 = input()
 
                          if choice2 == "a":
-                              self._advisorController.approveCourse(student, courses[int(choice) - 1])
-                              print("\n")
+                              result = self._advisorController.approveCourse(student, courses[int(choice) - 1])
+                              #TODO: throw error, and catch it here
+                              if result:
+                                   Util.sendFeedback("Course is approved", Color.GREEN)
+                              else:
+                                   Util.sendFeedback("Course is not approved", Color.RED)
                          elif choice2 == "d":
-                              self._advisorController.denyCourse(student, courses[int(choice) - 1])
+                              result = self._advisorController.denyCourse(student, courses[int(choice) - 1])
+                              if result:
+                                   Util.sendFeedback("Course is denied", Color.GREEN)
+                              else:
+                                   Util.sendFeedback("Course is not denied", Color.RED)
                          elif choice == "b":
                               return False
                          elif choice == "q":

@@ -61,5 +61,21 @@ class Course:
     
     def getCourseName(self):
         return self.courseName
+    
+    def getGivenSemester(self):
+        return self.givenSemester
+    
+    def getCourseSections(self):
+        return self.courseSections
+    
+    def getCourseCredit(self):
+        return self.courseCredit
+
+    def getCourseECTS(self):
+        return self.courseECTS
+
+    def getCourseType(self):
+        return self.courseType
+
 
     

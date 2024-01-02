@@ -1,6 +1,8 @@
 #beyza
 import logging
+from controllers.StudentController import StudentController
 from enums.ApprovalStatus import ApprovalStatus
+from enums.CourseType import CourseType
 from models.SelectedCourse import SelectedCourse
 from models.Transcript import Transcript
 from models.User import User
@@ -49,18 +51,18 @@ class Student(User):
         
     def listAvailableCourseSections(self):
         allSelectableCourseSections = []
-        courses = DatabaseManager.getInstance().getCourses()
+        courses = DatabaseManager.getInstance().getCourseList()
         availableCourseSections = []
 
         for course in courses:
-            if course._courseCode == "CSE4297" or course._courseCode == "CSE4298":
+            if course.getCourseCode() == "CSE4297" or course.getCourseCode() == "CSE4298":
                 if self.transcript.checkEngineeringProjectAvailability():
                     allSelectableCourseSections.extend(course._courseSections)
-            elif self.currentSemester < course._givenSemester:
+            elif self.currentSemester < course.getGivenSemester():
                 if self.transcript.calculateGPA() >= 3.0:
                     allSelectableCourseSections.extend(course._courseSections)
             else:
-                allSelectableCourseSections.extend(course._courseSections)
+                allSelectableCourseSections.extend(course.getCourseSections())
 
         for courseSection in allSelectableCourseSections:
             course = courseSection.findCourseOfCourseSection()
@@ -74,7 +76,7 @@ class Student(User):
     
     def checkIfItExistsInSelectedCourses(self, course):
         for selectedCourse in self.selectedCourses:
-            if selectedCourse.course == course:
+            if selectedCourse.getCourse().getCourseCode() == course.getCourseCode():
                 return True
         return False
 
@@ -104,53 +106,60 @@ class Student(User):
         ueCounter = 0
 
         for selectedCourse in self.selectedCourses:
-            if str(selectedCourse.course.courseType) == "NONTECHNICAL_ELECTIVE":
-                nteCounter = nteCounter + 1
-            elif str(selectedCourse.course.courseType) == "TECHNICAL_ELECTIVE":
-                teCounter = teCounter + 1
-            elif str(selectedCourse.course.courseType) == "FACULTY_ELECTIVE":
-                fteCounter = fteCounter + 1
-            elif str(selectedCourse.course.courseType) == "UNIVERSITY_ELECTIVE":
-                ueCounter = ueCounter + 1
-        if str(selectedCourse.course.courseType) == "NONTECHNICAL_ELECTIVE" and nteCounter >= 2:
-            return False
-        elif str(selectedCourse.course.courseType) == "TECHNICAL_ELECTIVE" and teCounter >= 4:
-            return False
-        elif str(selectedCourse.course.courseType) == "FACULTY_ELECTIVE" and fteCounter >= 1:
-            return False
-        elif str(selectedCourse.course.courseType) == "UNIVERSITY_ELECTIVE" and ueCounter >= 1:
-            return False
-        else: 
-            return True
+            courseType = selectedCourse.getCourse().getCourseType()
+
+            if courseType == CourseType.NONTECHNICAL_ELECTIVE:
+                nteCounter += 1
+            elif courseType == CourseType.TECHNICAL_ELECTIVE:
+                teCounter += 1
+            elif courseType == CourseType.FACULTY_ELECTIVE:
+                fteCounter += 1
+            elif courseType == CourseType.UNIVERSITY_ELECTIVE:
+                ueCounter += 1
+
+        for selectedCourse in self.selectedCourses:
+            courseType = selectedCourse.getCourse().getCourseType()
+
+            if courseType == CourseType.NONTECHNICAL_ELECTIVE and nteCounter >= 2:
+                return False
+            elif courseType == CourseType.TECHNICAL_ELECTIVE and teCounter >= 4:
+                return False
+            elif courseType == CourseType.FACULTY_ELECTIVE and fteCounter >= 1:
+                return False
+            elif courseType == CourseType.UNIVERSITY_ELECTIVE and ueCounter >= 1:
+                return False
+
+        return True
+        
         
     def addNewCourse(self, selectedCourse):
         constraints = DatabaseManager.getInstance().getConstraints()
         if len(self.selectedCourses) >= int(constraints.get(1)):
             Util.sendFeedback("You cannot take more than " + str(constraints.get(1) + " courses in one term.", Color.RED))
-            Util.getLogger().warning(self.userId + " - Student cannot take more than " + str(constraints.get(1)) + " courses in one term.")
+            logging.warning(self.userId + " - Student cannot take more than " + str(constraints.get(1)) + " courses in one term.")
             return False
         
         if selectedCourse not in self.selectedCourses:
             self.selectedCourses.append(selectedCourse)
             DatabaseManager.getInstance().saveToDatabase()
-            Util.getLogger().info(self.userId + " - Course: " + selectedCourse.course.courseCode
+            logging.log(logging.INFO,self.userId + " - Course: " + selectedCourse.course.courseCode
                     + " added to student: " + self.userId)
             return True
         else:
-            Util.getLogger().warning(self.userId + " - Course: " + selectedCourse.course.courseCode
+            logging.log(logging.INFO, self.userId + " - Course: " + selectedCourse.course.courseCode
         + " is already added to student: " + self.userId)
 
         
         
     def deleteCourse(self, selectedCourse):
-        if selectedCourse not in self.selectedCourses and selectedCourse.status is not CourseStatus.PENDING:
-            self.selectedCourses.delete(selectedCourse)
+        if (selectedCourse in self.selectedCourses) and (selectedCourse.getStatus() is not CourseStatus.PENDING):
+            self.selectedCourses.remove(selectedCourse)
             DatabaseManager.getInstance().saveToDatabase()
-            Util.getLogger().info(self.userId + " - Course: " + selectedCourse.course.courseCode
+            logging.info(self.userId + " - Course: " + selectedCourse.course.courseCode
                     + " deleted from student: " + self.userId)
             return True 
         else:  
-            Util.getLogger().warning(self.userId + " - Course: " + selectedCourse.course.courseCode
+            logging.info(self.userId + " - Course: " + selectedCourse.course.courseCode
                     + " is not deleted from student: " + self.userId)
             return False
     
@@ -162,7 +171,7 @@ class Student(User):
                     if selectedCourse.course is not courseGrade.course:
                         for section in self.listAvailableCourseSections():
                             if section.findCourseOfCourseSection == courseGrade.course:
-                                Util.getLogger().warning("Student: " + self.userId + " has failed course: "
+                                logging.warning("Student: " + self.userId + " has failed course: "
                                         + courseGrade.course.courseCode
                                         + " and has not added it to his/her courses.")
                                 return True
@@ -181,10 +190,10 @@ class Student(User):
 
         if self.approvalStatus is ApprovalStatus.PENDING:
             Util.sendFeedback("You already sent your courses to approval!", Color.RED)
-            Util.getLogger().warning(self.userId + " - Student: " + self.userId + " already sent his/her courses to approval.")
+            logging.warning(self.userId + " - Student: " + self.userId + " already sent his/her courses to approval.")
             return
         
-        if self.checkCompulsoryCourses:
+        if self.checkCompulsoryCourses():
             Util.sendFeedback("Please add your failed courses!", Color.RED)
             return
         
@@ -192,11 +201,12 @@ class Student(User):
 
         if numberOfDraftCourses == 0:
             Util.sendFeedback("You have no course to send to approval!", Color.RED)
-            Util.getLogger().warning(self.userId + " - Student: " + self.userId + " has no course to send to approval.")
+            logging.warning(self.userId + " - Student: " + self.userId + " has no course to send to approval.")
             return
         
+        #TODO: logical bug
         for selectedCourse in self.selectedCourses:
-            if selectedCourse.status is CourseStatus.DRAFT:
+            if selectedCourse.status == CourseStatus.DRAFT:
                 selectedCourse.status = CourseStatus.PENDING
                 selectedCourse.courseSection.incrementStudentCount()
             elif selectedCourse.courseSection not in self.findRepeatCourseSections():
@@ -210,12 +220,12 @@ class Student(User):
         
         self.advisorOfStudent.addNotification(self.firstName + " " + self.lastName + " has requested a course approval.")
         Util.sendFeedback("Courses are sent to advisor.", Color.GREEN)    
-        Util.getLogger().info(self.userId + " - Student: " + self.userId + " sent his/her courses to approval.")    
+        logging.info(self.userId + " - Student: " + self.userId + " sent his/her courses to approval.")    
         DatabaseManager.getInstance().saveToDatabase()
 
     def getMyPage(self):
-        cliStudent = CLIStudent()
-        cliStudent.menuPage()
+        cliStudent = CLIStudent(StudentController(self))
+        cliStudent._menuPage()
 
     def fillTable(self):
         timeTable = [[] for _ in range(5)]
@@ -225,9 +235,9 @@ class Student(User):
                 timeTable[i].append("")
 
         for i in range(len(self.selectedCourses)):
-            for j in range(len(self.selectedCourses[i].courseSection.sectionDay())):
-                day = self.selectedCourses[i].courseSection.sectionDay[j]
-                time = self.selectedCourses[i].courseSection.sectionTime[j]
+            for j in range(len(self.selectedCourses[i].getCourseSection().getSectionDay())):
+                day = self.selectedCourses[i].getCourseSection().sectionDay[j]
+                time = self.selectedCourses[i].getCourseSection().sectionTime[j]
                 if day == "Monday":
                     self.fillTableWithValues(time, i, 0, timeTable)
                 elif day == "Tuesday":
@@ -301,3 +311,11 @@ class Student(User):
     
     def getSelectedCourses(self):
         return self.selectedCourses
+    
+    def getTranscript(self):
+        return self.transcript
+    
+    def setApprovalStatus(self, approvalStatus):
+        self.approvalStatus = approvalStatus
+    
+    

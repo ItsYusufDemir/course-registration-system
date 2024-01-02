@@ -38,9 +38,10 @@ class CLIStudent(object):
             Util.clearScreen()
             print("\n\n")
             print(" My Courses\n" +
-                  "**************\n")
-            print("    %10s    %50s    %15s    Status\n", "Code", "Name", "Section")
-            print("    %10s    %50s    %15s    ______\n", "____", "____", "_______")
+                "**************\n")
+            print("    %-10s    %-45s    %-15s    Status\n" % ("Code", "Name", "Section"))
+            print("    %-10s    %-45s    %-15s    ______\n" % ("____", "____", "_______"))
+
 
             self._listSelectedCourses()
 
@@ -52,15 +53,15 @@ class CLIStudent(object):
             print("Press b to go back\n")
             print("Press q to quit\n")
 
-            _choice = input()
+            _choice: str = input()
 
             try:
                 if _choice == "1":
                     self._showAddCoursePage()
                 elif _choice == "2":
                     _choice = input("Enter the row number of the course you want to delete : ")
-                    if Util.validateNumber(_choice):  
-                        if self._deleteCourse():
+                    if Util.validateNumber(_choice, self._studentController.getSelectedCourses()):  
+                        if self._deleteCourse(_choice):
                             Util.sendFeedback("Course deleted successfully", Color.GREEN)
                         else:
                             Util.sendFeedback("Course deletion failed", Color.RED)
@@ -78,17 +79,22 @@ class CLIStudent(object):
                     raise Exception("Invalid input" + _choice)
                     
             except Exception as e:
-                Util.sendFeedback(e, Color.RED)
+                if str(e) == "Invalid input" + _choice:
+                    Util.sendFeedback("Invalid input", Color.RED)
+                else:
+                    raise
     
     def _showAddCoursePage(self):
+
         self._shouldQuit = True
         while(self._shouldQuit):
             Util.clearScreen()
             print("\n\n")
             print(" Add Course\n" +
-                  "**************\n")
-            print("    %10s    %50s    %15s    %20s    %s\n", "Code", "Name", "Section", "Instructor", "Credit")
-            print("    %10s    %50s    %15s    %20s    %s\n", "____", "____", "_______", "__________", "______")
+                "**************\n")
+            print("    %-10s    %-50s    %-15s    %-20s    %s\n" % ("Code", "Name", "Section", "Instructor", "Credit"))
+            print("    %-10s    %-50s    %-15s    %-20s    %s\n" % ("____", "____", "_______", "__________", "______"))
+
 
             self._listAvailableCourseSections()
             
@@ -105,7 +111,7 @@ class CLIStudent(object):
                 elif _choice == "q":
                     self._shouldQuit = False
 
-                elif Util.validateNumber(_choice): 
+                elif Util.validateNumber(_choice, self._studentController.getAvailableCourseSections()): 
 
                     if self._addCourse(_choice):
                         Util.sendFeedback("Course added successfully", Color.GREEN)
@@ -116,12 +122,12 @@ class CLIStudent(object):
                     raise Exception("Invalid input" + _choice)
                 
             except Exception as e:
-                print(e)
+                raise e
     def _showTimeTablePage(self):
         self._shouldQuit = True
         while(self._shouldQuit):
             Util.clearScreen()
-            Util.printTimeTable(self._studentController.getStudentTimeTable())
+            Util.printTimeTable(self._studentController.getTimeTable())
             print("\n\n press b to go back\n")
             print("Press q to quit\n")
 
@@ -139,41 +145,39 @@ class CLIStudent(object):
     
     def _addCourse(self, str):
         rowNumber = int(str) #TODO: check if valid row number
-        selectedCourseSection = self._studentController.getAvaliableCourseSections().get(rowNumber-1)
-        if self._studentController.addSelectedCourse( SelectedCourse( selectedCourseSection.findCourseOfCourseSection(), selectedCourseSection ) ):
+        selectedCourseSection = self._studentController.getAvailableCourseSections()[(rowNumber-1)]
+        if self._studentController.addSelectedCourse( SelectedCourse( selectedCourseSection.findCourseOfCourseSection(), CourseStatus.DRAFT, selectedCourseSection ) ):
             return True
 
         return False
     
     def _deleteCourse(self, str):
         rowNumber = int(str) #TODO: check if valid row number 
-        if self._studentController.removeSelectedCourse( self._studentController.getSelectedCourses().get(rowNumber-1) ):
+        if self._studentController.removeSelectedCourse( self._studentController.getSelectedCourses()[rowNumber-1] ):
             return True
         
         return False
     
     def _listAvailableCourseSections(self):
         rowCount = 1
-        for courseSection in self._studentController.getAvaliableCourseSections():
+        for courseSection in self._studentController.getAvailableCourseSections():
             course = courseSection.findCourseOfCourseSection()
-            print("%d.  %10s    %50s    %15s    %20s    %d\n", rowCount, course.getCourseCode(), course.getCourseName(),
-                    courseSection.getSectionCode(), courseSection.getLecturerName(), course.getCourseCredit())
+            print(f"{rowCount}.  {course.getCourseCode():<10}  {course.getCourseName():<50}  {courseSection.getSectionCode():<15}  {courseSection.getLecturerName():<20}  {course.getCourseCredit()}")
             rowCount += 1
 
     def _listSelectedCourses(self):
         rowCount = 1
         for selectedCourse in self._studentController.getSelectedCourses():
-            print("%d.  %10s    %50s    %15s    \n", rowCount, selectedCourse.getCourseCode(), selectedCourse.getCourseName(),
-                    selectedCourse.getCourseSection().getSectionCode())
-            
+            print(f"{rowCount}.  {selectedCourse.getCourse().getCourseCode():<10}  {selectedCourse.getCourse().getCourseName():<50}  {selectedCourse.getCourseSection().getSectionCode():<15}",  end="")            
             if selectedCourse.getStatus() == CourseStatus.APPROVED:
-                Util.paintText(selectedCourse.getStatus() + "\n", Color.GREEN)
+                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.GREEN)
             elif selectedCourse.getStatus() == CourseStatus.PENDING:
-                Util.paintText(selectedCourse.getStatus() + "\n", Color.YELLOW)
+                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.YELLOW)
             elif selectedCourse.getStatus() == CourseStatus.DENIED:
-                Util.paintText(selectedCourse.getStatus() + "\n", Color.RED)
+                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.RED)
             else:
-                print(selectedCourse.getStatus() + "\n")
+                print(f"{selectedCourse.getStatus().value}\n")
             
             rowCount += 1
+
     

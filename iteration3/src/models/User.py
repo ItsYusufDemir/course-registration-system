@@ -40,3 +40,6 @@ class User(Showable):
     
     def getNotifications(self):
         return self.notifications
+    
+    def addNotification(self, notification):
+        self.notifications.append(notification)

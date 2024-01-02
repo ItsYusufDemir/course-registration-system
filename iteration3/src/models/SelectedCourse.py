@@ -5,15 +5,9 @@ from models.CourseSection import CourseSection
 
 class SelectedCourse(object):
     def __init__(self,course,status,courseSection):
-        self.course = Course(**course)
-
-        # Set the status using the enum member
-        if isinstance(status, CourseStatus):
-            self.status = status
-        else:
-            self.status = CourseStatus[status]
-
-        self.courseSection = CourseSection(**courseSection)
+        self.course = course
+        self.status = status
+        self.courseSection = courseSection
 
     @classmethod
     def dictToObject(cls, dict):
@@ -30,9 +24,11 @@ class SelectedCourse(object):
 
     def getCourse(self):
         return self.course
-
-    def getStatus(self):
-        return self.status
     
     def getCourseSection(self):
         return self.courseSection
+
+    def getStatus(self):
+        return self.status
+            
+

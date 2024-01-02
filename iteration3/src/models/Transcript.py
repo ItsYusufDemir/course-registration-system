@@ -21,7 +21,7 @@ class Transcript(object):
     def acquirePassedCourses(self):
         passedCourses = list()
         for course in self.takenCourses:
-            if course.result == CourseResult.PASSED:
+            if course.getCourseResult() == CourseResult.PASSED:
                 passedCourses.append(course)
         
         return passedCourses
@@ -29,7 +29,7 @@ class Transcript(object):
     def calculateCompletedCredits(self):
         total = 0.0
         for course in self.takenCourses:
-            if course.result == CourseResult.PASSED:
+            if course.getCourseResult() == CourseResult.PASSED:
                 total += course.getCourse().getCredit()
         
         return total
@@ -39,17 +39,19 @@ class Transcript(object):
         totalCredit = 0.0
 
         for courseGrade in self.takenCourses:
-            if courseGrade.result != CourseResult.PASSED:
+            if courseGrade.getCourseResult() != CourseResult.PASSED:
                 continue
             totalPoint += courseGrade.getCourse().getCourseCredit() * courseGrade.convertLetterGradeToScore()
             totalCredit += courseGrade.getCourse().getCourseCredit()
-        
-        return totalPoint / totalCredit
+        try:
+            return totalPoint / totalCredit
+        except ZeroDivisionError:
+            return 0
     
     def checkEngineeringProjectAvailability(self):
         totalCreditsForEngineeringProject = 0.0
 
-        constraintsMap = DatabaseManager.getInstance().getConstraint()
+        constraintsMap = DatabaseManager.getInstance().getConstraints()
 
         restricedCourses = ["ISG121", "ISG122"]
         restricedCourseTypes = [CourseType.NONTECHNICAL_ELECTIVE, CourseType.UNIVERSITY_ELECTIVE,
@@ -61,7 +63,10 @@ class Transcript(object):
                 takenCourse.getCourse().getCourseCode() not in restricedCourses ):
                totalCreditsForEngineeringProject += takenCourse.getCourse().getCredit()
 
-        if totalCreditsForEngineeringProject >= constraintsMap['3']:
+        if totalCreditsForEngineeringProject >= int(constraintsMap[3]):
             return True
         else:
             return False
+        
+    def getTakenCourses(self):
+        return self.takenCourses
