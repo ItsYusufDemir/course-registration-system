@@ -2,6 +2,7 @@ package iteration2.src.models;
 
 import java.util.List;
 
+import iteration1.src.utils.DatabaseManager;
 import iteration2.src.interfaces.Showable;
 import iteration2.src.utils.Util;
 
@@ -79,22 +80,24 @@ public abstract class User implements Showable {
 
     public void addNotification(String notification) {
         notifications.add(notification);
+
+        DatabaseManager.getInstance().saveToDatabase();
     }
 
     public void removeNotification(String notification) {
         notifications.remove(notification);
+
+        DatabaseManager.getInstance().saveToDatabase();
     }
 
     public List<String> getNotifications() {
         return notifications;
     }
 
-    public void setNotifications(List<String> notifications) {
-        this.notifications = notifications;
-    }
-
     public void clearNotifications() {
         notifications.clear();
+
+        DatabaseManager.getInstance().saveToDatabase();
     }
 
 }

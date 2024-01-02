@@ -66,7 +66,6 @@ class DatabaseManager:
         with open("iteration3/data/courses.json", "w", encoding="utf-8") as json_file:
             json.dump(self.courseList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
 
-
     def saveStudentList(self):
         with open("iteration3/data/students.json", "w", encoding="utf-8") as json_file:
             json.dump(self.studentList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)

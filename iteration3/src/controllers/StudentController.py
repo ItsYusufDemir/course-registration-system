@@ -1,5 +1,4 @@
-#beyza
-from models.Student import Student
+#beyz
 class StudentController:
     def __init__(self, currentStudent):
         self.currentStudent = currentStudent
@@ -30,3 +29,6 @@ class StudentController:
     
     def getSelectedCourses(self):
         return self.currentStudent.getSelectedCourses()
+    
+    def getTimeTable(self):
+        return self.currentStudent.createTimeTable()

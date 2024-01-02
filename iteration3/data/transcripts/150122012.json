@@ -1,5 +1,38 @@
 [
     {
-        "takenCourses": []
+        "takenCourses": [
+            {
+                "course": {
+                    "courseCredit": 5,
+                    "courseECTS": 5,
+                    "givenSemester": 1,
+                    "courseName": "Introduction to Modern Biology",
+                    "courseCode": "MBG1201",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 120,
+                            "lecturerName": "Beste Turanlı",
+                            "sectionTime": [
+                                "11:30-12:20",
+                                "12:30-13:20",
+                                "08:30-09:20"
+                            ],
+                            "sectionDay": [
+                                "Wednesday",
+                                "Wednesday",
+                                "Friday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "MBG1201.1",
+                            "studentCountInsideCourseSection": 0
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "letterGrade": null,
+                "courseResult": "ACTIVE"
+            }
+        ]
     }
 ]

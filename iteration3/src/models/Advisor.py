@@ -5,6 +5,7 @@ from dataclasses_json import dataclass_json
 from CommandLineInterface.CLIAdvisor import CLIAdvisor
 from controllers.AdvisorController import AdvisorController
 from enums.ApprovalStatus import ApprovalStatus
+from enums.CourseResult import CourseResult
 from enums.CourseStatus import CourseStatus
 from interfaces.Color import Color
 from models.User import User
@@ -43,9 +44,9 @@ class Advisor(User):
         
         selectedCourse.setStatus(CourseStatus.APPROVED)
 
-        newCourse = CourseGrade(selectedCourse.getCourse())
+        newCourse = CourseGrade(selectedCourse.getCourse(), None, CourseResult.ACTIVE)
 
-        student.getTranscript().getTakenCourses().add(newCourse)
+        student.getTranscript().getTakenCourses().append(newCourse)
 
         logging.log(logging.INFO, f"{self.getUserId()} - Course: {selectedCourse.getCourse().getCourseCode()} is approved for student: {student.getUserId()}")
         
@@ -78,7 +79,7 @@ class Advisor(User):
                 return
 
         logging.log(logging.INFO, f"{self.getUserId()} - Student: {student.getUserId()} is approved.")            
-        student.setApproved(ApprovalStatus.DONE)
+        student.setApprovalStatus(ApprovalStatus.DONE)
 
         DatabaseManager.getInstance().saveToDatabase()
 

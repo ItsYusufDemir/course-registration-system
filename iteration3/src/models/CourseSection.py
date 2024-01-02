@@ -44,11 +44,34 @@ class CourseSection:
         index = self.sectionCode.index(".")
         courseCode = self.sectionCode[:index]
 
-        courses = DatabaseManager().getCourseList()
+        courses = DatabaseManager().getInstance().getCourseList()
         for course in courses:
-            if course.getCourseCode == courseCode:
+            if course.getCourseCode() == courseCode:
                 return course
         return None
+    
+    def getSectionCode(self):
+            return self.sectionCode
+        
+    def getStudentCapacity(self):
+        return self.studentCapacity
+        
+    def getLecturerName(self):
+        return self.lecturerName
+        
+    def getSectionTime(self):
+        return self.sectionTime
+        
+    def getSectionDay(self):
+        return self.sectionDay
+        
+    def getClassroom(self):
+        return self.classroom
+        
+    def getStudentCountInsideCourseSection(self):
+        return self.studentCountInsideCourseSection        
+            
+    
     
     
         
