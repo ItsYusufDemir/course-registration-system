@@ -1,8 +1,0 @@
-{
-  "name": "Alice",
-  "age": 20,
-  "advisor": {
-    "name": "Dr. Smith",
-    "specialty": "Computer Science"
-  }
-}

@@ -32,11 +32,13 @@ class Util:
         try:
             return int(string)
         except ValueError:
-            raise("Invalid Input - Expecting a number between 0-9")
-        
+            return None
 
     def validateNumber(string : str, list: []):
-        if 0 < Util.isValidNumber(string) <= len(list):
+
+        number = Util.isValidNumber(string)
+
+        if number is not None and 0 < number <= len(list):
             return True
         return False
 

@@ -218,10 +218,11 @@ class Student(User):
         cliStudent.menuPage()
 
     def fillTable(self):
-        timeTable = []
+        timeTable = [[] for _ in range(5)]
+
         for i in range(5):
             for j in range(9):
-                timeTable[i][j] = ""
+                timeTable[i].append("")
 
         for i in range(len(self.selectedCourses)):
             for j in range(len(self.selectedCourses[i].courseSection.sectionDay())):
@@ -288,3 +289,15 @@ class Student(User):
     
     def getAdvisorOfStudent(self):
         return self.advisorOfStudent
+
+    def getApprovalStatus(self):
+        return self.approvalStatus
+    
+    def getFirstName(self):
+        return self.firstName
+    
+    def getLastName(self):
+        return self.lastName
+    
+    def getSelectedCourses(self):
+        return self.selectedCourses
