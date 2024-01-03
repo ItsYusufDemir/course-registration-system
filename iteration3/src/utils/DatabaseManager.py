@@ -36,14 +36,19 @@ class DatabaseManager:
         with open("iteration3/data/courses.json", "r", encoding='utf-8') as jsonFile:
             coursesJsonString = json.load(jsonFile)
             self.courseList = [Course.dictToObject(courseDict) for courseDict in coursesJsonString]
+
+        with open("iteration3/data/advisors.json", "r", encoding='utf-8') as jsonFile:
+            advisorsJsonString = json.load(jsonFile)
+            self.advisorList = [Advisor.dictToObject(advisorDict) for advisorDict in advisorsJsonString]
         
         with open("iteration3/data/students.json", "r", encoding='utf-8') as jsonFile:
             studentsJsonString = json.load(jsonFile)
             self.studentList = [Student.dictToObject(studentDict) for studentDict in studentsJsonString]
-       
-        with open("iteration3/data/advisors.json", "r", encoding='utf-8') as jsonFile:
-            advisorsJsonString = json.load(jsonFile)
-            self.advisorList = [Advisor.dictToObject(advisorDict) for advisorDict in advisorsJsonString]
+
+            for student in self.studentList:
+                for advisor in self.advisorList:
+                    if student.getAdvisorOfStudent().getUserId() == advisor.getUserId():
+                        student.setAdvisorOfStudent(advisor)
         
         with open("iteration3/data/constraints.json", "r", encoding='utf-8') as jsonFile:
             constraintsJsonString = json.load(jsonFile)

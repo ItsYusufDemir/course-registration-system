@@ -179,14 +179,23 @@ class Student(User):
                         
     
     def sendSelectedCoursesToApproval(self):
+
         numberOfDraftCourses = 0
+        for selectedCourse in self.selectedCourses:
+            if selectedCourse.status is CourseStatus.DRAFT:
+                numberOfDraftCourses = numberOfDraftCourses + 1
+
+        #Check if the student acceeds the maximum number of courses that can be taken in one term
+        if (numberOfDraftCourses > int(DatabaseManager.getInstance().getConstraints()[1])):
+            Util.sendFeedback("You cannot take more than " + str(DatabaseManager.getInstance().getConstraints()[1]) + " courses in one term.", Color.RED)
+            logging.warning(self.userId + " - Student: " + self.userId + " cannot take more than " + str(DatabaseManager.getInstance().getConstraints()[1]) + " courses in one term.")
+            return
+
         self.approvalStatus = ApprovalStatus.DONE
         for selectedCourse in self.selectedCourses:
             if selectedCourse.status is CourseStatus.PENDING:
                 self.approvalStatus = ApprovalStatus.PENDING
             
-            if selectedCourse.status is CourseStatus.DRAFT:
-                numberOfDraftCourses = numberOfDraftCourses + 1
 
         if self.approvalStatus is ApprovalStatus.PENDING:
             Util.sendFeedback("You already sent your courses to approval!", Color.RED)
@@ -197,26 +206,24 @@ class Student(User):
             Util.sendFeedback("Please add your failed courses!", Color.RED)
             return
         
-        self.approvalStatus = ApprovalStatus.PENDING
-
         if numberOfDraftCourses == 0:
             Util.sendFeedback("You have no course to send to approval!", Color.RED)
             logging.warning(self.userId + " - Student: " + self.userId + " has no course to send to approval.")
             return
         
-        #TODO: logical bug
+        self.approvalStatus = ApprovalStatus.PENDING
+
         for selectedCourse in self.selectedCourses:
             if selectedCourse.status == CourseStatus.DRAFT:
                 selectedCourse.status = CourseStatus.PENDING
                 selectedCourse.courseSection.incrementStudentCount()
-            elif selectedCourse.courseSection not in self.findRepeatCourseSections():
-                selectedCourse.status = CourseStatus.PENDING
-                
-                for courseGrade in self.transcript.takenCourses:
-                    if courseGrade.course.courseCode == selectedCourse.course.courseCode:
-                        courseGrade.courseResult = CourseResult.ACTIVE
 
-                selectedCourse.courseSection.incrementStudentCount()
+                #If selected course is a repeat course, set its course result to ACTIVE in the transcript
+                if selectedCourse.courseSection in self.findRepeatCourseSections():  
+                    for courseGrade in self.transcript.takenCourses:
+                        if courseGrade.course.courseCode == selectedCourse.course.courseCode:
+                            courseGrade.courseResult = CourseResult.ACTIVE
+
         
         self.advisorOfStudent.addNotification(self.firstName + " " + self.lastName + " has requested a course approval.")
         Util.sendFeedback("Courses are sent to advisor.", Color.GREEN)    
@@ -262,13 +269,13 @@ class Student(User):
             timeTable[day][2] += self.selectedCourses[i].courseSection.sectionCode + "-"
         elif time == "11:30-12:20":
             timeTable[day][3] += self.selectedCourses[i].courseSection.sectionCode + "-"
-        elif time == "12:30-13:20":
+        elif time == "13:00-13:50":
             timeTable[day][4] += self.selectedCourses[i].courseSection.sectionCode + "-"
-        elif time == "13:30-14:20":
+        elif time == "14:00-14:50":
             timeTable[day][5] += self.selectedCourses[i].courseSection.sectionCode + "-"
-        elif time == "14:30-15:20":
+        elif time == "15:00-15:50":
             timeTable[day][6] += self.selectedCourses[i].courseSection.sectionCode + "-"
-        elif time == "15:30-16:20":
+        elif time == "16:00-16:50":
             timeTable[day][7] += self.selectedCourses[i].courseSection.sectionCode + "-"
         else:
             print("Invalid time")
@@ -317,5 +324,8 @@ class Student(User):
     
     def setApprovalStatus(self, approvalStatus):
         self.approvalStatus = approvalStatus
+
+    def setAdvisorOfStudent(self, advisorOfStudent):
+        self.advisorOfStudent = advisorOfStudent
     
     

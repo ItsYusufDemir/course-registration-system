@@ -27,7 +27,7 @@ class AdvisorController:
         return studentListOrder
 
 
-    def getNotification(self):
+    def getNotifications(self):
         return self.currentAdvisor.getNotifications()
 
     def logOut(self):

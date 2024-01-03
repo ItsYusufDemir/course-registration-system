@@ -12,15 +12,15 @@ class CLIAdvisor(object):
 
 
      def menuPage(self):
-          isInvalid = False
           while True:
+
                Util.clearScreen()
-               if self._advisorController.getNotification() != None and len(self. _advisorController.getNotification()) > 0:
+
+               if self._advisorController.getNotifications() is not None:
                     Util.paintTextln(" Notifications\n " +
-                         "**************", Color.YELLOW)
-               
-               for string in  self._advisorController.getNotification():
-                    Util.paintTextln(string, Color.YELLOW)
+                                "**************", Color.YELLOW)
+                    for string in self._advisorController.getNotifications():
+                         Util.paintTextln(string, Color.RED)
                     self._advisorController.clearNotifications()
 
                print("\n\n")
@@ -61,9 +61,10 @@ class CLIAdvisor(object):
                for i in range(len(students)):
                     print(f"{i + 1}  {students[i].getUserId():>10}    {students[i].getFirstName() + ' '  + students[i].getLastName():>30}")
                
-               print("\nSelect Student:")
-               print("Press b to back")
-               print("Press q to quit")          
+               
+               print("\nPress b to back")
+               print("Press q to quit\n")   
+               print("Select Student:")       
                
                selectedCoursesThatStatusIsPending = []
 
@@ -118,7 +119,7 @@ class CLIAdvisor(object):
                          print(courses[i].getStatus() + "\n")
 
                print("\nPress b to back")
-               print("Press q to quit")
+               print("Press q to quit\n")
                print("Select Course: ")
 
                choice = input()    

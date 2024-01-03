@@ -19,7 +19,7 @@ class Util:
             print(color.value + message + Color.DEFAULT.value, end="", flush=True)
         else:
             print(message, end="", flush=True)
-        Util.animationTimer(3)
+        Util.animationTimer(2)
         Util.clearScreen()
 
     def animationTimer(duration : int):
@@ -92,8 +92,8 @@ class Util:
     def printTimeTable(time_table: [[str]]):
         days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 
-        times = ["08:30-09:20", "09:30-10:20", "10:30-11:20", "11:30-12:20", "12:30-13:20", "13:30-14:20",
-                "14:30-15:20", "15:30-16:20"]
+        times = ["08:30-09:20", "09:30-10:20", "10:30-11:20", "11:30-12:20", "13:00-13:50", "14:00-14:50",
+                "15:00-15:50", "16:00-16:50"]
 
         for i, current_time in enumerate(times):
             print()
