@@ -15,20 +15,20 @@ class CLIAdmin():
         print(" Menu\n" +
                         "********\n" +
                         "  1. Course list\n" +
-                        "  2. Constraint Settings\n\n" +
-                        "Press q to quit\n" +
-                        "Press corresponding row number to review and make changes for the list you want.\n")
+                        "  2. Constraint Settings\n"
+                        "  3. Log out\n")
         
         str = input()
-        if str == "q":
-            Util.clearScreen()
-            self.adminController.logout()
-        elif str == "1":
+        
+        if str == "1":
             Util.clearScreen()
             self.courseListPage()
         elif str == "2":
             Util.clearScreen()
             self.constraintPage()
+        elif str == "3":
+            Util.clearScreen()
+            self.adminController.logout()
         else:
             Util.sendFeedback("Invalid input", Color.RED)
             self.menuPage()

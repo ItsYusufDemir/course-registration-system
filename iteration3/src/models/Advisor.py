@@ -54,7 +54,7 @@ class Advisor(User):
             if(course.getStatus() == CourseStatus.PENDING):
                 return
 
-        student.setStatus(ApprovalStatus.DONE)
+        student.setApprovalStatus(ApprovalStatus.DONE)
         logging.log(logging.INFO, f"{self.getUserId()} - Student: {student.getUserId()} is approved.")
         DatabaseManager.getInstance().saveToDatabase()
 

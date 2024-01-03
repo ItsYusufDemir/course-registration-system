@@ -22,7 +22,7 @@ class StudentController:
         return self.currentStudent.createTimeTable()
     
     def logout(self):
-        exit(0)
+        self.currentStudent.logout()
 
     def clearNotifications(self):
         return self.currentStudent.clearNotifications()

@@ -1,5 +1,8 @@
 import logging
+from interfaces.Color import Color
 from interfaces.Showable import Showable
+from utils.DatabaseManager import DatabaseManager
+from utils.Util import Util
 
 class User(Showable):
     def __init__(self, userId, password, firstName, lastName, status, notifications):
@@ -22,8 +25,9 @@ class User(Showable):
         )
 
     def logout(self):
-        print("User logged out")
+        Util.sendFeedback("You have been logged out.", Color.GREEN)
         logging.log(logging.INFO, "User: "+self.userId+" logged out")
+        DatabaseManager().getInstance().saveToDatabase()
    
     def checkCredentials(self, userId, password)->bool:
         if self.userId == userId and self.password == password:

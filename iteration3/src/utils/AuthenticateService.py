@@ -17,5 +17,5 @@ class AuthenticateService(object):
                    logging.log(logging.INFO, "User: "+ userID +" logged in")
                    return user
         
-        logging.log(logging.INFO, "User: "+ userID +" faild to log in")
+        logging.log(logging.WARNING, "User: "+ userID +" faild to log in")
         return None
