@@ -3,6 +3,7 @@ from enum import Enum
 class ApprovalStatus(Enum):
     DONE = "DONE"
     PENDING = "PENDING"
+    
 
     @staticmethod
     def dictToEnum(dict):
