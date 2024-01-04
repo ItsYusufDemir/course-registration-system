@@ -5,6 +5,8 @@ class CourseStatus(str, Enum):
     PENDING = "PENDING"
     APPROVED = "APPROVED"
     DENIED = "DENIED"
+    APPROVED_FINALIZED = "APPROVED_FINALIZED"
+    DENIED_FINAZLIZED = "DENIED_FINALIZED"
     ACTIVE = "ACTIVE"
 
     @classmethod
@@ -19,5 +21,9 @@ class CourseStatus(str, Enum):
             return CourseStatus.DENIED
         elif dict == "ACTIVE":
             return CourseStatus.ACTIVE
+        elif dict == "APPROVED_FINALIZED":
+            return CourseStatus.APPROVED_FINALIZED
+        elif dict == "DENIED_FINALIZED":
+            return CourseStatus.DENIED_FINAZLIZED
         else:
             return None

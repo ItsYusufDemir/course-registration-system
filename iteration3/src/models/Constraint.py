@@ -2,10 +2,11 @@ from utils.DatabaseManager import DatabaseManager
 
 
 class Constraint:
-    def __init__(self, maxNumberOfCoursesStudentTake, addDropWeek, minRequiredECTSForTermProject):
+    def __init__(self, maxNumberOfCoursesStudentTake, addDropWeek, minRequiredECTSForTermProject,isRegistrationWeek):
         self.maxNumberOfCoursesStudentTake = maxNumberOfCoursesStudentTake
         self.addDropWeek = addDropWeek
         self.minRequiredECTSForTermProject = minRequiredECTSForTermProject
+        self.isRegistrationWeek = isRegistrationWeek
 
     @classmethod
     def dictToObject(cls, dict):
@@ -38,3 +39,10 @@ class Constraint:
                       3: str(self.minRequiredECTSForTermProject)}
         return attributes
         
+    def addDropWeek(self):
+        return self.addDropWeek
+    
+    def isRegistrationWeek(self):
+        return self.isRegistrationWeek
+    
+
