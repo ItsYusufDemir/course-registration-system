@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 import logging
 
-from dataclasses_json import dataclass_json
 from CommandLineInterface.CLIAdvisor import CLIAdvisor
 from controllers.AdvisorController import AdvisorController
 from enums.ApprovalStatus import ApprovalStatus
@@ -13,7 +12,6 @@ from models.CourseGrade import CourseGrade
 from utils.DatabaseManager import DatabaseManager
 from utils.Util import Util
 
-@dataclass_json
 @dataclass
 class Advisor(User):
 
