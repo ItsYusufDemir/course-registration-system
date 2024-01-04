@@ -533,6 +533,94 @@
     {
       "courseCredit": 7,
       "courseECTS": 7,
+      "givenSemester": 3,
+      "courseName": "Data Structures",
+      "courseCode": "CSE2225",
+      "prerequisiteInformation": {
+        "prerequisiteOfCourses": [
+          {
+            "courseCredit": 6,
+            "courseECTS": 6,
+            "givenSemester": 2,
+            "courseName": "Computer Programming II",
+            "courseCode": "CSE1242",
+            "prerequisiteInformation": {
+              "prerequisiteOfCourses": [
+                {
+                  "courseCredit": 6,
+                  "courseECTS": 6,
+                  "givenSemester": 1,
+                  "courseName": "Computer Programming I",
+                  "courseCode": "CSE1241",
+                  "prerequisiteInformation": null,
+                  "courseSections": [
+                    {
+                      "studentCapacity": 150,
+                      "lecturerName": "Sanem Arslan Yılmaz",
+                      "sectionTime": [
+                        "08:30-09:20",
+                        "09:30-10:20",
+                        "13:00-13:50"
+                      ],
+                      "sectionDay": [
+                        "Monday",
+                        "Monday",
+                        "Wednesday"
+                      ],
+                      "classroom": "Room 101",
+                      "sectionCode": "CSE1241.1",
+                      "studentCountInsideCourseSection": 0
+                    }
+                  ],
+                  "courseType": "COMPULSORY"
+                }
+              ]
+            },
+            "courseSections": [
+              {
+                "studentCapacity": 150,
+                "lecturerName": "Sanem Arslan Yılmaz",
+                "sectionTime": [
+                  "08:30-09:20",
+                  "09:30-10:20",
+                  "13:00-13:50"
+                ],
+                "sectionDay": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday"
+                ],
+                "classroom": "Room 101",
+                "sectionCode": "CSE1242.1",
+                "studentCountInsideCourseSection": 0
+              }
+            ],
+            "courseType": "COMPULSORY"
+          }
+        ]
+      },
+      "courseSections": [
+        {
+          "studentCapacity": 150,
+          "lecturerName": "Borahan Tümer",
+          "sectionTime": [
+            "13:00-13:50",
+            "14:00-14:50",
+            "09:30-10:20"],
+          "sectionDay": [
+            "Tuesday",
+            "Tuesday",
+            "Thursday"],
+          "classroom": "Room 101",
+          "sectionCode": "CSE2225.1",
+          "studentCountInsideCourseSection": 0
+        }
+      ],
+      "courseType": "COMPULSORY"
+    },
+    {
+      "courseCredit": 7,
+      "courseECTS": 7,
       "givenSemester": 5,
       "courseName": "Database Systems",
       "courseCode": "CSE3055",
