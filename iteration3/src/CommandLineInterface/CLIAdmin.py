@@ -91,6 +91,7 @@ class CLIAdmin():
         print("1. Add-Drop: " + editedAttributes.get(2))
         print("2. Max Number Of Courses That Can Be Taken: " + editedAttributes.get(1))
         print("3. Min Required ECTS For Term Project: " + editedAttributes.get(3))
+        print("4. Registration Week: " + editedAttributes.get(4))
         print("")
         print("Press b to go back")
         print("Press q to quit")
@@ -105,6 +106,10 @@ class CLIAdmin():
             if _choice.lower() in ["true", "false"]:
                 editedAttributes[2] = _choice.lower()
                 Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
+                if _choice.lower() == "true":
+                    self.adminController.setNotificationToStudentAndAdvisor("Add-Drop period has started")
+                else:
+                    self.adminController.setNotificationToStudentAndAdvisor("Add-Drop period has ended")
             else:
                 Util.sendFeedback("Invalid input", Color.RED)
             self.adminController.editConstraint(editedAttributes)
@@ -125,6 +130,16 @@ class CLIAdmin():
             if Util.isValidNumber(_choice):
                 editedAttributes[3] = int(_choice)
                 Util.sendFeedback("Min required ECTS for term project changed successfully", Color.GREEN)
+            else:
+                Util.sendFeedback("Invalid input", Color.RED)
+            self.adminController.editConstraint(editedAttributes)
+            self.constraintPage()
+        elif _choice == "4":
+            print("Enter true or false for registration week: ", end='')
+            _choice = input()
+            if _choice.lower() in ["true", "false"]:
+                editedAttributes[4] = _choice.lower()
+                Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
             else:
                 Util.sendFeedback("Invalid input", Color.RED)
             self.adminController.editConstraint(editedAttributes)
