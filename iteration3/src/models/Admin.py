@@ -50,3 +50,10 @@ class Admin(User):
 
     def getMyPage(self):
         CLIAdmin(AdminController(self)).menuPage()
+
+    def setNotificationToStudentAndAdvisor(self, notification):
+        for student in DatabaseManager.getInstance().getStudentList():
+            student.addNotification(notification)
+        for advisor in DatabaseManager.getInstance().getAdvisorList():
+            advisor.addNotification(notification)
+        DatabaseManager.getInstance().saveToDatabase()
