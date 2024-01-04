@@ -7,11 +7,10 @@ class AdvisorController:
         self.studentList = currentAdvisor.fetchAdvisedStudents()
 
     def approveCourse(self, student, selectedCourse):
-        self.currentAdvisor.acceptCourse(student, selectedCourse)
+        return self.currentAdvisor.acceptCourse(student, selectedCourse)
 
     def denyCourse(self, student, selectedCourse):
-        self.currentAdvisor.rejectCourse(student, selectedCourse)
-        selectedCourse.getCourseSection().decrementStudentCount()
+        return self.currentAdvisor.rejectCourse(student, selectedCourse)
 
     def getStudentListOrderByStatus(self):
         studentListOrder = []
@@ -25,6 +24,10 @@ class AdvisorController:
                 studentListOrder.append(student)
 
         return studentListOrder
+    
+
+    def finalizeRegistration(self, student):
+        self.currentAdvisor.finalizeRegistration(student)
 
 
     def getNotifications(self):

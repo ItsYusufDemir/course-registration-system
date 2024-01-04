@@ -29,16 +29,18 @@ class Advisor(User):
             dict['notifications']
         )
 
+
     def getMyPage(self):
         cliAdvisor = CLIAdvisor(AdvisorController(self))
         cliAdvisor.menuPage()
     
+
     def acceptCourse(self, student, selectedCourse):
 
         if(selectedCourse.status != CourseStatus.PENDING):
             Util.sendFeedback("This course is not pending for approval.", Color.RED)
             logging.log(logging.INFO, f"{self.getUserId()} - Course: {selectedCourse.getCourse().getCourseCode()} is not pending for approval.")
-            return
+            return False
         
         selectedCourse.setStatus(CourseStatus.APPROVED)
 
@@ -48,13 +50,17 @@ class Advisor(User):
 
         logging.log(logging.INFO, f"{self.getUserId()} - Course: {selectedCourse.getCourse().getCourseCode()} is approved for student: {student.getUserId()}")
         
+        #If there is any pending course, do not change the approval status
         for course in student.getSelectedCourses():
             if(course.getStatus() == CourseStatus.PENDING):
-                return
+                DatabaseManager.getInstance().saveToDatabase()
+                return True
 
         student.setApprovalStatus(ApprovalStatus.DONE)
         logging.log(logging.INFO, f"{self.getUserId()} - Student: {student.getUserId()} is approved.")
         DatabaseManager.getInstance().saveToDatabase()
+
+        return True
 
 
 
@@ -63,9 +69,10 @@ class Advisor(User):
 
         if(selectedCourse.status != CourseStatus.PENDING):
             Util.sendFeedback("This course is not pending for approval.", Color.RED)
-            return
+            return False
         
         selectedCourse.setStatus(CourseStatus.DENIED)
+        selectedCourse.getCourseSection().decrementStudentCount()
 
         notification = "Your " + selectedCourse.getCourse().getCourseCode() + " course is rejected."
         self.setNotificationToStudent(student, notification)
@@ -74,12 +81,30 @@ class Advisor(User):
         
         for course in student.getSelectedCourses():
             if(course.getStatus() == CourseStatus.PENDING):
-                return
+                DatabaseManager.getInstance().saveToDatabase()
+                return True
 
         logging.log(logging.INFO, f"{self.getUserId()} - Student: {student.getUserId()} is approved.")            
         student.setApprovalStatus(ApprovalStatus.DONE)
 
         DatabaseManager.getInstance().saveToDatabase()
+        return True
+
+
+
+    def finalizeRegistration(student):
+
+        selectedCourses = student.getSelectedCourses()
+
+        for course in selectedCourses:
+            if(course.getStatus() == CourseStatus.APPROVED):
+                course.setStatus(CourseStatus.APPROVED_FINALIZED)
+            else:
+                course.setStatus(CourseStatus.DENIED_FINALIZED)
+        
+        student.setStatus(ApprovalStatus.FINALIZED_REGISTRATION)                  
+        DatabaseManager.getInstance().saveToDatabase()
+
 
 
 

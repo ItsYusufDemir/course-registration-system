@@ -57,39 +57,48 @@ class Student(User):
         for course in courses:
             if course.getCourseCode() == "CSE4297" or course.getCourseCode() == "CSE4298":
                 if self.transcript.checkEngineeringProjectAvailability():
-                    allSelectableCourseSections.extend(course._courseSections)
+                    allSelectableCourseSections.extend(course.getCourseSections())
             elif self.currentSemester < course.getGivenSemester():
                 if self.transcript.calculateGPA() >= 3.0:
-                    allSelectableCourseSections.extend(course._courseSections)
+                    allSelectableCourseSections.extend(course.getCourseSections())
             else:
                 allSelectableCourseSections.extend(course.getCourseSections())
 
+ 
         for courseSection in allSelectableCourseSections:
-            course = courseSection.findCourseOfCourseSection()
+            
+            course = courseSection.findCourseOfCourseSection() 
 
             if courseSection.checkAvailability() and course.checkPrerequisite(self) and not self.checkIfItWasTaken(course) and not self.checkIfItExistsInSelectedCourses(course) and self.checkCourseType(course):
                 availableCourseSections.append(courseSection)
-        
-        availableCourseSections.extend(self.findRepeatCourseSections())
+            
+        repeatCourseSections = self.findRepeatCourseSections()
+        for repeatCourseSection in repeatCourseSections:
+            course = repeatCourseSection.findCourseOfCourseSection()
+            if(courseSection.checkAvailability() and not self.checkIfItExistsInSelectedCourses(course) and self.checkCourseType(course)):
+                availableCourseSections.append(repeatCourseSection)
+
         return availableCourseSections
     
     
     def checkIfItExistsInSelectedCourses(self, course):
+        i = 0
         for selectedCourse in self.selectedCourses:
             if selectedCourse.getCourse().getCourseCode() == course.getCourseCode():
                 return True
+            i = i + 1
         return False
 
     
     def checkIfItWasTaken(self, course):
         takenCourses = self.transcript.acquirePassedCourses()
         for takenCourse in takenCourses:
-            if takenCourse.courseName == course.courseName:
+            if takenCourse.getCourse().getCourseName() == course.getCourseName():
                 return True
         return False    
     
     def findRepeatCourseSections(self):
-        takenCourses = self.transcript.takenCourses
+        takenCourses = self.transcript.getTakenCourses()
         repeatCourseSections = []
 
         for takenCourse in takenCourses:
@@ -135,7 +144,7 @@ class Student(User):
     def addNewCourse(self, selectedCourse):
         constraints = DatabaseManager.getInstance().getConstraints()
         if len(self.selectedCourses) >= int(constraints.get(1)):
-            Util.sendFeedback("You cannot take more than " + str(constraints.get(1) + " courses in one term.", Color.RED))
+            Util.sendFeedback("You cannot take more than " + str(constraints.get(1)) + " courses in one term.", Color.RED)
             logging.warning(self.userId + " - Student cannot take more than " + str(constraints.get(1)) + " courses in one term.")
             return False
         

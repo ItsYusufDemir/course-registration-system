@@ -14,14 +14,14 @@ class Prerequisite:
         
         for prerequisitecourse in course.getPrerequisiteInformation().prerequisiteOfCourses:
             for passedCourse in student.getTranscript().acquirePassedCourses():
-                isPrerequisiteCoursesPassed.append(prerequisitecourse.getCourseCode() == passedCourse.getCourseCode())
-            if self._isContainTrue(isPrerequisiteCoursesPassed) == False:
+                isPrerequisiteCoursesPassed.append(prerequisitecourse.getCourseCode() == passedCourse.getCourse().getCourseCode())
+            if (self._isContainTrue(isPrerequisiteCoursesPassed) == False):
                 return False
         return True # if all prerequisite courses passed
             
    
    
-    def _isContainTrue(list):
+    def _isContainTrue(self,list):
         for i in list:
             if i:
                 return True # if there is any true value then return true
