@@ -61,7 +61,7 @@ class Transcript(object):
            if (takenCourse.getCourseResult() == CourseResult.PASSED and 
                takenCourse.getCourse().getCourseType() not in restricedCourseTypes and
                 takenCourse.getCourse().getCourseCode() not in restricedCourses ):
-               totalCreditsForEngineeringProject += takenCourse.getCourse().getCredit()
+               totalCreditsForEngineeringProject += takenCourse.getCourse().getCourseCredit()
 
         if totalCreditsForEngineeringProject >= int(constraintsMap[3]):
             return True
