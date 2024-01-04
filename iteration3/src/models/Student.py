@@ -57,10 +57,10 @@ class Student(User):
         for course in courses:
             if course.getCourseCode() == "CSE4297" or course.getCourseCode() == "CSE4298":
                 if self.transcript.checkEngineeringProjectAvailability():
-                    allSelectableCourseSections.extend(course._courseSections)
+                    allSelectableCourseSections.extend(course.getCourseSections())
             elif self.currentSemester < course.getGivenSemester():
                 if self.transcript.calculateGPA() >= 3.0:
-                    allSelectableCourseSections.extend(course._courseSections)
+                    allSelectableCourseSections.extend(course.getCourseSections())
             else:
                 allSelectableCourseSections.extend(course.getCourseSections())
 
