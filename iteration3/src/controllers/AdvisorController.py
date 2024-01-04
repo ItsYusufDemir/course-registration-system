@@ -24,6 +24,10 @@ class AdvisorController:
                 studentListOrder.append(student)
 
         return studentListOrder
+    
+
+    def finalizeRegistration(self, student):
+        self.currentAdvisor.finalizeRegistration(student)
 
 
     def getNotifications(self):

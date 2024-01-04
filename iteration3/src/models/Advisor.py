@@ -29,10 +29,12 @@ class Advisor(User):
             dict['notifications']
         )
 
+
     def getMyPage(self):
         cliAdvisor = CLIAdvisor(AdvisorController(self))
         cliAdvisor.menuPage()
     
+
     def acceptCourse(self, student, selectedCourse):
 
         if(selectedCourse.status != CourseStatus.PENDING):
@@ -87,6 +89,22 @@ class Advisor(User):
 
         DatabaseManager.getInstance().saveToDatabase()
         return True
+
+
+
+    def finalizeRegistration(student):
+
+        selectedCourses = student.getSelectedCourses()
+
+        for course in selectedCourses:
+            if(course.getStatus() == CourseStatus.APPROVED):
+                course.setStatus(CourseStatus.APPROVED_FINALIZED)
+            else:
+                course.setStatus(CourseStatus.DENIED_FINALIZED)
+        
+        student.setStatus(ApprovalStatus.FINALIZED_REGISTRATION)                  
+        DatabaseManager.getInstance().saveToDatabase()
+
 
 
 
