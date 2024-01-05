@@ -17,7 +17,7 @@ class ConstraintTest_editConstraints(unittest.TestCase):
 
         constraint.editConstraint(edited_attributes)
 
-        self.assertEqual(5,constraint.maxNumberOfCoursesStudentTake)
+        self.assertEqual(5,constraint._maxNumberOfCoursesStudentTake)
         self.assertEqual(True,constraint.addDropWeek)
         self.assertEqual(10,constraint.minRequiredECTSForTermProject)
 

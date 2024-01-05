@@ -84,7 +84,7 @@ class Util:
         return True
     
 
-    def divideIntoCourses(string:str)->[str]:
+    def _divideIntoCourses(string:str)->[str]:
         courses = []
         temp = ""
         strLength = len(string)
@@ -111,11 +111,11 @@ class Util:
         for i in range(8):
             print("\n" + times[i] + "    ", end="")
 
-            monCourses = Util.divideIntoCourses(time_table[0][i])
-            tueCourses = Util.divideIntoCourses(time_table[1][i])
-            wedCourses = Util.divideIntoCourses(time_table[2][i])
-            thuCourses = Util.divideIntoCourses(time_table[3][i])
-            friCourses = Util.divideIntoCourses(time_table[4][i])
+            monCourses = Util._divideIntoCourses(time_table[0][i])
+            tueCourses = Util._divideIntoCourses(time_table[1][i])
+            wedCourses = Util._divideIntoCourses(time_table[2][i])
+            thuCourses = Util._divideIntoCourses(time_table[3][i])
+            friCourses = Util._divideIntoCourses(time_table[4][i])
 
             monCoursesSize = len(monCourses)
             tueCoursesSize = len(tueCourses)

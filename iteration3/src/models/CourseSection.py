@@ -4,13 +4,13 @@ from iteration3.src.utils.DatabaseManager import DatabaseManager
 class CourseSection:
 
     def __init__(self, studentCapacity, lecturerName, sectionTime, sectionDay, classroom, sectionCode, studentCountInsideCourseSection):
-        self.studentCapacity = studentCapacity
-        self.lecturerName = lecturerName
-        self.sectionTime = sectionTime
-        self.sectionDay = sectionDay
-        self.classroom = classroom
-        self.sectionCode = sectionCode
-        self.studentCountInsideCourseSection = studentCountInsideCourseSection
+        self._studentCapacity = studentCapacity
+        self._lecturerName = lecturerName
+        self._sectionTime = sectionTime
+        self._sectionDay = sectionDay
+        self._classroom = classroom
+        self._sectionCode = sectionCode
+        self._studentCountInsideCourseSection = studentCountInsideCourseSection
 
     @classmethod
     def dictToObject(cls, dict):
@@ -25,24 +25,24 @@ class CourseSection:
         )
 
     def checkAvailability(self):
-        if self.studentCapacity >= self.studentCountInsideCourseSection:
+        if self._studentCapacity >= self._studentCountInsideCourseSection:
             return True
         else:
             return False
         
     def incrementStudentCount(self):
-        self.studentCountInsideCourseSection += 1
-        logging.log(logging.INFO, "Student count incremented. Current section count: " + str(self.studentCountInsideCourseSection))
-        return self.studentCountInsideCourseSection
+        self._studentCountInsideCourseSection += 1
+        logging.log(logging.INFO, "Student count incremented. Current section count: " + str(self._studentCountInsideCourseSection))
+        return self._studentCountInsideCourseSection
     
     def decrementStudentCount(self):
-        self.studentCountInsideCourseSection -= 1
-        logging.log(logging.INFO, "Student count decremented. Current section count: " + str(self.studentCountInsideCourseSection))
-        return self.studentCountInsideCourseSection
+        self._studentCountInsideCourseSection -= 1
+        logging.log(logging.INFO, "Student count decremented. Current section count: " + str(self._studentCountInsideCourseSection))
+        return self._studentCountInsideCourseSection
     
     def findCourseOfCourseSection(self):
-        index = self.sectionCode.index(".")
-        courseCode = self.sectionCode[:index]
+        index = self._sectionCode.index(".")
+        courseCode = self._sectionCode[:index]
 
         courses = DatabaseManager().getInstance().getCourseList()
         for course in courses:
@@ -51,25 +51,25 @@ class CourseSection:
         return None
     
     def getSectionCode(self):
-            return self.sectionCode
+            return self._sectionCode
         
     def getStudentCapacity(self):
-        return self.studentCapacity
+        return self._studentCapacity
         
     def getLecturerName(self):
-        return self.lecturerName
+        return self._lecturerName
         
     def getSectionTime(self):
-        return self.sectionTime
+        return self._sectionTime
         
     def getSectionDay(self):
-        return self.sectionDay
+        return self._sectionDay
         
     def getClassroom(self):
-        return self.classroom
+        return self._classroom
         
     def getStudentCountInsideCourseSection(self):
-        return self.studentCountInsideCourseSection        
+        return self._studentCountInsideCourseSection        
             
     
     

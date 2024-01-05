@@ -5,9 +5,9 @@ from iteration3.src.models.CourseSection import CourseSection
 
 class SelectedCourse(object):
     def __init__(self,course,status,courseSection):
-        self.course = course
-        self.status = status
-        self.courseSection = courseSection
+        self._course = course
+        self._status = status
+        self._courseSection = courseSection
 
     @classmethod
     def dictToObject(cls, dict):
@@ -19,16 +19,16 @@ class SelectedCourse(object):
 
 
     def setStatus(self,status):
-        self.status = status
-        logging.log(logging.INFO, f"Course ({self.course.getCourseCode()}) status changed to: {status}")
+        self._status = status
+        logging.log(logging.INFO, f"Course ({self._course.getCourseCode()}) status changed to: {status}")
 
     def getCourse(self):
-        return self.course
+        return self._course
     
     def getCourseSection(self):
-        return self.courseSection
+        return self._courseSection
 
     def getStatus(self):
-        return self.status
+        return self._status
             
 

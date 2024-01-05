@@ -6,12 +6,12 @@ from iteration3.src.utils.Util import Util
 
 class User(Showable):
     def __init__(self, userId, password, firstName, lastName, status, notifications):
-        self.userId = userId
-        self.password = password
-        self.firstName = firstName
-        self.lastName = lastName
-        self.status = status
-        self.notifications = notifications
+        self._userId = userId
+        self._password = password
+        self._firstName = firstName
+        self._lastName = lastName
+        self._status = status
+        self._notifications = notifications
 
     @classmethod
     def dictToObject(self, dict):
@@ -25,24 +25,24 @@ class User(Showable):
         )
 
     def logout(self):
-        logging.log(logging.INFO, "User: "+self.userId+" logged out")
+        logging.log(logging.INFO, "User: "+self._userId+" logged out")
         DatabaseManager().getInstance().saveToDatabase()
    
     def checkCredentials(self, userId, password)->bool:
-        if self.userId == userId and self.password == password:
+        if self._userId == userId and self._password == password:
             return True
         else:
             return False
     
     def clearNotifications(self):
-        self.notifications = []
-        logging.log(logging.INFO, "Notifications seen for user: "+self.userId)
+        self._notifications = []
+        logging.log(logging.INFO, "Notifications seen for user: "+self._userId)
 
     def getUserId(self):
-        return self.userId
+        return self._userId
     
     def getNotifications(self):
-        return self.notifications
+        return self._notifications
     
     def addNotification(self, notification):
-        self.notifications.append(notification)
+        self._notifications.append(notification)

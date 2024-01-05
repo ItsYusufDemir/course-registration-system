@@ -19,13 +19,13 @@ class Student(User):
     def __init__(self, userId, password, firstName, lastName, status, notifications, email, identityNumber, currentSemester,
                   selectedCourses, advisorOfStudent, approvalStatus, transcript):
         super().__init__(userId, password, firstName, lastName, status, notifications)
-        self.email = email
-        self.identityNumber = identityNumber
-        self.currentSemester = currentSemester
-        self.selectedCourses = selectedCourses
-        self.advisorOfStudent = advisorOfStudent
-        self.approvalStatus = approvalStatus
-        self.transcript = transcript
+        self._email = email
+        self._identityNumber = identityNumber
+        self._currentSemester = currentSemester
+        self._selectedCourses = selectedCourses
+        self._advisorOfStudent = advisorOfStudent
+        self._approvalStatus = approvalStatus
+        self._transcript = transcript
 
     @classmethod
     def dictToObject(cls, studentDict):
@@ -56,10 +56,10 @@ class Student(User):
 
         for course in courses:
             if course.getCourseCode() == "CSE4297" or course.getCourseCode() == "CSE4298":
-                if self.transcript.checkEngineeringProjectAvailability():
+                if self._transcript.checkEngineeringProjectAvailability():
                     allSelectableCourseSections.extend(course.getCourseSections())
-            elif self.currentSemester < course.getGivenSemester():
-                if self.transcript.calculateGPA() >= 3.0:
+            elif self._currentSemester < course.getGivenSemester():
+                if self._transcript.calculateGPA() >= 3.0:
                     allSelectableCourseSections.extend(course.getCourseSections())
             else:
                 allSelectableCourseSections.extend(course.getCourseSections())
@@ -69,36 +69,36 @@ class Student(User):
             
             course = courseSection.findCourseOfCourseSection() 
 
-            if courseSection.checkAvailability() and course.checkPrerequisite(self) and not self.checkIfItWasTaken(course) and not self.checkIfItExistsInSelectedCourses(course) and self.checkCourseType(course):
+            if courseSection.checkAvailability() and course.checkPrerequisite(self) and not self._checkIfItWasTaken(course) and not self._checkIfItExistsInSelectedCourses(course) and self._checkCourseType(course):
                 availableCourseSections.append(courseSection)
             
-        repeatCourseSections = self.findRepeatCourseSections()
+        repeatCourseSections = self._findRepeatCourseSections()
         for repeatCourseSection in repeatCourseSections:
             course = repeatCourseSection.findCourseOfCourseSection()
-            if(courseSection.checkAvailability() and not self.checkIfItExistsInSelectedCourses(course) and self.checkCourseType(course)):
+            if(courseSection.checkAvailability() and not self._checkIfItExistsInSelectedCourses(course) and self._checkCourseType(course)):
                 availableCourseSections.append(repeatCourseSection)
 
         return availableCourseSections
     
     
-    def checkIfItExistsInSelectedCourses(self, course):
+    def _checkIfItExistsInSelectedCourses(self, course):
         i = 0
-        for selectedCourse in self.selectedCourses:
+        for selectedCourse in self._selectedCourses:
             if selectedCourse.getCourse().getCourseCode() == course.getCourseCode():
                 return True
             i = i + 1
         return False
 
     
-    def checkIfItWasTaken(self, course):
-        takenCourses = self.transcript.acquirePassedCourses()
+    def _checkIfItWasTaken(self, course):
+        takenCourses = self._transcript.acquirePassedCourses()
         for takenCourse in takenCourses:
             if takenCourse.getCourse().getCourseName() == course.getCourseName():
                 return True
         return False    
     
-    def findRepeatCourseSections(self):
-        takenCourses = self.transcript.getTakenCourses()
+    def _findRepeatCourseSections(self):
+        takenCourses = self._transcript.getTakenCourses()
         repeatCourseSections = []
 
         for takenCourse in takenCourses:
@@ -108,13 +108,13 @@ class Student(User):
         return repeatCourseSections 
         
     
-    def checkCourseType(self, course):
+    def _checkCourseType(self, course):
         nteCounter = 0
         teCounter = 0
         fteCounter = 0
         ueCounter = 0
 
-        for selectedCourse in self.selectedCourses:
+        for selectedCourse in self._selectedCourses:
             courseType = selectedCourse.getCourse().getCourseType()
 
             if courseType == CourseType.NONTECHNICAL_ELECTIVE:
@@ -126,7 +126,7 @@ class Student(User):
             elif courseType == CourseType.UNIVERSITY_ELECTIVE:
                 ueCounter += 1
 
-        for selectedCourse in self.selectedCourses:
+        for selectedCourse in self._selectedCourses:
             courseType = selectedCourse.getCourse().getCourseType()
 
             if courseType == CourseType.NONTECHNICAL_ELECTIVE and nteCounter >= 2:
@@ -143,45 +143,45 @@ class Student(User):
         
     def addNewCourse(self, selectedCourse):
         constraints = DatabaseManager.getInstance().getConstraints()
-        if len(self.selectedCourses) >= int(constraints.get(1)):
-            logging.warning(self.userId + " - Student cannot take more than " + str(constraints.get(1)) + " courses in one term.")
+        if len(self._selectedCourses) >= int(constraints.get(1)):
+            logging.warning(self._userId + " - Student cannot take more than " + str(constraints.get(1)) + " courses in one term.")
             raise Exception("You cannot take more than " + str(constraints.get(1)) + " courses in one term.")
 
         
-        if selectedCourse not in self.selectedCourses:
-            self.selectedCourses.append(selectedCourse)
+        if selectedCourse not in self._selectedCourses:
+            self._selectedCourses.append(selectedCourse)
             DatabaseManager.getInstance().saveToDatabase()
-            logging.log(logging.INFO,self.userId + " - Course: " + selectedCourse.course.courseCode
-                    + " added to student: " + self.userId)
+            logging.log(logging.INFO,self._userId + " - Course: " + selectedCourse.course.courseCode
+                    + " added to student: " + self._userId)
             return True
         else:
-            logging.log(logging.INFO, self.userId + " - Course: " + selectedCourse.course.courseCode
-        + " is already added to student: " + self.userId)
+            logging.log(logging.INFO, self._userId + " - Course: " + selectedCourse.course.courseCode
+        + " is already added to student: " + self._userId)
             raise Exception("Course: "+selectedCourse.course.courseCode +"is already added to your courses.")
 
         
         
     def deleteCourse(self, selectedCourse):
-        if (selectedCourse in self.selectedCourses) and (selectedCourse.getStatus() is not CourseStatus.PENDING):
-            self.selectedCourses.remove(selectedCourse)
+        if (selectedCourse in self._selectedCourses) and (selectedCourse.getStatus() is not CourseStatus.PENDING):
+            self._selectedCourses.remove(selectedCourse)
             DatabaseManager.getInstance().saveToDatabase()
-            logging.info(self.userId + " - Course: " + selectedCourse.course.courseCode
-                    + " deleted from student: " + self.userId)
+            logging.info(self._userId + " - Course: " + selectedCourse.course.courseCode
+                    + " deleted from student: " + self._userId)
             return True 
         else:  
-            logging.info(self.userId + " - Course: " + selectedCourse.course.courseCode
-                    + " is not deleted from student: " + self.userId)
+            logging.info(self._userId + " - Course: " + selectedCourse.course.courseCode
+                    + " is not deleted from student: " + self._userId)
             return False
     
-    def checkCompulsoryCourses(self):
-        courseGrades = self.transcript.takenCourses
+    def _checkCompulsoryCourses(self):
+        courseGrades = self._transcript.takenCourses
         for courseGrade in courseGrades:
             if courseGrade.courseResult == CourseResult.FAILED:
-                for selectedCourse in self.selectedCourses:
+                for selectedCourse in self._selectedCourses:
                     if selectedCourse.course is not courseGrade.course:
                         for section in self.listAvailableCourseSections():
                             if section.findCourseOfCourseSection == courseGrade.course:
-                                logging.warning("Student: " + self.userId + " has failed course: "
+                                logging.warning("Student: " + self._userId + " has failed course: "
                                         + courseGrade.course.courseCode
                                         + " and has not added it to his/her courses.")
                                 return True
@@ -191,49 +191,49 @@ class Student(User):
     def sendSelectedCoursesToApproval(self):
 
         numberOfDraftCourses = 0
-        for selectedCourse in self.selectedCourses:
+        for selectedCourse in self._selectedCourses:
             if selectedCourse.status is CourseStatus.DRAFT:
                 numberOfDraftCourses = numberOfDraftCourses + 1
 
         #Check if the student acceeds the maximum number of courses that can be taken in one term
         if (numberOfDraftCourses > int(DatabaseManager.getInstance().getConstraints()[1])):
-            logging.warning(self.userId + " - Student: " + self.userId + " cannot take more than " + str(DatabaseManager.getInstance().getConstraints()[1]) + " courses in one term.")
+            logging.warning(self._userId + " - Student: " + self._userId + " cannot take more than " + str(DatabaseManager.getInstance().getConstraints()[1]) + " courses in one term.")
             raise Exception("You cannot take more than " + str(DatabaseManager.getInstance().getConstraints()[1]) + " courses in one term.")
 
-        self.approvalStatus = ApprovalStatus.DONE
-        for selectedCourse in self.selectedCourses:
+        self._approvalStatus = ApprovalStatus.DONE
+        for selectedCourse in self._selectedCourses:
             if selectedCourse.status is CourseStatus.PENDING:
-                self.approvalStatus = ApprovalStatus.PENDING
+                self._approvalStatus = ApprovalStatus.PENDING
             
 
-        if self.approvalStatus is ApprovalStatus.PENDING:
-            logging.warning(self.userId + " - Student: " + self.userId + " already sent his/her courses to approval.")
+        if self._approvalStatus is ApprovalStatus.PENDING:
+            logging.warning(self._userId + " - Student: " + self._userId + " already sent his/her courses to approval.")
             raise Exception("You already sent your courses to approval!")
             
         
-        if self.checkCompulsoryCourses():
+        if self._checkCompulsoryCourses():
             raise Exception("You have failed courses that you have not added to your courses.")
             
         
         if numberOfDraftCourses == 0:
-            logging.warning(self.userId + " - Student: " + self.userId + " has no course to send to approval.")
+            logging.warning(self._userId + " - Student: " + self._userId + " has no course to send to approval.")
             Exception("You have no course to send to approval!")
         
-        self.approvalStatus = ApprovalStatus.PENDING
-        for selectedCourse in self.selectedCourses:
+        self._approvalStatus = ApprovalStatus.PENDING
+        for selectedCourse in self._selectedCourses:
             if selectedCourse.status == CourseStatus.DRAFT:
                 selectedCourse.status = CourseStatus.PENDING
                 selectedCourse.courseSection.incrementStudentCount()
 
                 #If selected course is a repeat course, set its course result to ACTIVE in the transcript
-                if selectedCourse.courseSection in self.findRepeatCourseSections():  
-                    for courseGrade in self.transcript.takenCourses:
+                if selectedCourse.courseSection in self._findRepeatCourseSections():  
+                    for courseGrade in self._transcript.takenCourses:
                         if courseGrade.course.courseCode == selectedCourse.course.courseCode:
                             courseGrade.courseResult = CourseResult.ACTIVE
 
         
-        self.advisorOfStudent.addNotification(self.firstName + " " + self.lastName + " has requested a course approval.")
-        logging.info(self.userId + " - Student: " + self.userId + " sent his/her courses to approval.")    
+        self._advisorOfStudent.addNotification(self._firstName + " " + self._lastName + " has requested a course approval.")
+        logging.info(self._userId + " - Student: " + self._userId + " sent his/her courses to approval.")    
         DatabaseManager.getInstance().saveToDatabase()
 
     def getMyPage(self):
@@ -247,10 +247,10 @@ class Student(User):
             for j in range(9):
                 timeTable[i].append("")
 
-        for i in range(len(self.selectedCourses)):
-            for j in range(len(self.selectedCourses[i].getCourseSection().getSectionDay())):
-                day = self.selectedCourses[i].getCourseSection().sectionDay[j]
-                time = self.selectedCourses[i].getCourseSection().sectionTime[j]
+        for i in range(len(self._selectedCourses)):
+            for j in range(len(self._selectedCourses[i].getCourseSection().getSectionDay())):
+                day = self._selectedCourses[i].getCourseSection().sectionDay[j]
+                time = self._selectedCourses[i].getCourseSection().sectionTime[j]
                 if day == "Monday":
                     self.fillTableWithValues(time, i, 0, timeTable)
                 elif day == "Tuesday":
@@ -268,21 +268,21 @@ class Student(User):
 
     def fillTableWithValues(self, time, i, day, timeTable):
         if time == "08:30-09:20":
-            timeTable[day][0] += self.selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][0] += self._selectedCourses[i].courseSection.sectionCode + "-"
         elif time == "09:30-10:20":
-            timeTable[day][1] += self.selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][1] += self._selectedCourses[i].courseSection.sectionCode + "-"
         elif time == "10:30-11:20":
-            timeTable[day][2] += self.selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][2] += self._selectedCourses[i].courseSection.sectionCode + "-"
         elif time == "11:30-12:20":
-            timeTable[day][3] += self.selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][3] += self._selectedCourses[i].courseSection.sectionCode + "-"
         elif time == "13:00-13:50":
-            timeTable[day][4] += self.selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][4] += self._selectedCourses[i].courseSection.sectionCode + "-"
         elif time == "14:00-14:50":
-            timeTable[day][5] += self.selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][5] += self._selectedCourses[i].courseSection.sectionCode + "-"
         elif time == "15:00-15:50":
-            timeTable[day][6] += self.selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][6] += self._selectedCourses[i].courseSection.sectionCode + "-"
         elif time == "16:00-16:50":
-            timeTable[day][7] += self.selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][7] += self._selectedCourses[i].courseSection.sectionCode + "-"
         else:
             print("Invalid time")
 
@@ -301,7 +301,7 @@ class Student(User):
 
     def fetchSelectedCoursesForAdvisor(self):
         selectedCourses = []
-        for selectedCourse in self.selectedCourses:
+        for selectedCourse in self._selectedCourses:
             if selectedCourse.status is not CourseStatus.DRAFT:
                 selectedCourses.append(selectedCourse)
         return selectedCourses
@@ -311,27 +311,27 @@ class Student(User):
         return timeTable
     
     def getAdvisorOfStudent(self):
-        return self.advisorOfStudent
+        return self._advisorOfStudent
 
     def getApprovalStatus(self):
-        return self.approvalStatus
+        return self._approvalStatus
     
     def getFirstName(self):
-        return self.firstName
+        return self._firstName
     
     def getLastName(self):
-        return self.lastName
+        return self._lastName
     
     def getSelectedCourses(self):
-        return self.selectedCourses
+        return self._selectedCourses
     
     def getTranscript(self):
-        return self.transcript
+        return self._transcript
     
     def setApprovalStatus(self, approvalStatus):
-        self.approvalStatus = approvalStatus
+        self._approvalStatus = approvalStatus
 
     def setAdvisorOfStudent(self, advisorOfStudent):
-        self.advisorOfStudent = advisorOfStudent
+        self._advisorOfStudent = advisorOfStudent
     
     

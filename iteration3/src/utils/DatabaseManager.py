@@ -9,20 +9,20 @@ class DatabaseManager:
     _instance = None
 
     def __init__(self):
-        self.courseList = []
-        self.studentList = []
-        self.advisorList = []
-        self.constraintList = []
-        self.adminList = []
+        self._courseList = []
+        self._studentList = []
+        self._advisorList = []
+        self._constraintList = []
+        self._adminList = []
 
     @classmethod
     def getInstance(cls):
         if cls._instance is None:
             cls._instance = cls()
-            cls._instance.initialize()
+            cls._instance._initialize()
         return cls._instance
 
-    def initialize(self):
+    def _initialize(self):
 
         from iteration3.src.models.Admin import Admin
         from iteration3.src.models.Advisor import Advisor
@@ -35,58 +35,58 @@ class DatabaseManager:
 
         with open("iteration3/data/courses.json", "r", encoding='utf-8') as jsonFile:
             coursesJsonString = json.load(jsonFile)
-            self.courseList = [Course.dictToObject(courseDict) for courseDict in coursesJsonString]
+            self._courseList = [Course.dictToObject(courseDict) for courseDict in coursesJsonString]
 
         with open("iteration3/data/advisors.json", "r", encoding='utf-8') as jsonFile:
             advisorsJsonString = json.load(jsonFile)
-            self.advisorList = [Advisor.dictToObject(advisorDict) for advisorDict in advisorsJsonString]
+            self._advisorList = [Advisor.dictToObject(advisorDict) for advisorDict in advisorsJsonString]
         
         with open("iteration3/data/students.json", "r", encoding='utf-8') as jsonFile:
             studentsJsonString = json.load(jsonFile)
-            self.studentList = [Student.dictToObject(studentDict) for studentDict in studentsJsonString]
+            self._studentList = [Student.dictToObject(studentDict) for studentDict in studentsJsonString]
 
-            for student in self.studentList:
-                for advisor in self.advisorList:
+            for student in self._studentList:
+                for advisor in self._advisorList:
                     if student.getAdvisorOfStudent().getUserId() == advisor.getUserId():
                         student.setAdvisorOfStudent(advisor)
         
         with open("iteration3/data/constraints.json", "r", encoding='utf-8') as jsonFile:
             constraintsJsonString = json.load(jsonFile)
-            self.constraintList = [Constraint.dictToObject(constraintDict) for constraintDict in constraintsJsonString]
+            self._constraintList = [Constraint.dictToObject(constraintDict) for constraintDict in constraintsJsonString]
 
         with open("iteration3/data/admins.json", "r", encoding='utf-8') as jsonFile:
             adminsJsonString = json.load(jsonFile)
-            self.adminList = [Admin.dictToObject(adminDict) for adminDict in adminsJsonString]
+            self._adminList = [Admin.dictToObject(adminDict) for adminDict in adminsJsonString]
         
 
-    def saveTranscriptsToDatabase(self):
-        for student in self.studentList:
-            transcript = [student.transcript]
-            filePath = f"iteration3/data/transcripts/{student.userId}.json"
+    def _saveTranscriptsToDatabase(self):
+        for student in self._studentList:
+            transcript = [student._transcript]
+            filePath = f"iteration3/data/transcripts/{student._userId}.json"
             
             with open(filePath, "w", encoding="utf-8") as jsonFile:
                 json.dump(transcript, jsonFile, indent=4, default=self.jsonDefault, ensure_ascii=False)
     
     def saveCoursesList(self):
         with open("iteration3/data/courses.json", "w", encoding="utf-8") as json_file:
-            json.dump(self.courseList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
+            json.dump(self._courseList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
 
     def saveStudentList(self):
         with open("iteration3/data/students.json", "w", encoding="utf-8") as json_file:
-            json.dump(self.studentList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
-        self.saveTranscriptsToDatabase()
+            json.dump(self._studentList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
+        self._saveTranscriptsToDatabase()
 
     def saveAdvisorList(self):
         with open("iteration3/data/advisors.json", "w", encoding="utf-8") as json_file:
-            json.dump(self.advisorList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
+            json.dump(self._advisorList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
 
     def saveConstraintsList(self):
         with open("iteration3/data/constraints.json", "w", encoding="utf-8") as json_file:
-            json.dump(self.constraintList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
+            json.dump(self._constraintList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
 
     def saveAdminList(self):
         with open("iteration3/data/admins.json", "w", encoding="utf-8") as json_file:
-            json.dump(self.adminList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
+            json.dump(self._adminList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
 
     def saveToDatabase(self):
         self.saveCoursesList()
@@ -96,40 +96,40 @@ class DatabaseManager:
         self.saveAdminList()
 
     def fetchAdvisedStudents(self, advisor):
-        studentsOfAdvisor = [student for student in self.studentList if student.getAdvisorOfStudent().getUserId() == advisor.userId]
+        studentsOfAdvisor = [student for student in self._studentList if student.getAdvisorOfStudent().getUserId() == advisor.userId]
         return studentsOfAdvisor
 
     def editConstraints(self, editedAttributes: Dict[int, str]) -> bool:
         #TODO: check if editedAttributes is valid
-        self.constraintList[0].editConstraint(editedAttributes)
+        self._constraintList[0].editConstraint(editedAttributes)
         return True
     
     def findCourseByCourseCode(self, courseCode):
-        for course in self.courseList:
-            if course.courseCode == courseCode:
+        for course in self._courseList:
+            if course._courseCode == courseCode:
                 return course
         return None
     
     # Getters
     def getCourseList(self):
-        return self.courseList
+        return self._courseList
 
     def getStudentList(self):
-        return self.studentList
+        return self._studentList
 
     def getAdvisorList(self):
-        return self.advisorList
+        return self._advisorList
 
     def getAdminList(self):
-        return self.adminList
+        return self._adminList
     
     def getConstraints(self):
-        constraints = self.constraintList[0]  # Assuming 'constraints' is a list of Constraint objects
+        constraints = self._constraintList[0]  # Assuming 'constraints' is a list of Constraint objects
         constraintsMap = {
-            1: str(constraints.maxNumberOfCoursesStudentTake),
-            2: str(constraints.addDropWeek),
-            3: str(constraints.minRequiredECTSForTermProject),
-            4: str(constraints.isRegistrationWeek)
+            1: str(constraints._maxNumberOfCoursesStudentTake),
+            2: str(constraints._addDropWeek),
+            3: str(constraints._minRequiredECTSForTermProject),
+            4: str(constraints._isRegistrationWeek)
         }
 
         return constraintsMap

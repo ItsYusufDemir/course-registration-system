@@ -8,7 +8,7 @@ from iteration3.src.utils.Util import Util
 class CLIAdmin():
 
     def __init__(self, adminController):
-        self.adminController = adminController
+        self._adminController = adminController
 
     def menuPage(self):
         Util.clearScreen()
@@ -22,20 +22,20 @@ class CLIAdmin():
         
         if str == "1":
             Util.clearScreen()
-            self.courseListPage()
+            self._courseListPage()
         elif str == "2":
             Util.clearScreen()
-            self.constraintPage()
+            self._constraintPage()
         elif str == "3":
             Util.clearScreen()
-            self.adminController.logout()
+            self._adminController.logout()
         else:
             Util.sendFeedback("Invalid input", Color.RED)
             self.menuPage()
 
-    def courseListPage(self):
+    def _courseListPage(self):
         Util.clearScreen()
-        courses = self.adminController.getCourseList()
+        courses = self._adminController.getCourseList()
 
         print(" All Courses\n" +
                         "**************\n" +
@@ -53,14 +53,14 @@ class CLIAdmin():
         _choice = input()
 
         if _choice == "c":
-            self.createNewCoursePage()
-            self.courseListPage()
+            self._createNewCoursePage()
+            self._courseListPage()
         elif _choice == "d":
             print("Enter the row number of the course you want to delete : ", end='')
             _choice = input() 
             try:
                 Util.validateNumber(_choice, courses)
-                if self.adminController.deleteCourse(courses[(int(_choice)-1)]):
+                if self._adminController.deleteCourse(courses[(int(_choice)-1)]):
                     Util.clearScreen()
                     Util.sendFeedback("Course deleted successfully", Color.GREEN)
                 else:
@@ -69,21 +69,21 @@ class CLIAdmin():
             except Exception as e:
                 Util.sendFeedback(str(e), Color.RED)
 
-            self.courseListPage()
+            self._courseListPage()
         elif _choice == "b":
             Util.clearScreen()
             self.menuPage()
         elif _choice == "q":
             Util.clearScreen()
-            self.adminController.logout()
+            self._adminController.logout()
         else:
             Util.sendFeedback("Invalid input", Color.RED)
-            self.courseListPage()
+            self._courseListPage()
 
 
-    def constraintPage(self):
+    def _constraintPage(self):
         Util.clearScreen()
-        editedAttributes = self.adminController.getConstraints()
+        editedAttributes = self._adminController.getConstraints()
 
         print(" Constraint Settings\n" +
                         "**************\n")
@@ -106,11 +106,11 @@ class CLIAdmin():
             if _choice.lower() in ["true", "false"]:
                 editedAttributes[2] = _choice.lower()
                 if _choice.lower() == "true":
-                    self.adminController.setNotificationToStudentAndAdvisor("Add-Drop period has started")
+                    self._adminController.setNotificationToStudentAndAdvisor("Add-Drop period has started")
                 else:
-                    self.adminController.setNotificationToStudentAndAdvisor("Add-Drop period has ended")
+                    self._adminController.setNotificationToStudentAndAdvisor("Add-Drop period has ended")
 
-                self.adminController.editConstraint(editedAttributes)
+                self._adminController.editConstraint(editedAttributes)
                 #TODO: Use try catch to handle send feedback
                 Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
 
@@ -118,7 +118,7 @@ class CLIAdmin():
                 Util.sendFeedback("Invalid input", Color.RED)
 
             
-            self.constraintPage()
+            self._constraintPage()
         elif _choice == "2":
             print("Enter the max number of courses that can be taken: ", end='')
             _choice = input()
@@ -127,8 +127,8 @@ class CLIAdmin():
                 Util.sendFeedback("Max number of courses that can be taken changed successfully", Color.GREEN)
             else:
                 Util.sendFeedback("Invalid input", Color.RED)
-            self.adminController.editConstraint(editedAttributes)
-            self.constraintPage()
+            self._adminController.editConstraint(editedAttributes)
+            self._constraintPage()
         elif _choice == "3":
             print("Enter the min required ECTS for term project: ", end='')
             _choice = input()
@@ -137,8 +137,8 @@ class CLIAdmin():
                 Util.sendFeedback("Min required ECTS for term project changed successfully", Color.GREEN)
             else:
                 Util.sendFeedback("Invalid input", Color.RED)
-            self.adminController.editConstraint(editedAttributes)
-            self.constraintPage()
+            self._adminController.editConstraint(editedAttributes)
+            self._constraintPage()
         elif _choice == "4":
             print("Enter true or false for registration week: ", end='')
             _choice = input()
@@ -147,25 +147,25 @@ class CLIAdmin():
                 Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
 
                 if _choice.lower() == "true":
-                    self.adminController.setNotificationToStudentAndAdvisor("Registration week has started")
+                    self._adminController.setNotificationToStudentAndAdvisor("Registration week has started")
                 else:
-                    self.adminController.setNotificationToStudentAndAdvisor("Registration week has ended")
+                    self._adminController.setNotificationToStudentAndAdvisor("Registration week has ended")
             else:
                 Util.sendFeedback("Invalid input", Color.RED)
-            self.adminController.editConstraint(editedAttributes)
-            self.constraintPage()
+            self._adminController.editConstraint(editedAttributes)
+            self._constraintPage()
         elif _choice == "b":
             Util.clearScreen()
             self.menuPage()
         elif _choice == "q":
             Util.clearScreen()
-            self.adminController.logout()
+            self._adminController.logout()
         else:
             Util.sendFeedback("Invalid input", Color.RED)
-            self.constraintPage()
+            self._constraintPage()
         
 
-    def createNewCoursePage(self):
+    def _createNewCoursePage(self):
 
         prerequisiteCourses = []
         courseSections = []
@@ -356,7 +356,7 @@ class CLIAdmin():
 
         Util.clearScreen()
 
-        if self.adminController.createCourse(course):
+        if self._adminController.createCourse(course):
             Util.sendFeedback("SUCCESS: " + courseCode + " is created.", Color.GREEN)
             return True
         else:
@@ -364,4 +364,4 @@ class CLIAdmin():
             return False
 
     def findCourseByCourseCode(self, courseCode):
-        return self.adminController.findCourseByCourseCode(courseCode)
+        return self._adminController.findCourseByCourseCode(courseCode)

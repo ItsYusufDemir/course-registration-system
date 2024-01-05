@@ -2,9 +2,9 @@
 from iteration3.src.enums.CourseResult import CourseResult
 class CourseGrade:
     def __init__(self, course, letterGrade, courseResult):
-        self.course = course
-        self.letterGrade = letterGrade
-        self.courseResult = courseResult
+        self._course = course
+        self._letterGrade = letterGrade
+        self._courseResult = courseResult
 
     @classmethod
     def dictToObject(cls, dict):
@@ -16,7 +16,7 @@ class CourseGrade:
         )
         
     def convertLetterGradeToScore(self):
-        match self.letterGrade:
+        match self._letterGrade:
             case "AA":
                 score = 4.0
             case "BA":
@@ -41,10 +41,10 @@ class CourseGrade:
                 
 
     def getCourseResult(self):
-        return self.courseResult
+        return self._courseResult
     
     def getCourse(self):
-        return self.course
+        return self._course
 
         
     

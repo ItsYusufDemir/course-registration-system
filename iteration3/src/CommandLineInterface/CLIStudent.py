@@ -14,7 +14,7 @@ class CLIStudent(object):
         self._shouldQuit = True
 
 
-    def _menuPage(self):
+    def menuPage(self):
         
         while(self._shouldQuit):
             Util.clearScreen()

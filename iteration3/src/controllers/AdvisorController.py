@@ -3,29 +3,29 @@ from iteration3.src.enums.ApprovalStatus import ApprovalStatus
 class AdvisorController:
 
     def __init__(self, currentAdvisor):
-        self.currentAdvisor = currentAdvisor
-        self.studentList = currentAdvisor.fetchAdvisedStudents()
+        self._currentAdvisor = currentAdvisor
+        self._studentList = currentAdvisor.fetchAdvisedStudents()
 
     def approveCourse(self, student, selectedCourse):
-        return self.currentAdvisor.acceptCourse(student, selectedCourse)
+        return self._currentAdvisor.acceptCourse(student, selectedCourse)
 
     def denyCourse(self, student, selectedCourse):
-        return self.currentAdvisor.rejectCourse(student, selectedCourse)
+        return self._currentAdvisor.rejectCourse(student, selectedCourse)
 
 
 
     def getStudentListOrderByStatus(self):
         studentListOrder = []
 
-        for student in self.studentList:
+        for student in self._studentList:
             if(student.getApprovalStatus() == ApprovalStatus.PENDING):
                 studentListOrder.append(student)
         
-        for student in self.studentList:
+        for student in self._studentList:
             if(student.getApprovalStatus() == ApprovalStatus.DONE):
                 studentListOrder.append(student)
         
-        for student in self.studentList:
+        for student in self._studentList:
             if(student.getApprovalStatus() == ApprovalStatus.FINALIZED_REGISTRATION):
                 studentListOrder.append(student)
 
@@ -36,22 +36,22 @@ class AdvisorController:
 
 
     def finalizeRegistration(self, student):
-        self.currentAdvisor.finalizeRegistration(student)
+        self._currentAdvisor.finalizeRegistration(student)
 
     
 
 
     def getNotifications(self):
-        return self.currentAdvisor.getNotifications()
+        return self._currentAdvisor.getNotifications()
 
     def logOut(self):
-        self.currentAdvisor.logout()
+        self._currentAdvisor.logout()
 
     def clearNotifications(self):
-        self.currentAdvisor.clearNotifications()
+        self._currentAdvisor.clearNotifications()
     
     def getCurrentAdvisor(self):
-        return self.currentAdvisor
+        return self._currentAdvisor
     
     def setCurrentAdvisor(self, currentAdvisor):
-        self.currentAdvisor = currentAdvisor
+        self._currentAdvisor = currentAdvisor
