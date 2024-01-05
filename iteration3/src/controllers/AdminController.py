@@ -20,5 +20,8 @@ class AdminController:
     def findCourseByCourseCode(self, courseCode):
         return self._currentAdmin.findCourseByCourseCode(courseCode)
     
+    def setNotificationToStudentAndAdvisor(self,notification):
+        self._currentAdmin.setNotificationToStudentAndAdvisor(notification)
+    
     def logout(self):
         self._currentAdmin.logout()

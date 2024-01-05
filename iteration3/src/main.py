@@ -7,7 +7,3 @@ logging.basicConfig(filename='./iteration3/logs/logs.log', level=logging.DEBUG, 
 # Create the course registration system and start it
 courseRegistrationSystem = CourseRegistrationSystem()
 courseRegistrationSystem.start()
-
-
-
-1

@@ -42,6 +42,9 @@ class CourseGrade:
 
     def getCourseResult(self):
         return self.courseResult
+    
+    def getCourse(self):
+        return self.course
 
         
     
