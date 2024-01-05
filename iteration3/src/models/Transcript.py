@@ -7,7 +7,7 @@ from iteration3.src.enums.CourseType import CourseType
 class Transcript(object):
     
     def __init__(self, takenCourses):
-        self.takenCourses = takenCourses
+        self._takenCourses = takenCourses
 
     @classmethod
     def dictToObject(cls, dict):
@@ -16,11 +16,11 @@ class Transcript(object):
         )
     
     def addTakenCourse(self, course):
-        self.takenCourses.append( CourseGrade(course, None, CourseResult.ACTIVE) )
+        self._takenCourses.append( CourseGrade(course, None, CourseResult.ACTIVE) )
 
     def acquirePassedCourses(self):
         passedCourses = list()
-        for course in self.takenCourses:
+        for course in self._takenCourses:
             if course.getCourseResult() == CourseResult.PASSED:
                 passedCourses.append(course)
         
@@ -28,7 +28,7 @@ class Transcript(object):
     
     def calculateCompletedCredits(self):
         total = 0.0
-        for course in self.takenCourses:
+        for course in self._takenCourses:
             if course.getCourseResult() == CourseResult.PASSED:
                 total += course.getCourse().getCourseCredit()
         
@@ -38,7 +38,7 @@ class Transcript(object):
         totalPoint = 0.0
         totalCredit = 0.0
 
-        for courseGrade in self.takenCourses:
+        for courseGrade in self._takenCourses:
             if courseGrade.getCourseResult() != CourseResult.PASSED:
                 continue
             totalPoint += courseGrade.getCourse().getCourseCredit() * courseGrade.convertLetterGradeToScore()
@@ -57,7 +57,7 @@ class Transcript(object):
         restricedCourseTypes = [CourseType.NONTECHNICAL_ELECTIVE, CourseType.UNIVERSITY_ELECTIVE,
                                     CourseType.TECHNICAL_ELECTIVE,CourseType.FACULTY_ELECTIVE,]
         
-        for takenCourse in self.takenCourses:
+        for takenCourse in self._takenCourses:
            if (takenCourse.getCourseResult() == CourseResult.PASSED and 
                takenCourse.getCourse().getCourseType() not in restricedCourseTypes and
                 takenCourse.getCourse().getCourseCode() not in restricedCourses ):
@@ -69,4 +69,4 @@ class Transcript(object):
             return False
         
     def getTakenCourses(self):
-        return self.takenCourses
+        return self._takenCourses

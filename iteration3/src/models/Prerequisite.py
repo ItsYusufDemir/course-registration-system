@@ -1,6 +1,6 @@
 class Prerequisite:
     def __init__ (self, prerequisiteOfCourses):
-        self.prerequisiteOfCourses = prerequisiteOfCourses
+        self._prerequisiteOfCourses = prerequisiteOfCourses
 
     @classmethod
     def dictToObject(cls, dict):
@@ -29,4 +29,4 @@ class Prerequisite:
 
 
     def getPrerequisiteOfCourses(self):
-        return self.prerequisiteOfCourses
+        return self._prerequisiteOfCourses

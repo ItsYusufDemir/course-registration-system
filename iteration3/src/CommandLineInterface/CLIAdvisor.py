@@ -38,7 +38,7 @@ class CLIAdvisor(object):
                if choice == "1":
                     students = self._advisorController.getStudentListOrderByStatus()
                     Util.clearScreen()
-                    shouldQuit = self.showStudentPage(students)
+                    shouldQuit = self._showStudentPage(students)
 
                     if(shouldQuit):
                          break
@@ -51,7 +51,7 @@ class CLIAdvisor(object):
                     Util.sendFeedback("Invalid choice", Color.RED)
                     isInvalid = True
 
-     def showStudentPage(self,students):
+     def _showStudentPage(self,students):
           isInvalid = False
           while True:
                
@@ -77,7 +77,7 @@ class CLIAdvisor(object):
                                    if((students[int(choice)-1].getSelectedCourses())[i].getStatus() == CourseStatus.PENDING):
                                         selectedCoursesThatStatusIsPending.append((students[int(choice)-1].getSelectedCourses())[i])
                               
-                         shouldQuit = self.coursesOfStudentPage(students[int(choice)-1])         
+                         shouldQuit = self._coursesOfStudentPage(students[int(choice)-1])         
                          if(shouldQuit):
                               return True
                     else:
@@ -94,7 +94,7 @@ class CLIAdvisor(object):
                     continue
    
 
-     def coursesOfStudentPage(self,student):
+     def _coursesOfStudentPage(self,student):
 
           isInvalid = False    
           courses = student.fetchSelectedCoursesForAdvisor()

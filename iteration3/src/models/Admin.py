@@ -24,7 +24,7 @@ class Admin(User):
     
     def createCourse(self,course)->Course:
         self.fetchCourseList().append(course)
-        logging.log(logging.INFO, f"Admin: {self.userId} created a new course: {course.getCourseCode()}")
+        logging.log(logging.INFO, f"Admin: {self._userId} created a new course: {course.getCourseCode()}")
         DatabaseManager().getInstance().saveToDatabase()
         return course
     
@@ -32,7 +32,7 @@ class Admin(User):
         courseList = self.fetchCourseList()
         if course in courseList:
             courseList.remove(course)
-            logging.log(logging.INFO, f"Admin: {self.userId} deleted a course: {course.getCourseCode()}")
+            logging.log(logging.INFO, f"Admin: {self._userId} deleted a course: {course.getCourseCode()}")
             DatabaseManager().getInstance().saveToDatabase()
             return True
         else:
@@ -41,7 +41,7 @@ class Admin(User):
     
     def editConstraints(self,constraints)->bool:
         result = DatabaseManager().getInstance().editConstraints(constraints)
-        logging.log(logging.INFO, f"Admin: {self.userId} updated constraints")
+        logging.log(logging.INFO, f"Admin: {self._userId} updated constraints")
         DatabaseManager().getInstance().saveToDatabase()
         return result
     
