@@ -1,10 +1,10 @@
 [
     {
-        "userId": "admin",
-        "password": "admin",
-        "firstName": "Murat Can",
-        "lastName": "Ganiz",
-        "status": true,
-        "notifications": []
+    "userId": "admin",
+    "password": "admin",
+    "firstName": "Murat Can",
+    "lastName": "Ganiz",
+    "status": true,
+    "notifications": []
     }
 ]

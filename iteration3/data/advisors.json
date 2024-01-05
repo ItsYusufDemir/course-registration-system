@@ -5,11 +5,7 @@
         "firstName": "Murat Can",
         "lastName": "Ganiz",
         "status": true,
-        "notifications": [
-            "Registration week has ended",
-            "Add-Drop period has started",
-            "Add-Drop week has been enabled. Students can now add/drop courses."
-        ]
+        "notifications": []
     },
     {
         "userId": "111112",
@@ -17,11 +13,7 @@
         "firstName": "Betül",
         "lastName": "Boz",
         "status": true,
-        "notifications": [
-            "Registration week has ended",
-            "Add-Drop period has started",
-            "Add-Drop week has been enabled. Students can now add/drop courses."
-        ]
+        "notifications": []
     },
     {
         "userId": "111113",
@@ -29,11 +21,7 @@
         "firstName": "Mustafa",
         "lastName": "Ağaoğlu",
         "status": true,
-        "notifications": [
-            "Registration week has ended",
-            "Add-Drop period has started",
-            "Add-Drop week has been enabled. Students can now add/drop courses."
-        ]
+        "notifications": []
     },
     {
         "userId": "111114",
@@ -41,10 +29,6 @@
         "firstName": "Ali Haydar",
         "lastName": "Özer",
         "status": true,
-        "notifications": [
-            "Registration week has ended",
-            "Add-Drop period has started",
-            "Add-Drop week has been enabled. Students can now add/drop courses."
-        ]
+        "notifications": []
     }
 ]
