@@ -12,7 +12,7 @@ class ApprovalStatus(Enum):
             return ApprovalStatus.DONE
         elif dict == "PENDING":
             return ApprovalStatus.PENDING
-        elif dict == ApprovalStatus.FINALIZED_REGISTRATION:
+        elif dict == "FINALIZED_REGISTRATION":
             return ApprovalStatus.FINALIZED_REGISTRATION
         else:
             return None

@@ -38,9 +38,8 @@ class Advisor(User):
     def acceptCourse(self, student, selectedCourse):
 
         if(selectedCourse.status != CourseStatus.PENDING):
-            Util.sendFeedback("This course is not pending for approval.", Color.RED)
             logging.log(logging.INFO, f"{self.getUserId()} - Course: {selectedCourse.getCourse().getCourseCode()} is not pending for approval.")
-            return False
+            raise Exception("This course is not pending for approval.")
         
         selectedCourse.setStatus(CourseStatus.APPROVED)
 
@@ -68,8 +67,7 @@ class Advisor(User):
     def rejectCourse(self, student, selectedCourse):
 
         if(selectedCourse.status != CourseStatus.PENDING):
-            Util.sendFeedback("This course is not pending for approval.", Color.RED)
-            return False
+            raise Exception("This course is not pending for reject.")
         
         selectedCourse.setStatus(CourseStatus.DENIED)
         selectedCourse.getCourseSection().decrementStudentCount()
@@ -92,7 +90,7 @@ class Advisor(User):
 
 
 
-    def finalizeRegistration(student):
+    def finalizeRegistration(self, student):
 
         selectedCourses = student.getSelectedCourses()
 
@@ -102,7 +100,8 @@ class Advisor(User):
             else:
                 course.setStatus(CourseStatus.DENIED_FINALIZED)
         
-        student.setStatus(ApprovalStatus.FINALIZED_REGISTRATION)                  
+        student.setApprovalStatus(ApprovalStatus.FINALIZED_REGISTRATION)
+        student.addNotification("Your registration is finalized.")                  
         DatabaseManager.getInstance().saveToDatabase()
 
 
