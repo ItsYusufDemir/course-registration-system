@@ -96,7 +96,11 @@ class CLIStudent(object):
                     elif self._studentController.getStatus() == "FINALIZED_REGISTRATION":
                         Util.sendFeedback("You have already finalized your registration. You can not send your selected courses to approval", Color.RED)
                     else: 
-                        self._studentController.sendSelectedCoursesToApproval()  
+                        try:
+                            self._studentController.sendSelectedCoursesToApproval()
+                            Util.sendFeedback("Selected courses sent to approval successfully", Color.GREEN)
+                        except Exception as e:
+                            Util.sendFeedback(str(e), Color.RED)
 
                 elif _choice == "b":
                     break

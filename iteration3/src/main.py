@@ -1,3 +1,10 @@
+
+from dotenv import load_dotenv
+import os
+import sys
+
+load_dotenv()
+sys.path.append(os.getenv("ROOT_PATH"))
 import logging
 from iteration3.src.models.CourseRegistrationSystem import CourseRegistrationSystem
 
