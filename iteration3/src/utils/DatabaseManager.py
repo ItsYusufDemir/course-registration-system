@@ -24,11 +24,11 @@ class DatabaseManager:
 
     def initialize(self):
 
-        from models.Admin import Admin
-        from models.Advisor import Advisor
-        from models.Constraint import Constraint
-        from models.Course import Course
-        from models.Student import Student
+        from iteration3.src.models.Admin import Admin
+        from iteration3.src.models.Advisor import Advisor
+        from iteration3.src.models.Constraint import Constraint
+        from iteration3.src.models.Course import Course
+        from iteration3.src.models.Student import Student
 
 
         #Read json files and store them in the corresponding lists

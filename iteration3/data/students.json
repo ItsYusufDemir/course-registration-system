@@ -1660,11 +1660,265 @@
         "firstName": "Seda",
         "lastName": "Gündüz",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Your MATH2055 course is rejected.",
+            "Your ECON2004 course is rejected."
+        ],
         "email": "sedagunduz@marun.edu.tr",
         "identityNumber": "123412348",
         "currentSemester": 3,
-        "selectedCourses": [],
+        "selectedCourses": [
+            {
+                "course": {
+                    "courseCredit": 6,
+                    "courseECTS": 6,
+                    "givenSemester": 3,
+                    "courseName": "Discrete Comp. Structures",
+                    "courseCode": "CSE2023",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Mustafa Ağaoğlu",
+                            "sectionTime": [
+                                "08:30-9:20",
+                                "8:30-9:20",
+                                "09:30-10:20"
+                            ],
+                            "sectionDay": [
+                                "Monday",
+                                "Monday",
+                                "Wednesday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "CSE2023.1",
+                            "studentCountInsideCourseSection": 1
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "APPROVED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Mustafa Ağaoğlu",
+                    "sectionTime": [
+                        "08:30-9:20",
+                        "8:30-9:20",
+                        "09:30-10:20"
+                    ],
+                    "sectionDay": [
+                        "Monday",
+                        "Monday",
+                        "Wednesday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "CSE2023.1",
+                    "studentCountInsideCourseSection": 1
+                }
+            },
+            {
+                "course": {
+                    "courseCredit": 4,
+                    "courseECTS": 4,
+                    "givenSemester": 3,
+                    "courseName": "Differential Equations",
+                    "courseCode": "MATH2055",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Zeynep Yılmaz",
+                            "sectionTime": [
+                                "13:00-13:50",
+                                "13:00-13:50",
+                                "11:30-12:20"
+                            ],
+                            "sectionDay": [
+                                "Wednesday",
+                                "Wednesday",
+                                "Tuesday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "MATH2055.1",
+                            "studentCountInsideCourseSection": 0
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "DENIED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Zeynep Yılmaz",
+                    "sectionTime": [
+                        "13:00-13:50",
+                        "13:00-13:50",
+                        "11:30-12:20"
+                    ],
+                    "sectionDay": [
+                        "Wednesday",
+                        "Wednesday",
+                        "Tuesday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "MATH2055.1",
+                    "studentCountInsideCourseSection": 0
+                }
+            },
+            {
+                "course": {
+                    "courseCredit": 6,
+                    "courseECTS": 6,
+                    "givenSemester": 4,
+                    "courseName": "Principles of Prog. Languages",
+                    "courseCode": "CSE2260",
+                    "prerequisiteInformation": {
+                        "prerequisiteOfCourses": [
+                            {
+                                "courseCredit": 6,
+                                "courseECTS": 6,
+                                "givenSemester": 2,
+                                "courseName": "Computer Programming II",
+                                "courseCode": "CSE1242",
+                                "prerequisiteInformation": {
+                                    "prerequisiteOfCourses": [
+                                        {
+                                            "courseCredit": 6,
+                                            "courseECTS": 6,
+                                            "givenSemester": 1,
+                                            "courseName": "Computer Programming I",
+                                            "courseCode": "CSE1241",
+                                            "prerequisiteInformation": null,
+                                            "courseSections": [
+                                                {
+                                                    "studentCapacity": 150,
+                                                    "lecturerName": "Sanem Arslan Yılmaz",
+                                                    "sectionTime": [
+                                                        "08:30-09:20",
+                                                        "09:30-10:20",
+                                                        "13:00-13:50"
+                                                    ],
+                                                    "sectionDay": [
+                                                        "Monday",
+                                                        "Monday",
+                                                        "Wednesday"
+                                                    ],
+                                                    "classroom": "Room 101",
+                                                    "sectionCode": "CSE1241.1",
+                                                    "studentCountInsideCourseSection": 0
+                                                }
+                                            ],
+                                            "courseType": "COMPULSORY"
+                                        }
+                                    ]
+                                },
+                                "courseSections": [
+                                    {
+                                        "studentCapacity": 150,
+                                        "lecturerName": "Sanem Arslan Yılmaz",
+                                        "sectionTime": [
+                                            "08:30-09:20",
+                                            "09:30-10:20",
+                                            "13:00-13:50"
+                                        ],
+                                        "sectionDay": [
+                                            "Monday",
+                                            "Tuesday",
+                                            "Wednesday"
+                                        ],
+                                        "classroom": "Room 101",
+                                        "sectionCode": "CSE1242.1",
+                                        "studentCountInsideCourseSection": 0
+                                    }
+                                ],
+                                "courseType": "COMPULSORY"
+                            }
+                        ]
+                    },
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Fatma Corut Ergin",
+                            "sectionTime": [
+                                "15:00-15:50",
+                                "16:00-16:50",
+                                "14:00-14:50"
+                            ],
+                            "sectionDay": [
+                                "Tuesday",
+                                "Tuesday",
+                                "Thursday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "CSE2260.1",
+                            "studentCountInsideCourseSection": 1
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "APPROVED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Fatma Corut Ergin",
+                    "sectionTime": [
+                        "15:00-15:50",
+                        "16:00-16:50",
+                        "14:00-14:50"
+                    ],
+                    "sectionDay": [
+                        "Tuesday",
+                        "Tuesday",
+                        "Thursday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "CSE2260.1",
+                    "studentCountInsideCourseSection": 1
+                }
+            },
+            {
+                "course": {
+                    "courseCredit": 3,
+                    "courseECTS": 3,
+                    "givenSemester": 4,
+                    "courseName": "Engineering Economy",
+                    "courseCode": "ECON2004",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Ayşe Bengi Özlüarda",
+                            "sectionTime": [
+                                "13:00-13:50",
+                                "14:00-14:50"
+                            ],
+                            "sectionDay": [
+                                "Monday",
+                                "Monday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "ECON2004.1",
+                            "studentCountInsideCourseSection": 0
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "DENIED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Ayşe Bengi Özlüarda",
+                    "sectionTime": [
+                        "13:00-13:50",
+                        "14:00-14:50"
+                    ],
+                    "sectionDay": [
+                        "Monday",
+                        "Monday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "ECON2004.1",
+                    "studentCountInsideCourseSection": 0
+                }
+            }
+        ],
         "advisorOfStudent": {
             "userId": "111111",
             "password": "advisor",
@@ -1673,7 +1927,7 @@
             "status": true,
             "notifications": []
         },
-        "approvalStatus": "DONE",
+        "approvalStatus": "FINALIZED_REGISTRATION",
         "transcript": {
             "takenCourses": [
                 {
@@ -2268,6 +2522,132 @@
                     },
                     "letterGrade": "AA",
                     "courseResult": "PASSED"
+                },
+                {
+                    "course": {
+                        "courseCredit": 6,
+                        "courseECTS": 6,
+                        "givenSemester": 3,
+                        "courseName": "Discrete Comp. Structures",
+                        "courseCode": "CSE2023",
+                        "prerequisiteInformation": null,
+                        "courseSections": [
+                            {
+                                "studentCapacity": 150,
+                                "lecturerName": "Mustafa Ağaoğlu",
+                                "sectionTime": [
+                                    "08:30-9:20",
+                                    "8:30-9:20",
+                                    "09:30-10:20"
+                                ],
+                                "sectionDay": [
+                                    "Monday",
+                                    "Monday",
+                                    "Wednesday"
+                                ],
+                                "classroom": "Room 101",
+                                "sectionCode": "CSE2023.1",
+                                "studentCountInsideCourseSection": 1
+                            }
+                        ],
+                        "courseType": "COMPULSORY"
+                    },
+                    "letterGrade": null,
+                    "courseResult": "ACTIVE"
+                },
+                {
+                    "course": {
+                        "courseCredit": 6,
+                        "courseECTS": 6,
+                        "givenSemester": 4,
+                        "courseName": "Principles of Prog. Languages",
+                        "courseCode": "CSE2260",
+                        "prerequisiteInformation": {
+                            "prerequisiteOfCourses": [
+                                {
+                                    "courseCredit": 6,
+                                    "courseECTS": 6,
+                                    "givenSemester": 2,
+                                    "courseName": "Computer Programming II",
+                                    "courseCode": "CSE1242",
+                                    "prerequisiteInformation": {
+                                        "prerequisiteOfCourses": [
+                                            {
+                                                "courseCredit": 6,
+                                                "courseECTS": 6,
+                                                "givenSemester": 1,
+                                                "courseName": "Computer Programming I",
+                                                "courseCode": "CSE1241",
+                                                "prerequisiteInformation": null,
+                                                "courseSections": [
+                                                    {
+                                                        "studentCapacity": 150,
+                                                        "lecturerName": "Sanem Arslan Yılmaz",
+                                                        "sectionTime": [
+                                                            "08:30-09:20",
+                                                            "09:30-10:20",
+                                                            "13:00-13:50"
+                                                        ],
+                                                        "sectionDay": [
+                                                            "Monday",
+                                                            "Monday",
+                                                            "Wednesday"
+                                                        ],
+                                                        "classroom": "Room 101",
+                                                        "sectionCode": "CSE1241.1",
+                                                        "studentCountInsideCourseSection": 0
+                                                    }
+                                                ],
+                                                "courseType": "COMPULSORY"
+                                            }
+                                        ]
+                                    },
+                                    "courseSections": [
+                                        {
+                                            "studentCapacity": 150,
+                                            "lecturerName": "Sanem Arslan Yılmaz",
+                                            "sectionTime": [
+                                                "08:30-09:20",
+                                                "09:30-10:20",
+                                                "13:00-13:50"
+                                            ],
+                                            "sectionDay": [
+                                                "Monday",
+                                                "Tuesday",
+                                                "Wednesday"
+                                            ],
+                                            "classroom": "Room 101",
+                                            "sectionCode": "CSE1242.1",
+                                            "studentCountInsideCourseSection": 0
+                                        }
+                                    ],
+                                    "courseType": "COMPULSORY"
+                                }
+                            ]
+                        },
+                        "courseSections": [
+                            {
+                                "studentCapacity": 150,
+                                "lecturerName": "Fatma Corut Ergin",
+                                "sectionTime": [
+                                    "15:00-15:50",
+                                    "16:00-16:50",
+                                    "14:00-14:50"
+                                ],
+                                "sectionDay": [
+                                    "Tuesday",
+                                    "Tuesday",
+                                    "Thursday"
+                                ],
+                                "classroom": "Room 101",
+                                "sectionCode": "CSE2260.1",
+                                "studentCountInsideCourseSection": 1
+                            }
+                        ],
+                        "courseType": "COMPULSORY"
+                    },
+                    "letterGrade": null,
+                    "courseResult": "ACTIVE"
                 }
             ]
         }
@@ -2282,7 +2662,214 @@
         "email": "mercankucukkaya@marun.edu.tr",
         "identityNumber": "246813579",
         "currentSemester": 3,
-        "selectedCourses": [],
+        "selectedCourses": [
+            {
+                "course": {
+                    "courseCredit": 6,
+                    "courseECTS": 6,
+                    "givenSemester": 2,
+                    "courseName": "Computer Programming II",
+                    "courseCode": "CSE1242",
+                    "prerequisiteInformation": {
+                        "prerequisiteOfCourses": [
+                            {
+                                "courseCredit": 6,
+                                "courseECTS": 6,
+                                "givenSemester": 1,
+                                "courseName": "Computer Programming I",
+                                "courseCode": "CSE1241",
+                                "prerequisiteInformation": null,
+                                "courseSections": [
+                                    {
+                                        "studentCapacity": 150,
+                                        "lecturerName": "Sanem Arslan Yılmaz",
+                                        "sectionTime": [
+                                            "08:30-09:20",
+                                            "09:30-10:20",
+                                            "13:00-13:50"
+                                        ],
+                                        "sectionDay": [
+                                            "Monday",
+                                            "Monday",
+                                            "Wednesday"
+                                        ],
+                                        "classroom": "Room 101",
+                                        "sectionCode": "CSE1241.1",
+                                        "studentCountInsideCourseSection": 0
+                                    }
+                                ],
+                                "courseType": "COMPULSORY"
+                            }
+                        ]
+                    },
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Sanem Arslan Yılmaz",
+                            "sectionTime": [
+                                "08:30-09:20",
+                                "09:30-10:20",
+                                "13:00-13:50"
+                            ],
+                            "sectionDay": [
+                                "Monday",
+                                "Tuesday",
+                                "Wednesday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "CSE1242.1",
+                            "studentCountInsideCourseSection": 1
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "DENIED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Sanem Arslan Yılmaz",
+                    "sectionTime": [
+                        "08:30-09:20",
+                        "09:30-10:20",
+                        "13:00-13:50"
+                    ],
+                    "sectionDay": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "CSE1242.1",
+                    "studentCountInsideCourseSection": 1
+                }
+            },
+            {
+                "course": {
+                    "courseCredit": 6,
+                    "courseECTS": 6,
+                    "givenSemester": 3,
+                    "courseName": "Discrete Comp. Structures",
+                    "courseCode": "CSE2023",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Mustafa Ağaoğlu",
+                            "sectionTime": [
+                                "08:30-9:20",
+                                "8:30-9:20",
+                                "09:30-10:20"
+                            ],
+                            "sectionDay": [
+                                "Monday",
+                                "Monday",
+                                "Wednesday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "CSE2023.1",
+                            "studentCountInsideCourseSection": 2
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "DENIED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Mustafa Ağaoğlu",
+                    "sectionTime": [
+                        "08:30-9:20",
+                        "8:30-9:20",
+                        "09:30-10:20"
+                    ],
+                    "sectionDay": [
+                        "Monday",
+                        "Monday",
+                        "Wednesday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "CSE2023.1",
+                    "studentCountInsideCourseSection": 2
+                }
+            },
+            {
+                "course": {
+                    "courseCredit": 5,
+                    "courseECTS": 5,
+                    "givenSemester": 3,
+                    "courseName": "Electric Circuits",
+                    "courseCode": "EE2031",
+                    "prerequisiteInformation": {
+                        "prerequisiteOfCourses": [
+                            {
+                                "courseCredit": 4,
+                                "courseECTS": 4,
+                                "givenSemester": 2,
+                                "courseName": "Physics II",
+                                "courseCode": "PHYS1102",
+                                "prerequisiteInformation": null,
+                                "courseSections": [
+                                    {
+                                        "studentCapacity": 200,
+                                        "lecturerName": "Mustafa Alevli",
+                                        "sectionTime": [
+                                            "13:00-13:50",
+                                            "14:00-14:50",
+                                            "09:30-10:20"
+                                        ],
+                                        "sectionDay": [
+                                            "Thursday",
+                                            "Thursday",
+                                            "Friday"
+                                        ],
+                                        "classroom": "Room 101",
+                                        "sectionCode": "PHYS1102.1",
+                                        "studentCountInsideCourseSection": 0
+                                    }
+                                ],
+                                "courseType": "COMPULSORY"
+                            }
+                        ]
+                    },
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Fulya Çallıalp",
+                            "sectionTime": [
+                                "11:30-12:20",
+                                "13:00-13:50",
+                                "09:30-10:20"
+                            ],
+                            "sectionDay": [
+                                "Thursday",
+                                "Thursday",
+                                "Monday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "EE2031.1",
+                            "studentCountInsideCourseSection": 1
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "APPROVED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Fulya Çallıalp",
+                    "sectionTime": [
+                        "11:30-12:20",
+                        "13:00-13:50",
+                        "09:30-10:20"
+                    ],
+                    "sectionDay": [
+                        "Thursday",
+                        "Thursday",
+                        "Monday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "EE2031.1",
+                    "studentCountInsideCourseSection": 1
+                }
+            }
+        ],
         "advisorOfStudent": {
             "userId": "111112",
             "password": "advisor",
@@ -2291,7 +2878,7 @@
             "status": true,
             "notifications": []
         },
-        "approvalStatus": "DONE",
+        "approvalStatus": "FINALIZED_REGISTRATION",
         "transcript": {
             "takenCourses": [
                 {
@@ -2886,6 +3473,164 @@
                     },
                     "letterGrade": "AA",
                     "courseResult": "PASSED"
+                },
+                {
+                    "course": {
+                        "courseCredit": 6,
+                        "courseECTS": 6,
+                        "givenSemester": 2,
+                        "courseName": "Computer Programming II",
+                        "courseCode": "CSE1242",
+                        "prerequisiteInformation": {
+                            "prerequisiteOfCourses": [
+                                {
+                                    "courseCredit": 6,
+                                    "courseECTS": 6,
+                                    "givenSemester": 1,
+                                    "courseName": "Computer Programming I",
+                                    "courseCode": "CSE1241",
+                                    "prerequisiteInformation": null,
+                                    "courseSections": [
+                                        {
+                                            "studentCapacity": 150,
+                                            "lecturerName": "Sanem Arslan Yılmaz",
+                                            "sectionTime": [
+                                                "08:30-09:20",
+                                                "09:30-10:20",
+                                                "13:00-13:50"
+                                            ],
+                                            "sectionDay": [
+                                                "Monday",
+                                                "Monday",
+                                                "Wednesday"
+                                            ],
+                                            "classroom": "Room 101",
+                                            "sectionCode": "CSE1241.1",
+                                            "studentCountInsideCourseSection": 0
+                                        }
+                                    ],
+                                    "courseType": "COMPULSORY"
+                                }
+                            ]
+                        },
+                        "courseSections": [
+                            {
+                                "studentCapacity": 150,
+                                "lecturerName": "Sanem Arslan Yılmaz",
+                                "sectionTime": [
+                                    "08:30-09:20",
+                                    "09:30-10:20",
+                                    "13:00-13:50"
+                                ],
+                                "sectionDay": [
+                                    "Monday",
+                                    "Tuesday",
+                                    "Wednesday"
+                                ],
+                                "classroom": "Room 101",
+                                "sectionCode": "CSE1242.1",
+                                "studentCountInsideCourseSection": 1
+                            }
+                        ],
+                        "courseType": "COMPULSORY"
+                    },
+                    "letterGrade": null,
+                    "courseResult": "ACTIVE"
+                },
+                {
+                    "course": {
+                        "courseCredit": 6,
+                        "courseECTS": 6,
+                        "givenSemester": 3,
+                        "courseName": "Discrete Comp. Structures",
+                        "courseCode": "CSE2023",
+                        "prerequisiteInformation": null,
+                        "courseSections": [
+                            {
+                                "studentCapacity": 150,
+                                "lecturerName": "Mustafa Ağaoğlu",
+                                "sectionTime": [
+                                    "08:30-9:20",
+                                    "8:30-9:20",
+                                    "09:30-10:20"
+                                ],
+                                "sectionDay": [
+                                    "Monday",
+                                    "Monday",
+                                    "Wednesday"
+                                ],
+                                "classroom": "Room 101",
+                                "sectionCode": "CSE2023.1",
+                                "studentCountInsideCourseSection": 2
+                            }
+                        ],
+                        "courseType": "COMPULSORY"
+                    },
+                    "letterGrade": null,
+                    "courseResult": "ACTIVE"
+                },
+                {
+                    "course": {
+                        "courseCredit": 5,
+                        "courseECTS": 5,
+                        "givenSemester": 3,
+                        "courseName": "Electric Circuits",
+                        "courseCode": "EE2031",
+                        "prerequisiteInformation": {
+                            "prerequisiteOfCourses": [
+                                {
+                                    "courseCredit": 4,
+                                    "courseECTS": 4,
+                                    "givenSemester": 2,
+                                    "courseName": "Physics II",
+                                    "courseCode": "PHYS1102",
+                                    "prerequisiteInformation": null,
+                                    "courseSections": [
+                                        {
+                                            "studentCapacity": 200,
+                                            "lecturerName": "Mustafa Alevli",
+                                            "sectionTime": [
+                                                "13:00-13:50",
+                                                "14:00-14:50",
+                                                "09:30-10:20"
+                                            ],
+                                            "sectionDay": [
+                                                "Thursday",
+                                                "Thursday",
+                                                "Friday"
+                                            ],
+                                            "classroom": "Room 101",
+                                            "sectionCode": "PHYS1102.1",
+                                            "studentCountInsideCourseSection": 0
+                                        }
+                                    ],
+                                    "courseType": "COMPULSORY"
+                                }
+                            ]
+                        },
+                        "courseSections": [
+                            {
+                                "studentCapacity": 150,
+                                "lecturerName": "Fulya Çallıalp",
+                                "sectionTime": [
+                                    "11:30-12:20",
+                                    "13:00-13:50",
+                                    "09:30-10:20"
+                                ],
+                                "sectionDay": [
+                                    "Thursday",
+                                    "Thursday",
+                                    "Monday"
+                                ],
+                                "classroom": "Room 101",
+                                "sectionCode": "EE2031.1",
+                                "studentCountInsideCourseSection": 1
+                            }
+                        ],
+                        "courseType": "COMPULSORY"
+                    },
+                    "letterGrade": null,
+                    "courseResult": "ACTIVE"
                 }
             ]
         }
@@ -2900,7 +3645,60 @@
         "email": "alionder34@marun.edu.tr",
         "identityNumber": "457645671",
         "currentSemester": 3,
-        "selectedCourses": [],
+        "selectedCourses": [
+            {
+                "course": {
+                    "courseCredit": 6,
+                    "courseECTS": 6,
+                    "givenSemester": 2,
+                    "courseName": "Calculus II",
+                    "courseCode": "MATH1002",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Zeynep Yılmaz",
+                            "sectionTime": [
+                                "10:30-11:20",
+                                "11:30-12:20",
+                                "09:30-10:20",
+                                "10:30-11:20"
+                            ],
+                            "sectionDay": [
+                                "Tuesday",
+                                "Tuesday",
+                                "Friday",
+                                "Friday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "MATH1002.1",
+                            "studentCountInsideCourseSection": 0
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "DRAFT",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Zeynep Yılmaz",
+                    "sectionTime": [
+                        "10:30-11:20",
+                        "11:30-12:20",
+                        "09:30-10:20",
+                        "10:30-11:20"
+                    ],
+                    "sectionDay": [
+                        "Tuesday",
+                        "Tuesday",
+                        "Friday",
+                        "Friday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "MATH1002.1",
+                    "studentCountInsideCourseSection": 0
+                }
+            }
+        ],
         "advisorOfStudent": {
             "userId": "111111",
             "password": "advisor",
@@ -12046,326 +12844,7 @@
         "email": "muyar@marun.edu.tr",
         "identityNumber": "54458789245",
         "currentSemester": 5,
-        "selectedCourses": [
-            {
-                "course": {
-                    "courseCredit": 7,
-                    "courseECTS": 7,
-                    "givenSemester": 5,
-                    "courseName": "Database Systems",
-                    "courseCode": "CSE3055",
-                    "prerequisiteInformation": {
-                        "prerequisiteOfCourses": [
-                            {
-                                "courseCredit": 7,
-                                "courseECTS": 7,
-                                "givenSemester": 3,
-                                "courseName": "Data Structures",
-                                "courseCode": "CSE2225",
-                                "prerequisiteInformation": {
-                                    "prerequisiteOfCourses": [
-                                        {
-                                            "courseCredit": 6,
-                                            "courseECTS": 6,
-                                            "givenSemester": 2,
-                                            "courseName": "Computer Programming II",
-                                            "courseCode": "CSE1242",
-                                            "prerequisiteInformation": {
-                                                "prerequisiteOfCourses": [
-                                                    {
-                                                        "courseCredit": 6,
-                                                        "courseECTS": 6,
-                                                        "givenSemester": 1,
-                                                        "courseName": "Computer Programming I",
-                                                        "courseCode": "CSE1241",
-                                                        "prerequisiteInformation": null,
-                                                        "courseSections": [
-                                                            {
-                                                                "studentCapacity": 150,
-                                                                "lecturerName": "Sanem Arslan Yılmaz",
-                                                                "sectionTime": [
-                                                                    "08:30-09:20",
-                                                                    "09:30-10:20",
-                                                                    "13:00-13:50"
-                                                                ],
-                                                                "sectionDay": [
-                                                                    "Monday",
-                                                                    "Monday",
-                                                                    "Wednesday"
-                                                                ],
-                                                                "classroom": "Room 101",
-                                                                "sectionCode": "CSE1241.1",
-                                                                "studentCountInsideCourseSection": 0
-                                                            }
-                                                        ],
-                                                        "courseType": "COMPULSORY"
-                                                    }
-                                                ]
-                                            },
-                                            "courseSections": [
-                                                {
-                                                    "studentCapacity": 150,
-                                                    "lecturerName": "Sanem Arslan Yılmaz",
-                                                    "sectionTime": [
-                                                        "08:30-09:20",
-                                                        "09:30-10:20",
-                                                        "13:00-13:50"
-                                                    ],
-                                                    "sectionDay": [
-                                                        "Monday",
-                                                        "Tuesday",
-                                                        "Wednesday"
-                                                    ],
-                                                    "classroom": "Room 101",
-                                                    "sectionCode": "CSE1242.1",
-                                                    "studentCountInsideCourseSection": 0
-                                                }
-                                            ],
-                                            "courseType": "COMPULSORY"
-                                        }
-                                    ]
-                                },
-                                "courseSections": [
-                                    {
-                                        "studentCapacity": 150,
-                                        "lecturerName": "Borahan Tümer",
-                                        "sectionTime": [
-                                            "13:00-13:50",
-                                            "14:00-14:50",
-                                            "09:30-10:20"
-                                        ],
-                                        "sectionDay": [
-                                            "Tuesday",
-                                            "Tuesday",
-                                            "Thursday"
-                                        ],
-                                        "classroom": "Room 101",
-                                        "sectionCode": "CSE2225.1",
-                                        "studentCountInsideCourseSection": 0
-                                    }
-                                ],
-                                "courseType": "COMPULSORY"
-                            }
-                        ]
-                    },
-                    "courseSections": [
-                        {
-                            "studentCapacity": 100,
-                            "lecturerName": "Mustafa Ağaoğlu",
-                            "sectionTime": [
-                                "09:30-10:20",
-                                "10:30-11:20"
-                            ],
-                            "sectionDay": [
-                                "Friday",
-                                "Friday"
-                            ],
-                            "classroom": "Room 701",
-                            "sectionCode": "CSE3055.1",
-                            "studentCountInsideCourseSection": 0
-                        }
-                    ],
-                    "courseType": "COMPULSORY"
-                },
-                "status": "DRAFT",
-                "courseSection": {
-                    "studentCapacity": 100,
-                    "lecturerName": "Mustafa Ağaoğlu",
-                    "sectionTime": [
-                        "09:30-10:20",
-                        "10:30-11:20"
-                    ],
-                    "sectionDay": [
-                        "Friday",
-                        "Friday"
-                    ],
-                    "classroom": "Room 701",
-                    "sectionCode": "CSE3055.1",
-                    "studentCountInsideCourseSection": 0
-                }
-            },
-            {
-                "course": {
-                    "courseCredit": 6,
-                    "courseECTS": 6,
-                    "givenSemester": 5,
-                    "courseName": "Digital Logic Design",
-                    "courseCode": "CSE3215",
-                    "prerequisiteInformation": null,
-                    "courseSections": [
-                        {
-                            "studentCapacity": 100,
-                            "lecturerName": "Betül Boz",
-                            "sectionTime": [
-                                "10:30-11:20",
-                                "11:30-12:20"
-                            ],
-                            "sectionDay": [
-                                "Monday",
-                                "Monday"
-                            ],
-                            "classroom": "Room 301",
-                            "sectionCode": "CSE3215.1",
-                            "studentCountInsideCourseSection": 0
-                        }
-                    ],
-                    "courseType": "COMPULSORY"
-                },
-                "status": "DRAFT",
-                "courseSection": {
-                    "studentCapacity": 100,
-                    "lecturerName": "Betül Boz",
-                    "sectionTime": [
-                        "10:30-11:20",
-                        "11:30-12:20"
-                    ],
-                    "sectionDay": [
-                        "Monday",
-                        "Monday"
-                    ],
-                    "classroom": "Room 301",
-                    "sectionCode": "CSE3215.1",
-                    "studentCountInsideCourseSection": 0
-                }
-            },
-            {
-                "course": {
-                    "courseCredit": 7,
-                    "courseECTS": 7,
-                    "givenSemester": 5,
-                    "courseName": "Operating Systems",
-                    "courseCode": "CSE3033",
-                    "prerequisiteInformation": {
-                        "prerequisiteOfCourses": [
-                            {
-                                "courseCredit": 7,
-                                "courseECTS": 7,
-                                "givenSemester": 3,
-                                "courseName": "Data Structures",
-                                "courseCode": "CSE2225",
-                                "prerequisiteInformation": {
-                                    "prerequisiteOfCourses": [
-                                        {
-                                            "courseCredit": 6,
-                                            "courseECTS": 6,
-                                            "givenSemester": 2,
-                                            "courseName": "Computer Programming II",
-                                            "courseCode": "CSE1242",
-                                            "prerequisiteInformation": {
-                                                "prerequisiteOfCourses": [
-                                                    {
-                                                        "courseCredit": 6,
-                                                        "courseECTS": 6,
-                                                        "givenSemester": 1,
-                                                        "courseName": "Computer Programming I",
-                                                        "courseCode": "CSE1241",
-                                                        "prerequisiteInformation": null,
-                                                        "courseSections": [
-                                                            {
-                                                                "studentCapacity": 150,
-                                                                "lecturerName": "Sanem Arslan Yılmaz",
-                                                                "sectionTime": [
-                                                                    "08:30-09:20",
-                                                                    "09:30-10:20",
-                                                                    "13:00-13:50"
-                                                                ],
-                                                                "sectionDay": [
-                                                                    "Monday",
-                                                                    "Monday",
-                                                                    "Wednesday"
-                                                                ],
-                                                                "classroom": "Room 101",
-                                                                "sectionCode": "CSE1241.1",
-                                                                "studentCountInsideCourseSection": 0
-                                                            }
-                                                        ],
-                                                        "courseType": "COMPULSORY"
-                                                    }
-                                                ]
-                                            },
-                                            "courseSections": [
-                                                {
-                                                    "studentCapacity": 150,
-                                                    "lecturerName": "Sanem Arslan Yılmaz",
-                                                    "sectionTime": [
-                                                        "08:30-09:20",
-                                                        "09:30-10:20",
-                                                        "13:00-13:50"
-                                                    ],
-                                                    "sectionDay": [
-                                                        "Monday",
-                                                        "Tuesday",
-                                                        "Wednesday"
-                                                    ],
-                                                    "classroom": "Room 101",
-                                                    "sectionCode": "CSE1242.1",
-                                                    "studentCountInsideCourseSection": 0
-                                                }
-                                            ],
-                                            "courseType": "COMPULSORY"
-                                        }
-                                    ]
-                                },
-                                "courseSections": [
-                                    {
-                                        "studentCapacity": 150,
-                                        "lecturerName": "Borahan Tümer",
-                                        "sectionTime": [
-                                            "13:00-13:50",
-                                            "14:00-14:50",
-                                            "09:30-10:20"
-                                        ],
-                                        "sectionDay": [
-                                            "Tuesday",
-                                            "Tuesday",
-                                            "Thursday"
-                                        ],
-                                        "classroom": "Room 101",
-                                        "sectionCode": "CSE2225.1",
-                                        "studentCountInsideCourseSection": 0
-                                    }
-                                ],
-                                "courseType": "COMPULSORY"
-                            }
-                        ]
-                    },
-                    "courseSections": [
-                        {
-                            "studentCapacity": 100,
-                            "lecturerName": "Ali Haydar Özer",
-                            "sectionTime": [
-                                "08:30-09:20",
-                                "09:30-10:20"
-                            ],
-                            "sectionDay": [
-                                "Thursday",
-                                "Thursday"
-                            ],
-                            "classroom": "Room 101",
-                            "sectionCode": "CSE3033.1",
-                            "studentCountInsideCourseSection": 0
-                        }
-                    ],
-                    "courseType": "COMPULSORY"
-                },
-                "status": "DRAFT",
-                "courseSection": {
-                    "studentCapacity": 100,
-                    "lecturerName": "Ali Haydar Özer",
-                    "sectionTime": [
-                        "08:30-09:20",
-                        "09:30-10:20"
-                    ],
-                    "sectionDay": [
-                        "Thursday",
-                        "Thursday"
-                    ],
-                    "classroom": "Room 101",
-                    "sectionCode": "CSE3033.1",
-                    "studentCountInsideCourseSection": 0
-                }
-            }
-        ],
+        "selectedCourses": [],
         "advisorOfStudent": {
             "userId": "111112",
             "password": "advisor",

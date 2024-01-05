@@ -1,5 +1,4 @@
 from enum import Enum
-import enum
 
 class CourseType(str,Enum):
     COMPULSORY = "COMPULSORY"

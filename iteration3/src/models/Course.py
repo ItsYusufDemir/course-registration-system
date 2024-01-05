@@ -1,6 +1,6 @@
-from enums.CourseType import CourseType
-from models.CourseSection import CourseSection
-from models.Prerequisite import Prerequisite
+from iteration3.src.enums.CourseType import CourseType
+from iteration3.src.models.CourseSection import CourseSection
+from iteration3.src.models.Prerequisite import Prerequisite
 
 
 class Course:

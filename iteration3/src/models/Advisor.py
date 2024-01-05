@@ -1,16 +1,16 @@
 from dataclasses import dataclass
 import logging
 
-from CommandLineInterface.CLIAdvisor import CLIAdvisor
-from controllers.AdvisorController import AdvisorController
-from enums.ApprovalStatus import ApprovalStatus
-from enums.CourseResult import CourseResult
-from enums.CourseStatus import CourseStatus
-from interfaces.Color import Color
-from models.User import User
-from models.CourseGrade import CourseGrade
-from utils.DatabaseManager import DatabaseManager
-from utils.Util import Util
+from iteration3.src.CommandLineInterface.CLIAdvisor import CLIAdvisor
+from iteration3.src.controllers.AdvisorController import AdvisorController
+from iteration3.src.enums.ApprovalStatus import ApprovalStatus
+from iteration3.src.enums.CourseResult import CourseResult
+from iteration3.src.enums.CourseStatus import CourseStatus
+from iteration3.src.interfaces.Color import Color
+from iteration3.src.models.User import User
+from iteration3.src.models.CourseGrade import CourseGrade
+from iteration3.src.utils.DatabaseManager import DatabaseManager
+from iteration3.src.utils.Util import Util
 
 @dataclass
 class Advisor(User):
@@ -38,9 +38,8 @@ class Advisor(User):
     def acceptCourse(self, student, selectedCourse):
 
         if(selectedCourse.status != CourseStatus.PENDING):
-            Util.sendFeedback("This course is not pending for approval.", Color.RED)
             logging.log(logging.INFO, f"{self.getUserId()} - Course: {selectedCourse.getCourse().getCourseCode()} is not pending for approval.")
-            return False
+            raise Exception("This course is not pending for approval.")
         
         selectedCourse.setStatus(CourseStatus.APPROVED)
 
@@ -68,8 +67,7 @@ class Advisor(User):
     def rejectCourse(self, student, selectedCourse):
 
         if(selectedCourse.status != CourseStatus.PENDING):
-            Util.sendFeedback("This course is not pending for approval.", Color.RED)
-            return False
+            raise Exception("This course is not pending for reject.")
         
         selectedCourse.setStatus(CourseStatus.DENIED)
         selectedCourse.getCourseSection().decrementStudentCount()
@@ -92,7 +90,7 @@ class Advisor(User):
 
 
 
-    def finalizeRegistration(student):
+    def finalizeRegistration(self, student):
 
         selectedCourses = student.getSelectedCourses()
 
@@ -102,7 +100,8 @@ class Advisor(User):
             else:
                 course.setStatus(CourseStatus.DENIED_FINALIZED)
         
-        student.setStatus(ApprovalStatus.FINALIZED_REGISTRATION)                  
+        student.setApprovalStatus(ApprovalStatus.FINALIZED_REGISTRATION)
+        student.addNotification("Your registration is finalized.")                  
         DatabaseManager.getInstance().saveToDatabase()
 
 
