@@ -34,4 +34,4 @@ class StudentController:
         return self.currentStudent.createTimeTable()
     
     def getApprovalStatus(self):
-        return self.currentStudent.getApprovalStatus()
+        return self.currentStudent.getStatus()
