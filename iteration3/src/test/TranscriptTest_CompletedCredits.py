@@ -1,9 +1,9 @@
 import unittest
 from enums.CourseResult import CourseResult
 
-from models.Course import Course
-from models.CourseGrade import CourseGrade
-from models.Transcript import Transcript
+from iteration3.src.models.Course import Course
+from iteration3.src.models.CourseGrade import CourseGrade
+from iteration3.src.models.Transcript import Transcript
 
 
 class TranscriptTestCompletedCredits(unittest.TestCase):

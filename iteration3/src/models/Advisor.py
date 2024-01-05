@@ -1,16 +1,16 @@
 from dataclasses import dataclass
 import logging
 
-from CommandLineInterface.CLIAdvisor import CLIAdvisor
-from controllers.AdvisorController import AdvisorController
-from enums.ApprovalStatus import ApprovalStatus
-from enums.CourseResult import CourseResult
-from enums.CourseStatus import CourseStatus
-from interfaces.Color import Color
-from models.User import User
-from models.CourseGrade import CourseGrade
-from utils.DatabaseManager import DatabaseManager
-from utils.Util import Util
+from iteration3.src.CommandLineInterface.CLIAdvisor import CLIAdvisor
+from iteration3.src.controllers.AdvisorController import AdvisorController
+from iteration3.src.enums.ApprovalStatus import ApprovalStatus
+from iteration3.src.enums.CourseResult import CourseResult
+from iteration3.src.enums.CourseStatus import CourseStatus
+from iteration3.src.interfaces.Color import Color
+from iteration3.src.models.User import User
+from iteration3.src.models.CourseGrade import CourseGrade
+from iteration3.src.utils.DatabaseManager import DatabaseManager
+from iteration3.src.utils.Util import Util
 
 @dataclass
 class Advisor(User):

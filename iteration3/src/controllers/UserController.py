@@ -1,5 +1,5 @@
-from utils.AuthenticateService import AuthenticateService
-from models.User import User
+from iteration3.src.utils.AuthenticateService import AuthenticateService
+from iteration3.src.models.User import User
 
 class UserController:
     def __init__(self):

@@ -1,9 +1,9 @@
-from enums.CourseType import CourseType
-from interfaces.Color import Color
-from models.Course import Course
-from models.CourseSection import CourseSection
-from models.Prerequisite import Prerequisite
-from utils.Util import Util
+from iteration3.src.enums.CourseType import CourseType
+from iteration3.src.interfaces.Color import Color
+from iteration3.src.models.Course import Course
+from iteration3.src.models.CourseSection import CourseSection
+from iteration3.src.models.Prerequisite import Prerequisite
+from iteration3.src.utils.Util import Util
 
 class CLIAdmin():
 

@@ -1,5 +1,5 @@
 import unittest
-from models.User import Student
+from iteration3.src.models.User import Student
 
 class UserTest(unittest.TestCase):
 

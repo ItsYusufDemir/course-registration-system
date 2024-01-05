@@ -1,12 +1,12 @@
 import unittest
 from enums.CourseResult import CourseResult
 
-from models.Course import Course
-from models.CourseGrade import CourseGrade
-from models.Prerequisite import Prerequisite
-from models.SelectedCourse import SelectedCourse
-from models.Student import Student
-from models.Transcript import Transcript  
+from iteration3.src.models.Course import Course
+from iteration3.src.models.CourseGrade import CourseGrade
+from iteration3.src.models.Prerequisite import Prerequisite
+from iteration3.src.models.SelectedCourse import SelectedCourse
+from iteration3.src.models.Student import Student
+from iteration3.src.models.Transcript import Transcript  
 
 class PrerequisiteTest(unittest.TestCase):
 

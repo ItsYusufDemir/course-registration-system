@@ -1,8 +1,8 @@
-from utils.DatabaseManager import DatabaseManager
-from utils.Util import Util
-from interfaces.Color import Color
-from enums.CourseStatus import CourseStatus
-from models.SelectedCourse import SelectedCourse
+from iteration3.src.utils.DatabaseManager import DatabaseManager
+from iteration3.src.utils.Util import Util
+from iteration3.src.interfaces.Color import Color
+from iteration3.src.enums.CourseStatus import CourseStatus
+from iteration3.src.models.SelectedCourse import SelectedCourse
 
 class CLIStudent(object):
     

@@ -1,6 +1,6 @@
 import unittest
-from models.Course import Course
-from models.CourseGrade import CourseGrade
+from iteration3.src.models.Course import Course
+from iteration3.src.models.CourseGrade import CourseGrade
 
 
 class CourseGradeConvertLetterGradeToScore(unittest.TestCase):

@@ -1,7 +1,7 @@
-from models.CourseGrade import CourseGrade
-from enums.CourseResult import CourseResult
-from utils.DatabaseManager import DatabaseManager
-from enums.CourseType import CourseType
+from iteration3.src.models.CourseGrade import CourseGrade
+from iteration3.src.enums.CourseResult import CourseResult
+from iteration3.src.utils.DatabaseManager import DatabaseManager
+from iteration3.src.enums.CourseType import CourseType
 
 
 class Transcript(object):
