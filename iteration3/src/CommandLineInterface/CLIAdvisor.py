@@ -1,10 +1,10 @@
-from controllers.AdvisorController import AdvisorController
-from enums.CourseStatus import CourseStatus
-from interfaces.Color import Color
-from models.SelectedCourse import SelectedCourse
-from models.Student import Student
-from utils.Util import Util
-from models.Constraint import Constraint
+from iteration3.src.controllers.AdvisorController import AdvisorController
+from iteration3.src.enums.CourseStatus import CourseStatus
+from iteration3.src.interfaces.Color import Color
+from iteration3.src.models.SelectedCourse import SelectedCourse
+from iteration3.src.models.Student import Student
+from iteration3.src.utils.Util import Util
+from iteration3.src.models.Constraint import Constraint
 
 class CLIAdvisor(object):
 
@@ -93,10 +93,10 @@ class CLIAdvisor(object):
 
           isInvalid = False    
           courses = student.fetchSelectedCoursesForAdvisor()
-          isFinalizable = True
+          isFinalizable = False
           for i in range(len(courses)):
             if(courses[i] != CourseStatus.APPROVED or courses[i] != CourseStatus.DENIED):
-                 isFinalizable = False
+                 isFinalizable = True
           
           while True:
                
@@ -122,7 +122,7 @@ class CLIAdvisor(object):
                          Util.paintText(courses[i].getStatus() + "\n", Color.RED)
                     elif courses[i].getStatus() == CourseStatus.APPROVED_FINALIZED:
                          Util.paintText(courses[i].getStatus() + "\n", Color.GREEN)
-                    elif courses[i].getStatus() == CourseStatus.DENIED_FINAZLIZED:
+                    elif courses[i].getStatus() == CourseStatus.DENIED_FINALIZED:
                          Util.paintText(courses[i].getStatus() + "\n", Color.RED)
                     else:
                          print(courses[i].getStatus() + "\n")
@@ -159,6 +159,7 @@ class CLIAdvisor(object):
                                         continue
                          elif choice2 == "d":
                               if(courses[int(choice) - 1].getStatus != CourseStatus.APPROVED_FINALIZED or
+
                                                 courses[int(choice) - 1].getStatus != CourseStatus.DENIED_FINAZLIZED):
                                    try:
                                         result = self._advisorController.denyCourse(student, courses[int(choice) - 1])
@@ -186,9 +187,7 @@ class CLIAdvisor(object):
                          self._advisorController.logOut()
                          return True
                     elif choice == "f" and isFinalizable == True:
-                             self._advisorController.finalizedRegistration()
-                             notification = "Your registration is finalized."
-                             AdvisorController.notificationToStudent(student,notification)
+                             self._advisorController.finalizeRegistration(student)
                     elif choice == "s":
                             Util.printTimeTable()
                     else:

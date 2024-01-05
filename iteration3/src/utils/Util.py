@@ -1,6 +1,6 @@
 import os
 
-from interfaces.Color import Color
+from iteration3.src.interfaces.Color import Color
 
 
 class Util:

@@ -1,7 +1,7 @@
 import logging
-from enums.CourseStatus import CourseStatus
-from models.Course import Course
-from models.CourseSection import CourseSection
+from iteration3.src.enums.CourseStatus import CourseStatus
+from iteration3.src.models.Course import Course
+from iteration3.src.models.CourseSection import CourseSection
 
 class SelectedCourse(object):
     def __init__(self,course,status,courseSection):

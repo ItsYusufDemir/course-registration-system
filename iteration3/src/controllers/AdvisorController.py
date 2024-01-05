@@ -1,4 +1,4 @@
-from enums.ApprovalStatus import ApprovalStatus
+from iteration3.src.enums.ApprovalStatus import ApprovalStatus
 
 class AdvisorController:
 
@@ -12,6 +12,8 @@ class AdvisorController:
     def denyCourse(self, student, selectedCourse):
         return self.currentAdvisor.rejectCourse(student, selectedCourse)
 
+
+
     def getStudentListOrderByStatus(self):
         studentListOrder = []
 
@@ -22,12 +24,21 @@ class AdvisorController:
         for student in self.studentList:
             if(student.getApprovalStatus() == ApprovalStatus.DONE):
                 studentListOrder.append(student)
+        
+        for student in self.studentList:
+            if(student.getApprovalStatus() == ApprovalStatus.FINALIZED_REGISTRATION):
+                studentListOrder.append(student)
 
         return studentListOrder
     
 
+
+
+
     def finalizeRegistration(self, student):
         self.currentAdvisor.finalizeRegistration(student)
+
+    
 
 
     def getNotifications(self):
