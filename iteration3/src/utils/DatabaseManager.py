@@ -100,6 +100,7 @@ class DatabaseManager:
         return studentsOfAdvisor
 
     def editConstraints(self, editedAttributes: Dict[int, str]) -> bool:
+        #TODO: check if editedAttributes is valid
         self.constraintList[0].editConstraint(editedAttributes)
         return True
     
@@ -127,7 +128,8 @@ class DatabaseManager:
         constraintsMap = {
             1: str(constraints.maxNumberOfCoursesStudentTake),
             2: str(constraints.addDropWeek),
-            3: str(constraints.minRequiredECTSForTermProject)
+            3: str(constraints.minRequiredECTSForTermProject),
+            4: str(constraints.isRegistrationWeek)
         }
 
         return constraintsMap

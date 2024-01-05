@@ -5,7 +5,11 @@
         "firstName": "Erdem",
         "lastName": "Erguvan",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "erdemerguvan@marun.edu.tr",
         "identityNumber": "24536692328",
         "currentSemester": 1,
@@ -16,7 +20,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -29,7 +37,11 @@
         "firstName": "Atahan",
         "lastName": "Karahan",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "atahankarahan@marun.edu.tr",
         "identityNumber": "92729252472",
         "currentSemester": 1,
@@ -40,7 +52,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -53,7 +69,11 @@
         "firstName": "Serap",
         "lastName": "Laleli",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "seraplaleli@marun.edu.tr",
         "identityNumber": "80614469719",
         "currentSemester": 1,
@@ -64,7 +84,11 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -77,7 +101,11 @@
         "firstName": "Ebru",
         "lastName": "Topal",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "ebrutopal22@marun.edu.tr",
         "identityNumber": "48405172964",
         "currentSemester": 1,
@@ -88,7 +116,11 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -101,7 +133,11 @@
         "firstName": "Rüya",
         "lastName": "Gündoğdu",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "ruyagundogdu@marun.edu.tr",
         "identityNumber": "23909435016",
         "currentSemester": 1,
@@ -112,7 +148,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -125,7 +165,11 @@
         "firstName": "Mehmet",
         "lastName": "Akın",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "mehmetakin@marun.edu.tr",
         "identityNumber": "69136272292",
         "currentSemester": 2,
@@ -136,7 +180,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -432,7 +480,11 @@
         "firstName": "Sueda",
         "lastName": "Akkaya",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "suedaakkaya@marun.edu.tr",
         "identityNumber": "58676989433",
         "currentSemester": 2,
@@ -443,7 +495,11 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -739,7 +795,11 @@
         "firstName": "İnci",
         "lastName": "Demirci",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "incidemirci@marun.edu.tr",
         "identityNumber": "87773594739",
         "currentSemester": 2,
@@ -750,7 +810,11 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -1046,7 +1110,11 @@
         "firstName": "Kaan",
         "lastName": "Çetin",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "kaancetin@marun.edu.tr",
         "identityNumber": "34974336065",
         "currentSemester": 2,
@@ -1057,7 +1125,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -1353,7 +1425,11 @@
         "firstName": "Güney",
         "lastName": "Şafak",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "guneysafak@marun.edu.tr",
         "identityNumber": "85027744148",
         "currentSemester": 2,
@@ -1364,7 +1440,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -1660,7 +1740,11 @@
         "firstName": "Seda",
         "lastName": "Gündüz",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "sedagunduz@marun.edu.tr",
         "identityNumber": "123412348",
         "currentSemester": 3,
@@ -1671,7 +1755,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -2278,7 +2366,11 @@
         "firstName": "Mercan",
         "lastName": "Küçükkaya",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "mercankucukkaya@marun.edu.tr",
         "identityNumber": "246813579",
         "currentSemester": 3,
@@ -2289,7 +2381,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -2896,7 +2992,11 @@
         "firstName": "Ali",
         "lastName": "Önder",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "alionder34@marun.edu.tr",
         "identityNumber": "457645671",
         "currentSemester": 3,
@@ -2907,7 +3007,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -3514,7 +3618,11 @@
         "firstName": "Zeynep",
         "lastName": "Uçar",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "zeynepucar@marun.edu.tr",
         "identityNumber": "110022995",
         "currentSemester": 3,
@@ -3525,7 +3633,11 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -4132,7 +4244,11 @@
         "firstName": "Muti",
         "lastName": "Hanımoğlu",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "mutihanimoglu@marun.edu.tr",
         "identityNumber": "4536279",
         "currentSemester": 3,
@@ -4143,7 +4259,11 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -4750,7 +4870,11 @@
         "firstName": "Bilal",
         "lastName": "Keskin",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "bilalkeskin@marun.edu.tr",
         "identityNumber": "098765432",
         "currentSemester": 4,
@@ -4761,7 +4885,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -5684,7 +5812,11 @@
         "firstName": "Kemal",
         "lastName": "Aksu",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "kemalaksu@marun.edu.tr",
         "identityNumber": "333444555",
         "currentSemester": 4,
@@ -5695,7 +5827,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -6618,7 +6754,11 @@
         "firstName": "Melek",
         "lastName": "Akpınar",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "melekakpinar@marun.edu.tr",
         "identityNumber": "009988556",
         "currentSemester": 4,
@@ -6629,7 +6769,11 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -7552,7 +7696,11 @@
         "firstName": "Aslıhan",
         "lastName": "Akyüz",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "aslihanakyuz@marun.edu.tr",
         "identityNumber": "44422227777",
         "currentSemester": 4,
@@ -7563,7 +7711,11 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -8486,7 +8638,11 @@
         "firstName": "Duygu",
         "lastName": "Yılmaz",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "duyguyilmaz@marun.edu.tr",
         "identityNumber": "457645671",
         "currentSemester": 4,
@@ -8497,7 +8653,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -9420,7 +9580,11 @@
         "firstName": "Aylin",
         "lastName": "Yılmaz",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "aylinyilmaz@marun.edu.tr",
         "identityNumber": "12345678901",
         "currentSemester": 5,
@@ -9431,7 +9595,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -10731,7 +10899,11 @@
         "firstName": "Mercan",
         "lastName": "Küçükkaya",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "mercankucukkaya@marun.edu.tr",
         "identityNumber": "246813579",
         "currentSemester": 5,
@@ -10742,7 +10914,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -12042,7 +12218,11 @@
         "firstName": "Mustafa Emir",
         "lastName": "Uyar",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "muyar@marun.edu.tr",
         "identityNumber": "54458789245",
         "currentSemester": 5,
@@ -12053,7 +12233,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -13353,7 +13537,11 @@
         "firstName": "Mehmet",
         "lastName": "Demir",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "mehmetdemir@marun.edu.tr",
         "identityNumber": "54824872154",
         "currentSemester": 5,
@@ -13364,7 +13552,11 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -14664,7 +14856,11 @@
         "firstName": "Zeynep",
         "lastName": "Arslan",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "zeyneparslan@marun.edu.tr",
         "identityNumber": "45678889875",
         "currentSemester": 5,
@@ -14675,7 +14871,11 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -15975,7 +16175,11 @@
         "firstName": "Can",
         "lastName": "Tekin",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "cantekin@marun.edu.tr",
         "identityNumber": "21098765432",
         "currentSemester": 5,
@@ -15986,7 +16190,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -17602,7 +17810,11 @@
         "firstName": "Burak",
         "lastName": "Güneş",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "kemalaksu@marun.edu.tr",
         "identityNumber": "333444555",
         "currentSemester": 6,
@@ -17613,7 +17825,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -19342,7 +19558,11 @@
         "firstName": "Emre",
         "lastName": "Efe",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "emreefe@marun.edu.tr",
         "identityNumber": "15400998854",
         "currentSemester": 6,
@@ -19353,7 +19573,11 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -21082,7 +21306,11 @@
         "firstName": "Melis",
         "lastName": "Çetin",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "aslihanakyuz@marun.edu.tr",
         "identityNumber": "56546555152",
         "currentSemester": 6,
@@ -21093,7 +21321,11 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -22822,7 +23054,11 @@
         "firstName": "Nil",
         "lastName": "Aydın",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "nilaydin@marun.edu.tr",
         "identityNumber": "54654621544",
         "currentSemester": 6,
@@ -22833,7 +23069,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -24562,7 +24802,10 @@
         "firstName": "Ayşe Gülsüm",
         "lastName": "Mutlu",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "gülsüm@marun.edu.tr",
         "identityNumber": "12222222222",
         "currentSemester": 8,
@@ -24573,7 +24816,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -27382,7 +27629,11 @@
         "firstName": "Melisa",
         "lastName": "Altın",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "gülsüm@marun.edu.tr",
         "identityNumber": "12222222222",
         "currentSemester": 8,
@@ -27393,7 +27644,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -30232,7 +30487,11 @@
         "firstName": "Berkcan",
         "lastName": "Atabar",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "berkcan@marun.edu.tr",
         "identityNumber": "12222222222",
         "currentSemester": 8,
@@ -30243,7 +30502,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -32718,7 +32981,11 @@
         "firstName": "Ebubekir Sıddık",
         "lastName": "Kaya",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "ebubekir@marun.edu.tr",
         "identityNumber": "12322222222",
         "currentSemester": 8,
@@ -32729,7 +32996,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -35356,7 +35627,11 @@
         "firstName": "Umut",
         "lastName": "Kocapaşaoğlu",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "gülsüm@marun.edu.tr",
         "identityNumber": "15222222222",
         "currentSemester": 8,
@@ -35367,7 +35642,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -38206,7 +38485,11 @@
         "firstName": "Adnan",
         "lastName": "Şenses",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "adnan@marun.edu.tr",
         "identityNumber": "13322222222",
         "currentSemester": 7,
@@ -38217,7 +38500,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -40757,7 +41044,11 @@
         "firstName": "Bahar",
         "lastName": "Candan",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "bahar@marun.edu.tr",
         "identityNumber": "13322222222",
         "currentSemester": 7,
@@ -40768,7 +41059,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -43308,7 +43603,11 @@
         "firstName": "Michael",
         "lastName": "Lucifer",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "lucifer@marun.edu.tr",
         "identityNumber": "13342222222",
         "currentSemester": 7,
@@ -43319,7 +43618,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -45859,7 +46162,11 @@
         "firstName": "Halit",
         "lastName": "Parlak",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "halit@marun.edu.tr",
         "identityNumber": "13342322222",
         "currentSemester": 7,
@@ -45870,7 +46177,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -48410,7 +48721,11 @@
         "firstName": "Furkan",
         "lastName": "Sivrisurat",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Registration week has ended",
+            "Add-Drop period has started",
+            "Add-Drop week has been enabled. You can now add/drop courses."
+        ],
         "email": "furkan@marun.edu.tr",
         "identityNumber": "13342322922",
         "currentSemester": 7,
@@ -48421,7 +48736,11 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Registration week has ended",
+                "Add-Drop period has started",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {

@@ -105,14 +105,19 @@ class CLIAdmin():
             _choice = input()
             if _choice.lower() in ["true", "false"]:
                 editedAttributes[2] = _choice.lower()
-                Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
                 if _choice.lower() == "true":
                     self.adminController.setNotificationToStudentAndAdvisor("Add-Drop period has started")
                 else:
                     self.adminController.setNotificationToStudentAndAdvisor("Add-Drop period has ended")
+
+                self.adminController.editConstraint(editedAttributes)
+                #TODO: Use try catch to handle send feedback
+                Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
+
             else:
                 Util.sendFeedback("Invalid input", Color.RED)
-            self.adminController.editConstraint(editedAttributes)
+
+            
             self.constraintPage()
         elif _choice == "2":
             print("Enter the max number of courses that can be taken: ", end='')
@@ -140,6 +145,11 @@ class CLIAdmin():
             if _choice.lower() in ["true", "false"]:
                 editedAttributes[4] = _choice.lower()
                 Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
+
+                if _choice.lower() == "true":
+                    self.adminController.setNotificationToStudentAndAdvisor("Registration week has started")
+                else:
+                    self.adminController.setNotificationToStudentAndAdvisor("Registration week has ended")
             else:
                 Util.sendFeedback("Invalid input", Color.RED)
             self.adminController.editConstraint(editedAttributes)
