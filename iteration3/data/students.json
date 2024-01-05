@@ -40,7 +40,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -64,7 +68,11 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -88,7 +96,11 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -136,7 +148,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -443,7 +459,11 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -750,7 +770,11 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -1364,7 +1388,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -2876,7 +2904,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "FINALIZED_REGISTRATION",
         "transcript": {
@@ -3641,7 +3673,9 @@
         "firstName": "Ali",
         "lastName": "Önder",
         "status": true,
-        "notifications": [],
+        "notifications": [
+            "Your registration is finalized."
+        ],
         "email": "alionder34@marun.edu.tr",
         "identityNumber": "457645671",
         "currentSemester": 3,
@@ -3677,7 +3711,7 @@
                     ],
                     "courseType": "COMPULSORY"
                 },
-                "status": "DRAFT",
+                "status": "APPROVED_FINALIZED",
                 "courseSection": {
                     "studentCapacity": 150,
                     "lecturerName": "Zeynep Yılmaz",
@@ -3695,7 +3729,180 @@
                     ],
                     "classroom": "Room 101",
                     "sectionCode": "MATH1002.1",
-                    "studentCountInsideCourseSection": 0
+                    "studentCountInsideCourseSection": 1
+                }
+            },
+            {
+                "course": {
+                    "courseCredit": 6,
+                    "courseECTS": 6,
+                    "givenSemester": 3,
+                    "courseName": "Discrete Comp. Structures",
+                    "courseCode": "CSE2023",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Mustafa Ağaoğlu",
+                            "sectionTime": [
+                                "08:30-9:20",
+                                "8:30-9:20",
+                                "09:30-10:20"
+                            ],
+                            "sectionDay": [
+                                "Monday",
+                                "Monday",
+                                "Wednesday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "CSE2023.1",
+                            "studentCountInsideCourseSection": 3
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "APPROVED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Mustafa Ağaoğlu",
+                    "sectionTime": [
+                        "08:30-9:20",
+                        "8:30-9:20",
+                        "09:30-10:20"
+                    ],
+                    "sectionDay": [
+                        "Monday",
+                        "Monday",
+                        "Wednesday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "CSE2023.1",
+                    "studentCountInsideCourseSection": 3
+                }
+            },
+            {
+                "course": {
+                    "courseCredit": 3,
+                    "courseECTS": 3,
+                    "givenSemester": 4,
+                    "courseName": "Engineering Economy",
+                    "courseCode": "ECON2004",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Ayşe Bengi Özlüarda",
+                            "sectionTime": [
+                                "13:00-13:50",
+                                "14:00-14:50"
+                            ],
+                            "sectionDay": [
+                                "Monday",
+                                "Monday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "ECON2004.1",
+                            "studentCountInsideCourseSection": 1
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "APPROVED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Ayşe Bengi Özlüarda",
+                    "sectionTime": [
+                        "13:00-13:50",
+                        "14:00-14:50"
+                    ],
+                    "sectionDay": [
+                        "Monday",
+                        "Monday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "ECON2004.1",
+                    "studentCountInsideCourseSection": 1
+                }
+            },
+            {
+                "course": {
+                    "courseCredit": 4,
+                    "courseECTS": 4,
+                    "givenSemester": 3,
+                    "courseName": "Numerical Methods",
+                    "courseCode": "MATH2059",
+                    "prerequisiteInformation": {
+                        "prerequisiteOfCourses": [
+                            {
+                                "courseCredit": 6,
+                                "courseECTS": 6,
+                                "givenSemester": 1,
+                                "courseName": "Calculus I",
+                                "courseCode": "MATH1001",
+                                "prerequisiteInformation": null,
+                                "courseSections": [
+                                    {
+                                        "studentCapacity": 150,
+                                        "lecturerName": "Zeynep Yılmaz",
+                                        "sectionTime": [
+                                            "10:30-11:20",
+                                            "11:30-12:20",
+                                            "09:30-10:20",
+                                            "10:30-11:20"
+                                        ],
+                                        "sectionDay": [
+                                            "Tuesday",
+                                            "Tuesday",
+                                            "Friday",
+                                            "Friday"
+                                        ],
+                                        "classroom": "Room 101",
+                                        "sectionCode": "MATH1001.1",
+                                        "studentCountInsideCourseSection": 0
+                                    }
+                                ],
+                                "courseType": "COMPULSORY"
+                            }
+                        ]
+                    },
+                    "courseSections": [
+                        {
+                            "studentCapacity": 200,
+                            "lecturerName": "Çiğdem Eroğlu Erdem",
+                            "sectionTime": [
+                                "11:30-12:20",
+                                "13:00-13:50",
+                                "10:30-11:20"
+                            ],
+                            "sectionDay": [
+                                "Wednesday",
+                                "Wednesday",
+                                "Thursday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "MATH2059.1",
+                            "studentCountInsideCourseSection": 1
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "APPROVED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 200,
+                    "lecturerName": "Çiğdem Eroğlu Erdem",
+                    "sectionTime": [
+                        "11:30-12:20",
+                        "13:00-13:50",
+                        "10:30-11:20"
+                    ],
+                    "sectionDay": [
+                        "Wednesday",
+                        "Wednesday",
+                        "Thursday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "MATH2059.1",
+                    "studentCountInsideCourseSection": 1
                 }
             }
         ],
@@ -3707,7 +3914,7 @@
             "status": true,
             "notifications": []
         },
-        "approvalStatus": "DONE",
+        "approvalStatus": "FINALIZED_REGISTRATION",
         "transcript": {
             "takenCourses": [
                 {
@@ -4302,6 +4509,167 @@
                     },
                     "letterGrade": "BA",
                     "courseResult": "PASSED"
+                },
+                {
+                    "course": {
+                        "courseCredit": 6,
+                        "courseECTS": 6,
+                        "givenSemester": 2,
+                        "courseName": "Calculus II",
+                        "courseCode": "MATH1002",
+                        "prerequisiteInformation": null,
+                        "courseSections": [
+                            {
+                                "studentCapacity": 150,
+                                "lecturerName": "Zeynep Yılmaz",
+                                "sectionTime": [
+                                    "10:30-11:20",
+                                    "11:30-12:20",
+                                    "09:30-10:20",
+                                    "10:30-11:20"
+                                ],
+                                "sectionDay": [
+                                    "Tuesday",
+                                    "Tuesday",
+                                    "Friday",
+                                    "Friday"
+                                ],
+                                "classroom": "Room 101",
+                                "sectionCode": "MATH1002.1",
+                                "studentCountInsideCourseSection": 0
+                            }
+                        ],
+                        "courseType": "COMPULSORY"
+                    },
+                    "letterGrade": null,
+                    "courseResult": "ACTIVE"
+                },
+                {
+                    "course": {
+                        "courseCredit": 6,
+                        "courseECTS": 6,
+                        "givenSemester": 3,
+                        "courseName": "Discrete Comp. Structures",
+                        "courseCode": "CSE2023",
+                        "prerequisiteInformation": null,
+                        "courseSections": [
+                            {
+                                "studentCapacity": 150,
+                                "lecturerName": "Mustafa Ağaoğlu",
+                                "sectionTime": [
+                                    "08:30-9:20",
+                                    "8:30-9:20",
+                                    "09:30-10:20"
+                                ],
+                                "sectionDay": [
+                                    "Monday",
+                                    "Monday",
+                                    "Wednesday"
+                                ],
+                                "classroom": "Room 101",
+                                "sectionCode": "CSE2023.1",
+                                "studentCountInsideCourseSection": 3
+                            }
+                        ],
+                        "courseType": "COMPULSORY"
+                    },
+                    "letterGrade": null,
+                    "courseResult": "ACTIVE"
+                },
+                {
+                    "course": {
+                        "courseCredit": 3,
+                        "courseECTS": 3,
+                        "givenSemester": 4,
+                        "courseName": "Engineering Economy",
+                        "courseCode": "ECON2004",
+                        "prerequisiteInformation": null,
+                        "courseSections": [
+                            {
+                                "studentCapacity": 150,
+                                "lecturerName": "Ayşe Bengi Özlüarda",
+                                "sectionTime": [
+                                    "13:00-13:50",
+                                    "14:00-14:50"
+                                ],
+                                "sectionDay": [
+                                    "Monday",
+                                    "Monday"
+                                ],
+                                "classroom": "Room 101",
+                                "sectionCode": "ECON2004.1",
+                                "studentCountInsideCourseSection": 1
+                            }
+                        ],
+                        "courseType": "COMPULSORY"
+                    },
+                    "letterGrade": null,
+                    "courseResult": "ACTIVE"
+                },
+                {
+                    "course": {
+                        "courseCredit": 4,
+                        "courseECTS": 4,
+                        "givenSemester": 3,
+                        "courseName": "Numerical Methods",
+                        "courseCode": "MATH2059",
+                        "prerequisiteInformation": {
+                            "prerequisiteOfCourses": [
+                                {
+                                    "courseCredit": 6,
+                                    "courseECTS": 6,
+                                    "givenSemester": 1,
+                                    "courseName": "Calculus I",
+                                    "courseCode": "MATH1001",
+                                    "prerequisiteInformation": null,
+                                    "courseSections": [
+                                        {
+                                            "studentCapacity": 150,
+                                            "lecturerName": "Zeynep Yılmaz",
+                                            "sectionTime": [
+                                                "10:30-11:20",
+                                                "11:30-12:20",
+                                                "09:30-10:20",
+                                                "10:30-11:20"
+                                            ],
+                                            "sectionDay": [
+                                                "Tuesday",
+                                                "Tuesday",
+                                                "Friday",
+                                                "Friday"
+                                            ],
+                                            "classroom": "Room 101",
+                                            "sectionCode": "MATH1001.1",
+                                            "studentCountInsideCourseSection": 0
+                                        }
+                                    ],
+                                    "courseType": "COMPULSORY"
+                                }
+                            ]
+                        },
+                        "courseSections": [
+                            {
+                                "studentCapacity": 200,
+                                "lecturerName": "Çiğdem Eroğlu Erdem",
+                                "sectionTime": [
+                                    "11:30-12:20",
+                                    "13:00-13:50",
+                                    "10:30-11:20"
+                                ],
+                                "sectionDay": [
+                                    "Wednesday",
+                                    "Wednesday",
+                                    "Thursday"
+                                ],
+                                "classroom": "Room 101",
+                                "sectionCode": "MATH2059.1",
+                                "studentCountInsideCourseSection": 1
+                            }
+                        ],
+                        "courseType": "COMPULSORY"
+                    },
+                    "letterGrade": null,
+                    "courseResult": "ACTIVE"
                 }
             ]
         }
@@ -4323,7 +4691,11 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -4941,7 +5313,11 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -5559,7 +5935,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -7427,7 +7807,11 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -8361,7 +8745,11 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -9295,7 +9683,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -11540,7 +11932,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -12851,7 +13247,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -14162,7 +14562,11 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -15473,7 +15877,11 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -16784,7 +17192,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -20151,7 +20563,11 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -21891,7 +22307,11 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -23631,7 +24051,11 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": []
+            "notifications": [
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses.",
+                "Add-Drop week has been enabled. Students can now add/drop courses."
+            ]
         },
         "approvalStatus": "DONE",
         "transcript": {

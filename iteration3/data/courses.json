@@ -525,7 +525,7 @@
                 ],
                 "classroom": "Room 101",
                 "sectionCode": "CSE2023.1",
-                "studentCountInsideCourseSection": 2
+                "studentCountInsideCourseSection": 3
             }
         ],
         "courseType": "COMPULSORY"
@@ -760,7 +760,7 @@
                 ],
                 "classroom": "Room 101",
                 "sectionCode": "ECON2004.1",
-                "studentCountInsideCourseSection": 0
+                "studentCountInsideCourseSection": 1
             }
         ],
         "courseType": "COMPULSORY"
@@ -908,7 +908,7 @@
                 ],
                 "classroom": "Room 101",
                 "sectionCode": "MATH2059.1",
-                "studentCountInsideCourseSection": 0
+                "studentCountInsideCourseSection": 1
             }
         ],
         "courseType": "COMPULSORY"
