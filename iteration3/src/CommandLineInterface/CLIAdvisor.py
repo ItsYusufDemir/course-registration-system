@@ -148,26 +148,27 @@ class CLIAdvisor(object):
                          if choice2 == "a" :
                               if(courses[int(choice) - 1].getStatus != CourseStatus.APPROVED_FINALIZED or
                                                 courses[int(choice) - 1].getStatus != CourseStatus.DENIED_FINAZLIZED):
-                                    result = self._advisorController.approveCourse(student, courses[int(choice) - 1])
-                              #TODO: throw error, and catch it here
-                                    if result:
-                                        Util.sendFeedback("Course is approved", Color.GREEN)
-                                    else:
-                                        Util.sendFeedback("Course is not approved", Color.RED) 
-                              else:
-                                   Util.sendFeedback("Registration is already finalized.",Color.GREEN)
-                              
-                    
+                                   try: 
+                                        result = self._advisorController.approveCourse(student, courses[int(choice) - 1])
+                                        if result:
+                                             Util.sendFeedback("Course is approved", Color.GREEN)
+                                        else:
+                                             Util.sendFeedback("Registration is already finalized.",Color.GREEN)
+                                   except Exception as e:
+                                        Util.sendFeedback(e.message, Color.RED)
+                                        continue
                          elif choice2 == "d":
                               if(courses[int(choice) - 1].getStatus != CourseStatus.APPROVED_FINALIZED or
-                                                courses[int(choice) - 1].getStatus != CourseStatus.DENIED_FINALIZED):
-                                   result = self._advisorController.denyCourse(student, courses[int(choice) - 1])
-                                   if result:
-                                        Util.sendFeedback("Course is denied", Color.GREEN)
-                                   else:
-                                        Util.sendFeedback("Course is not denied", Color.RED)
-                              else:
-                                   Util.sendFeedback("Registration is already finalized.",Color.GREEN)
+
+                                                courses[int(choice) - 1].getStatus != CourseStatus.DENIED_FINAZLIZED):
+                                   try:
+                                        result = self._advisorController.denyCourse(student, courses[int(choice) - 1])
+                                        if result:
+                                             Util.sendFeedback("Course is denied", Color.GREEN)
+                                        else:
+                                             Util.sendFeedback("Registration is already finalized.",Color.GREEN)
+                                   except Exception as e:
+                                        Util.sendFeedback(e.message, Color.RED)
 
                          elif choice == "b":
                               return False
