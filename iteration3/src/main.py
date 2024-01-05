@@ -1,5 +1,5 @@
 import logging
-from models.CourseRegistrationSystem import CourseRegistrationSystem
+from iteration3.src.models.CourseRegistrationSystem import CourseRegistrationSystem
 
 logging.basicConfig(filename='./iteration3/logs/logs.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
