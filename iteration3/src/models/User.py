@@ -25,7 +25,6 @@ class User(Showable):
         )
 
     def logout(self):
-        Util.sendFeedback("You have been logged out.", Color.GREEN)
         logging.log(logging.INFO, "User: "+self.userId+" logged out")
         DatabaseManager().getInstance().saveToDatabase()
    

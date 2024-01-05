@@ -32,15 +32,16 @@ class Util:
         try:
             return int(string)
         except ValueError:
-            return None
+            raise ValueError("Invalid number")
 
     def validateNumber(string : str, list: []):
-
-        number = Util.isValidNumber(string)
-
+        try:
+            number = Util.isValidNumber(string)
+        except ValueError:
+            raise ValueError("Invalid number")
         if number is not None and 0 < number <= len(list):
             return True
-        return False
+        raise IndexError("Number out of range")
 
     def makeArrayList(pattern: str, string: str)->[str]:
         return string.split(pattern)
@@ -52,7 +53,7 @@ class Util:
         for day in list:
             cleaned_day = day.strip().lower()
             if cleaned_day not in valid_days:
-                return False
+                raise Exception("Invalid day format")
         return True
     
     def isInputFormatTrueForTime(lst: [str]) -> bool:
@@ -60,25 +61,25 @@ class Util:
             time = time.strip()
 
             if len(time) != 11:
-                return False
+                raise Exception("Invalid time format")
 
             if time[2] != ":" or time[5] != "-" or time[8] != ":":
-                return False
+                raise Exception("Invalid time format")
 
             timeList = time.split("-")
 
             if len(timeList) != 2:
-                return False
+                raise Exception("Only one dash is allowed in time")
 
             for timeHours in timeList:
                 try:
                     hour = int(timeHours[0:2])
                     minute = int(timeHours[3:5])
                 except ValueError:
-                    return False
+                    raise Exception("Invalid time format")
 
                 if not (0 <= hour <= 23) or not (0 <= minute <= 59):
-                    return False
+                    raise Exception("Invalid time format")
 
         return True
     

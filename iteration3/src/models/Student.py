@@ -144,9 +144,9 @@ class Student(User):
     def addNewCourse(self, selectedCourse):
         constraints = DatabaseManager.getInstance().getConstraints()
         if len(self.selectedCourses) >= int(constraints.get(1)):
-            Util.sendFeedback("You cannot take more than " + str(constraints.get(1)) + " courses in one term.", Color.RED)
             logging.warning(self.userId + " - Student cannot take more than " + str(constraints.get(1)) + " courses in one term.")
-            return False
+            raise Exception("You cannot take more than " + str(constraints.get(1)) + " courses in one term.")
+
         
         if selectedCourse not in self.selectedCourses:
             self.selectedCourses.append(selectedCourse)
@@ -157,6 +157,7 @@ class Student(User):
         else:
             logging.log(logging.INFO, self.userId + " - Course: " + selectedCourse.course.courseCode
         + " is already added to student: " + self.userId)
+            raise Exception("Course: "+selectedCourse.course.courseCode +"is already added to your courses.")
 
         
         
@@ -196,9 +197,8 @@ class Student(User):
 
         #Check if the student acceeds the maximum number of courses that can be taken in one term
         if (numberOfDraftCourses > int(DatabaseManager.getInstance().getConstraints()[1])):
-            Util.sendFeedback("You cannot take more than " + str(DatabaseManager.getInstance().getConstraints()[1]) + " courses in one term.", Color.RED)
             logging.warning(self.userId + " - Student: " + self.userId + " cannot take more than " + str(DatabaseManager.getInstance().getConstraints()[1]) + " courses in one term.")
-            return
+            raise Exception("You cannot take more than " + str(DatabaseManager.getInstance().getConstraints()[1]) + " courses in one term.")
 
         self.approvalStatus = ApprovalStatus.DONE
         for selectedCourse in self.selectedCourses:
@@ -207,21 +207,19 @@ class Student(User):
             
 
         if self.approvalStatus is ApprovalStatus.PENDING:
-            Util.sendFeedback("You already sent your courses to approval!", Color.RED)
             logging.warning(self.userId + " - Student: " + self.userId + " already sent his/her courses to approval.")
-            return
+            raise Exception("You already sent your courses to approval!")
+            
         
         if self.checkCompulsoryCourses():
-            Util.sendFeedback("Please add your failed courses!", Color.RED)
-            return
+            raise Exception("You have failed courses that you have not added to your courses.")
+            
         
         if numberOfDraftCourses == 0:
-            Util.sendFeedback("You have no course to send to approval!", Color.RED)
             logging.warning(self.userId + " - Student: " + self.userId + " has no course to send to approval.")
-            return
+            Exception("You have no course to send to approval!")
         
         self.approvalStatus = ApprovalStatus.PENDING
-
         for selectedCourse in self.selectedCourses:
             if selectedCourse.status == CourseStatus.DRAFT:
                 selectedCourse.status = CourseStatus.PENDING
@@ -235,7 +233,6 @@ class Student(User):
 
         
         self.advisorOfStudent.addNotification(self.firstName + " " + self.lastName + " has requested a course approval.")
-        Util.sendFeedback("Courses are sent to advisor.", Color.GREEN)    
         logging.info(self.userId + " - Student: " + self.userId + " sent his/her courses to approval.")    
         DatabaseManager.getInstance().saveToDatabase()
 
