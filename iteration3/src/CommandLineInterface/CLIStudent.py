@@ -1,3 +1,4 @@
+from iteration3.src.enums.ApprovalStatus import ApprovalStatus
 from iteration3.src.utils.DatabaseManager import DatabaseManager
 from iteration3.src.utils.Util import Util
 from iteration3.src.interfaces.Color import Color
@@ -67,7 +68,7 @@ class CLIStudent(object):
                 if _choice == "1":
                     if DatabaseManager.getInstance().getConstraints().get(4) == "False"  and  DatabaseManager.getInstance().getConstraints().get(2) == "False":
                         Util.sendFeedback("You are not in registration nor add-drop week. You cannot select a new course.", Color.RED)
-                    elif self._studentController.getStatus() == "FINALIZED_REGISTRATION":
+                    elif self._studentController.getApprovalStatus() == ApprovalStatus.FINALIZED_REGISTRATION:
                         Util.sendFeedback("You have already finalized your registration. You cannot select a new course.", Color.RED)
                     else:
                         self._showAddCoursePage()
@@ -75,7 +76,7 @@ class CLIStudent(object):
                 elif _choice == "2":
                     if DatabaseManager.getInstance().getConstraints().get(4) == "False"  and  DatabaseManager.getInstance().getConstraints().get(2) == "False":
                         Util.sendFeedback("You are not in registration or add-drop week. You cannot delete a course.", Color.RED)
-                    elif self._studentController.getStatus() == "FINALIZED_REGISTRATION":
+                    elif self._studentController.getApprovalStatus() == ApprovalStatus.FINALIZED_REGISTRATION:
                         Util.sendFeedback("You have already finalized your registration. You cannot delete a course.", Color.RED)                        
                     else:
                         _choice = input("Enter the row number of the course you want to delete: ")
@@ -93,7 +94,7 @@ class CLIStudent(object):
                 elif _choice == "4":
                     if DatabaseManager.getInstance().getConstraints().get(4) == "false"  and  DatabaseManager.getInstance().getConstraints().get(1) == "false":
                         Util.sendFeedback("You are not in registration or add-drop week. You can not send your selected courses to approval", Color.RED)  
-                    elif self._studentController.getStatus() == "FINALIZED_REGISTRATION":
+                    elif self._studentController.getApprovalStatus() == ApprovalStatus.FINALIZED_REGISTRATION:
                         Util.sendFeedback("You have already finalized your registration. You can not send your selected courses to approval", Color.RED)
                     else: 
                         self._studentController.sendSelectedCoursesToApproval()  

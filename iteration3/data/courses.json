@@ -329,7 +329,7 @@
                 ],
                 "classroom": "Room 101",
                 "sectionCode": "CSE1242.1",
-                "studentCountInsideCourseSection": 0
+                "studentCountInsideCourseSection": 1
             }
         ],
         "courseType": "COMPULSORY"
@@ -525,7 +525,7 @@
                 ],
                 "classroom": "Room 101",
                 "sectionCode": "CSE2023.1",
-                "studentCountInsideCourseSection": 0
+                "studentCountInsideCourseSection": 2
             }
         ],
         "courseType": "COMPULSORY"
@@ -819,7 +819,7 @@
                 ],
                 "classroom": "Room 101",
                 "sectionCode": "EE2031.1",
-                "studentCountInsideCourseSection": 0
+                "studentCountInsideCourseSection": 1
             }
         ],
         "courseType": "COMPULSORY"
@@ -1147,7 +1147,7 @@
                 ],
                 "classroom": "Room 101",
                 "sectionCode": "CSE2260.1",
-                "studentCountInsideCourseSection": 0
+                "studentCountInsideCourseSection": 1
             }
         ],
         "courseType": "COMPULSORY"

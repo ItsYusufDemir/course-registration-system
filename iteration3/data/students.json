@@ -5,11 +5,7 @@
         "firstName": "Erdem",
         "lastName": "Erguvan",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "erdemerguvan@marun.edu.tr",
         "identityNumber": "24536692328",
         "currentSemester": 1,
@@ -20,11 +16,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -37,11 +29,7 @@
         "firstName": "Atahan",
         "lastName": "Karahan",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "atahankarahan@marun.edu.tr",
         "identityNumber": "92729252472",
         "currentSemester": 1,
@@ -52,11 +40,7 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -69,11 +53,7 @@
         "firstName": "Serap",
         "lastName": "Laleli",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "seraplaleli@marun.edu.tr",
         "identityNumber": "80614469719",
         "currentSemester": 1,
@@ -84,11 +64,7 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -101,11 +77,7 @@
         "firstName": "Ebru",
         "lastName": "Topal",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "ebrutopal22@marun.edu.tr",
         "identityNumber": "48405172964",
         "currentSemester": 1,
@@ -116,11 +88,7 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -133,11 +101,7 @@
         "firstName": "Rüya",
         "lastName": "Gündoğdu",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "ruyagundogdu@marun.edu.tr",
         "identityNumber": "23909435016",
         "currentSemester": 1,
@@ -148,11 +112,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -165,11 +125,7 @@
         "firstName": "Mehmet",
         "lastName": "Akın",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "mehmetakin@marun.edu.tr",
         "identityNumber": "69136272292",
         "currentSemester": 2,
@@ -180,11 +136,7 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -480,11 +432,7 @@
         "firstName": "Sueda",
         "lastName": "Akkaya",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "suedaakkaya@marun.edu.tr",
         "identityNumber": "58676989433",
         "currentSemester": 2,
@@ -495,11 +443,7 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -795,11 +739,7 @@
         "firstName": "İnci",
         "lastName": "Demirci",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "incidemirci@marun.edu.tr",
         "identityNumber": "87773594739",
         "currentSemester": 2,
@@ -810,11 +750,7 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -1110,11 +1046,7 @@
         "firstName": "Kaan",
         "lastName": "Çetin",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "kaancetin@marun.edu.tr",
         "identityNumber": "34974336065",
         "currentSemester": 2,
@@ -1125,11 +1057,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -1425,11 +1353,7 @@
         "firstName": "Güney",
         "lastName": "Şafak",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "guneysafak@marun.edu.tr",
         "identityNumber": "85027744148",
         "currentSemester": 2,
@@ -1440,11 +1364,7 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -1741,27 +1661,273 @@
         "lastName": "Gündüz",
         "status": true,
         "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
+            "Your MATH2055 course is rejected.",
+            "Your ECON2004 course is rejected."
         ],
         "email": "sedagunduz@marun.edu.tr",
         "identityNumber": "123412348",
         "currentSemester": 3,
-        "selectedCourses": [],
+        "selectedCourses": [
+            {
+                "course": {
+                    "courseCredit": 6,
+                    "courseECTS": 6,
+                    "givenSemester": 3,
+                    "courseName": "Discrete Comp. Structures",
+                    "courseCode": "CSE2023",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Mustafa Ağaoğlu",
+                            "sectionTime": [
+                                "08:30-9:20",
+                                "8:30-9:20",
+                                "09:30-10:20"
+                            ],
+                            "sectionDay": [
+                                "Monday",
+                                "Monday",
+                                "Wednesday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "CSE2023.1",
+                            "studentCountInsideCourseSection": 1
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "APPROVED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Mustafa Ağaoğlu",
+                    "sectionTime": [
+                        "08:30-9:20",
+                        "8:30-9:20",
+                        "09:30-10:20"
+                    ],
+                    "sectionDay": [
+                        "Monday",
+                        "Monday",
+                        "Wednesday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "CSE2023.1",
+                    "studentCountInsideCourseSection": 1
+                }
+            },
+            {
+                "course": {
+                    "courseCredit": 4,
+                    "courseECTS": 4,
+                    "givenSemester": 3,
+                    "courseName": "Differential Equations",
+                    "courseCode": "MATH2055",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Zeynep Yılmaz",
+                            "sectionTime": [
+                                "13:00-13:50",
+                                "13:00-13:50",
+                                "11:30-12:20"
+                            ],
+                            "sectionDay": [
+                                "Wednesday",
+                                "Wednesday",
+                                "Tuesday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "MATH2055.1",
+                            "studentCountInsideCourseSection": 0
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "DENIED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Zeynep Yılmaz",
+                    "sectionTime": [
+                        "13:00-13:50",
+                        "13:00-13:50",
+                        "11:30-12:20"
+                    ],
+                    "sectionDay": [
+                        "Wednesday",
+                        "Wednesday",
+                        "Tuesday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "MATH2055.1",
+                    "studentCountInsideCourseSection": 0
+                }
+            },
+            {
+                "course": {
+                    "courseCredit": 6,
+                    "courseECTS": 6,
+                    "givenSemester": 4,
+                    "courseName": "Principles of Prog. Languages",
+                    "courseCode": "CSE2260",
+                    "prerequisiteInformation": {
+                        "prerequisiteOfCourses": [
+                            {
+                                "courseCredit": 6,
+                                "courseECTS": 6,
+                                "givenSemester": 2,
+                                "courseName": "Computer Programming II",
+                                "courseCode": "CSE1242",
+                                "prerequisiteInformation": {
+                                    "prerequisiteOfCourses": [
+                                        {
+                                            "courseCredit": 6,
+                                            "courseECTS": 6,
+                                            "givenSemester": 1,
+                                            "courseName": "Computer Programming I",
+                                            "courseCode": "CSE1241",
+                                            "prerequisiteInformation": null,
+                                            "courseSections": [
+                                                {
+                                                    "studentCapacity": 150,
+                                                    "lecturerName": "Sanem Arslan Yılmaz",
+                                                    "sectionTime": [
+                                                        "08:30-09:20",
+                                                        "09:30-10:20",
+                                                        "13:00-13:50"
+                                                    ],
+                                                    "sectionDay": [
+                                                        "Monday",
+                                                        "Monday",
+                                                        "Wednesday"
+                                                    ],
+                                                    "classroom": "Room 101",
+                                                    "sectionCode": "CSE1241.1",
+                                                    "studentCountInsideCourseSection": 0
+                                                }
+                                            ],
+                                            "courseType": "COMPULSORY"
+                                        }
+                                    ]
+                                },
+                                "courseSections": [
+                                    {
+                                        "studentCapacity": 150,
+                                        "lecturerName": "Sanem Arslan Yılmaz",
+                                        "sectionTime": [
+                                            "08:30-09:20",
+                                            "09:30-10:20",
+                                            "13:00-13:50"
+                                        ],
+                                        "sectionDay": [
+                                            "Monday",
+                                            "Tuesday",
+                                            "Wednesday"
+                                        ],
+                                        "classroom": "Room 101",
+                                        "sectionCode": "CSE1242.1",
+                                        "studentCountInsideCourseSection": 0
+                                    }
+                                ],
+                                "courseType": "COMPULSORY"
+                            }
+                        ]
+                    },
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Fatma Corut Ergin",
+                            "sectionTime": [
+                                "15:00-15:50",
+                                "16:00-16:50",
+                                "14:00-14:50"
+                            ],
+                            "sectionDay": [
+                                "Tuesday",
+                                "Tuesday",
+                                "Thursday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "CSE2260.1",
+                            "studentCountInsideCourseSection": 1
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "APPROVED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Fatma Corut Ergin",
+                    "sectionTime": [
+                        "15:00-15:50",
+                        "16:00-16:50",
+                        "14:00-14:50"
+                    ],
+                    "sectionDay": [
+                        "Tuesday",
+                        "Tuesday",
+                        "Thursday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "CSE2260.1",
+                    "studentCountInsideCourseSection": 1
+                }
+            },
+            {
+                "course": {
+                    "courseCredit": 3,
+                    "courseECTS": 3,
+                    "givenSemester": 4,
+                    "courseName": "Engineering Economy",
+                    "courseCode": "ECON2004",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Ayşe Bengi Özlüarda",
+                            "sectionTime": [
+                                "13:00-13:50",
+                                "14:00-14:50"
+                            ],
+                            "sectionDay": [
+                                "Monday",
+                                "Monday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "ECON2004.1",
+                            "studentCountInsideCourseSection": 0
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "DENIED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Ayşe Bengi Özlüarda",
+                    "sectionTime": [
+                        "13:00-13:50",
+                        "14:00-14:50"
+                    ],
+                    "sectionDay": [
+                        "Monday",
+                        "Monday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "ECON2004.1",
+                    "studentCountInsideCourseSection": 0
+                }
+            }
+        ],
         "advisorOfStudent": {
             "userId": "111111",
             "password": "advisor",
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
-        "approvalStatus": "DONE",
+        "approvalStatus": "FINALIZED_REGISTRATION",
         "transcript": {
             "takenCourses": [
                 {
@@ -2356,6 +2522,132 @@
                     },
                     "letterGrade": "AA",
                     "courseResult": "PASSED"
+                },
+                {
+                    "course": {
+                        "courseCredit": 6,
+                        "courseECTS": 6,
+                        "givenSemester": 3,
+                        "courseName": "Discrete Comp. Structures",
+                        "courseCode": "CSE2023",
+                        "prerequisiteInformation": null,
+                        "courseSections": [
+                            {
+                                "studentCapacity": 150,
+                                "lecturerName": "Mustafa Ağaoğlu",
+                                "sectionTime": [
+                                    "08:30-9:20",
+                                    "8:30-9:20",
+                                    "09:30-10:20"
+                                ],
+                                "sectionDay": [
+                                    "Monday",
+                                    "Monday",
+                                    "Wednesday"
+                                ],
+                                "classroom": "Room 101",
+                                "sectionCode": "CSE2023.1",
+                                "studentCountInsideCourseSection": 1
+                            }
+                        ],
+                        "courseType": "COMPULSORY"
+                    },
+                    "letterGrade": null,
+                    "courseResult": "ACTIVE"
+                },
+                {
+                    "course": {
+                        "courseCredit": 6,
+                        "courseECTS": 6,
+                        "givenSemester": 4,
+                        "courseName": "Principles of Prog. Languages",
+                        "courseCode": "CSE2260",
+                        "prerequisiteInformation": {
+                            "prerequisiteOfCourses": [
+                                {
+                                    "courseCredit": 6,
+                                    "courseECTS": 6,
+                                    "givenSemester": 2,
+                                    "courseName": "Computer Programming II",
+                                    "courseCode": "CSE1242",
+                                    "prerequisiteInformation": {
+                                        "prerequisiteOfCourses": [
+                                            {
+                                                "courseCredit": 6,
+                                                "courseECTS": 6,
+                                                "givenSemester": 1,
+                                                "courseName": "Computer Programming I",
+                                                "courseCode": "CSE1241",
+                                                "prerequisiteInformation": null,
+                                                "courseSections": [
+                                                    {
+                                                        "studentCapacity": 150,
+                                                        "lecturerName": "Sanem Arslan Yılmaz",
+                                                        "sectionTime": [
+                                                            "08:30-09:20",
+                                                            "09:30-10:20",
+                                                            "13:00-13:50"
+                                                        ],
+                                                        "sectionDay": [
+                                                            "Monday",
+                                                            "Monday",
+                                                            "Wednesday"
+                                                        ],
+                                                        "classroom": "Room 101",
+                                                        "sectionCode": "CSE1241.1",
+                                                        "studentCountInsideCourseSection": 0
+                                                    }
+                                                ],
+                                                "courseType": "COMPULSORY"
+                                            }
+                                        ]
+                                    },
+                                    "courseSections": [
+                                        {
+                                            "studentCapacity": 150,
+                                            "lecturerName": "Sanem Arslan Yılmaz",
+                                            "sectionTime": [
+                                                "08:30-09:20",
+                                                "09:30-10:20",
+                                                "13:00-13:50"
+                                            ],
+                                            "sectionDay": [
+                                                "Monday",
+                                                "Tuesday",
+                                                "Wednesday"
+                                            ],
+                                            "classroom": "Room 101",
+                                            "sectionCode": "CSE1242.1",
+                                            "studentCountInsideCourseSection": 0
+                                        }
+                                    ],
+                                    "courseType": "COMPULSORY"
+                                }
+                            ]
+                        },
+                        "courseSections": [
+                            {
+                                "studentCapacity": 150,
+                                "lecturerName": "Fatma Corut Ergin",
+                                "sectionTime": [
+                                    "15:00-15:50",
+                                    "16:00-16:50",
+                                    "14:00-14:50"
+                                ],
+                                "sectionDay": [
+                                    "Tuesday",
+                                    "Tuesday",
+                                    "Thursday"
+                                ],
+                                "classroom": "Room 101",
+                                "sectionCode": "CSE2260.1",
+                                "studentCountInsideCourseSection": 1
+                            }
+                        ],
+                        "courseType": "COMPULSORY"
+                    },
+                    "letterGrade": null,
+                    "courseResult": "ACTIVE"
                 }
             ]
         }
@@ -2366,28 +2658,227 @@
         "firstName": "Mercan",
         "lastName": "Küçükkaya",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "mercankucukkaya@marun.edu.tr",
         "identityNumber": "246813579",
         "currentSemester": 3,
-        "selectedCourses": [],
+        "selectedCourses": [
+            {
+                "course": {
+                    "courseCredit": 6,
+                    "courseECTS": 6,
+                    "givenSemester": 2,
+                    "courseName": "Computer Programming II",
+                    "courseCode": "CSE1242",
+                    "prerequisiteInformation": {
+                        "prerequisiteOfCourses": [
+                            {
+                                "courseCredit": 6,
+                                "courseECTS": 6,
+                                "givenSemester": 1,
+                                "courseName": "Computer Programming I",
+                                "courseCode": "CSE1241",
+                                "prerequisiteInformation": null,
+                                "courseSections": [
+                                    {
+                                        "studentCapacity": 150,
+                                        "lecturerName": "Sanem Arslan Yılmaz",
+                                        "sectionTime": [
+                                            "08:30-09:20",
+                                            "09:30-10:20",
+                                            "13:00-13:50"
+                                        ],
+                                        "sectionDay": [
+                                            "Monday",
+                                            "Monday",
+                                            "Wednesday"
+                                        ],
+                                        "classroom": "Room 101",
+                                        "sectionCode": "CSE1241.1",
+                                        "studentCountInsideCourseSection": 0
+                                    }
+                                ],
+                                "courseType": "COMPULSORY"
+                            }
+                        ]
+                    },
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Sanem Arslan Yılmaz",
+                            "sectionTime": [
+                                "08:30-09:20",
+                                "09:30-10:20",
+                                "13:00-13:50"
+                            ],
+                            "sectionDay": [
+                                "Monday",
+                                "Tuesday",
+                                "Wednesday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "CSE1242.1",
+                            "studentCountInsideCourseSection": 1
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "DENIED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Sanem Arslan Yılmaz",
+                    "sectionTime": [
+                        "08:30-09:20",
+                        "09:30-10:20",
+                        "13:00-13:50"
+                    ],
+                    "sectionDay": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "CSE1242.1",
+                    "studentCountInsideCourseSection": 1
+                }
+            },
+            {
+                "course": {
+                    "courseCredit": 6,
+                    "courseECTS": 6,
+                    "givenSemester": 3,
+                    "courseName": "Discrete Comp. Structures",
+                    "courseCode": "CSE2023",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Mustafa Ağaoğlu",
+                            "sectionTime": [
+                                "08:30-9:20",
+                                "8:30-9:20",
+                                "09:30-10:20"
+                            ],
+                            "sectionDay": [
+                                "Monday",
+                                "Monday",
+                                "Wednesday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "CSE2023.1",
+                            "studentCountInsideCourseSection": 2
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "DENIED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Mustafa Ağaoğlu",
+                    "sectionTime": [
+                        "08:30-9:20",
+                        "8:30-9:20",
+                        "09:30-10:20"
+                    ],
+                    "sectionDay": [
+                        "Monday",
+                        "Monday",
+                        "Wednesday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "CSE2023.1",
+                    "studentCountInsideCourseSection": 2
+                }
+            },
+            {
+                "course": {
+                    "courseCredit": 5,
+                    "courseECTS": 5,
+                    "givenSemester": 3,
+                    "courseName": "Electric Circuits",
+                    "courseCode": "EE2031",
+                    "prerequisiteInformation": {
+                        "prerequisiteOfCourses": [
+                            {
+                                "courseCredit": 4,
+                                "courseECTS": 4,
+                                "givenSemester": 2,
+                                "courseName": "Physics II",
+                                "courseCode": "PHYS1102",
+                                "prerequisiteInformation": null,
+                                "courseSections": [
+                                    {
+                                        "studentCapacity": 200,
+                                        "lecturerName": "Mustafa Alevli",
+                                        "sectionTime": [
+                                            "13:00-13:50",
+                                            "14:00-14:50",
+                                            "09:30-10:20"
+                                        ],
+                                        "sectionDay": [
+                                            "Thursday",
+                                            "Thursday",
+                                            "Friday"
+                                        ],
+                                        "classroom": "Room 101",
+                                        "sectionCode": "PHYS1102.1",
+                                        "studentCountInsideCourseSection": 0
+                                    }
+                                ],
+                                "courseType": "COMPULSORY"
+                            }
+                        ]
+                    },
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Fulya Çallıalp",
+                            "sectionTime": [
+                                "11:30-12:20",
+                                "13:00-13:50",
+                                "09:30-10:20"
+                            ],
+                            "sectionDay": [
+                                "Thursday",
+                                "Thursday",
+                                "Monday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "EE2031.1",
+                            "studentCountInsideCourseSection": 1
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "APPROVED_FINALIZED",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Fulya Çallıalp",
+                    "sectionTime": [
+                        "11:30-12:20",
+                        "13:00-13:50",
+                        "09:30-10:20"
+                    ],
+                    "sectionDay": [
+                        "Thursday",
+                        "Thursday",
+                        "Monday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "EE2031.1",
+                    "studentCountInsideCourseSection": 1
+                }
+            }
+        ],
         "advisorOfStudent": {
             "userId": "111112",
             "password": "advisor",
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
-        "approvalStatus": "DONE",
+        "approvalStatus": "FINALIZED_REGISTRATION",
         "transcript": {
             "takenCourses": [
                 {
@@ -2982,6 +3473,164 @@
                     },
                     "letterGrade": "AA",
                     "courseResult": "PASSED"
+                },
+                {
+                    "course": {
+                        "courseCredit": 6,
+                        "courseECTS": 6,
+                        "givenSemester": 2,
+                        "courseName": "Computer Programming II",
+                        "courseCode": "CSE1242",
+                        "prerequisiteInformation": {
+                            "prerequisiteOfCourses": [
+                                {
+                                    "courseCredit": 6,
+                                    "courseECTS": 6,
+                                    "givenSemester": 1,
+                                    "courseName": "Computer Programming I",
+                                    "courseCode": "CSE1241",
+                                    "prerequisiteInformation": null,
+                                    "courseSections": [
+                                        {
+                                            "studentCapacity": 150,
+                                            "lecturerName": "Sanem Arslan Yılmaz",
+                                            "sectionTime": [
+                                                "08:30-09:20",
+                                                "09:30-10:20",
+                                                "13:00-13:50"
+                                            ],
+                                            "sectionDay": [
+                                                "Monday",
+                                                "Monday",
+                                                "Wednesday"
+                                            ],
+                                            "classroom": "Room 101",
+                                            "sectionCode": "CSE1241.1",
+                                            "studentCountInsideCourseSection": 0
+                                        }
+                                    ],
+                                    "courseType": "COMPULSORY"
+                                }
+                            ]
+                        },
+                        "courseSections": [
+                            {
+                                "studentCapacity": 150,
+                                "lecturerName": "Sanem Arslan Yılmaz",
+                                "sectionTime": [
+                                    "08:30-09:20",
+                                    "09:30-10:20",
+                                    "13:00-13:50"
+                                ],
+                                "sectionDay": [
+                                    "Monday",
+                                    "Tuesday",
+                                    "Wednesday"
+                                ],
+                                "classroom": "Room 101",
+                                "sectionCode": "CSE1242.1",
+                                "studentCountInsideCourseSection": 1
+                            }
+                        ],
+                        "courseType": "COMPULSORY"
+                    },
+                    "letterGrade": null,
+                    "courseResult": "ACTIVE"
+                },
+                {
+                    "course": {
+                        "courseCredit": 6,
+                        "courseECTS": 6,
+                        "givenSemester": 3,
+                        "courseName": "Discrete Comp. Structures",
+                        "courseCode": "CSE2023",
+                        "prerequisiteInformation": null,
+                        "courseSections": [
+                            {
+                                "studentCapacity": 150,
+                                "lecturerName": "Mustafa Ağaoğlu",
+                                "sectionTime": [
+                                    "08:30-9:20",
+                                    "8:30-9:20",
+                                    "09:30-10:20"
+                                ],
+                                "sectionDay": [
+                                    "Monday",
+                                    "Monday",
+                                    "Wednesday"
+                                ],
+                                "classroom": "Room 101",
+                                "sectionCode": "CSE2023.1",
+                                "studentCountInsideCourseSection": 2
+                            }
+                        ],
+                        "courseType": "COMPULSORY"
+                    },
+                    "letterGrade": null,
+                    "courseResult": "ACTIVE"
+                },
+                {
+                    "course": {
+                        "courseCredit": 5,
+                        "courseECTS": 5,
+                        "givenSemester": 3,
+                        "courseName": "Electric Circuits",
+                        "courseCode": "EE2031",
+                        "prerequisiteInformation": {
+                            "prerequisiteOfCourses": [
+                                {
+                                    "courseCredit": 4,
+                                    "courseECTS": 4,
+                                    "givenSemester": 2,
+                                    "courseName": "Physics II",
+                                    "courseCode": "PHYS1102",
+                                    "prerequisiteInformation": null,
+                                    "courseSections": [
+                                        {
+                                            "studentCapacity": 200,
+                                            "lecturerName": "Mustafa Alevli",
+                                            "sectionTime": [
+                                                "13:00-13:50",
+                                                "14:00-14:50",
+                                                "09:30-10:20"
+                                            ],
+                                            "sectionDay": [
+                                                "Thursday",
+                                                "Thursday",
+                                                "Friday"
+                                            ],
+                                            "classroom": "Room 101",
+                                            "sectionCode": "PHYS1102.1",
+                                            "studentCountInsideCourseSection": 0
+                                        }
+                                    ],
+                                    "courseType": "COMPULSORY"
+                                }
+                            ]
+                        },
+                        "courseSections": [
+                            {
+                                "studentCapacity": 150,
+                                "lecturerName": "Fulya Çallıalp",
+                                "sectionTime": [
+                                    "11:30-12:20",
+                                    "13:00-13:50",
+                                    "09:30-10:20"
+                                ],
+                                "sectionDay": [
+                                    "Thursday",
+                                    "Thursday",
+                                    "Monday"
+                                ],
+                                "classroom": "Room 101",
+                                "sectionCode": "EE2031.1",
+                                "studentCountInsideCourseSection": 1
+                            }
+                        ],
+                        "courseType": "COMPULSORY"
+                    },
+                    "letterGrade": null,
+                    "courseResult": "ACTIVE"
                 }
             ]
         }
@@ -2992,26 +3641,71 @@
         "firstName": "Ali",
         "lastName": "Önder",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "alionder34@marun.edu.tr",
         "identityNumber": "457645671",
         "currentSemester": 3,
-        "selectedCourses": [],
+        "selectedCourses": [
+            {
+                "course": {
+                    "courseCredit": 6,
+                    "courseECTS": 6,
+                    "givenSemester": 2,
+                    "courseName": "Calculus II",
+                    "courseCode": "MATH1002",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 150,
+                            "lecturerName": "Zeynep Yılmaz",
+                            "sectionTime": [
+                                "10:30-11:20",
+                                "11:30-12:20",
+                                "09:30-10:20",
+                                "10:30-11:20"
+                            ],
+                            "sectionDay": [
+                                "Tuesday",
+                                "Tuesday",
+                                "Friday",
+                                "Friday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "MATH1002.1",
+                            "studentCountInsideCourseSection": 0
+                        }
+                    ],
+                    "courseType": "COMPULSORY"
+                },
+                "status": "DRAFT",
+                "courseSection": {
+                    "studentCapacity": 150,
+                    "lecturerName": "Zeynep Yılmaz",
+                    "sectionTime": [
+                        "10:30-11:20",
+                        "11:30-12:20",
+                        "09:30-10:20",
+                        "10:30-11:20"
+                    ],
+                    "sectionDay": [
+                        "Tuesday",
+                        "Tuesday",
+                        "Friday",
+                        "Friday"
+                    ],
+                    "classroom": "Room 101",
+                    "sectionCode": "MATH1002.1",
+                    "studentCountInsideCourseSection": 0
+                }
+            }
+        ],
         "advisorOfStudent": {
             "userId": "111111",
             "password": "advisor",
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -3618,11 +4312,7 @@
         "firstName": "Zeynep",
         "lastName": "Uçar",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "zeynepucar@marun.edu.tr",
         "identityNumber": "110022995",
         "currentSemester": 3,
@@ -3633,11 +4323,7 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -4244,11 +4930,7 @@
         "firstName": "Muti",
         "lastName": "Hanımoğlu",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "mutihanimoglu@marun.edu.tr",
         "identityNumber": "4536279",
         "currentSemester": 3,
@@ -4259,11 +4941,7 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -4870,11 +5548,7 @@
         "firstName": "Bilal",
         "lastName": "Keskin",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "bilalkeskin@marun.edu.tr",
         "identityNumber": "098765432",
         "currentSemester": 4,
@@ -4885,11 +5559,7 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -5812,11 +6482,7 @@
         "firstName": "Kemal",
         "lastName": "Aksu",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "kemalaksu@marun.edu.tr",
         "identityNumber": "333444555",
         "currentSemester": 4,
@@ -5827,11 +6493,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -6754,11 +7416,7 @@
         "firstName": "Melek",
         "lastName": "Akpınar",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "melekakpinar@marun.edu.tr",
         "identityNumber": "009988556",
         "currentSemester": 4,
@@ -6769,11 +7427,7 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -7696,11 +8350,7 @@
         "firstName": "Aslıhan",
         "lastName": "Akyüz",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "aslihanakyuz@marun.edu.tr",
         "identityNumber": "44422227777",
         "currentSemester": 4,
@@ -7711,11 +8361,7 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -8638,11 +9284,7 @@
         "firstName": "Duygu",
         "lastName": "Yılmaz",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "duyguyilmaz@marun.edu.tr",
         "identityNumber": "457645671",
         "currentSemester": 4,
@@ -8653,11 +9295,7 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -9580,11 +10218,7 @@
         "firstName": "Aylin",
         "lastName": "Yılmaz",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "aylinyilmaz@marun.edu.tr",
         "identityNumber": "12345678901",
         "currentSemester": 5,
@@ -9595,11 +10229,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -10899,11 +11529,7 @@
         "firstName": "Mercan",
         "lastName": "Küçükkaya",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "mercankucukkaya@marun.edu.tr",
         "identityNumber": "246813579",
         "currentSemester": 5,
@@ -10914,11 +11540,7 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -12218,11 +12840,7 @@
         "firstName": "Mustafa Emir",
         "lastName": "Uyar",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "muyar@marun.edu.tr",
         "identityNumber": "54458789245",
         "currentSemester": 5,
@@ -12233,11 +12851,7 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -13537,11 +14151,7 @@
         "firstName": "Mehmet",
         "lastName": "Demir",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "mehmetdemir@marun.edu.tr",
         "identityNumber": "54824872154",
         "currentSemester": 5,
@@ -13552,11 +14162,7 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -14856,11 +15462,7 @@
         "firstName": "Zeynep",
         "lastName": "Arslan",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "zeyneparslan@marun.edu.tr",
         "identityNumber": "45678889875",
         "currentSemester": 5,
@@ -14871,11 +15473,7 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -16175,11 +16773,7 @@
         "firstName": "Can",
         "lastName": "Tekin",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "cantekin@marun.edu.tr",
         "identityNumber": "21098765432",
         "currentSemester": 5,
@@ -16190,11 +16784,7 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -17810,11 +18400,7 @@
         "firstName": "Burak",
         "lastName": "Güneş",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "kemalaksu@marun.edu.tr",
         "identityNumber": "333444555",
         "currentSemester": 6,
@@ -17825,11 +18411,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -19558,11 +20140,7 @@
         "firstName": "Emre",
         "lastName": "Efe",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "emreefe@marun.edu.tr",
         "identityNumber": "15400998854",
         "currentSemester": 6,
@@ -19573,11 +20151,7 @@
             "firstName": "Mustafa",
             "lastName": "Ağaoğlu",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -21306,11 +21880,7 @@
         "firstName": "Melis",
         "lastName": "Çetin",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "aslihanakyuz@marun.edu.tr",
         "identityNumber": "56546555152",
         "currentSemester": 6,
@@ -21321,11 +21891,7 @@
             "firstName": "Ali Haydar",
             "lastName": "Özer",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -23054,11 +23620,7 @@
         "firstName": "Nil",
         "lastName": "Aydın",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "nilaydin@marun.edu.tr",
         "identityNumber": "54654621544",
         "currentSemester": 6,
@@ -23069,11 +23631,7 @@
             "firstName": "Betül",
             "lastName": "Boz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -24802,11 +25360,7 @@
         "firstName": "Ayşe Gülsüm",
         "lastName": "Mutlu",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "gülsüm@marun.edu.tr",
         "identityNumber": "12222222222",
         "currentSemester": 8,
@@ -24817,11 +25371,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -27630,11 +28180,7 @@
         "firstName": "Melisa",
         "lastName": "Altın",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "gülsüm@marun.edu.tr",
         "identityNumber": "12222222222",
         "currentSemester": 8,
@@ -27645,11 +28191,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -30488,11 +31030,7 @@
         "firstName": "Berkcan",
         "lastName": "Atabar",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "berkcan@marun.edu.tr",
         "identityNumber": "12222222222",
         "currentSemester": 8,
@@ -30503,11 +31041,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -32982,11 +33516,7 @@
         "firstName": "Ebubekir Sıddık",
         "lastName": "Kaya",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "ebubekir@marun.edu.tr",
         "identityNumber": "12322222222",
         "currentSemester": 8,
@@ -32997,11 +33527,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -35628,11 +36154,7 @@
         "firstName": "Umut",
         "lastName": "Kocapaşaoğlu",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "gülsüm@marun.edu.tr",
         "identityNumber": "15222222222",
         "currentSemester": 8,
@@ -35643,11 +36165,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -38486,11 +39004,7 @@
         "firstName": "Adnan",
         "lastName": "Şenses",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "adnan@marun.edu.tr",
         "identityNumber": "13322222222",
         "currentSemester": 7,
@@ -38501,11 +39015,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -41045,11 +41555,7 @@
         "firstName": "Bahar",
         "lastName": "Candan",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "bahar@marun.edu.tr",
         "identityNumber": "13322222222",
         "currentSemester": 7,
@@ -41060,11 +41566,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -43604,11 +44106,7 @@
         "firstName": "Michael",
         "lastName": "Lucifer",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "lucifer@marun.edu.tr",
         "identityNumber": "13342222222",
         "currentSemester": 7,
@@ -43619,11 +44117,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -46163,11 +46657,7 @@
         "firstName": "Halit",
         "lastName": "Parlak",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "halit@marun.edu.tr",
         "identityNumber": "13342322222",
         "currentSemester": 7,
@@ -46178,11 +46668,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {
@@ -48722,11 +49208,7 @@
         "firstName": "Furkan",
         "lastName": "Sivrisurat",
         "status": true,
-        "notifications": [
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses.",
-            "Add-Drop week has been enabled. You can now add/drop courses."
-        ],
+        "notifications": [],
         "email": "furkan@marun.edu.tr",
         "identityNumber": "13342322922",
         "currentSemester": 7,
@@ -48737,11 +49219,7 @@
             "firstName": "Murat Can",
             "lastName": "Ganiz",
             "status": true,
-            "notifications": [
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses.",
-                "Add-Drop week has been enabled. Students can now add/drop courses."
-            ]
+            "notifications": []
         },
         "approvalStatus": "DONE",
         "transcript": {

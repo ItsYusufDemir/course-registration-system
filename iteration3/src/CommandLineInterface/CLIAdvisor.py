@@ -93,10 +93,10 @@ class CLIAdvisor(object):
 
           isInvalid = False    
           courses = student.fetchSelectedCoursesForAdvisor()
-          isFinalizable = True
+          isFinalizable = False
           for i in range(len(courses)):
             if(courses[i] != CourseStatus.APPROVED or courses[i] != CourseStatus.DENIED):
-                 isFinalizable = False
+                 isFinalizable = True
           
           while True:
                
@@ -122,7 +122,7 @@ class CLIAdvisor(object):
                          Util.paintText(courses[i].getStatus() + "\n", Color.RED)
                     elif courses[i].getStatus() == CourseStatus.APPROVED_FINALIZED:
                          Util.paintText(courses[i].getStatus() + "\n", Color.GREEN)
-                    elif courses[i].getStatus() == CourseStatus.DENIED_FINAZLIZED:
+                    elif courses[i].getStatus() == CourseStatus.DENIED_FINALIZED:
                          Util.paintText(courses[i].getStatus() + "\n", Color.RED)
                     else:
                          print(courses[i].getStatus() + "\n")
@@ -160,7 +160,7 @@ class CLIAdvisor(object):
                     
                          elif choice2 == "d":
                               if(courses[int(choice) - 1].getStatus != CourseStatus.APPROVED_FINALIZED or
-                                                courses[int(choice) - 1].getStatus != CourseStatus.DENIED_FINAZLIZED):
+                                                courses[int(choice) - 1].getStatus != CourseStatus.DENIED_FINALIZED):
                                    result = self._advisorController.denyCourse(student, courses[int(choice) - 1])
                                    if result:
                                         Util.sendFeedback("Course is denied", Color.GREEN)
@@ -186,9 +186,7 @@ class CLIAdvisor(object):
                          self._advisorController.logOut()
                          return True
                     elif choice == "f" and isFinalizable == True:
-                             self._advisorController.finalizedRegistration()
-                             notification = "Your registration is finalized."
-                             AdvisorController.notificationToStudent(student,notification)
+                             self._advisorController.finalizeRegistration(student)
                     elif choice == "s":
                             Util.printTimeTable()
                     else:

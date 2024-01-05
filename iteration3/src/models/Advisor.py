@@ -92,7 +92,7 @@ class Advisor(User):
 
 
 
-    def finalizeRegistration(student):
+    def finalizeRegistration(self, student):
 
         selectedCourses = student.getSelectedCourses()
 
@@ -102,7 +102,8 @@ class Advisor(User):
             else:
                 course.setStatus(CourseStatus.DENIED_FINALIZED)
         
-        student.setStatus(ApprovalStatus.FINALIZED_REGISTRATION)                  
+        student.setApprovalStatus(ApprovalStatus.FINALIZED_REGISTRATION)
+        student.addNotification("Your registration is finalized.")                  
         DatabaseManager.getInstance().saveToDatabase()
 
 
