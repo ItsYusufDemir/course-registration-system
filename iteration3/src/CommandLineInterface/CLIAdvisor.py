@@ -1,10 +1,10 @@
-from controllers.AdvisorController import AdvisorController
-from enums.CourseStatus import CourseStatus
-from interfaces.Color import Color
-from models.SelectedCourse import SelectedCourse
-from models.Student import Student
-from utils.Util import Util
-from models.Constraint import Constraint
+from iteration3.src.controllers.AdvisorController import AdvisorController
+from iteration3.src.enums.CourseStatus import CourseStatus
+from iteration3.src.interfaces.Color import Color
+from iteration3.src.models.SelectedCourse import SelectedCourse
+from iteration3.src.models.Student import Student
+from iteration3.src.utils.Util import Util
+from iteration3.src.models.Constraint import Constraint
 
 class CLIAdvisor(object):
 

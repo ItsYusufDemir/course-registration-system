@@ -1,6 +1,6 @@
-from CommandLineInterface.CLILogin import CLILogin
-from models.User import User
-from utils.Util import Util
+from iteration3.src.CommandLineInterface.CLILogin import CLILogin
+from iteration3.src.models.User import User
+from iteration3.src.utils.Util import Util
 
 class CourseRegistrationSystem:
 

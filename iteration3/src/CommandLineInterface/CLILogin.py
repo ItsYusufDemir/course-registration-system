@@ -1,7 +1,7 @@
-from controllers.UserController import UserController
-from interfaces.Color import Color
-from models.User import User
-from utils.Util import Util
+from iteration3.src.controllers.UserController import UserController
+from iteration3.src.interfaces.Color import Color
+from iteration3.src.models.User import User
+from iteration3.src.utils.Util import Util
 
 class CLILogin(object):
      

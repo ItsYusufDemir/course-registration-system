@@ -1,6 +1,6 @@
 import logging
-from utils.DatabaseManager import DatabaseManager
-from models.User import User
+from iteration3.src.utils.DatabaseManager import DatabaseManager
+from iteration3.src.models.User import User
 
 class AuthenticateService(object):
     

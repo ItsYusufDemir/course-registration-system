@@ -1,5 +1,5 @@
 import logging
-from utils.DatabaseManager import DatabaseManager
+from iteration3.src.utils.DatabaseManager import DatabaseManager
 
 class CourseSection:
 

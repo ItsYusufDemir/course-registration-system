@@ -4,7 +4,7 @@ class Prerequisite:
 
     @classmethod
     def dictToObject(cls, dict):
-        from models.Course import Course
+        from iteration3.src.models.Course import Course
         return cls(
             [Course.dictToObject(course) for course in dict['prerequisiteOfCourses']]
         )
