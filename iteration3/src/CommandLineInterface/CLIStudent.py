@@ -79,13 +79,14 @@ class CLIStudent(object):
                         Util.sendFeedback("You have already finalized your registration. You cannot delete a course.", Color.RED)                        
                     else:
                         _choice = input("Enter the row number of the course you want to delete: ")
-                        if Util.validateNumber(_choice, self._studentController.getSelectedCourses()):  
+                        try:
+                            Util.validateNumber(_choice, self._studentController.getSelectedCourses()) 
                             if self._deleteCourse(_choice):
                                 Util.sendFeedback("Course deleted successfully", Color.GREEN)
                             else:
                                 Util.sendFeedback("Course deletion failed", Color.RED)
-                        else:
-                            raise Exception("Invalid input" + _choice)
+                        except Exception as e:
+                            Util.sendFeedback(str(e), Color.RED)
                         
                 elif _choice == "3":
                     self._showTimeTablePage()
@@ -146,15 +147,14 @@ class CLIStudent(object):
                     self._studentController.logout()
                     self._shouldQuit = False
 
-                elif Util.validateNumber(_choice, self._studentController.getAvailableCourseSections()): 
-
+                try:
+                    Util.validateNumber(_choice, self._studentController.getAvailableCourseSections())
                     if self._addCourse(_choice):
                         Util.sendFeedback("Course added successfully", Color.GREEN)
                     else:
                         Util.sendFeedback("Course addition failed", Color.RED)
-
-                else:
-                    raise Exception("Invalid input" + _choice)
+                except Exception as e:
+                    raise Util.sendFeedback(str(e), Color.RED)
                 
             except Exception as e:
                 raise e
@@ -180,7 +180,7 @@ class CLIStudent(object):
                 Util.sendFeedback(e, Color.RED)
     
     def _addCourse(self, str):
-        rowNumber = int(str) #TODO: check if valid row number
+        rowNumber = int(str) 
         selectedCourseSection = self._studentController.getAvailableCourseSections()[(rowNumber-1)]
         if self._studentController.addSelectedCourse( SelectedCourse( selectedCourseSection.findCourseOfCourseSection(), CourseStatus.DRAFT, selectedCourseSection ) ):
             return True

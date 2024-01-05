@@ -58,16 +58,16 @@ class CLIAdmin():
         elif _choice == "d":
             print("Enter the row number of the course you want to delete : ", end='')
             _choice = input() 
-            if Util.validateNumber(_choice, courses):
+            try:
+                Util.validateNumber(_choice, courses)
                 if self.adminController.deleteCourse(courses[(int(_choice)-1)]):
                     Util.clearScreen()
                     Util.sendFeedback("Course deleted successfully", Color.GREEN)
                 else:
                     Util.clearScreen()
                     Util.sendFeedback("Course cannot be deleted", Color.RED)
-            else:
-                Util.clearScreen()
-                Util.sendFeedback("Invalid input", Color.RED)
+            except Exception as e:
+                Util.sendFeedback(str(e), Color.RED)
 
             self.courseListPage()
         elif _choice == "b":
