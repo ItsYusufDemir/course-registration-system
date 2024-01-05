@@ -84,33 +84,92 @@ class Util:
     
 
     def divideIntoCourses(string:str)->[str]:
-        list = string.split("-")
-        # if a empty string is present in the list, remove the comment below
-        # list.remove("")
-        return list
+        courses = []
+        temp = ""
+        strLength = len(string)
+        
+        for i in range(strLength):
+            if string[i] != "-":
+                temp += string[i]
+            else:
+                courses.append(temp)
+                temp = ""
+
+        return courses
     
     def printTimeTable(time_table: [[str]]):
-        days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 
-        times = ["08:30-09:20", "09:30-10:20", "10:30-11:20", "11:30-12:20", "13:00-13:50", "14:00-14:50",
-                "15:00-15:50", "16:00-16:50"]
+        times = ["08:30-09:20", "09:30-10:20", "10:30-11:20", "11:30-12:20", "12:30-13:20", "13:30-14:20",
+                "14:30-15:20", "15:30-16:20"]
+        
+        print(" Timetable\n" +
+                    "***********\n" +
+                    " Hours/Days    Monday    Tuesday    Wednesday    Thursday    Friday\n" +
+                    " __________    ______    _______    _________    ________    ______\n")
+        
+        for i in range(8):
+            print("\n" + times[i] + "    ", end="")
 
-        for i, current_time in enumerate(times):
-            print()
-            print(f"{current_time}    ", end="")
+            monCourses = Util.divideIntoCourses(time_table[0][i])
+            tueCourses = Util.divideIntoCourses(time_table[1][i])
+            wedCourses = Util.divideIntoCourses(time_table[2][i])
+            thuCourses = Util.divideIntoCourses(time_table[3][i])
+            friCourses = Util.divideIntoCourses(time_table[4][i])
 
-            for day in days:
-                courses = Util.divideIntoCourses(time_table[days.index(day)][i])
-                courses_size = len(courses)
-
-                if courses_size > 0:
-                    if courses_size > 1:
-                        Util.paintText(f"{courses[0]} ", Color.RED)
+            monCoursesSize = len(monCourses)
+            tueCoursesSize = len(tueCourses)
+            wedCoursesSize = len(wedCourses)
+            thuCoursesSize = len(thuCourses)
+            friCoursesSize = len(friCourses)
+            j = 0
+            while(j<monCoursesSize or j<tueCoursesSize or j<wedCoursesSize or j<thuCoursesSize or j<friCoursesSize ):
+                if (monCoursesSize > j and monCourses[j] != ""):
+                    if(monCoursesSize>1):
+                        Util.paintText(monCourses[j] + " ", Color.RED)
                     else:
-                        print(f"{courses[0]} ", end="")
+                        Util.paintText(monCourses[j] + " ", Color.DEFAULT)
+                else:
+                    print("           ", end="")
+
+                if (tueCoursesSize > j and tueCourses[j] != ""):
+                    if(tueCoursesSize>1):
+                        Util.paintText(tueCourses[j] + "  ", Color.RED)
+                    else:
+                        Util.paintText(tueCourses[j] + "  ", Color.DEFAULT)
+                else:
+                    print("           ", end="")
+                
+                
+                if (wedCoursesSize > j and wedCourses[j] != ""):
+                    if(tueCoursesSize>1):
+                        Util.paintText(wedCourses[j] + "    ", Color.RED)
+                    else:
+                        Util.paintText(wedCourses[j] + "    ", Color.DEFAULT)
+                else:
+                    print("             ", end="")
+
+                if (thuCoursesSize > j and thuCourses[j] != ""):
+                    if(thuCoursesSize>1):
+                        Util.paintText(thuCourses[j] + "   ", Color.RED)
+                    else:
+                        Util.paintText(thuCourses[j] + "   ", Color.DEFAULT)
+                else:
+                    print("            ", end="")
+
+                if (friCoursesSize > j and friCourses[j] != ""):
+                    if(friCoursesSize>1):
+                        Util.paintText(friCourses[j] + " ", Color.RED)
+                    else:
+                        Util.paintText(friCourses[j] + " ", Color.DEFAULT)
                 else:
                     print("          ", end="")
+                
+                print("\n               ", end="")
 
-                print("  ", end="")
+                j += 1
 
-            print("\n               ")
+            print("\n__________________________________________________________________________________________\n")
+
+        
+
+        

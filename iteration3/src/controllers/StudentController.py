@@ -30,8 +30,5 @@ class StudentController:
     def getSelectedCourses(self):
         return self.currentStudent.getSelectedCourses()
     
-    def getTimeTable(self):
-        return self.currentStudent.createTimeTable()
-    
     def getApprovalStatus(self):
         return self.currentStudent.getApprovalStatus()

@@ -48,8 +48,8 @@ class CLIStudent(object):
             print("\n\n")
             print(" My Courses\n" +
                 "**************\n")
-            print("    %-10s    %-45s    %-15s    Status\n" % ("Code", "Name", "Section"))
-            print("    %-10s    %-45s    %-15s    ______\n" % ("____", "____", "_______"))
+            print("    %-10s    %-50s    %-15s    Status" % ("Code", "Name", "Section"))
+            print("    %-10s    %-50s    %-15s    ______\n" % ("____", "____", "_______"))
 
 
             self._listSelectedCourses()
@@ -195,21 +195,27 @@ class CLIStudent(object):
         rowCount = 1
         for courseSection in self._studentController.getAvailableCourseSections():
             course = courseSection.findCourseOfCourseSection()
-            print(f"{rowCount}.  {course.getCourseCode():<10}  {course.getCourseName():<50}  {courseSection.getSectionCode():<15}  {courseSection.getLecturerName():<20}  {course.getCourseCredit()}")
+            print(f"{rowCount}.  {course.getCourseCode():<10}    {course.getCourseName():<50}    {courseSection.getSectionCode():<15}    {courseSection.getLecturerName():<20}    {course.getCourseCredit()}")
             rowCount += 1
 
     def _listSelectedCourses(self):
         rowCount = 1
         for selectedCourse in self._studentController.getSelectedCourses():
-            print(f"{rowCount}.  {selectedCourse.getCourse().getCourseCode():<10}  {selectedCourse.getCourse().getCourseName():<50}  {selectedCourse.getCourseSection().getSectionCode():<15}",  end="")            
+            print(f"{rowCount}.  {selectedCourse.getCourse().getCourseCode():<10}    {selectedCourse.getCourse().getCourseName():<50}    {selectedCourse.getCourseSection().getSectionCode():<15}    ",  end="")            
             if selectedCourse.getStatus() == CourseStatus.APPROVED:
-                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.GREEN)
+                Util.paintTextln(f"{selectedCourse.getStatus().value}", Color.GREEN)
             elif selectedCourse.getStatus() == CourseStatus.PENDING:
-                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.YELLOW)
+                Util.paintTextln(f"{selectedCourse.getStatus().value}", Color.YELLOW)
             elif selectedCourse.getStatus() == CourseStatus.DENIED:
-                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.RED)
+                Util.paintTextln(f"{selectedCourse.getStatus().value}", Color.RED)
+            elif selectedCourse.getStatus() == CourseStatus.ACTIVE:
+                Util.paintTextln(f"{selectedCourse.getStatus().value}", Color.GREEN)
+            elif selectedCourse.getStatus() == CourseStatus.APPROVED_FINALIZED:
+                Util.paintTextln("APPROVED FINALIZED", Color.GREEN)
+            elif selectedCourse.getStatus() == CourseStatus.DENIED_FINALIZED:
+                Util.paintTextln("DENIED FINALIZED", Color.RED)
             else:
-                print(f"{selectedCourse.getStatus().value}\n")
+                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.DEFAULT)
             
             rowCount += 1
 
