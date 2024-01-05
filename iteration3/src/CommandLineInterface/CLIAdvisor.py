@@ -1,10 +1,10 @@
-from iteration3.src.controllers.AdvisorController import AdvisorController
-from iteration3.src.enums.CourseStatus import CourseStatus
-from iteration3.src.interfaces.Color import Color
-from iteration3.src.models.SelectedCourse import SelectedCourse
-from iteration3.src.models.Student import Student
-from iteration3.src.utils.Util import Util
-from iteration3.src.models.Constraint import Constraint
+from controllers.AdvisorController import AdvisorController
+from enums.CourseStatus import CourseStatus
+from interfaces.Color import Color
+from models.SelectedCourse import SelectedCourse
+from models.Student import Student
+from utils.Util import Util
+from models.Constraint import Constraint
 
 class CLIAdvisor(object):
 
@@ -98,10 +98,10 @@ class CLIAdvisor(object):
 
           isInvalid = False    
           courses = student.fetchSelectedCoursesForAdvisor()
-          isFinalizable = False
+          isFinalizable = True
           for i in range(len(courses)):
             if(courses[i] != CourseStatus.APPROVED or courses[i] != CourseStatus.DENIED):
-                 isFinalizable = True
+                 isFinalizable = False
           
           while True:
                
@@ -127,7 +127,7 @@ class CLIAdvisor(object):
                          Util.paintText(courses[i].getStatus() + "\n", Color.RED)
                     elif courses[i].getStatus() == CourseStatus.APPROVED_FINALIZED:
                          Util.paintText(courses[i].getStatus() + "\n", Color.GREEN)
-                    elif courses[i].getStatus() == CourseStatus.DENIED_FINALIZED:
+                    elif courses[i].getStatus() == CourseStatus.DENIED_FINAZLIZED:
                          Util.paintText(courses[i].getStatus() + "\n", Color.RED)
                     else:
                          print(courses[i].getStatus() + "\n")
@@ -151,7 +151,6 @@ class CLIAdvisor(object):
                               choice2 = input()
                               
 
-<<<<<<< HEAD
                               if choice2 == "a" :
                                    if(courses[int(choice) - 1].getStatus != CourseStatus.APPROVED_FINALIZED or
                                                   courses[int(choice) - 1].getStatus != CourseStatus.DENIED_FINAZLIZED):
@@ -175,32 +174,6 @@ class CLIAdvisor(object):
                                                   Util.sendFeedback("Registration is already finalized.",Color.GREEN)
                                         except Exception as e:
                                              Util.sendFeedback(e.message, Color.RED)
-=======
-                         if choice2 == "a" :
-                              if(courses[int(choice) - 1].getStatus != CourseStatus.APPROVED_FINALIZED or
-                                                courses[int(choice) - 1].getStatus != CourseStatus.DENIED_FINAZLIZED):
-                                   try: 
-                                        result = self._advisorController.approveCourse(student, courses[int(choice) - 1])
-                                        if result:
-                                             Util.sendFeedback("Course is approved", Color.GREEN)
-                                        else:
-                                             Util.sendFeedback("Registration is already finalized.",Color.GREEN)
-                                   except Exception as e:
-                                        Util.sendFeedback(e.message, Color.RED)
-                                        continue
-                         elif choice2 == "d":
-                              if(courses[int(choice) - 1].getStatus != CourseStatus.APPROVED_FINALIZED or
-
-                                                courses[int(choice) - 1].getStatus != CourseStatus.DENIED_FINAZLIZED):
-                                   try:
-                                        result = self._advisorController.denyCourse(student, courses[int(choice) - 1])
-                                        if result:
-                                             Util.sendFeedback("Course is denied", Color.GREEN)
-                                        else:
-                                             Util.sendFeedback("Registration is already finalized.",Color.GREEN)
-                                   except Exception as e:
-                                        Util.sendFeedback(e.message, Color.RED)
->>>>>>> a741d32a7b43b5b3ce1871413c55b3359fffaa1a
 
                               elif choice == "b":
                                    return False
@@ -226,24 +199,7 @@ class CLIAdvisor(object):
                               Util.printTimeTable()
                          else:
                               Util.sendFeedback("Invalid choice. Try again", Color.RED)
-<<<<<<< HEAD
                               isInvalid = True
                except Exception as e:
                     Util.sendFeedback(e.message, Color.RED)
                     continue
-=======
-                              isInvalid = True   
-               else: 
-                    if choice == "b":
-                         return False
-                    elif choice=="q":
-                         self._advisorController.logOut()
-                         return True
-                    elif choice == "f" and isFinalizable == True:
-                             self._advisorController.finalizeRegistration(student)
-                    elif choice == "s":
-                            Util.printTimeTable()
-                    else:
-                         Util.sendFeedback("Invalid choice. Try again", Color.RED)
-                         isInvalid = True 
->>>>>>> a741d32a7b43b5b3ce1871413c55b3359fffaa1a
