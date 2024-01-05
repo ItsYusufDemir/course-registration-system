@@ -207,8 +207,14 @@ class CLIStudent(object):
                 Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.YELLOW)
             elif selectedCourse.getStatus() == CourseStatus.DENIED:
                 Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.RED)
+            elif selectedCourse.getStatus() == CourseStatus.ACTIVE:
+                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.GREEN)
+            elif selectedCourse.getStatus() == CourseStatus.APPROVED_FINALIZED:
+                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.GREEN)
+            elif selectedCourse.getStatus() == CourseStatus.DENIED_FINALIZED:
+                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.RED)
             else:
-                print(f"{selectedCourse.getStatus().value}\n")
+                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.DEFAULT)
             
             rowCount += 1
 
