@@ -202,17 +202,17 @@ class CLIStudent(object):
         for selectedCourse in self._studentController.getSelectedCourses():
             print(f"{rowCount}.  {selectedCourse.getCourse().getCourseCode():<10}    {selectedCourse.getCourse().getCourseName():<50}    {selectedCourse.getCourseSection().getSectionCode():<15}    ",  end="")            
             if selectedCourse.getStatus() == CourseStatus.APPROVED:
-                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.GREEN)
+                Util.paintTextln(f"{selectedCourse.getStatus().value}", Color.GREEN)
             elif selectedCourse.getStatus() == CourseStatus.PENDING:
-                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.YELLOW)
+                Util.paintTextln(f"{selectedCourse.getStatus().value}", Color.YELLOW)
             elif selectedCourse.getStatus() == CourseStatus.DENIED:
-                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.RED)
+                Util.paintTextln(f"{selectedCourse.getStatus().value}", Color.RED)
             elif selectedCourse.getStatus() == CourseStatus.ACTIVE:
-                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.GREEN)
+                Util.paintTextln(f"{selectedCourse.getStatus().value}", Color.GREEN)
             elif selectedCourse.getStatus() == CourseStatus.APPROVED_FINALIZED:
-                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.GREEN)
+                Util.paintTextln("APPROVED FINALIZED", Color.GREEN)
             elif selectedCourse.getStatus() == CourseStatus.DENIED_FINALIZED:
-                Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.RED)
+                Util.paintTextln("DENIED FINALIZED", Color.RED)
             else:
                 Util.paintText(f"{selectedCourse.getStatus().value}\n", Color.DEFAULT)
             
