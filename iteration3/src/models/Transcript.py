@@ -30,7 +30,7 @@ class Transcript(object):
         total = 0.0
         for course in self.takenCourses:
             if course.getCourseResult() == CourseResult.PASSED:
-                total += course.getCourse().getCredit()
+                total += course.getCourse().getCourseCredit()
         
         return total
     

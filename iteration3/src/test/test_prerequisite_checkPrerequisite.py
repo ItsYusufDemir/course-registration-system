@@ -1,5 +1,13 @@
+
+from dotenv import load_dotenv
+import os
+import sys
+
+load_dotenv()
+sys.path.append(os.getenv("ROOT_PATH"))
+
 import unittest
-from enums.CourseResult import CourseResult
+from iteration3.src.enums.CourseResult import CourseResult
 
 from iteration3.src.models.Course import Course
 from iteration3.src.models.CourseGrade import CourseGrade
@@ -31,13 +39,13 @@ class PrerequisiteTest(unittest.TestCase):
 
         transcript = Transcript(course_grades)
 
-        selected_course1 = SelectedCourse(course1, None)
-        selected_course2 = SelectedCourse(course2, None)
-        selected_course3 = SelectedCourse(course3, None)
+        selected_course1 = SelectedCourse(course1, None, None)
+        selected_course2 = SelectedCourse(course2, None, None)
+        selected_course3 = SelectedCourse(course3, None,None)
 
         selected_courses = [selected_course1, selected_course2, selected_course3]
 
-        student = Student("1", "1", "eren", "duyuk", False, "a", "1", 0, selected_courses, None, None, transcript)
+        student = Student("1", "1", "eren", "duyuk", False, "a", "1", 0, selected_courses, None, None,None, transcript)
 
         self.assertTrue(course2.checkPrerequisite(student), "Prerequisite should be passed")
         self.assertFalse(course3.checkPrerequisite(student), "Prerequisite should not be passed")

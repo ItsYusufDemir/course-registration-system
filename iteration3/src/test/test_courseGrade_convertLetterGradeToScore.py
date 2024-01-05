@@ -1,3 +1,11 @@
+
+from dotenv import load_dotenv
+import os
+import sys
+
+load_dotenv()
+sys.path.append(os.getenv("ROOT_PATH"))
+
 import unittest
 from iteration3.src.models.Course import Course
 from iteration3.src.models.CourseGrade import CourseGrade
