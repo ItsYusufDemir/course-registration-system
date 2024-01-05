@@ -65,15 +65,15 @@ class CLIStudent(object):
 
             try:
                 if _choice == "1":
-                    if DatabaseManager.getInstance().getConstraints().get(4) == "false"  and  DatabaseManager.getInstance().getConstraints().get(1) == "false":
-                        Util.sendFeedback("You are not in registration or add-drop week. You cannot select a new course.", Color.RED)
+                    if DatabaseManager.getInstance().getConstraints().get(4) == "False"  and  DatabaseManager.getInstance().getConstraints().get(2) == "False":
+                        Util.sendFeedback("You are not in registration nor add-drop week. You cannot select a new course.", Color.RED)
                     elif self._studentController.getApprovalStatus() == "FINALIZED_REGISTRATION":
                         Util.sendFeedback("You have already finalized your registration. You cannot select a new course.", Color.RED)
                     else:
                         self._showAddCoursePage()
 
                 elif _choice == "2":
-                    if DatabaseManager.getInstance().getConstraints().get(4) == "false"  and  DatabaseManager.getInstance().getConstraints().get(1) == "false":
+                    if DatabaseManager.getInstance().getConstraints().get(4) == "False"  and  DatabaseManager.getInstance().getConstraints().get(2) == "False":
                         Util.sendFeedback("You are not in registration or add-drop week. You cannot delete a course.", Color.RED)
                     elif self._studentController.getApprovalStatus() == "FINALIZED_REGISTRATION":
                         Util.sendFeedback("You have already finalized your registration. You cannot delete a course.", Color.RED)                        
