@@ -1,18 +1,18 @@
 #beyza
 import logging
-from controllers.StudentController import StudentController
-from enums.ApprovalStatus import ApprovalStatus
-from enums.CourseType import CourseType
-from models.SelectedCourse import SelectedCourse
-from models.Transcript import Transcript
-from models.User import User
-from utils.DatabaseManager import DatabaseManager
-from utils.Util import Util
-from interfaces.Color import Color
-from enums.CourseStatus import CourseStatus
-from enums.CourseResult import CourseResult
-from models.CourseSection import CourseSection
-from CommandLineInterface.CLIStudent import CLIStudent
+from iteration3.src.controllers.StudentController import StudentController
+from iteration3.src.enums.ApprovalStatus import ApprovalStatus
+from iteration3.src.enums.CourseType import CourseType
+from iteration3.src.models.SelectedCourse import SelectedCourse
+from iteration3.src.models.Transcript import Transcript
+from iteration3.src.models.User import User
+from iteration3.src.utils.DatabaseManager import DatabaseManager
+from iteration3.src.utils.Util import Util
+from iteration3.src.interfaces.Color import Color
+from iteration3.src.enums.CourseStatus import CourseStatus
+from iteration3.src.enums.CourseResult import CourseResult
+from iteration3.src.models.CourseSection import CourseSection
+from iteration3.src.CommandLineInterface.CLIStudent import CLIStudent
 
 
 class Student(User):
@@ -30,7 +30,7 @@ class Student(User):
     @classmethod
     def dictToObject(cls, studentDict):
 
-        from models.Advisor import Advisor
+        from iteration3.src.models.Advisor import Advisor
 
 
         return cls(

@@ -1,5 +1,5 @@
 #beyza
-from enums.CourseResult import CourseResult
+from iteration3.src.enums.CourseResult import CourseResult
 class CourseGrade:
     def __init__(self, course, letterGrade, courseResult):
         self.course = course
@@ -8,7 +8,7 @@ class CourseGrade:
 
     @classmethod
     def dictToObject(cls, dict):
-        from models.Course import Course
+        from iteration3.src.models.Course import Course
         return cls(
             Course.dictToObject(dict['course']),
             dict['letterGrade'],

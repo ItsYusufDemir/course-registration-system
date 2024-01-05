@@ -1,8 +1,8 @@
 import logging
-from interfaces.Color import Color
-from interfaces.Showable import Showable
-from utils.DatabaseManager import DatabaseManager
-from utils.Util import Util
+from iteration3.src.interfaces.Color import Color
+from iteration3.src.interfaces.Showable import Showable
+from iteration3.src.utils.DatabaseManager import DatabaseManager
+from iteration3.src.utils.Util import Util
 
 class User(Showable):
     def __init__(self, userId, password, firstName, lastName, status, notifications):
