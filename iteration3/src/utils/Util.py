@@ -41,7 +41,7 @@ class Util:
             raise ValueError("Invalid number")
         if number is not None and 0 < number <= len(list):
             return True
-        raise Exception("Number out of range")
+        raise IndexError("Number out of range")
 
     def makeArrayList(pattern: str, string: str)->[str]:
         return string.split(pattern)

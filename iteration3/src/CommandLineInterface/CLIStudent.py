@@ -155,10 +155,10 @@ class CLIStudent(object):
                     else:
                         Util.sendFeedback("Course addition failed", Color.RED)
                 except Exception as e:
-                    raise Util.sendFeedback(str(e), Color.RED)
+                    Util.sendFeedback(str(e), Color.RED)
                 
             except Exception as e:
-                raise e
+                Util.sendFeedback(str(e), Color.RED)
     def _showTimeTablePage(self):
         self._shouldQuit = True
         while(self._shouldQuit):
