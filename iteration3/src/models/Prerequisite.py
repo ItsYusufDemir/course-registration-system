@@ -12,7 +12,7 @@ class Prerequisite:
     def checkPrerequisiteCoursePassed(self, student, course):
         isPrerequisiteCoursesPassed = []
         
-        for prerequisitecourse in course.getPrerequisiteInformation().prerequisiteOfCourses:
+        for prerequisitecourse in course.getPrerequisiteInformation().getPrerequisiteOfCourses():
             for passedCourse in student.getTranscript().acquirePassedCourses():
                 isPrerequisiteCoursesPassed.append(prerequisitecourse.getCourseCode() == passedCourse.getCourse().getCourseCode())
             if (self._isContainTrue(isPrerequisiteCoursesPassed) == False):

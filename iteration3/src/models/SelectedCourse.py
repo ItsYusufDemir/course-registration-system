@@ -30,5 +30,8 @@ class SelectedCourse(object):
 
     def getStatus(self):
         return self._status
+    
+    def setStatus(self, status):
+        self._status = status
             
 

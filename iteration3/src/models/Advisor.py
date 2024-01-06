@@ -37,7 +37,10 @@ class Advisor(User):
 
     def acceptCourse(self, student, selectedCourse):
 
-        if(selectedCourse.status != CourseStatus.PENDING):
+        if(student.getApprovalStatus() == ApprovalStatus.FINALIZED_REGISTRATION):
+            raise Exception("Registration is finalized. You cannot accept any course.")
+
+        if(selectedCourse.getStatus() != CourseStatus.PENDING):
             logging.log(logging.INFO, f"{self.getUserId()} - Course: {selectedCourse.getCourse().getCourseCode()} is not pending for approval.")
             raise Exception("This course is not pending for approval.")
         
@@ -53,7 +56,7 @@ class Advisor(User):
         for course in student.getSelectedCourses():
             if(course.getStatus() == CourseStatus.PENDING):
                 DatabaseManager.getInstance().saveToDatabase()
-                return True
+                return
 
         student.setApprovalStatus(ApprovalStatus.DONE)
         logging.log(logging.INFO, f"{self.getUserId()} - Student: {student.getUserId()} is approved.")
@@ -66,7 +69,10 @@ class Advisor(User):
 
     def rejectCourse(self, student, selectedCourse):
 
-        if(selectedCourse.status != CourseStatus.PENDING):
+        if(student.getApprovalStatus() == ApprovalStatus.FINALIZED_REGISTRATION):
+            raise Exception("Registration is finalized. You cannot reject any course.")
+
+        if(selectedCourse.getStatus() != CourseStatus.PENDING):
             raise Exception("This course is not pending for reject.")
         
         selectedCourse.setStatus(CourseStatus.DENIED)
@@ -80,7 +86,7 @@ class Advisor(User):
         for course in student.getSelectedCourses():
             if(course.getStatus() == CourseStatus.PENDING):
                 DatabaseManager.getInstance().saveToDatabase()
-                return True
+                return
 
         logging.log(logging.INFO, f"{self.getUserId()} - Student: {student.getUserId()} is approved.")            
         student.setApprovalStatus(ApprovalStatus.DONE)
@@ -91,6 +97,19 @@ class Advisor(User):
 
 
     def finalizeRegistration(self, student):
+
+        selectedCourses = student.getSelectedCourses()
+
+        if(student.getApprovalStatus() == ApprovalStatus.FINALIZED_REGISTRATION):
+            raise Exception("Registration is already finalized.")
+
+        #If there is any pending course, do not finalize the registration
+        for i in range(len(selectedCourses)):
+            if(selectedCourses[i].getStatus() == CourseStatus.PENDING):
+                raise Exception("There are still pending courses.")
+            
+        
+                
 
         selectedCourses = student.getSelectedCourses()
 

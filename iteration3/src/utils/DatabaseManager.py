@@ -66,41 +66,32 @@ class DatabaseManager:
             
             with open(filePath, "w", encoding="utf-8") as jsonFile:
                 json.dump(transcript, jsonFile, indent=4, default=self.jsonDefault, ensure_ascii=False)
-    
-    def saveCoursesList(self):
+            
+
+    def saveToDatabase(self):
+
         with open("iteration3/data/courses.json", "w", encoding="utf-8") as json_file:
             json.dump(self._courseList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
-
-    def saveStudentList(self):
+        
         with open("iteration3/data/students.json", "w", encoding="utf-8") as json_file:
             json.dump(self._studentList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
-        self._saveTranscriptsToDatabase()
+            self._saveTranscriptsToDatabase()
 
-    def saveAdvisorList(self):
         with open("iteration3/data/advisors.json", "w", encoding="utf-8") as json_file:
             json.dump(self._advisorList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
 
-    def saveConstraintsList(self):
         with open("iteration3/data/constraints.json", "w", encoding="utf-8") as json_file:
             json.dump(self._constraintList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
 
-    def saveAdminList(self):
         with open("iteration3/data/admins.json", "w", encoding="utf-8") as json_file:
             json.dump(self._adminList, json_file, indent=4, default=self.jsonDefault, ensure_ascii=False)
-
-    def saveToDatabase(self):
-        self.saveCoursesList()
-        self.saveStudentList()
-        self.saveAdvisorList()
-        self.saveConstraintsList()
-        self.saveAdminList()
+        
 
     def fetchAdvisedStudents(self, advisor):
-        studentsOfAdvisor = [student for student in self._studentList if student.getAdvisorOfStudent().getUserId() == advisor.userId]
+        studentsOfAdvisor = [student for student in self._studentList if student.getAdvisorOfStudent().getUserId() == advisor.getUserId()]
         return studentsOfAdvisor
 
     def editConstraints(self, editedAttributes: Dict[int, str]) -> bool:
-        #TODO: check if editedAttributes is valid
         self._constraintList[0].editConstraint(editedAttributes)
         return True
     
@@ -135,15 +126,17 @@ class DatabaseManager:
         return constraintsMap
     
     def jsonDefault(self, obj):
-        """
-        Custom JSON serialization function to handle non-serializable objects.
-        """
+
+        #Custom JSON serialization function to handle non-serializable objects.
+        def remove_underscores(dictionary):
+            return {key.replace('_', ''): value for key, value in dictionary.items()}
+
         if isinstance(obj, Enum):
             # Handle Enum objects by converting them to their values
             return obj.value
         elif hasattr(obj, '__dict__'):
             # If the object has a '__dict__' attribute, use it for serialization
-            return obj.__dict__
+            return remove_underscores(obj.__dict__)
         elif isinstance(obj, set):
             # Handle sets by converting them to lists
             return list(obj)
