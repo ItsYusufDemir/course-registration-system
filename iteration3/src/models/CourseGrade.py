@@ -45,6 +45,12 @@ class CourseGrade:
     
     def getCourse(self):
         return self._course
+    
+    def getLetterGrade(self):
+        return self._letterGrade
+    
+    def setCourseResult(self, courseResult):
+        self._courseResult = courseResult
 
         
     

@@ -68,7 +68,6 @@ class Student(User):
         for courseSection in allSelectableCourseSections:
             
             course = courseSection.findCourseOfCourseSection() 
-
             if courseSection.checkAvailability() and course.checkPrerequisite(self) and not self._checkIfItWasTaken(course) and not self._checkIfItExistsInSelectedCourses(course) and self._checkCourseType(course):
                 availableCourseSections.append(courseSection)
             
@@ -102,8 +101,8 @@ class Student(User):
         repeatCourseSections = []
 
         for takenCourse in takenCourses:
-            if takenCourse.letterGrade == "DD" or takenCourse.letterGrade == "DC":
-                repeatCourseSections.extend(takenCourse.course.courseSections)
+            if takenCourse.getLetterGrade() == "DD" or takenCourse.getLetterGrade() == "DC":
+                repeatCourseSections.extend(takenCourse.getCourse().getCourseSections())
 
         return repeatCourseSections 
         
@@ -151,13 +150,13 @@ class Student(User):
         if selectedCourse not in self._selectedCourses:
             self._selectedCourses.append(selectedCourse)
             DatabaseManager.getInstance().saveToDatabase()
-            logging.log(logging.INFO,self._userId + " - Course: " + selectedCourse.course.courseCode
+            logging.log(logging.INFO,self._userId + " - Course: " + selectedCourse.getCourse().getCourseCode()
                     + " added to student: " + self._userId)
-            return True
+            return
         else:
             logging.log(logging.INFO, self._userId + " - Course: " + selectedCourse.course.courseCode
         + " is already added to student: " + self._userId)
-            raise Exception("Course: "+selectedCourse.course.courseCode +"is already added to your courses.")
+            raise Exception("Course: "+selectedCourse.getCourse().getCourseCode() +"is already added to your courses.")
 
         
         
@@ -165,24 +164,24 @@ class Student(User):
         if (selectedCourse in self._selectedCourses) and (selectedCourse.getStatus() is not CourseStatus.PENDING):
             self._selectedCourses.remove(selectedCourse)
             DatabaseManager.getInstance().saveToDatabase()
-            logging.info(self._userId + " - Course: " + selectedCourse.course.courseCode
-                    + " deleted from student: " + self._userId)
-            return True 
+            logging.info(self._userId + " - Course: " + selectedCourse.getCourse().getCourseCode()
+                    + " deleted from student: " + self._userId) 
+            return
         else:  
-            logging.info(self._userId + " - Course: " + selectedCourse.course.courseCode
+            logging.info(self._userId + " - Course: " + selectedCourse.getCourse().getCourseCode()
                     + " is not deleted from student: " + self._userId)
-            return False
+            raise Exception("Course is pending for approval. You cannot delete it.")
     
     def _checkCompulsoryCourses(self):
-        courseGrades = self._transcript.takenCourses
+        courseGrades = self._transcript.getTakenCourses()
         for courseGrade in courseGrades:
-            if courseGrade.courseResult == CourseResult.FAILED:
+            if courseGrade.getCourseResult() == CourseResult.FAILED:
                 for selectedCourse in self._selectedCourses:
-                    if selectedCourse.course is not courseGrade.course:
+                    if selectedCourse.getCourse() is not courseGrade.getCourse():
                         for section in self.listAvailableCourseSections():
-                            if section.findCourseOfCourseSection == courseGrade.course:
+                            if section.findCourseOfCourseSection() == courseGrade.getCourse():
                                 logging.warning("Student: " + self._userId + " has failed course: "
-                                        + courseGrade.course.courseCode
+                                        + selectedCourse.getCourse().getCourseCode()
                                         + " and has not added it to his/her courses.")
                                 return True
         return False
@@ -190,9 +189,15 @@ class Student(User):
     
     def sendSelectedCoursesToApproval(self):
 
+        if(DatabaseManager.getInstance().getConstraints()[4] == "False" and DatabaseManager.getInstance().getConstraints()[2] == "False"):
+            raise Exception("You are not in registration nor add-drop week. You cannot send your courses to approval.")
+        
+        if(self._approvalStatus == ApprovalStatus.FINALIZED_REGISTRATION):
+            raise Exception("You have already finalized your registration. You cannot send your courses to approval.")
+
         numberOfDraftCourses = 0
         for selectedCourse in self._selectedCourses:
-            if selectedCourse.status is CourseStatus.DRAFT:
+            if selectedCourse.getStatus() is CourseStatus.DRAFT:
                 numberOfDraftCourses = numberOfDraftCourses + 1
 
         #Check if the student acceeds the maximum number of courses that can be taken in one term
@@ -202,7 +207,7 @@ class Student(User):
 
         self._approvalStatus = ApprovalStatus.DONE
         for selectedCourse in self._selectedCourses:
-            if selectedCourse.status is CourseStatus.PENDING:
+            if selectedCourse.getStatus() is CourseStatus.PENDING:
                 self._approvalStatus = ApprovalStatus.PENDING
             
 
@@ -221,15 +226,15 @@ class Student(User):
         
         self._approvalStatus = ApprovalStatus.PENDING
         for selectedCourse in self._selectedCourses:
-            if selectedCourse.status == CourseStatus.DRAFT:
-                selectedCourse.status = CourseStatus.PENDING
-                selectedCourse.courseSection.incrementStudentCount()
+            if selectedCourse.getStatus() == CourseStatus.DRAFT:
+                selectedCourse.setStatus(CourseStatus.PENDING)
+                selectedCourse.getCourseSection().incrementStudentCount()
 
                 #If selected course is a repeat course, set its course result to ACTIVE in the transcript
-                if selectedCourse.courseSection in self._findRepeatCourseSections():  
-                    for courseGrade in self._transcript.takenCourses:
-                        if courseGrade.course.courseCode == selectedCourse.course.courseCode:
-                            courseGrade.courseResult = CourseResult.ACTIVE
+                if selectedCourse.getCourseSection() in self._findRepeatCourseSections():  
+                    for courseGrade in self._transcript.getTakenCourses():
+                        if courseGrade.getCourse().getCourseCode() == courseGrade.getCourse().getCourseCode():
+                            courseGrade.setCourseResult(CourseResult.ACTIVE)
 
         
         self._advisorOfStudent.addNotification(self._firstName + " " + self._lastName + " has requested a course approval.")
@@ -238,7 +243,7 @@ class Student(User):
 
     def getMyPage(self):
         cliStudent = CLIStudent(StudentController(self))
-        cliStudent._menuPage()
+        cliStudent.menuPage()
 
     def fillTable(self):
         timeTable = [[] for _ in range(5)]
@@ -249,8 +254,8 @@ class Student(User):
 
         for i in range(len(self._selectedCourses)):
             for j in range(len(self._selectedCourses[i].getCourseSection().getSectionDay())):
-                day = self._selectedCourses[i].getCourseSection().sectionDay[j]
-                time = self._selectedCourses[i].getCourseSection().sectionTime[j]
+                day = self._selectedCourses[i].getCourseSection().getSectionDay()[j]
+                time = self._selectedCourses[i].getCourseSection().getSectionTime()[j]
                 if day == "Monday":
                     self.fillTableWithValues(time, i, 0, timeTable)
                 elif day == "Tuesday":
@@ -268,21 +273,21 @@ class Student(User):
 
     def fillTableWithValues(self, time, i, day, timeTable):
         if time == "08:30-09:20":
-            timeTable[day][0] += self._selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][0] += self._selectedCourses[i].getCourseSection().getSectionCode() + "-"
         elif time == "09:30-10:20":
-            timeTable[day][1] += self._selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][1] += self._selectedCourses[i].getCourseSection().getSectionCode() + "-"
         elif time == "10:30-11:20":
-            timeTable[day][2] += self._selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][2] += self._selectedCourses[i].getCourseSection().getSectionCode() + "-"
         elif time == "11:30-12:20":
-            timeTable[day][3] += self._selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][3] += self._selectedCourses[i].getCourseSection().getSectionCode() + "-"
         elif time == "13:00-13:50":
-            timeTable[day][4] += self._selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][4] += self._selectedCourses[i].getCourseSection().getSectionCode() + "-"
         elif time == "14:00-14:50":
-            timeTable[day][5] += self._selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][5] += self._selectedCourses[i].getCourseSection().getSectionCode() + "-"
         elif time == "15:00-15:50":
-            timeTable[day][6] += self._selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][6] += self._selectedCourses[i].getCourseSection().getSectionCode() + "-"
         elif time == "16:00-16:50":
-            timeTable[day][7] += self._selectedCourses[i].courseSection.sectionCode + "-"
+            timeTable[day][7] += self._selectedCourses[i].getCourseSection().getSectionCode() + "-"
         else:
             print("Invalid time")
 
@@ -302,7 +307,7 @@ class Student(User):
     def fetchSelectedCoursesForAdvisor(self):
         selectedCourses = []
         for selectedCourse in self._selectedCourses:
-            if selectedCourse.status is not CourseStatus.DRAFT:
+            if selectedCourse.getStatus() is not CourseStatus.DRAFT:
                 selectedCourses.append(selectedCourse)
         return selectedCourses
 

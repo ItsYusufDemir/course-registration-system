@@ -1286,6 +1286,36 @@
                 },
                 "letterGrade": "CB",
                 "courseResult": "PASSED"
+            },
+            {
+                "course": {
+                    "courseCredit": 5,
+                    "courseECTS": 5,
+                    "givenSemester": 8,
+                    "courseName": "Wireless and Mobile Networks",
+                    "courseCode": "CSE4075",
+                    "prerequisiteInformation": null,
+                    "courseSections": [
+                        {
+                            "studentCapacity": 120,
+                            "lecturerName": "Müjdat Soytürk",
+                            "sectionTime": [
+                                "13:00-13:50",
+                                "14:00-14:50"
+                            ],
+                            "sectionDay": [
+                                "Friday",
+                                "Friday"
+                            ],
+                            "classroom": "Room 101",
+                            "sectionCode": "CSE4075.1",
+                            "studentCountInsideCourseSection": 1
+                        }
+                    ],
+                    "courseType": "TECHNICAL_ELECTIVE"
+                },
+                "letterGrade": null,
+                "courseResult": "ACTIVE"
             }
         ]
     }

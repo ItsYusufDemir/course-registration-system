@@ -20,6 +20,9 @@ class Constraint:
 
     def editConstraint(self, editedAttributes):
 
+        if(editedAttributes[2].lower() == "true" and editedAttributes[4].lower() == "true"):
+            raise Exception("Add-Drop week and Registration week cannot be enabled at the same time.")
+
         #Send notification to students and advisors if add-drop week is enabled
         if(self._addDropWeek == False and editedAttributes[2].lower() == "true"):
             for student in DatabaseManager().getInstance().getStudentList():

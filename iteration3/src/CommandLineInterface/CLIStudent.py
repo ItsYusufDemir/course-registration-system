@@ -69,41 +69,29 @@ class CLIStudent(object):
                     if DatabaseManager.getInstance().getConstraints().get(4) == "False"  and  DatabaseManager.getInstance().getConstraints().get(2) == "False":
                         Util.sendFeedback("You are not in registration nor add-drop week. You cannot select a new course.", Color.RED)
                     elif self._studentController.getApprovalStatus() == ApprovalStatus.FINALIZED_REGISTRATION:
-                        Util.sendFeedback("You have already finalized your registration. You cannot select a new course.", Color.RED)
+                        Util.sendFeedback("Your registration has been finalized. You cannot select a new course.", Color.RED)
                     else:
                         self._showAddCoursePage()
 
                 elif _choice == "2":
                     if DatabaseManager.getInstance().getConstraints().get(4) == "False"  and  DatabaseManager.getInstance().getConstraints().get(2) == "False":
-                        Util.sendFeedback("You are not in registration or add-drop week. You cannot delete a course.", Color.RED)
+                        Util.sendFeedback("You are not in registration nor add-drop week. You cannot delete a course.", Color.RED)
                     elif self._studentController.getApprovalStatus() == ApprovalStatus.FINALIZED_REGISTRATION:
-                        Util.sendFeedback("You have already finalized your registration. You cannot delete a course.", Color.RED)                        
+                        Util.sendFeedback("Your registration has been finalized. You cannot delete a course.", Color.RED)                        
                     else:
                         _choice = input("Enter the row number of the course you want to delete: ")
-                        try:
-                            Util.validateNumber(_choice, self._studentController.getSelectedCourses()) 
-                            if self._deleteCourse(_choice):
-                                Util.sendFeedback("Course deleted successfully", Color.GREEN)
-                            else:
-                                Util.sendFeedback("Course deletion failed", Color.RED)
-                        except Exception as e:
-                            Util.sendFeedback(str(e), Color.RED)
+                        if(Util.validateNumber(_choice, self._studentController.getSelectedCourses()) ): 
+                            self._deleteCourse(_choice)
+                            Util.sendFeedback("Course deleted successfully", Color.GREEN)
+                        else:
+                            raise Exception("Invalid input " + _choice)
                         
                 elif _choice == "3":
                     self._showTimeTablePage()
 
                 elif _choice == "4":
-                    if DatabaseManager.getInstance().getConstraints().get(4) == "false"  and  DatabaseManager.getInstance().getConstraints().get(1) == "false":
-                        Util.sendFeedback("You are not in registration or add-drop week. You can not send your selected courses to approval", Color.RED)  
-                    elif self._studentController.getApprovalStatus() == ApprovalStatus.FINALIZED_REGISTRATION:
-                        Util.sendFeedback("You have already finalized your registration. You can not send your selected courses to approval", Color.RED)
-                    else: 
-                        try:
-                            self._studentController.sendSelectedCoursesToApproval()
-                            Util.sendFeedback("Selected courses sent to approval successfully", Color.GREEN)
-                        except Exception as e:
-                            Util.sendFeedback(str(e), Color.RED)
-
+                    self._studentController.sendSelectedCoursesToApproval()
+                    Util.sendFeedback("Selected courses sent to approval successfully", Color.GREEN)
                 elif _choice == "b":
                     break
 
@@ -112,13 +100,10 @@ class CLIStudent(object):
                     self._shouldQuit = False
                     
                 else:
-                    raise Exception("Invalid input" + _choice)
+                    raise Exception("Invalid input " + _choice)
                     
             except Exception as e:
-                if str(e) == "Invalid input" + _choice:
-                    Util.sendFeedback("Invalid input", Color.RED)
-                else:
-                    raise
+                Util.sendFeedback(str(e), Color.RED)
     
     def _showAddCoursePage(self):
 
@@ -148,17 +133,15 @@ class CLIStudent(object):
                     self._studentController.logout()
                     self._shouldQuit = False
 
-                try:
-                    Util.validateNumber(_choice, self._studentController.getAvailableCourseSections())
-                    if self._addCourse(_choice):
+                else:
+                    if (Util.validateNumber(_choice, self._studentController.getAvailableCourseSections())):
+                        self._addCourse(_choice)
                         Util.sendFeedback("Course added successfully", Color.GREEN)
                     else:
-                        Util.sendFeedback("Course addition failed", Color.RED)
-                except Exception as e:
-                    Util.sendFeedback(str(e), Color.RED)
-                
+                        raise Exception("Invalid input: " + _choice)
             except Exception as e:
                 Util.sendFeedback(str(e), Color.RED)
+            
     def _showTimeTablePage(self):
         self._shouldQuit = True
         while(self._shouldQuit):
@@ -178,7 +161,7 @@ class CLIStudent(object):
                 else:
                     raise Exception("Invalid input" + _choice)
             except Exception as e:
-                Util.sendFeedback(e, Color.RED)
+                Util.sendFeedback(str(e), Color.RED)
     
     def _addCourse(self, str):
         rowNumber = int(str) 
@@ -189,7 +172,7 @@ class CLIStudent(object):
         return False
     
     def _deleteCourse(self, str):
-        rowNumber = int(str) #TODO: check if valid row number 
+        rowNumber = int(str)
         if self._studentController.removeSelectedCourse( self._studentController.getSelectedCourses()[rowNumber-1] ):
             return True
         

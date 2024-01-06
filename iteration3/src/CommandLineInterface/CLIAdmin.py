@@ -100,68 +100,69 @@ class CLIAdmin():
 
         _choice = input()
 
-        if _choice == "1":
-            print("Enter true or false for add drop: ", end='')
-            _choice = input()
-            if _choice.lower() in ["true", "false"]:
-                editedAttributes[2] = _choice.lower()
-                if _choice.lower() == "true":
-                    self._adminController.setNotificationToStudentAndAdvisor("Add-Drop period has started")
-                else:
-                    self._adminController.setNotificationToStudentAndAdvisor("Add-Drop period has ended")
+        try:
+            if _choice == "1":
+                print("Enter true or false for add drop: ", end='')
+                _choice = input()
+                if _choice.lower() in ["true", "false"]:
+                    editedAttributes[2] = _choice.lower()
+                    if _choice.lower() == "true":
+                        self._adminController.setNotificationToStudentAndAdvisor("Add-Drop period has started")
+                    else:
+                        self._adminController.setNotificationToStudentAndAdvisor("Add-Drop period has ended")
 
+                    self._adminController.editConstraint(editedAttributes)
+                    Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
+                else:
+                    Util.sendFeedback("Invalid input", Color.RED)
+
+                
+                self._constraintPage()
+            elif _choice == "2":
+                print("Enter the max number of courses that can be taken: ", end='')
+                _choice = input()
+                if Util.isValidNumber(_choice):
+                    editedAttributes[1] = int(_choice)
+                    Util.sendFeedback("Max number of courses that can be taken changed successfully", Color.GREEN)
+                else:
+                    Util.sendFeedback("Invalid input", Color.RED)
                 self._adminController.editConstraint(editedAttributes)
-                #TODO: Use try catch to handle send feedback
-                Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
-
-            else:
-                Util.sendFeedback("Invalid input", Color.RED)
-
-            
-            self._constraintPage()
-        elif _choice == "2":
-            print("Enter the max number of courses that can be taken: ", end='')
-            _choice = input()
-            if Util.isValidNumber(_choice):
-                editedAttributes[1] = int(_choice)
-                Util.sendFeedback("Max number of courses that can be taken changed successfully", Color.GREEN)
-            else:
-                Util.sendFeedback("Invalid input", Color.RED)
-            self._adminController.editConstraint(editedAttributes)
-            self._constraintPage()
-        elif _choice == "3":
-            print("Enter the min required ECTS for term project: ", end='')
-            _choice = input()
-            if Util.isValidNumber(_choice):
-                editedAttributes[3] = int(_choice)
-                Util.sendFeedback("Min required ECTS for term project changed successfully", Color.GREEN)
-            else:
-                Util.sendFeedback("Invalid input", Color.RED)
-            self._adminController.editConstraint(editedAttributes)
-            self._constraintPage()
-        elif _choice == "4":
-            print("Enter true or false for registration week: ", end='')
-            _choice = input()
-            if _choice.lower() in ["true", "false"]:
-                editedAttributes[4] = _choice.lower()
-                Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
-
-                if _choice.lower() == "true":
-                    self._adminController.setNotificationToStudentAndAdvisor("Registration week has started")
+                self._constraintPage()
+            elif _choice == "3":
+                print("Enter the min required ECTS for term project: ", end='')
+                _choice = input()
+                if Util.isValidNumber(_choice):
+                    editedAttributes[3] = int(_choice)
+                    Util.sendFeedback("Min required ECTS for term project changed successfully", Color.GREEN)
                 else:
-                    self._adminController.setNotificationToStudentAndAdvisor("Registration week has ended")
+                    Util.sendFeedback("Invalid input", Color.RED)
+                self._adminController.editConstraint(editedAttributes)
+                self._constraintPage()
+            elif _choice == "4":
+                print("Enter true or false for registration week: ", end='')
+                _choice = input()
+                if _choice.lower() in ["true", "false"]:
+                    editedAttributes[4] = _choice.lower()
+                    Util.sendFeedback("Add-Drop value changed successfully", Color.GREEN)
+
+                    if _choice.lower() == "true":
+                        self._adminController.setNotificationToStudentAndAdvisor("Registration week has started")
+                    else:
+                        self._adminController.setNotificationToStudentAndAdvisor("Registration week has ended")
+                else:
+                    Util.sendFeedback("Invalid input", Color.RED)
+                self._adminController.editConstraint(editedAttributes)
+                self._constraintPage()
+            elif _choice == "b":
+                Util.clearScreen()
+                self.menuPage()
+            elif _choice == "q":
+                Util.clearScreen()
+                self._adminController.logout()
             else:
-                Util.sendFeedback("Invalid input", Color.RED)
-            self._adminController.editConstraint(editedAttributes)
-            self._constraintPage()
-        elif _choice == "b":
-            Util.clearScreen()
-            self.menuPage()
-        elif _choice == "q":
-            Util.clearScreen()
-            self._adminController.logout()
-        else:
-            Util.sendFeedback("Invalid input", Color.RED)
+                raise Exception("Invalid input", Color.RED)
+        except Exception as e:
+            Util.sendFeedback(str(e), Color.RED)
             self._constraintPage()
         
 
