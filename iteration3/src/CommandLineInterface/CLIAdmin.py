@@ -160,7 +160,7 @@ class CLIAdmin():
                 Util.clearScreen()
                 self._adminController.logout()
             else:
-                raise Exception("Invalid input", Color.RED)
+                raise Exception("Invalid input")
         except Exception as e:
             Util.sendFeedback(str(e), Color.RED)
             self._constraintPage()
@@ -197,6 +197,7 @@ class CLIAdmin():
         print("-> Enter the course information for the fields.")
 
         while True:
+            
             print("1.\tCourse Credit: ", end='')
             try:
                 currentInput = input()
@@ -317,10 +318,14 @@ class CLIAdmin():
                 print("3.\tSection Day: ", end='')
                 sectionDate = input()
                 sectionDateList = Util.makeArrayList(",", sectionDate)
-                if Util.isInputFormatTrueForDay(sectionDateList):
-                    break
-                else:
-                    Util.sendFeedback("Invalid input ! Please enter a valid day", Color.RED)
+                try:
+                    if Util.isInputFormatTrueForDay(sectionDateList):
+                        break
+                    else:
+                        Util.sendFeedback("Invalid input ! Please enter a valid day", Color.RED)
+                        continue
+                except:
+                    Util.sendFeedback(str(e), Color.RED)
                     continue
 
             while True:
@@ -356,13 +361,16 @@ class CLIAdmin():
        
 
         Util.clearScreen()
+        try:
+            if self._adminController.createCourse(course):
+                Util.sendFeedback("SUCCESS: " + courseCode + " is created.", Color.GREEN)
+                return True
+            else:
+                Util.sendFeedback("FAIL! " + courseCode + " can't created.", Color.RED)
+                return False
+        except Exception as e:
+            Util.sendFeedback(str(e), Color.RED)
 
-        if self._adminController.createCourse(course):
-            Util.sendFeedback("SUCCESS: " + courseCode + " is created.", Color.GREEN)
-            return True
-        else:
-            Util.sendFeedback("FAIL! " + courseCode + " can't created.", Color.RED)
-            return False
 
     def findCourseByCourseCode(self, courseCode):
         return self._adminController.findCourseByCourseCode(courseCode)
