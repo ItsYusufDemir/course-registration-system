@@ -102,7 +102,11 @@ class Student(User):
 
         for takenCourse in takenCourses:
             if takenCourse.getLetterGrade() == "DD" or takenCourse.getLetterGrade() == "DC":
-                repeatCourseSections.extend(takenCourse.getCourse().getCourseSections())
+                #check if the course is offered in the current semester
+                courses = DatabaseManager.getInstance().getCourseList()
+                for course in courses:
+                    if course.getCourseCode() == takenCourse.getCourse().getCourseCode():
+                        repeatCourseSections.extend(course.getCourseSections())
 
         return repeatCourseSections 
         
