@@ -155,7 +155,7 @@ class CLIAdvisor(object):
                               elif choice2 == "n":
                                    continue
                               else:
-                                   raise Exception("Invalid choice", Color.RED)
+                                   raise Exception("Invalid choice")
                          else:
                               self._advisorController.finalizeRegistration(student)
                               Util.sendFeedback("Registration is finalized.", Color.GREEN)
@@ -174,9 +174,9 @@ class CLIAdvisor(object):
                                              self._advisorController.denyCourse(student, courses[int(choice) - 1])
                                              Util.sendFeedback("Course is denied", Color.GREEN)
                               else:
-                                   raise Exception("Invalid choice. Try again", Color.RED)    
+                                   raise Exception("Invalid choice. Try again")    
                     else:
-                         raise Exception("Invalid choice. Try again", Color.RED)
+                         raise Exception("Invalid choice. Try again")
                except Exception as e:
                     Util.sendFeedback(str(e), Color.RED)
                     
