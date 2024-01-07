@@ -324,7 +324,7 @@ class CLIAdmin():
                     else:
                         Util.sendFeedback("Invalid input ! Please enter a valid day", Color.RED)
                         continue
-                except:
+                except Exception as e:
                     Util.sendFeedback(str(e), Color.RED)
                     continue
 
@@ -332,10 +332,14 @@ class CLIAdmin():
                 print("4.\tSection Time: ", end='')
                 sectionTime = input()
                 sectionTimeList = Util.makeArrayList(",", sectionTime)
-                if Util.isInputFormatTrueForTime(sectionTimeList):
-                    break
-                else:
-                    Util.sendFeedback("Invalid input ! Please enter a valid time", Color.RED)
+                try:
+                    if Util.isInputFormatTrueForTime(sectionTimeList):
+                        break
+                    else:
+                        Util.sendFeedback("Invalid input ! Please enter a valid time", Color.RED)
+                        continue
+                except Exception as e:
+                    Util.sendFeedback(str(e), Color.RED)
                     continue
 
             if len(sectionTimeList) == len(sectionDateList):
