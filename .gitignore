@@ -15,7 +15,4 @@ __pycache__
 logs.log
 .env
 .DS_Store
-iteration1/.DS_Store
-iteration2/.DS_Store
-iteration3/.DS_Store
-iteration3/src/.DS_Store
+
